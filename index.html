@@ -183,7 +183,20 @@
             const res = await fetch(`${base}${cat}/index.json`, {cache: 'no-store'});
             if(res.ok){
               const data = await res.json();
-              map[cat] = Array.isArray(data)? data.slice() : [];
+              if(Array.isArray(data)){
+                // normalize array of strings or array of objects to array of filename strings
+                map[cat] = data.map(item => {
+                  if(typeof item === 'string') return item;
+                  if(item && typeof item === 'object'){
+                    if(item.filename) return item.filename;
+                    if(item.path) return item.path.split('/').pop();
+                    if(item.title) return item.title + '.docx';
+                  }
+                  return null;
+                }).filter(Boolean);
+              } else {
+                map[cat] = [];
+              }
             } else {
               map[cat] = [];
             }

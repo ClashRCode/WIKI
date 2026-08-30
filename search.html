@@ -47,7 +47,27 @@
       async function loadAllIndexes(){
         const map = {};
         await Promise.all(categories.map(async cat=>{
-          try{ const res = await fetch(`${base}${cat}/index.json`, {cache:'no-store'}); map[cat] = res.ok? await res.json() : []; }catch(e){ map[cat]=[] }
+          try{
+            const res = await fetch(`${base}${cat}/index.json`, {cache:'no-store'});
+            if(res.ok){
+              const data = await res.json();
+              if(Array.isArray(data)){
+                map[cat] = data.map(item => {
+                  if(typeof item === 'string') return item;
+                  if(item && typeof item === 'object'){
+                    if(item.filename) return item.filename;
+                    if(item.path) return item.path.split('/').pop();
+                    if(item.title) return item.title + '.docx';
+                  }
+                  return null;
+                }).filter(Boolean);
+              } else {
+                map[cat] = [];
+              }
+            } else {
+              map[cat] = [];
+            }
+          }catch(e){ map[cat]=[] }
         }));
         return map;
       }
