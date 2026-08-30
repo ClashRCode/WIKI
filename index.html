@@ -245,11 +245,9 @@
         if(q.length===0) return results.classList.add('hidden');
         const matches = [];
         for(const cat of Object.keys(indexes)){
-          for(const entry of indexes[cat]){
-            // Use title if available, otherwise filename
-            const title = entry.title || entry.filename || '';
-            const name = normalize(title);
-            if(name.includes(q)) matches.push({cat, file: entry.filename || entry.path || '', name: title});
+          for(const file of indexes[cat]){
+            const name = normalize(file);
+            if(name.includes(q)) matches.push({cat, file, name});
           }
         }
         // sort by category, then name 
