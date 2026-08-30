@@ -90,7 +90,19 @@
             if (jres.ok) {
               const data = await jres.json();
               if (Array.isArray(data)) {
-                await renderList(data.filter(f => typeof f === 'string'));
+                // support array of strings or array of objects { filename, path, title }
+                const files = data
+                  .map(item => {
+                    if (typeof item === 'string') return item;
+                    if (item && typeof item === 'object') {
+                      if (item.filename) return item.filename;
+                      if (item.path) return item.path.split('/').pop();
+                      if (item.title) return item.title + '.docx';
+                    }
+                    return null;
+                  })
+                  .filter(f => typeof f === 'string');
+                await renderList(files);
                 return;
               }
             }
@@ -99,7 +111,7 @@
           }
 
           // Aucun mécanisme disponible
-          container.innerHTML = '<p class="text-sm text-red-500">Impossible de lister le dossier. Exécutez un serveur (ex. `python -m http.server`) ou générez `Biologie/index.json`.</p>';
+          container.innerHTML = `<p class="text-sm text-red-500">Impossible de lister le dossier. Exécutez un serveur (ex. \`python -m http.server\`) ou générez \`${dir}index.json\`.</p>`;
         }
 
         try{
