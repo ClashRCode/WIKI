@@ -27,7 +27,6 @@
     </div>
 
     <p class="text-lg">Liste des fiches (ordre alphabétique)</p>
-
     <div id="listContainer">
       <p class="text-sm text-gray-500">Chargement…</p>
     </div>
@@ -36,18 +35,23 @@
       async function loadFiles() {
         const dir = 'Histoire/';
         const container = document.getElementById('listContainer');
-        async function render(files) {
-          const unique = Array.from(new Set(files)).sort((a,b)=>a.localeCompare(b,'fr',{sensitivity:'base'}));
-          if (unique.length===0){container.innerHTML='<p class="text-sm text-gray-500">Aucune fiche trouvée.</p>';return}
-          const ul=document.createElement('ul'); ul.className='list-disc pl-6 space-y-2';
-          unique.forEach(filename=>{let display=filename.replace(/^\[.*?\]\s*/,'').replace(/\.(docx|doc)$/i,'');const li=document.createElement('li');const a=document.createElement('a');a.href=dir+filename;a.textContent=display;a.className='text-indigo-700 hover:underline';li.appendChild(a);ul.appendChild(li)});
-          container.innerHTML='';container.appendChild(ul);
+
+        function render(files) {
+          const unique = Array.from(new Set(files));
+          unique.sort((a,b) => a.localeCompare(b, 'fr', {sensitivity: 'base'}));
+          if (unique.length === 0) { container.innerHTML = '<p class="text-sm text-gray-500">Aucune fiche trouvée.</p>'; return; }
+          const ul = document.createElement('ul'); ul.className = 'list-disc pl-6 space-y-2';
+          unique.forEach(filename => { let display = filename.replace(/^\[.*?\]\s*/i, '').replace(/\.(docx|doc)$/i, ''); const li = document.createElement('li'); const a = document.createElement('a'); a.href = dir + filename; a.textContent = display; a.className = 'text-indigo-700 hover:underline'; li.appendChild(a); ul.appendChild(li); });
+          container.innerHTML = ''; container.appendChild(ul);
         }
-        try{const res=await fetch(dir,{cache:'no-store'}); if(res.ok && res.headers.get('content-type')&&res.headers.get('content-type').includes('text/html')){const text=await res.text();const parser=new DOMParser();const doc=parser.parseFromString(text,'text/html');const anchors=Array.from(doc.querySelectorAll('a'));const files=anchors.map(a=>a.getAttribute('href')).filter(h=>h && (h.toLowerCase().endsWith('.docx')||h.toLowerCase().endsWith('.doc'))).map(h=>decodeURIComponent(h.replace(/\/+$/,'')));await render(files);return}}catch(e){console.warn(e)}
-        try{const jres=await fetch(dir+'index.json',{cache:'no-store'}); if(jres.ok){const data=await jres.json(); if(Array.isArray(data)){await render(data.filter(f=>typeof f==='string'));return}}}catch(e){console.warn(e)}
-        container.innerHTML='<p class="text-sm text-red-500">Impossible de lister le dossier. Exécutez un serveur ou générez index.json.</p>';
+
+        try { const res = await fetch(dir, {cache:'no-store'}); if (res.ok && res.headers.get('content-type') && res.headers.get('content-type').includes('text/html')) { const text = await res.text(); const parser = new DOMParser(); const doc = parser.parseFromString(text, 'text/html'); const anchors = Array.from(doc.querySelectorAll('a')); const files = anchors.map(a => a.getAttribute('href')).filter(h => h && (h.toLowerCase().endsWith('.docx')||h.toLowerCase().endsWith('.doc'))).map(h => decodeURIComponent(h.replace(/\/+$/,''))); render(files); return; } } catch(e){ console.warn(e); }
+
+        try { const jres = await fetch(dir + 'index.json', {cache:'no-store'}); if (jres.ok) { const data = await jres.json(); if (Array.isArray(data)) { render(data.filter(f => typeof f === 'string')); return; } } } catch(e) { console.warn(e); }
+
+        container.innerHTML = '<p class="text-sm text-red-500">Impossible de lister le dossier. Exécutez un serveur ou générez index.json.</p>';
       }
-      document.addEventListener('DOMContentLoaded',loadFiles);
+      document.addEventListener('DOMContentLoaded', loadFiles);
     </script>
   </main>
 
