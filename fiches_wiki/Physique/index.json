@@ -1,240 +1,1668 @@
 [
-  "[PHYSIQUE] Allée de tourbillons de Karman.docx",
-  "[PHYSIQUE] Anneau de Bishop.docx",
-  "[PHYSIQUE] Année-lumière.docx",
-  "[PHYSIQUE] Anomalie Pioneer.docx",
-  "[PHYSIQUE] Antigravité.docx",
-  "[PHYSIQUE] Antimatière.docx",
-  "[PHYSIQUE] Assistance gravitationnelle.docx",
-  "[PHYSIQUE] Atome froid.docx",
-  "[PHYSIQUE] Aérocapture.docx",
-  "[PHYSIQUE] Baryon.docx",
-  "[PHYSIQUE] Boson de Higgs.docx",
-  "[PHYSIQUE] Boson de jauge.docx",
-  "[PHYSIQUE] Bruit de grenaille.docx",
-  "[PHYSIQUE] Bruit thermique.docx",
-  "[PHYSIQUE] Capillarité.docx",
-  "[PHYSIQUE] Capture balistique.docx",
-  "[PHYSIQUE] Ceinture de Kuiper.docx",
-  "[PHYSIQUE] Ceinture de Van Allen.docx",
-  "[PHYSIQUE] Champ sillage.docx",
-  "[PHYSIQUE] Chargeon.docx",
-  "[PHYSIQUE] Chat de Schrödinger.docx",
-  "[PHYSIQUE] Chromodynamique quantique.docx",
-  "[PHYSIQUE] Condensat de Bose-Einstein.docx",
-  "[PHYSIQUE] Conduction thermique.docx",
-  "[PHYSIQUE] Constante de Hubble.docx",
-  "[PHYSIQUE] Corps noir.docx",
-  "[PHYSIQUE] Couche électronique.docx",
-  "[PHYSIQUE] Courant de Foucault.docx",
-  "[PHYSIQUE] Cycle de l'eau.docx",
-  "[PHYSIQUE] Cycle du vent.docx",
-  "[PHYSIQUE] Diagramme de Hertzsprung-Russell.docx",
-  "[PHYSIQUE] Diffraction.docx",
-  "[PHYSIQUE] Diffusion Bhabha.docx",
-  "[PHYSIQUE] Diffusion Brillouin.docx",
-  "[PHYSIQUE] Diffusion de Mie.docx",
-  "[PHYSIQUE] Diffusion des particules.docx",
-  "[PHYSIQUE] Diffusion Raman.docx",
-  "[PHYSIQUE] Diffusion Rayleigh.docx",
-  "[PHYSIQUE] Disque protoplanétaire.docx",
-  "[PHYSIQUE] Dualité onde corpuscule.docx",
-  "[PHYSIQUE] Dynamique des fluides.docx",
-  "[PHYSIQUE] Eau superionique.docx",
-  "[PHYSIQUE] Eau.docx",
-  "[PHYSIQUE] Effet  Weissenberg.docx",
-  "[PHYSIQUE] effet Coanda.docx",
-  "[PHYSIQUE] effet Compton.docx",
-  "[PHYSIQUE] Effet de peau.docx",
-  "[PHYSIQUE] Effet de sol.docx",
-  "[PHYSIQUE] Effet Djanibekov.docx",
-  "[PHYSIQUE] Effet Doppler.docx",
-  "[PHYSIQUE] Effet Faraday.docx",
-  "[PHYSIQUE] Effet Hall de spin.docx",
-  "[PHYSIQUE] Effet Hall quantique.docx",
-  "[PHYSIQUE] Effet Hall.docx",
-  "[PHYSIQUE] Effet Hanle.docx",
-  "[PHYSIQUE] effet Joule.docx",
-  "[PHYSIQUE] Effet Leidenfrost.docx",
-  "[PHYSIQUE] Effet Lense-Thirring.docx",
-  "[PHYSIQUE] effet Magnus.docx",
-  "[PHYSIQUE] Effet Oberth.docx",
-  "[PHYSIQUE] Effet photoélectrique.docx",
-  "[PHYSIQUE] Effet Poynting-Robertson.docx",
-  "[PHYSIQUE] Effet riblet.docx",
-  "[PHYSIQUE] Effet Rossiter-McLaughlin.docx",
-  "[PHYSIQUE] Effet Sachs-Wolfe.docx",
-  "[PHYSIQUE] Effet Sagnac.docx",
-  "[PHYSIQUE] Effet Scharnhorst.docx",
-  "[PHYSIQUE] Effet Shapiro.docx",
-  "[PHYSIQUE] Effet Stark.docx",
-  "[PHYSIQUE] Effet Sunyaev-Zel'dovich.docx",
-  "[PHYSIQUE] Effet Tcherenkov.docx",
-  "[PHYSIQUE] Effet tunnel.docx",
-  "[PHYSIQUE] Effet Tyndall.docx",
-  "[PHYSIQUE] Effet Venturi.docx",
-  "[PHYSIQUE] Effet Wigner.docx",
-  "[PHYSIQUE] Effet Yarkovsky.docx",
-  "[PHYSIQUE] Effet YORP.docx",
-  "[PHYSIQUE] Effet Zeeman.docx",
-  "[PHYSIQUE] Effondrement gravitationnel.docx",
-  "[PHYSIQUE] Elasto-gravité du pliage souple.docx",
-  "[PHYSIQUE] Energie & matière noire.docx",
-  "[PHYSIQUE] Ergosphère.docx",
-  "[PHYSIQUE] Etoile à Neutron.docx",
-  "[PHYSIQUE] Extinction (astronomie).docx",
-  "[PHYSIQUE] Fermion.docx",
-  "[PHYSIQUE] Feu de methanol.docx",
-  "[PHYSIQUE] Figures de Widmanstätten.docx",
-  "[PHYSIQUE] Filaments de galaxies.docx",
-  "[PHYSIQUE] Fluide.docx",
-  "[PHYSIQUE] Force centrifuge.docx",
-  "[PHYSIQUE] Force de Coriolis.docx",
-  "[PHYSIQUE] Formalisme de Jones.docx",
-  "[PHYSIQUE] Furtivité plasmique.docx",
-  "[PHYSIQUE] Fusion nucléaire.docx",
-  "[PHYSIQUE] Fusion par confinement inertiel.docx",
-  "[PHYSIQUE] Galaxie.docx",
-  "[PHYSIQUE] Gegenschein.docx",
-  "[PHYSIQUE] Gravitoélectromagnétisme.docx",
-  "[PHYSIQUE] Gravité quantique.docx",
-  "[PHYSIQUE] Hadron.docx",
-  "[PHYSIQUE] Heiligenschein.docx",
-  "[PHYSIQUE] Holon.docx",
-  "[PHYSIQUE] Horizon (trou noir).docx",
-  "[PHYSIQUE] Hypérons.docx",
-  "[PHYSIQUE] Induction électromagnétique.docx",
-  "[PHYSIQUE] Interaction faible.docx",
-  "[PHYSIQUE] Interaction forte.docx",
-  "[PHYSIQUE] Interaction gravitationnelle.docx",
-  "[PHYSIQUE] Interaction rayonnement-matière.docx",
-  "[PHYSIQUE] Interaction électromagnétique.docx",
-  "[PHYSIQUE] Interaction élémentaire.docx",
-  "[PHYSIQUE] Intrication quantique.docx",
-  "[PHYSIQUE] Ion.docx",
-  "[PHYSIQUE] Isotope.docx",
-  "[PHYSIQUE] KEK.docx",
-  "[PHYSIQUE] Kevlar.docx",
-  "[PHYSIQUE] L'espace-temps de Minkowski.docx",
-  "[PHYSIQUE] LASER.docx",
-  "[PHYSIQUE] Lentille gravitationnelle.docx",
-  "[PHYSIQUE] Leptons.docx",
-  "[PHYSIQUE] LHC CERN.docx",
-  "[PHYSIQUE] Liaison optique laser pré-compensée par optique adaptative.docx",
-  "[PHYSIQUE] Loi de Cauchy (optique).docx",
-  "[PHYSIQUE] Loi de Hooke.docx",
-  "[PHYSIQUE] Loi de Malus.docx",
-  "[PHYSIQUE] Lois de Fick.docx",
-  "[PHYSIQUE] Lois de Snell-Descartes.docx",
-  "[PHYSIQUE] Longueur d'onde de Compton.docx",
-  "[PHYSIQUE] Longueur de Planck.docx",
-  "[PHYSIQUE] Lumière zodiacale.docx",
-  "[PHYSIQUE] Magnitude.docx",
-  "[PHYSIQUE] Manoeure orbitale.docx",
-  "[PHYSIQUE] Marée terrestre.docx",
-  "[PHYSIQUE] Marée.docx",
-  "[PHYSIQUE] Mesons.docx",
-  "[PHYSIQUE] Mirvage.docx",
-  "[PHYSIQUE] Moment cinétique.docx",
-  "[PHYSIQUE] Mécanique céleste - simplifié.docx",
-  "[PHYSIQUE] Mécanique céleste.docx",
-  "[PHYSIQUE] Mécanique des fluides.docx",
-  "[PHYSIQUE] Métafluide programmable.docx",
-  "[PHYSIQUE] Métasurfaces et matériaux accordables.docx",
-  "[PHYSIQUE] Nombre de Mach.docx",
-  "[PHYSIQUE] Nombre de Strouhal.docx",
-  "[PHYSIQUE] Nuage d'Oort.docx",
-  "[PHYSIQUE] Nucléosynthèse.docx",
-  "[PHYSIQUE] Onde d'Alfven.docx",
-  "[PHYSIQUE] Onde de Bloch.docx",
-  "[PHYSIQUE] onde de Rossby.docx",
-  "[PHYSIQUE] Onde gravitationnelle.docx",
-  "[PHYSIQUE] Orbite de halo presque rectiligne.docx",
-  "[PHYSIQUE] Orbite de halo.docx",
-  "[PHYSIQUE] Orbite de Lissajous.docx",
-  "[PHYSIQUE] Orbite de transfert.docx",
-  "[PHYSIQUE] Orbite satellite.docx",
-  "[PHYSIQUE] Oscillateur harmonique.docx",
-  "[PHYSIQUE] Overwhelmingly Large Telescope.docx",
-  "[PHYSIQUE] Oxygène noir - Copie.docx",
-  "[PHYSIQUE] Paradoxe de Klein.docx",
-  "[PHYSIQUE] Paradoxe de l'information.docx",
-  "[PHYSIQUE] Parallaxe.docx",
-  "[PHYSIQUE] Pendule de Foucault.docx",
-  "[PHYSIQUE] pH.docx",
-  "[PHYSIQUE] Phonon.docx",
-  "[PHYSIQUE] Physique des particules.docx",
-  "[PHYSIQUE] Piézoélectrique.docx",
-  "[PHYSIQUE] Plasma.docx",
-  "[PHYSIQUE] Points de Lagrange.docx",
-  "[PHYSIQUE] Poussée d'Archimède.docx",
-  "[PHYSIQUE] Pression de rayonnement.docx",
-  "[PHYSIQUE] Principe d'incertitude de Heisenberg.docx",
-  "[PHYSIQUE] Problème à N corps.docx",
-  "[PHYSIQUE] Processus de Penrose.docx",
-  "[PHYSIQUE] Propagation ionosphérique.docx",
-  "[PHYSIQUE] Précession.docx",
-  "[PHYSIQUE] Quarks.docx",
-  "[PHYSIQUE] Quasar.docx",
-  "[PHYSIQUE] Quasi-étoile.docx",
-  "[PHYSIQUE] Radioactivité.docx",
-  "[PHYSIQUE] Radiotélescope.docx",
-  "[PHYSIQUE] rayon de Schwarzschild.docx",
-  "[PHYSIQUE] Rayonnement fossile.docx",
-  "[PHYSIQUE] Rayonnement spatial.docx",
-  "[PHYSIQUE] Rayonnement thermique.docx",
-  "[PHYSIQUE] Rebond atmosphérique.docx",
-  "[PHYSIQUE] Redshift.docx",
-  "[PHYSIQUE] Refroidissement d'atomes par laser.docx",
-  "[PHYSIQUE] Relation de conjugaison optique.docx",
-  "[PHYSIQUE] Rentrée atmosphérique.docx",
-  "[PHYSIQUE] Rotation gravitationnelle.docx",
-  "[PHYSIQUE] Singularité annulaire.docx",
-  "[PHYSIQUE] Skyrmion.docx",
-  "[PHYSIQUE] Skyrmions bits.docx",
-  "[PHYSIQUE] Soliton optique.docx",
-  "[PHYSIQUE] Spaghettification.docx",
-  "[PHYSIQUE] Spin.docx",
-  "[PHYSIQUE] Spinon.docx",
-  "[PHYSIQUE] Stockage de données numériques sur ADN.docx",
-  "[PHYSIQUE] Super-bassin gravitationnel.docx",
-  "[PHYSIQUE] Super-Kamiokande.docx",
-  "[PHYSIQUE] Supercavitation.docx",
-  "[PHYSIQUE] Superfluidité.docx",
-  "[PHYSIQUE] Supergravité.docx",
-  "[PHYSIQUE] Superradiance.docx",
-  "[PHYSIQUE] Supersymétrie.docx",
-  "[PHYSIQUE] Supraconducteur.docx",
-  "[PHYSIQUE] Sursaut radio rapide.docx",
-  "[PHYSIQUE] Tache d'Airy.docx",
-  "[PHYSIQUE] Tachyon.docx",
-  "[PHYSIQUE] Température.docx",
-  "[PHYSIQUE] Tension superficielle.docx",
-  "[PHYSIQUE] Tenségrité.docx",
-  "[PHYSIQUE] Terminateur.docx",
-  "[PHYSIQUE] Thorium.docx",
-  "[PHYSIQUE] Théorie des cordes.docx",
-  "[PHYSIQUE] Théorie des profils minces.docx",
-  "[PHYSIQUE] Théorie des quanta.docx",
-  "[PHYSIQUE] Théorie des supercordes.docx",
-  "[PHYSIQUE] Théorie du chaos.docx",
-  "[PHYSIQUE] Théorème de fluctuation-dissipation.docx",
-  "[PHYSIQUE] Tomographie à contraste de phase hiérarchique HiP-CT.docx",
-  "[PHYSIQUE] Trajectoire de retour libre.docx",
-  "[PHYSIQUE] Transfert radiatif.docx",
-  "[PHYSIQUE] Trou blanc.docx",
-  "[PHYSIQUE] Trou de ver.docx",
-  "[PHYSIQUE] Trou noir de Kerr.docx",
-  "[PHYSIQUE] Télescopes spatiaux d’observation.docx",
-  "[PHYSIQUE] Une heure dure 60 minutes.docx",
-  "[PHYSIQUE] Vibration moléculaire.docx",
-  "[PHYSIQUE] Vitesses spatiales.docx",
-  "[PHYSIQUE] Wimp.docx",
-  "[PHYSIQUE] Émission thermoionique.docx",
-  "[PHYSIQUE] Équation d'Einstein.docx",
-  "[PHYSIQUE] Équation d'orbite.docx",
-  "[PHYSIQUE] Équation de Langevin.docx",
-  "[PHYSIQUE] Équation de Sellmeier.docx",
-  "[PHYSIQUE] Équations de Boussinesq.docx",
-  "[PHYSIQUE] Évaporation des trous noirs.docx"
+  {
+    "filename": "[PHYSIQUE] Allée de tourbillons de Karman.docx",
+    "title": "Allée de tourbillons de Karman",
+    "path": "Physique/[PHYSIQUE] Allée de tourbillons de Karman.docx",
+    "mtime": "2026-08-30T20:46:43.737151",
+    "size": 374547
+  },
+  {
+    "filename": "[PHYSIQUE] Anneau de Bishop.docx",
+    "title": "Anneau de Bishop",
+    "path": "Physique/[PHYSIQUE] Anneau de Bishop.docx",
+    "mtime": "2026-08-30T20:46:43.738152",
+    "size": 187659
+  },
+  {
+    "filename": "[PHYSIQUE] Année-lumière.docx",
+    "title": "Année-lumière",
+    "path": "Physique/[PHYSIQUE] Année-lumière.docx",
+    "mtime": "2026-08-30T20:46:43.738152",
+    "size": 16337
+  },
+  {
+    "filename": "[PHYSIQUE] Anomalie Pioneer.docx",
+    "title": "Anomalie Pioneer",
+    "path": "Physique/[PHYSIQUE] Anomalie Pioneer.docx",
+    "mtime": "2026-08-30T20:46:43.738152",
+    "size": 48604
+  },
+  {
+    "filename": "[PHYSIQUE] Antigravité.docx",
+    "title": "Antigravité",
+    "path": "Physique/[PHYSIQUE] Antigravité.docx",
+    "mtime": "2026-08-30T20:46:43.739151",
+    "size": 101455
+  },
+  {
+    "filename": "[PHYSIQUE] Antimatière.docx",
+    "title": "Antimatière",
+    "path": "Physique/[PHYSIQUE] Antimatière.docx",
+    "mtime": "2026-08-30T20:46:43.739151",
+    "size": 19613
+  },
+  {
+    "filename": "[PHYSIQUE] Assistance gravitationnelle.docx",
+    "title": "Assistance gravitationnelle",
+    "path": "Physique/[PHYSIQUE] Assistance gravitationnelle.docx",
+    "mtime": "2026-08-30T20:46:43.742151",
+    "size": 618841
+  },
+  {
+    "filename": "[PHYSIQUE] Atome froid.docx",
+    "title": "Atome froid",
+    "path": "Physique/[PHYSIQUE] Atome froid.docx",
+    "mtime": "2026-08-30T20:46:43.743151",
+    "size": 69360
+  },
+  {
+    "filename": "[PHYSIQUE] Aérocapture.docx",
+    "title": "Aérocapture",
+    "path": "Physique/[PHYSIQUE] Aérocapture.docx",
+    "mtime": "2026-08-30T20:46:43.743151",
+    "size": 45841
+  },
+  {
+    "filename": "[PHYSIQUE] Baryon.docx",
+    "title": "Baryon",
+    "path": "Physique/[PHYSIQUE] Baryon.docx",
+    "mtime": "2026-08-30T20:46:43.743151",
+    "size": 37449
+  },
+  {
+    "filename": "[PHYSIQUE] Boson de Higgs.docx",
+    "title": "Boson de Higgs",
+    "path": "Physique/[PHYSIQUE] Boson de Higgs.docx",
+    "mtime": "2026-08-30T20:46:43.745152",
+    "size": 449991
+  },
+  {
+    "filename": "[PHYSIQUE] Boson de jauge.docx",
+    "title": "Boson de jauge",
+    "path": "Physique/[PHYSIQUE] Boson de jauge.docx",
+    "mtime": "2026-08-30T20:46:43.748151",
+    "size": 484678
+  },
+  {
+    "filename": "[PHYSIQUE] Bruit de grenaille.docx",
+    "title": "Bruit de grenaille",
+    "path": "Physique/[PHYSIQUE] Bruit de grenaille.docx",
+    "mtime": "2026-08-30T20:46:43.748151",
+    "size": 41618
+  },
+  {
+    "filename": "[PHYSIQUE] Bruit thermique.docx",
+    "title": "Bruit thermique",
+    "path": "Physique/[PHYSIQUE] Bruit thermique.docx",
+    "mtime": "2026-08-30T20:46:43.749151",
+    "size": 181801
+  },
+  {
+    "filename": "[PHYSIQUE] Capillarité.docx",
+    "title": "Capillarité",
+    "path": "Physique/[PHYSIQUE] Capillarité.docx",
+    "mtime": "2026-08-30T20:46:43.750151",
+    "size": 128120
+  },
+  {
+    "filename": "[PHYSIQUE] Capture balistique.docx",
+    "title": "Capture balistique",
+    "path": "Physique/[PHYSIQUE] Capture balistique.docx",
+    "mtime": "2026-08-30T20:46:43.750151",
+    "size": 58131
+  },
+  {
+    "filename": "[PHYSIQUE] Ceinture de Kuiper.docx",
+    "title": "Ceinture de Kuiper",
+    "path": "Physique/[PHYSIQUE] Ceinture de Kuiper.docx",
+    "mtime": "2026-08-30T20:46:43.754151",
+    "size": 899437
+  },
+  {
+    "filename": "[PHYSIQUE] Ceinture de Van Allen.docx",
+    "title": "Ceinture de Van Allen",
+    "path": "Physique/[PHYSIQUE] Ceinture de Van Allen.docx",
+    "mtime": "2026-08-30T20:46:43.755151",
+    "size": 60510
+  },
+  {
+    "filename": "[PHYSIQUE] Champ sillage.docx",
+    "title": "Champ sillage",
+    "path": "Physique/[PHYSIQUE] Champ sillage.docx",
+    "mtime": "2026-08-30T20:46:43.756151",
+    "size": 286557
+  },
+  {
+    "filename": "[PHYSIQUE] Chargeon.docx",
+    "title": "Chargeon",
+    "path": "Physique/[PHYSIQUE] Chargeon.docx",
+    "mtime": "2026-08-30T20:46:43.756151",
+    "size": 17830
+  },
+  {
+    "filename": "[PHYSIQUE] Chat de Schrödinger.docx",
+    "title": "Chat de Schrödinger",
+    "path": "Physique/[PHYSIQUE] Chat de Schrödinger.docx",
+    "mtime": "2026-08-30T20:46:43.757151",
+    "size": 63163
+  },
+  {
+    "filename": "[PHYSIQUE] Chromodynamique quantique.docx",
+    "title": "Chromodynamique quantique",
+    "path": "Physique/[PHYSIQUE] Chromodynamique quantique.docx",
+    "mtime": "2026-08-30T20:46:43.757151",
+    "size": 51191
+  },
+  {
+    "filename": "[PHYSIQUE] Condensat de Bose-Einstein.docx",
+    "title": "Condensat de Bose-Einstein",
+    "path": "Physique/[PHYSIQUE] Condensat de Bose-Einstein.docx",
+    "mtime": "2026-08-30T20:46:43.758151",
+    "size": 149255
+  },
+  {
+    "filename": "[PHYSIQUE] Conduction thermique.docx",
+    "title": "Conduction thermique",
+    "path": "Physique/[PHYSIQUE] Conduction thermique.docx",
+    "mtime": "2026-08-30T20:46:43.792151",
+    "size": 6137489
+  },
+  {
+    "filename": "[PHYSIQUE] Constante de Hubble.docx",
+    "title": "Constante de Hubble",
+    "path": "Physique/[PHYSIQUE] Constante de Hubble.docx",
+    "mtime": "2026-08-30T20:46:43.794151",
+    "size": 35098
+  },
+  {
+    "filename": "[PHYSIQUE] Corps noir.docx",
+    "title": "Corps noir",
+    "path": "Physique/[PHYSIQUE] Corps noir.docx",
+    "mtime": "2026-08-30T20:46:43.795151",
+    "size": 341974
+  },
+  {
+    "filename": "[PHYSIQUE] Couche électronique.docx",
+    "title": "Couche électronique",
+    "path": "Physique/[PHYSIQUE] Couche électronique.docx",
+    "mtime": "2026-08-30T20:46:43.804151",
+    "size": 1860207
+  },
+  {
+    "filename": "[PHYSIQUE] Courant de Foucault.docx",
+    "title": "Courant de Foucault",
+    "path": "Physique/[PHYSIQUE] Courant de Foucault.docx",
+    "mtime": "2026-08-30T20:46:43.805151",
+    "size": 67232
+  },
+  {
+    "filename": "[PHYSIQUE] Cycle de l'eau.docx",
+    "title": "Cycle de l'eau",
+    "path": "Physique/[PHYSIQUE] Cycle de l'eau.docx",
+    "mtime": "2026-08-30T20:46:43.806151",
+    "size": 255171
+  },
+  {
+    "filename": "[PHYSIQUE] Cycle du vent.docx",
+    "title": "Cycle du vent",
+    "path": "Physique/[PHYSIQUE] Cycle du vent.docx",
+    "mtime": "2026-08-30T20:46:43.807151",
+    "size": 94107
+  },
+  {
+    "filename": "[PHYSIQUE] Diagramme de Hertzsprung-Russell.docx",
+    "title": "Diagramme de Hertzsprung-Russell",
+    "path": "Physique/[PHYSIQUE] Diagramme de Hertzsprung-Russell.docx",
+    "mtime": "2026-08-30T20:46:43.808151",
+    "size": 166465
+  },
+  {
+    "filename": "[PHYSIQUE] Diffraction.docx",
+    "title": "Diffraction",
+    "path": "Physique/[PHYSIQUE] Diffraction.docx",
+    "mtime": "2026-08-30T20:46:43.811151",
+    "size": 650543
+  },
+  {
+    "filename": "[PHYSIQUE] Diffusion Bhabha.docx",
+    "title": "Diffusion Bhabha",
+    "path": "Physique/[PHYSIQUE] Diffusion Bhabha.docx",
+    "mtime": "2026-08-30T20:46:43.812151",
+    "size": 67925
+  },
+  {
+    "filename": "[PHYSIQUE] Diffusion Brillouin.docx",
+    "title": "Diffusion Brillouin",
+    "path": "Physique/[PHYSIQUE] Diffusion Brillouin.docx",
+    "mtime": "2026-08-30T20:46:43.812151",
+    "size": 60116
+  },
+  {
+    "filename": "[PHYSIQUE] Diffusion Raman.docx",
+    "title": "Diffusion Raman",
+    "path": "Physique/[PHYSIQUE] Diffusion Raman.docx",
+    "mtime": "2026-08-30T20:46:43.812151",
+    "size": 58946
+  },
+  {
+    "filename": "[PHYSIQUE] Diffusion Rayleigh.docx",
+    "title": "Diffusion Rayleigh",
+    "path": "Physique/[PHYSIQUE] Diffusion Rayleigh.docx",
+    "mtime": "2026-08-30T20:46:43.814151",
+    "size": 418054
+  },
+  {
+    "filename": "[PHYSIQUE] Diffusion de Mie.docx",
+    "title": "Diffusion de Mie",
+    "path": "Physique/[PHYSIQUE] Diffusion de Mie.docx",
+    "mtime": "2026-08-30T20:46:43.816151",
+    "size": 213635
+  },
+  {
+    "filename": "[PHYSIQUE] Diffusion des particules.docx",
+    "title": "Diffusion des particules",
+    "path": "Physique/[PHYSIQUE] Diffusion des particules.docx",
+    "mtime": "2026-08-30T20:46:43.817151",
+    "size": 253583
+  },
+  {
+    "filename": "[PHYSIQUE] Disque protoplanétaire.docx",
+    "title": "Disque protoplanétaire",
+    "path": "Physique/[PHYSIQUE] Disque protoplanétaire.docx",
+    "mtime": "2026-08-30T20:46:43.817151",
+    "size": 97171
+  },
+  {
+    "filename": "[PHYSIQUE] Dualité onde corpuscule.docx",
+    "title": "Dualité onde corpuscule",
+    "path": "Physique/[PHYSIQUE] Dualité onde corpuscule.docx",
+    "mtime": "2026-08-30T20:46:43.818151",
+    "size": 245737
+  },
+  {
+    "filename": "[PHYSIQUE] Dynamique des fluides.docx",
+    "title": "Dynamique des fluides",
+    "path": "Physique/[PHYSIQUE] Dynamique des fluides.docx",
+    "mtime": "2026-08-30T20:46:43.821151",
+    "size": 556644
+  },
+  {
+    "filename": "[PHYSIQUE] Eau superionique.docx",
+    "title": "Eau superionique",
+    "path": "Physique/[PHYSIQUE] Eau superionique.docx",
+    "mtime": "2026-08-30T20:46:43.821151",
+    "size": 33797
+  },
+  {
+    "filename": "[PHYSIQUE] Eau.docx",
+    "title": "Eau",
+    "path": "Physique/[PHYSIQUE] Eau.docx",
+    "mtime": "2026-08-30T20:46:43.822151",
+    "size": 274784
+  },
+  {
+    "filename": "[PHYSIQUE] Effet  Weissenberg.docx",
+    "title": "Effet  Weissenberg",
+    "path": "Physique/[PHYSIQUE] Effet  Weissenberg.docx",
+    "mtime": "2026-08-30T20:46:43.823151",
+    "size": 55786
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Djanibekov.docx",
+    "title": "Effet Djanibekov",
+    "path": "Physique/[PHYSIQUE] Effet Djanibekov.docx",
+    "mtime": "2026-08-30T20:46:43.865151",
+    "size": 10406574
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Doppler.docx",
+    "title": "Effet Doppler",
+    "path": "Physique/[PHYSIQUE] Effet Doppler.docx",
+    "mtime": "2026-08-30T20:46:43.869151",
+    "size": 693393
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Faraday.docx",
+    "title": "Effet Faraday",
+    "path": "Physique/[PHYSIQUE] Effet Faraday.docx",
+    "mtime": "2026-08-30T20:46:43.870151",
+    "size": 96250
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Hall de spin.docx",
+    "title": "Effet Hall de spin",
+    "path": "Physique/[PHYSIQUE] Effet Hall de spin.docx",
+    "mtime": "2026-08-30T20:46:43.870151",
+    "size": 17588
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Hall quantique.docx",
+    "title": "Effet Hall quantique",
+    "path": "Physique/[PHYSIQUE] Effet Hall quantique.docx",
+    "mtime": "2026-08-30T20:46:43.870151",
+    "size": 32100
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Hall.docx",
+    "title": "Effet Hall",
+    "path": "Physique/[PHYSIQUE] Effet Hall.docx",
+    "mtime": "2026-08-30T20:46:43.871151",
+    "size": 245350
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Hanle.docx",
+    "title": "Effet Hanle",
+    "path": "Physique/[PHYSIQUE] Effet Hanle.docx",
+    "mtime": "2026-08-30T20:46:43.871151",
+    "size": 41446
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Leidenfrost.docx",
+    "title": "Effet Leidenfrost",
+    "path": "Physique/[PHYSIQUE] Effet Leidenfrost.docx",
+    "mtime": "2026-08-30T20:46:43.872151",
+    "size": 57249
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Lense-Thirring.docx",
+    "title": "Effet Lense-Thirring",
+    "path": "Physique/[PHYSIQUE] Effet Lense-Thirring.docx",
+    "mtime": "2026-08-30T20:46:43.872151",
+    "size": 81229
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Oberth.docx",
+    "title": "Effet Oberth",
+    "path": "Physique/[PHYSIQUE] Effet Oberth.docx",
+    "mtime": "2026-08-30T20:46:43.874151",
+    "size": 285189
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Poynting-Robertson.docx",
+    "title": "Effet Poynting-Robertson",
+    "path": "Physique/[PHYSIQUE] Effet Poynting-Robertson.docx",
+    "mtime": "2026-08-30T20:46:43.874151",
+    "size": 94178
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Rossiter-McLaughlin.docx",
+    "title": "Effet Rossiter-McLaughlin",
+    "path": "Physique/[PHYSIQUE] Effet Rossiter-McLaughlin.docx",
+    "mtime": "2026-08-30T20:46:43.876151",
+    "size": 264365
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Sachs-Wolfe.docx",
+    "title": "Effet Sachs-Wolfe",
+    "path": "Physique/[PHYSIQUE] Effet Sachs-Wolfe.docx",
+    "mtime": "2026-08-30T20:46:43.877151",
+    "size": 227426
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Sagnac.docx",
+    "title": "Effet Sagnac",
+    "path": "Physique/[PHYSIQUE] Effet Sagnac.docx",
+    "mtime": "2026-08-30T20:46:43.878151",
+    "size": 154914
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Scharnhorst.docx",
+    "title": "Effet Scharnhorst",
+    "path": "Physique/[PHYSIQUE] Effet Scharnhorst.docx",
+    "mtime": "2026-08-30T20:46:43.878151",
+    "size": 74624
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Shapiro.docx",
+    "title": "Effet Shapiro",
+    "path": "Physique/[PHYSIQUE] Effet Shapiro.docx",
+    "mtime": "2026-08-30T20:46:43.879151",
+    "size": 144920
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Stark.docx",
+    "title": "Effet Stark",
+    "path": "Physique/[PHYSIQUE] Effet Stark.docx",
+    "mtime": "2026-08-30T20:46:43.879151",
+    "size": 41692
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Sunyaev-Zel'dovich.docx",
+    "title": "Effet Sunyaev-Zel'dovich",
+    "path": "Physique/[PHYSIQUE] Effet Sunyaev-Zel'dovich.docx",
+    "mtime": "2026-08-30T20:46:43.880151",
+    "size": 216378
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Tcherenkov.docx",
+    "title": "Effet Tcherenkov",
+    "path": "Physique/[PHYSIQUE] Effet Tcherenkov.docx",
+    "mtime": "2026-08-30T20:46:43.886151",
+    "size": 2831849
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Tyndall.docx",
+    "title": "Effet Tyndall",
+    "path": "Physique/[PHYSIQUE] Effet Tyndall.docx",
+    "mtime": "2026-08-30T20:46:43.887151",
+    "size": 59581
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Venturi.docx",
+    "title": "Effet Venturi",
+    "path": "Physique/[PHYSIQUE] Effet Venturi.docx",
+    "mtime": "2026-08-30T20:46:43.888151",
+    "size": 185180
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Wigner.docx",
+    "title": "Effet Wigner",
+    "path": "Physique/[PHYSIQUE] Effet Wigner.docx",
+    "mtime": "2026-08-30T20:46:43.888151",
+    "size": 44289
+  },
+  {
+    "filename": "[PHYSIQUE] Effet YORP.docx",
+    "title": "Effet YORP",
+    "path": "Physique/[PHYSIQUE] Effet YORP.docx",
+    "mtime": "2026-08-30T20:46:43.888151",
+    "size": 65353
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Yarkovsky.docx",
+    "title": "Effet Yarkovsky",
+    "path": "Physique/[PHYSIQUE] Effet Yarkovsky.docx",
+    "mtime": "2026-08-30T20:46:43.893151",
+    "size": 835169
+  },
+  {
+    "filename": "[PHYSIQUE] Effet Zeeman.docx",
+    "title": "Effet Zeeman",
+    "path": "Physique/[PHYSIQUE] Effet Zeeman.docx",
+    "mtime": "2026-08-30T20:46:43.894150",
+    "size": 217770
+  },
+  {
+    "filename": "[PHYSIQUE] Effet de peau.docx",
+    "title": "Effet de peau",
+    "path": "Physique/[PHYSIQUE] Effet de peau.docx",
+    "mtime": "2026-08-30T20:46:43.895150",
+    "size": 149876
+  },
+  {
+    "filename": "[PHYSIQUE] Effet de sol.docx",
+    "title": "Effet de sol",
+    "path": "Physique/[PHYSIQUE] Effet de sol.docx",
+    "mtime": "2026-08-30T20:46:43.895150",
+    "size": 80949
+  },
+  {
+    "filename": "[PHYSIQUE] Effet photoélectrique.docx",
+    "title": "Effet photoélectrique",
+    "path": "Physique/[PHYSIQUE] Effet photoélectrique.docx",
+    "mtime": "2026-08-30T20:46:43.896151",
+    "size": 143468
+  },
+  {
+    "filename": "[PHYSIQUE] Effet riblet.docx",
+    "title": "Effet riblet",
+    "path": "Physique/[PHYSIQUE] Effet riblet.docx",
+    "mtime": "2026-08-30T20:46:43.897151",
+    "size": 115942
+  },
+  {
+    "filename": "[PHYSIQUE] Effet tunnel.docx",
+    "title": "Effet tunnel",
+    "path": "Physique/[PHYSIQUE] Effet tunnel.docx",
+    "mtime": "2026-08-30T20:46:43.903151",
+    "size": 1227784
+  },
+  {
+    "filename": "[PHYSIQUE] Effondrement gravitationnel.docx",
+    "title": "Effondrement gravitationnel",
+    "path": "Physique/[PHYSIQUE] Effondrement gravitationnel.docx",
+    "mtime": "2026-08-30T20:46:43.904150",
+    "size": 114905
+  },
+  {
+    "filename": "[PHYSIQUE] Elasto-gravité du pliage souple.docx",
+    "title": "Elasto-gravité du pliage souple",
+    "path": "Physique/[PHYSIQUE] Elasto-gravité du pliage souple.docx",
+    "mtime": "2026-08-30T20:46:43.926150",
+    "size": 4595988
+  },
+  {
+    "filename": "[PHYSIQUE] Energie & matière noire.docx",
+    "title": "Energie & matière noire",
+    "path": "Physique/[PHYSIQUE] Energie & matière noire.docx",
+    "mtime": "2026-08-30T20:46:43.927150",
+    "size": 60430
+  },
+  {
+    "filename": "[PHYSIQUE] Ergosphère.docx",
+    "title": "Ergosphère",
+    "path": "Physique/[PHYSIQUE] Ergosphère.docx",
+    "mtime": "2026-08-30T20:46:43.927150",
+    "size": 41913
+  },
+  {
+    "filename": "[PHYSIQUE] Etoile à Neutron.docx",
+    "title": "Etoile à Neutron",
+    "path": "Physique/[PHYSIQUE] Etoile à Neutron.docx",
+    "mtime": "2026-08-30T20:46:43.928150",
+    "size": 492349
+  },
+  {
+    "filename": "[PHYSIQUE] Extinction (astronomie).docx",
+    "title": "Extinction (astronomie)",
+    "path": "Physique/[PHYSIQUE] Extinction (astronomie).docx",
+    "mtime": "2026-08-30T20:46:43.929150",
+    "size": 226077
+  },
+  {
+    "filename": "[PHYSIQUE] Fermion.docx",
+    "title": "Fermion",
+    "path": "Physique/[PHYSIQUE] Fermion.docx",
+    "mtime": "2026-08-30T20:46:43.929150",
+    "size": 24846
+  },
+  {
+    "filename": "[PHYSIQUE] Feu de methanol.docx",
+    "title": "Feu de methanol",
+    "path": "Physique/[PHYSIQUE] Feu de methanol.docx",
+    "mtime": "2026-08-30T20:46:43.930150",
+    "size": 53879
+  },
+  {
+    "filename": "[PHYSIQUE] Figures de Widmanstätten.docx",
+    "title": "Figures de Widmanstätten",
+    "path": "Physique/[PHYSIQUE] Figures de Widmanstätten.docx",
+    "mtime": "2026-08-30T20:46:43.930150",
+    "size": 128337
+  },
+  {
+    "filename": "[PHYSIQUE] Filaments de galaxies.docx",
+    "title": "Filaments de galaxies",
+    "path": "Physique/[PHYSIQUE] Filaments de galaxies.docx",
+    "mtime": "2026-08-30T20:46:43.931150",
+    "size": 239773
+  },
+  {
+    "filename": "[PHYSIQUE] Fluide.docx",
+    "title": "Fluide",
+    "path": "Physique/[PHYSIQUE] Fluide.docx",
+    "mtime": "2026-08-30T20:46:43.939150",
+    "size": 1401700
+  },
+  {
+    "filename": "[PHYSIQUE] Force centrifuge.docx",
+    "title": "Force centrifuge",
+    "path": "Physique/[PHYSIQUE] Force centrifuge.docx",
+    "mtime": "2026-08-30T20:46:43.939150",
+    "size": 36040
+  },
+  {
+    "filename": "[PHYSIQUE] Force de Coriolis.docx",
+    "title": "Force de Coriolis",
+    "path": "Physique/[PHYSIQUE] Force de Coriolis.docx",
+    "mtime": "2026-08-30T20:46:43.940150",
+    "size": 97668
+  },
+  {
+    "filename": "[PHYSIQUE] Formalisme de Jones.docx",
+    "title": "Formalisme de Jones",
+    "path": "Physique/[PHYSIQUE] Formalisme de Jones.docx",
+    "mtime": "2026-08-30T20:46:43.940150",
+    "size": 54158
+  },
+  {
+    "filename": "[PHYSIQUE] Furtivité plasmique.docx",
+    "title": "Furtivité plasmique",
+    "path": "Physique/[PHYSIQUE] Furtivité plasmique.docx",
+    "mtime": "2026-08-30T20:46:43.940150",
+    "size": 35193
+  },
+  {
+    "filename": "[PHYSIQUE] Fusion nucléaire.docx",
+    "title": "Fusion nucléaire",
+    "path": "Physique/[PHYSIQUE] Fusion nucléaire.docx",
+    "mtime": "2026-08-30T20:46:43.941150",
+    "size": 131422
+  },
+  {
+    "filename": "[PHYSIQUE] Fusion par confinement inertiel.docx",
+    "title": "Fusion par confinement inertiel",
+    "path": "Physique/[PHYSIQUE] Fusion par confinement inertiel.docx",
+    "mtime": "2026-08-30T20:46:43.941150",
+    "size": 95413
+  },
+  {
+    "filename": "[PHYSIQUE] Galaxie.docx",
+    "title": "Galaxie",
+    "path": "Physique/[PHYSIQUE] Galaxie.docx",
+    "mtime": "2026-08-30T20:46:43.944150",
+    "size": 461134
+  },
+  {
+    "filename": "[PHYSIQUE] Gegenschein.docx",
+    "title": "Gegenschein",
+    "path": "Physique/[PHYSIQUE] Gegenschein.docx",
+    "mtime": "2026-08-30T20:46:43.947150",
+    "size": 522290
+  },
+  {
+    "filename": "[PHYSIQUE] Gravitoélectromagnétisme.docx",
+    "title": "Gravitoélectromagnétisme",
+    "path": "Physique/[PHYSIQUE] Gravitoélectromagnétisme.docx",
+    "mtime": "2026-08-30T20:46:43.948150",
+    "size": 231650
+  },
+  {
+    "filename": "[PHYSIQUE] Gravité quantique.docx",
+    "title": "Gravité quantique",
+    "path": "Physique/[PHYSIQUE] Gravité quantique.docx",
+    "mtime": "2026-08-30T20:46:43.950150",
+    "size": 500233
+  },
+  {
+    "filename": "[PHYSIQUE] Hadron.docx",
+    "title": "Hadron",
+    "path": "Physique/[PHYSIQUE] Hadron.docx",
+    "mtime": "2026-08-30T20:46:43.951150",
+    "size": 154307
+  },
+  {
+    "filename": "[PHYSIQUE] Heiligenschein.docx",
+    "title": "Heiligenschein",
+    "path": "Physique/[PHYSIQUE] Heiligenschein.docx",
+    "mtime": "2026-08-30T20:46:43.952150",
+    "size": 131377
+  },
+  {
+    "filename": "[PHYSIQUE] Holon.docx",
+    "title": "Holon",
+    "path": "Physique/[PHYSIQUE] Holon.docx",
+    "mtime": "2026-08-30T20:46:43.952150",
+    "size": 17082
+  },
+  {
+    "filename": "[PHYSIQUE] Horizon (trou noir).docx",
+    "title": "Horizon (trou noir)",
+    "path": "Physique/[PHYSIQUE] Horizon (trou noir).docx",
+    "mtime": "2026-08-30T20:46:43.952150",
+    "size": 143327
+  },
+  {
+    "filename": "[PHYSIQUE] Hypérons.docx",
+    "title": "Hypérons",
+    "path": "Physique/[PHYSIQUE] Hypérons.docx",
+    "mtime": "2026-08-30T20:46:43.952150",
+    "size": 16414
+  },
+  {
+    "filename": "[PHYSIQUE] Induction électromagnétique.docx",
+    "title": "Induction électromagnétique",
+    "path": "Physique/[PHYSIQUE] Induction électromagnétique.docx",
+    "mtime": "2026-08-30T20:46:43.954150",
+    "size": 259118
+  },
+  {
+    "filename": "[PHYSIQUE] Interaction faible.docx",
+    "title": "Interaction faible",
+    "path": "Physique/[PHYSIQUE] Interaction faible.docx",
+    "mtime": "2026-08-30T20:46:43.954150",
+    "size": 17376
+  },
+  {
+    "filename": "[PHYSIQUE] Interaction forte.docx",
+    "title": "Interaction forte",
+    "path": "Physique/[PHYSIQUE] Interaction forte.docx",
+    "mtime": "2026-08-30T20:46:43.954150",
+    "size": 64169
+  },
+  {
+    "filename": "[PHYSIQUE] Interaction gravitationnelle.docx",
+    "title": "Interaction gravitationnelle",
+    "path": "Physique/[PHYSIQUE] Interaction gravitationnelle.docx",
+    "mtime": "2026-08-30T20:46:43.955150",
+    "size": 266643
+  },
+  {
+    "filename": "[PHYSIQUE] Interaction rayonnement-matière.docx",
+    "title": "Interaction rayonnement-matière",
+    "path": "Physique/[PHYSIQUE] Interaction rayonnement-matière.docx",
+    "mtime": "2026-08-30T20:46:43.956150",
+    "size": 82461
+  },
+  {
+    "filename": "[PHYSIQUE] Interaction électromagnétique.docx",
+    "title": "Interaction électromagnétique",
+    "path": "Physique/[PHYSIQUE] Interaction électromagnétique.docx",
+    "mtime": "2026-08-30T20:46:43.959150",
+    "size": 678597
+  },
+  {
+    "filename": "[PHYSIQUE] Interaction élémentaire.docx",
+    "title": "Interaction élémentaire",
+    "path": "Physique/[PHYSIQUE] Interaction élémentaire.docx",
+    "mtime": "2026-08-30T20:46:43.960150",
+    "size": 22207
+  },
+  {
+    "filename": "[PHYSIQUE] Intrication quantique.docx",
+    "title": "Intrication quantique",
+    "path": "Physique/[PHYSIQUE] Intrication quantique.docx",
+    "mtime": "2026-08-30T20:46:43.960150",
+    "size": 54063
+  },
+  {
+    "filename": "[PHYSIQUE] Ion.docx",
+    "title": "Ion",
+    "path": "Physique/[PHYSIQUE] Ion.docx",
+    "mtime": "2026-08-30T20:46:43.960150",
+    "size": 58363
+  },
+  {
+    "filename": "[PHYSIQUE] Isotope.docx",
+    "title": "Isotope",
+    "path": "Physique/[PHYSIQUE] Isotope.docx",
+    "mtime": "2026-08-30T20:46:43.961150",
+    "size": 77720
+  },
+  {
+    "filename": "[PHYSIQUE] KEK.docx",
+    "title": "KEK",
+    "path": "Physique/[PHYSIQUE] KEK.docx",
+    "mtime": "2026-08-30T20:46:43.961150",
+    "size": 68552
+  },
+  {
+    "filename": "[PHYSIQUE] Kevlar.docx",
+    "title": "Kevlar",
+    "path": "Physique/[PHYSIQUE] Kevlar.docx",
+    "mtime": "2026-08-30T20:46:43.962150",
+    "size": 141372
+  },
+  {
+    "filename": "[PHYSIQUE] L'espace-temps de Minkowski.docx",
+    "title": "L'espace-temps de Minkowski",
+    "path": "Physique/[PHYSIQUE] L'espace-temps de Minkowski.docx",
+    "mtime": "2026-08-30T20:46:43.962150",
+    "size": 41689
+  },
+  {
+    "filename": "[PHYSIQUE] LASER.docx",
+    "title": "LASER",
+    "path": "Physique/[PHYSIQUE] LASER.docx",
+    "mtime": "2026-08-30T20:46:43.962150",
+    "size": 81612
+  },
+  {
+    "filename": "[PHYSIQUE] LHC CERN.docx",
+    "title": "LHC CERN",
+    "path": "Physique/[PHYSIQUE] LHC CERN.docx",
+    "mtime": "2026-08-30T20:46:43.964150",
+    "size": 387514
+  },
+  {
+    "filename": "[PHYSIQUE] Lentille gravitationnelle.docx",
+    "title": "Lentille gravitationnelle",
+    "path": "Physique/[PHYSIQUE] Lentille gravitationnelle.docx",
+    "mtime": "2026-08-30T20:46:43.965150",
+    "size": 265037
+  },
+  {
+    "filename": "[PHYSIQUE] Leptons.docx",
+    "title": "Leptons",
+    "path": "Physique/[PHYSIQUE] Leptons.docx",
+    "mtime": "2026-08-30T20:46:43.966150",
+    "size": 322016
+  },
+  {
+    "filename": "[PHYSIQUE] Liaison optique laser pré-compensée par optique adaptative.docx",
+    "title": "Liaison optique laser pré-compensée par optique adaptative",
+    "path": "Physique/[PHYSIQUE] Liaison optique laser pré-compensée par optique adaptative.docx",
+    "mtime": "2026-08-30T20:46:43.966150",
+    "size": 38225
+  },
+  {
+    "filename": "[PHYSIQUE] Loi de Cauchy (optique).docx",
+    "title": "Loi de Cauchy (optique)",
+    "path": "Physique/[PHYSIQUE] Loi de Cauchy (optique).docx",
+    "mtime": "2026-08-30T20:46:43.967150",
+    "size": 54203
+  },
+  {
+    "filename": "[PHYSIQUE] Loi de Hooke.docx",
+    "title": "Loi de Hooke",
+    "path": "Physique/[PHYSIQUE] Loi de Hooke.docx",
+    "mtime": "2026-08-30T20:46:43.969150",
+    "size": 361622
+  },
+  {
+    "filename": "[PHYSIQUE] Loi de Malus.docx",
+    "title": "Loi de Malus",
+    "path": "Physique/[PHYSIQUE] Loi de Malus.docx",
+    "mtime": "2026-08-30T20:46:43.970150",
+    "size": 189157
+  },
+  {
+    "filename": "[PHYSIQUE] Lois de Fick.docx",
+    "title": "Lois de Fick",
+    "path": "Physique/[PHYSIQUE] Lois de Fick.docx",
+    "mtime": "2026-08-30T20:46:43.973150",
+    "size": 535579
+  },
+  {
+    "filename": "[PHYSIQUE] Lois de Snell-Descartes.docx",
+    "title": "Lois de Snell-Descartes",
+    "path": "Physique/[PHYSIQUE] Lois de Snell-Descartes.docx",
+    "mtime": "2026-08-30T20:46:43.973150",
+    "size": 232418
+  },
+  {
+    "filename": "[PHYSIQUE] Longueur d'onde de Compton.docx",
+    "title": "Longueur d'onde de Compton",
+    "path": "Physique/[PHYSIQUE] Longueur d'onde de Compton.docx",
+    "mtime": "2026-08-30T20:46:43.974150",
+    "size": 75342
+  },
+  {
+    "filename": "[PHYSIQUE] Longueur de Planck.docx",
+    "title": "Longueur de Planck",
+    "path": "Physique/[PHYSIQUE] Longueur de Planck.docx",
+    "mtime": "2026-08-30T20:46:43.974150",
+    "size": 33956
+  },
+  {
+    "filename": "[PHYSIQUE] Lumière zodiacale.docx",
+    "title": "Lumière zodiacale",
+    "path": "Physique/[PHYSIQUE] Lumière zodiacale.docx",
+    "mtime": "2026-08-30T20:46:43.975150",
+    "size": 242870
+  },
+  {
+    "filename": "[PHYSIQUE] Magnitude.docx",
+    "title": "Magnitude",
+    "path": "Physique/[PHYSIQUE] Magnitude.docx",
+    "mtime": "2026-08-30T20:46:43.975150",
+    "size": 119294
+  },
+  {
+    "filename": "[PHYSIQUE] Manoeure orbitale.docx",
+    "title": "Manoeure orbitale",
+    "path": "Physique/[PHYSIQUE] Manoeure orbitale.docx",
+    "mtime": "2026-08-30T20:46:43.977150",
+    "size": 246429
+  },
+  {
+    "filename": "[PHYSIQUE] Marée terrestre.docx",
+    "title": "Marée terrestre",
+    "path": "Physique/[PHYSIQUE] Marée terrestre.docx",
+    "mtime": "2026-08-30T20:46:43.977150",
+    "size": 105199
+  },
+  {
+    "filename": "[PHYSIQUE] Marée.docx",
+    "title": "Marée",
+    "path": "Physique/[PHYSIQUE] Marée.docx",
+    "mtime": "2026-08-30T20:46:43.980150",
+    "size": 514207
+  },
+  {
+    "filename": "[PHYSIQUE] Mesons.docx",
+    "title": "Mesons",
+    "path": "Physique/[PHYSIQUE] Mesons.docx",
+    "mtime": "2026-08-30T20:46:43.981150",
+    "size": 179343
+  },
+  {
+    "filename": "[PHYSIQUE] Mirvage.docx",
+    "title": "Mirvage",
+    "path": "Physique/[PHYSIQUE] Mirvage.docx",
+    "mtime": "2026-08-30T20:46:43.982150",
+    "size": 114220
+  },
+  {
+    "filename": "[PHYSIQUE] Moment cinétique.docx",
+    "title": "Moment cinétique",
+    "path": "Physique/[PHYSIQUE] Moment cinétique.docx",
+    "mtime": "2026-08-30T20:46:43.984150",
+    "size": 510993
+  },
+  {
+    "filename": "[PHYSIQUE] Mécanique céleste - simplifié.docx",
+    "title": "Mécanique céleste - simplifié",
+    "path": "Physique/[PHYSIQUE] Mécanique céleste - simplifié.docx",
+    "mtime": "2026-08-30T20:46:44.081149",
+    "size": 18736737
+  },
+  {
+    "filename": "[PHYSIQUE] Mécanique céleste.docx",
+    "title": "Mécanique céleste",
+    "path": "Physique/[PHYSIQUE] Mécanique céleste.docx",
+    "mtime": "2026-08-30T20:46:44.296148",
+    "size": 41041493
+  },
+  {
+    "filename": "[PHYSIQUE] Mécanique des fluides.docx",
+    "title": "Mécanique des fluides",
+    "path": "Physique/[PHYSIQUE] Mécanique des fluides.docx",
+    "mtime": "2026-08-30T20:46:44.347148",
+    "size": 8806550
+  },
+  {
+    "filename": "[PHYSIQUE] Métafluide programmable.docx",
+    "title": "Métafluide programmable",
+    "path": "Physique/[PHYSIQUE] Métafluide programmable.docx",
+    "mtime": "2026-08-30T20:46:44.347148",
+    "size": 25288
+  },
+  {
+    "filename": "[PHYSIQUE] Métasurfaces et matériaux accordables.docx",
+    "title": "Métasurfaces et matériaux accordables",
+    "path": "Physique/[PHYSIQUE] Métasurfaces et matériaux accordables.docx",
+    "mtime": "2026-08-30T20:46:44.348148",
+    "size": 23423
+  },
+  {
+    "filename": "[PHYSIQUE] Nombre de Mach.docx",
+    "title": "Nombre de Mach",
+    "path": "Physique/[PHYSIQUE] Nombre de Mach.docx",
+    "mtime": "2026-08-30T20:46:44.349148",
+    "size": 223230
+  },
+  {
+    "filename": "[PHYSIQUE] Nombre de Strouhal.docx",
+    "title": "Nombre de Strouhal",
+    "path": "Physique/[PHYSIQUE] Nombre de Strouhal.docx",
+    "mtime": "2026-08-30T20:46:44.353148",
+    "size": 743263
+  },
+  {
+    "filename": "[PHYSIQUE] Nuage d'Oort.docx",
+    "title": "Nuage d'Oort",
+    "path": "Physique/[PHYSIQUE] Nuage d'Oort.docx",
+    "mtime": "2026-08-30T20:46:44.354148",
+    "size": 172911
+  },
+  {
+    "filename": "[PHYSIQUE] Nucléosynthèse.docx",
+    "title": "Nucléosynthèse",
+    "path": "Physique/[PHYSIQUE] Nucléosynthèse.docx",
+    "mtime": "2026-08-30T20:46:44.354148",
+    "size": 33907
+  },
+  {
+    "filename": "[PHYSIQUE] Onde d'Alfven.docx",
+    "title": "Onde d'Alfven",
+    "path": "Physique/[PHYSIQUE] Onde d'Alfven.docx",
+    "mtime": "2026-08-30T20:46:44.354148",
+    "size": 57655
+  },
+  {
+    "filename": "[PHYSIQUE] Onde de Bloch.docx",
+    "title": "Onde de Bloch",
+    "path": "Physique/[PHYSIQUE] Onde de Bloch.docx",
+    "mtime": "2026-08-30T20:46:44.358148",
+    "size": 680463
+  },
+  {
+    "filename": "[PHYSIQUE] Onde gravitationnelle.docx",
+    "title": "Onde gravitationnelle",
+    "path": "Physique/[PHYSIQUE] Onde gravitationnelle.docx",
+    "mtime": "2026-08-30T20:46:44.375148",
+    "size": 3348119
+  },
+  {
+    "filename": "[PHYSIQUE] Orbite de Lissajous.docx",
+    "title": "Orbite de Lissajous",
+    "path": "Physique/[PHYSIQUE] Orbite de Lissajous.docx",
+    "mtime": "2026-08-30T20:46:44.376148",
+    "size": 98062
+  },
+  {
+    "filename": "[PHYSIQUE] Orbite de halo presque rectiligne.docx",
+    "title": "Orbite de halo presque rectiligne",
+    "path": "Physique/[PHYSIQUE] Orbite de halo presque rectiligne.docx",
+    "mtime": "2026-08-30T20:46:44.377148",
+    "size": 134362
+  },
+  {
+    "filename": "[PHYSIQUE] Orbite de halo.docx",
+    "title": "Orbite de halo",
+    "path": "Physique/[PHYSIQUE] Orbite de halo.docx",
+    "mtime": "2026-08-30T20:46:44.378148",
+    "size": 134174
+  },
+  {
+    "filename": "[PHYSIQUE] Orbite de transfert.docx",
+    "title": "Orbite de transfert",
+    "path": "Physique/[PHYSIQUE] Orbite de transfert.docx",
+    "mtime": "2026-08-30T20:46:44.379148",
+    "size": 231278
+  },
+  {
+    "filename": "[PHYSIQUE] Orbite satellite.docx",
+    "title": "Orbite satellite",
+    "path": "Physique/[PHYSIQUE] Orbite satellite.docx",
+    "mtime": "2026-08-30T20:46:44.383148",
+    "size": 1033708
+  },
+  {
+    "filename": "[PHYSIQUE] Oscillateur harmonique.docx",
+    "title": "Oscillateur harmonique",
+    "path": "Physique/[PHYSIQUE] Oscillateur harmonique.docx",
+    "mtime": "2026-08-30T20:46:44.393148",
+    "size": 1896252
+  },
+  {
+    "filename": "[PHYSIQUE] Overwhelmingly Large Telescope.docx",
+    "title": "Overwhelmingly Large Telescope",
+    "path": "Physique/[PHYSIQUE] Overwhelmingly Large Telescope.docx",
+    "mtime": "2026-08-30T20:46:44.394148",
+    "size": 149130
+  },
+  {
+    "filename": "[PHYSIQUE] Oxygène noir - Copie.docx",
+    "title": "Oxygène noir - Copie",
+    "path": "Physique/[PHYSIQUE] Oxygène noir - Copie.docx",
+    "mtime": "2026-08-30T20:46:44.394148",
+    "size": 39382
+  },
+  {
+    "filename": "[PHYSIQUE] Paradoxe de Klein.docx",
+    "title": "Paradoxe de Klein",
+    "path": "Physique/[PHYSIQUE] Paradoxe de Klein.docx",
+    "mtime": "2026-08-30T20:46:44.394148",
+    "size": 83168
+  },
+  {
+    "filename": "[PHYSIQUE] Paradoxe de l'information.docx",
+    "title": "Paradoxe de l'information",
+    "path": "Physique/[PHYSIQUE] Paradoxe de l'information.docx",
+    "mtime": "2026-08-30T20:46:44.395148",
+    "size": 69400
+  },
+  {
+    "filename": "[PHYSIQUE] Parallaxe.docx",
+    "title": "Parallaxe",
+    "path": "Physique/[PHYSIQUE] Parallaxe.docx",
+    "mtime": "2026-08-30T20:46:44.396147",
+    "size": 167858
+  },
+  {
+    "filename": "[PHYSIQUE] Pendule de Foucault.docx",
+    "title": "Pendule de Foucault",
+    "path": "Physique/[PHYSIQUE] Pendule de Foucault.docx",
+    "mtime": "2026-08-30T20:46:44.400148",
+    "size": 823282
+  },
+  {
+    "filename": "[PHYSIQUE] Phonon.docx",
+    "title": "Phonon",
+    "path": "Physique/[PHYSIQUE] Phonon.docx",
+    "mtime": "2026-08-30T20:46:44.400148",
+    "size": 17093
+  },
+  {
+    "filename": "[PHYSIQUE] Physique des particules.docx",
+    "title": "Physique des particules",
+    "path": "Physique/[PHYSIQUE] Physique des particules.docx",
+    "mtime": "2026-08-30T20:46:44.400148",
+    "size": 111797
+  },
+  {
+    "filename": "[PHYSIQUE] Piézoélectrique.docx",
+    "title": "Piézoélectrique",
+    "path": "Physique/[PHYSIQUE] Piézoélectrique.docx",
+    "mtime": "2026-08-30T20:46:44.401148",
+    "size": 129327
+  },
+  {
+    "filename": "[PHYSIQUE] Plasma.docx",
+    "title": "Plasma",
+    "path": "Physique/[PHYSIQUE] Plasma.docx",
+    "mtime": "2026-08-30T20:46:44.401148",
+    "size": 26619
+  },
+  {
+    "filename": "[PHYSIQUE] Points de Lagrange.docx",
+    "title": "Points de Lagrange",
+    "path": "Physique/[PHYSIQUE] Points de Lagrange.docx",
+    "mtime": "2026-08-30T20:46:44.403147",
+    "size": 374789
+  },
+  {
+    "filename": "[PHYSIQUE] Poussée d'Archimède.docx",
+    "title": "Poussée d'Archimède",
+    "path": "Physique/[PHYSIQUE] Poussée d'Archimède.docx",
+    "mtime": "2026-08-30T20:46:44.405148",
+    "size": 361325
+  },
+  {
+    "filename": "[PHYSIQUE] Pression de rayonnement.docx",
+    "title": "Pression de rayonnement",
+    "path": "Physique/[PHYSIQUE] Pression de rayonnement.docx",
+    "mtime": "2026-08-30T20:46:44.408148",
+    "size": 442533
+  },
+  {
+    "filename": "[PHYSIQUE] Principe d'incertitude de Heisenberg.docx",
+    "title": "Principe d'incertitude de Heisenberg",
+    "path": "Physique/[PHYSIQUE] Principe d'incertitude de Heisenberg.docx",
+    "mtime": "2026-08-30T20:46:44.408148",
+    "size": 17131
+  },
+  {
+    "filename": "[PHYSIQUE] Problème à N corps.docx",
+    "title": "Problème à N corps",
+    "path": "Physique/[PHYSIQUE] Problème à N corps.docx",
+    "mtime": "2026-08-30T20:46:44.408148",
+    "size": 98127
+  },
+  {
+    "filename": "[PHYSIQUE] Processus de Penrose.docx",
+    "title": "Processus de Penrose",
+    "path": "Physique/[PHYSIQUE] Processus de Penrose.docx",
+    "mtime": "2026-08-30T20:46:44.409148",
+    "size": 31844
+  },
+  {
+    "filename": "[PHYSIQUE] Propagation ionosphérique.docx",
+    "title": "Propagation ionosphérique",
+    "path": "Physique/[PHYSIQUE] Propagation ionosphérique.docx",
+    "mtime": "2026-08-30T20:46:44.410147",
+    "size": 193092
+  },
+  {
+    "filename": "[PHYSIQUE] Précession.docx",
+    "title": "Précession",
+    "path": "Physique/[PHYSIQUE] Précession.docx",
+    "mtime": "2026-08-30T20:46:44.416147",
+    "size": 1269469
+  },
+  {
+    "filename": "[PHYSIQUE] Quarks.docx",
+    "title": "Quarks",
+    "path": "Physique/[PHYSIQUE] Quarks.docx",
+    "mtime": "2026-08-30T20:46:44.419147",
+    "size": 468953
+  },
+  {
+    "filename": "[PHYSIQUE] Quasar.docx",
+    "title": "Quasar",
+    "path": "Physique/[PHYSIQUE] Quasar.docx",
+    "mtime": "2026-08-30T20:46:44.421147",
+    "size": 526022
+  },
+  {
+    "filename": "[PHYSIQUE] Quasi-étoile.docx",
+    "title": "Quasi-étoile",
+    "path": "Physique/[PHYSIQUE] Quasi-étoile.docx",
+    "mtime": "2026-08-30T20:46:44.423147",
+    "size": 391465
+  },
+  {
+    "filename": "[PHYSIQUE] Radioactivité.docx",
+    "title": "Radioactivité",
+    "path": "Physique/[PHYSIQUE] Radioactivité.docx",
+    "mtime": "2026-08-30T20:46:44.424147",
+    "size": 97543
+  },
+  {
+    "filename": "[PHYSIQUE] Radiotélescope.docx",
+    "title": "Radiotélescope",
+    "path": "Physique/[PHYSIQUE] Radiotélescope.docx",
+    "mtime": "2026-08-30T20:46:44.425148",
+    "size": 452429
+  },
+  {
+    "filename": "[PHYSIQUE] Rayonnement fossile.docx",
+    "title": "Rayonnement fossile",
+    "path": "Physique/[PHYSIQUE] Rayonnement fossile.docx",
+    "mtime": "2026-08-30T20:46:44.426147",
+    "size": 705681
+  },
+  {
+    "filename": "[PHYSIQUE] Rayonnement spatial.docx",
+    "title": "Rayonnement spatial",
+    "path": "Physique/[PHYSIQUE] Rayonnement spatial.docx",
+    "mtime": "2026-08-30T20:46:44.426147",
+    "size": 21801
+  },
+  {
+    "filename": "[PHYSIQUE] Rayonnement thermique.docx",
+    "title": "Rayonnement thermique",
+    "path": "Physique/[PHYSIQUE] Rayonnement thermique.docx",
+    "mtime": "2026-08-30T20:46:44.426147",
+    "size": 64310
+  },
+  {
+    "filename": "[PHYSIQUE] Rebond atmosphérique.docx",
+    "title": "Rebond atmosphérique",
+    "path": "Physique/[PHYSIQUE] Rebond atmosphérique.docx",
+    "mtime": "2026-08-30T20:46:44.431147",
+    "size": 1145005
+  },
+  {
+    "filename": "[PHYSIQUE] Redshift.docx",
+    "title": "Redshift",
+    "path": "Physique/[PHYSIQUE] Redshift.docx",
+    "mtime": "2026-08-30T20:46:44.432148",
+    "size": 122176
+  },
+  {
+    "filename": "[PHYSIQUE] Refroidissement d'atomes par laser.docx",
+    "title": "Refroidissement d'atomes par laser",
+    "path": "Physique/[PHYSIQUE] Refroidissement d'atomes par laser.docx",
+    "mtime": "2026-08-30T20:46:44.432148",
+    "size": 133671
+  },
+  {
+    "filename": "[PHYSIQUE] Relation de conjugaison optique.docx",
+    "title": "Relation de conjugaison optique",
+    "path": "Physique/[PHYSIQUE] Relation de conjugaison optique.docx",
+    "mtime": "2026-08-30T20:46:44.433147",
+    "size": 77256
+  },
+  {
+    "filename": "[PHYSIQUE] Rentrée atmosphérique.docx",
+    "title": "Rentrée atmosphérique",
+    "path": "Physique/[PHYSIQUE] Rentrée atmosphérique.docx",
+    "mtime": "2026-08-30T20:46:44.436147",
+    "size": 599900
+  },
+  {
+    "filename": "[PHYSIQUE] Rotation gravitationnelle.docx",
+    "title": "Rotation gravitationnelle",
+    "path": "Physique/[PHYSIQUE] Rotation gravitationnelle.docx",
+    "mtime": "2026-08-30T20:46:44.437147",
+    "size": 126464
+  },
+  {
+    "filename": "[PHYSIQUE] Singularité annulaire.docx",
+    "title": "Singularité annulaire",
+    "path": "Physique/[PHYSIQUE] Singularité annulaire.docx",
+    "mtime": "2026-08-30T20:46:44.437147",
+    "size": 87933
+  },
+  {
+    "filename": "[PHYSIQUE] Skyrmion.docx",
+    "title": "Skyrmion",
+    "path": "Physique/[PHYSIQUE] Skyrmion.docx",
+    "mtime": "2026-08-30T20:46:44.438147",
+    "size": 194600
+  },
+  {
+    "filename": "[PHYSIQUE] Skyrmions bits.docx",
+    "title": "Skyrmions bits",
+    "path": "Physique/[PHYSIQUE] Skyrmions bits.docx",
+    "mtime": "2026-08-30T20:46:44.438147",
+    "size": 87355
+  },
+  {
+    "filename": "[PHYSIQUE] Soliton optique.docx",
+    "title": "Soliton optique",
+    "path": "Physique/[PHYSIQUE] Soliton optique.docx",
+    "mtime": "2026-08-30T20:46:44.438147",
+    "size": 124928
+  },
+  {
+    "filename": "[PHYSIQUE] Spaghettification.docx",
+    "title": "Spaghettification",
+    "path": "Physique/[PHYSIQUE] Spaghettification.docx",
+    "mtime": "2026-08-30T20:46:44.439147",
+    "size": 125750
+  },
+  {
+    "filename": "[PHYSIQUE] Spin.docx",
+    "title": "Spin",
+    "path": "Physique/[PHYSIQUE] Spin.docx",
+    "mtime": "2026-08-30T20:46:44.440147",
+    "size": 204079
+  },
+  {
+    "filename": "[PHYSIQUE] Spinon.docx",
+    "title": "Spinon",
+    "path": "Physique/[PHYSIQUE] Spinon.docx",
+    "mtime": "2026-08-30T20:46:44.440147",
+    "size": 17600
+  },
+  {
+    "filename": "[PHYSIQUE] Stockage de données numériques sur ADN.docx",
+    "title": "Stockage de données numériques sur ADN",
+    "path": "Physique/[PHYSIQUE] Stockage de données numériques sur ADN.docx",
+    "mtime": "2026-08-30T20:46:44.441147",
+    "size": 37910
+  },
+  {
+    "filename": "[PHYSIQUE] Super-Kamiokande.docx",
+    "title": "Super-Kamiokande",
+    "path": "Physique/[PHYSIQUE] Super-Kamiokande.docx",
+    "mtime": "2026-08-30T20:46:44.441147",
+    "size": 24079
+  },
+  {
+    "filename": "[PHYSIQUE] Super-bassin gravitationnel.docx",
+    "title": "Super-bassin gravitationnel",
+    "path": "Physique/[PHYSIQUE] Super-bassin gravitationnel.docx",
+    "mtime": "2026-08-30T20:46:44.442147",
+    "size": 424849
+  },
+  {
+    "filename": "[PHYSIQUE] Supercavitation.docx",
+    "title": "Supercavitation",
+    "path": "Physique/[PHYSIQUE] Supercavitation.docx",
+    "mtime": "2026-08-30T20:46:44.443147",
+    "size": 35983
+  },
+  {
+    "filename": "[PHYSIQUE] Superfluidité.docx",
+    "title": "Superfluidité",
+    "path": "Physique/[PHYSIQUE] Superfluidité.docx",
+    "mtime": "2026-08-30T20:46:44.443147",
+    "size": 32613
+  },
+  {
+    "filename": "[PHYSIQUE] Supergravité.docx",
+    "title": "Supergravité",
+    "path": "Physique/[PHYSIQUE] Supergravité.docx",
+    "mtime": "2026-08-30T20:46:44.443147",
+    "size": 17059
+  },
+  {
+    "filename": "[PHYSIQUE] Superradiance.docx",
+    "title": "Superradiance",
+    "path": "Physique/[PHYSIQUE] Superradiance.docx",
+    "mtime": "2026-08-30T20:46:44.443147",
+    "size": 30776
+  },
+  {
+    "filename": "[PHYSIQUE] Supersymétrie.docx",
+    "title": "Supersymétrie",
+    "path": "Physique/[PHYSIQUE] Supersymétrie.docx",
+    "mtime": "2026-08-30T20:46:44.443147",
+    "size": 16825
+  },
+  {
+    "filename": "[PHYSIQUE] Supraconducteur.docx",
+    "title": "Supraconducteur",
+    "path": "Physique/[PHYSIQUE] Supraconducteur.docx",
+    "mtime": "2026-08-30T20:46:44.444147",
+    "size": 98718
+  },
+  {
+    "filename": "[PHYSIQUE] Sursaut radio rapide.docx",
+    "title": "Sursaut radio rapide",
+    "path": "Physique/[PHYSIQUE] Sursaut radio rapide.docx",
+    "mtime": "2026-08-30T20:46:44.445147",
+    "size": 161123
+  },
+  {
+    "filename": "[PHYSIQUE] Tache d'Airy.docx",
+    "title": "Tache d'Airy",
+    "path": "Physique/[PHYSIQUE] Tache d'Airy.docx",
+    "mtime": "2026-08-30T20:46:44.445147",
+    "size": 47795
+  },
+  {
+    "filename": "[PHYSIQUE] Tachyon.docx",
+    "title": "Tachyon",
+    "path": "Physique/[PHYSIQUE] Tachyon.docx",
+    "mtime": "2026-08-30T20:46:44.446147",
+    "size": 213400
+  },
+  {
+    "filename": "[PHYSIQUE] Température.docx",
+    "title": "Température",
+    "path": "Physique/[PHYSIQUE] Température.docx",
+    "mtime": "2026-08-30T20:46:44.448147",
+    "size": 555454
+  },
+  {
+    "filename": "[PHYSIQUE] Tension superficielle.docx",
+    "title": "Tension superficielle",
+    "path": "Physique/[PHYSIQUE] Tension superficielle.docx",
+    "mtime": "2026-08-30T20:46:44.450147",
+    "size": 218955
+  },
+  {
+    "filename": "[PHYSIQUE] Tenségrité.docx",
+    "title": "Tenségrité",
+    "path": "Physique/[PHYSIQUE] Tenségrité.docx",
+    "mtime": "2026-08-30T20:46:44.451147",
+    "size": 175024
+  },
+  {
+    "filename": "[PHYSIQUE] Terminateur.docx",
+    "title": "Terminateur",
+    "path": "Physique/[PHYSIQUE] Terminateur.docx",
+    "mtime": "2026-08-30T20:46:44.456147",
+    "size": 878984
+  },
+  {
+    "filename": "[PHYSIQUE] Thorium.docx",
+    "title": "Thorium",
+    "path": "Physique/[PHYSIQUE] Thorium.docx",
+    "mtime": "2026-08-30T20:46:44.457147",
+    "size": 252135
+  },
+  {
+    "filename": "[PHYSIQUE] Théorie des cordes.docx",
+    "title": "Théorie des cordes",
+    "path": "Physique/[PHYSIQUE] Théorie des cordes.docx",
+    "mtime": "2026-08-30T20:46:44.457147",
+    "size": 24748
+  },
+  {
+    "filename": "[PHYSIQUE] Théorie des profils minces.docx",
+    "title": "Théorie des profils minces",
+    "path": "Physique/[PHYSIQUE] Théorie des profils minces.docx",
+    "mtime": "2026-08-30T20:46:44.458147",
+    "size": 171720
+  },
+  {
+    "filename": "[PHYSIQUE] Théorie des quanta.docx",
+    "title": "Théorie des quanta",
+    "path": "Physique/[PHYSIQUE] Théorie des quanta.docx",
+    "mtime": "2026-08-30T20:46:44.460147",
+    "size": 335114
+  },
+  {
+    "filename": "[PHYSIQUE] Théorie des supercordes.docx",
+    "title": "Théorie des supercordes",
+    "path": "Physique/[PHYSIQUE] Théorie des supercordes.docx",
+    "mtime": "2026-08-30T20:46:44.460147",
+    "size": 18280
+  },
+  {
+    "filename": "[PHYSIQUE] Théorie du chaos.docx",
+    "title": "Théorie du chaos",
+    "path": "Physique/[PHYSIQUE] Théorie du chaos.docx",
+    "mtime": "2026-08-30T20:46:44.468147",
+    "size": 1627755
+  },
+  {
+    "filename": "[PHYSIQUE] Théorème de fluctuation-dissipation.docx",
+    "title": "Théorème de fluctuation-dissipation",
+    "path": "Physique/[PHYSIQUE] Théorème de fluctuation-dissipation.docx",
+    "mtime": "2026-08-30T20:46:44.470147",
+    "size": 220197
+  },
+  {
+    "filename": "[PHYSIQUE] Tomographie à contraste de phase hiérarchique HiP-CT.docx",
+    "title": "Tomographie à contraste de phase hiérarchique HiP-CT",
+    "path": "Physique/[PHYSIQUE] Tomographie à contraste de phase hiérarchique HiP-CT.docx",
+    "mtime": "2026-08-30T20:46:44.470147",
+    "size": 47458
+  },
+  {
+    "filename": "[PHYSIQUE] Trajectoire de retour libre.docx",
+    "title": "Trajectoire de retour libre",
+    "path": "Physique/[PHYSIQUE] Trajectoire de retour libre.docx",
+    "mtime": "2026-08-30T20:46:44.471147",
+    "size": 82661
+  },
+  {
+    "filename": "[PHYSIQUE] Transfert radiatif.docx",
+    "title": "Transfert radiatif",
+    "path": "Physique/[PHYSIQUE] Transfert radiatif.docx",
+    "mtime": "2026-08-30T20:46:44.487147",
+    "size": 2898169
+  },
+  {
+    "filename": "[PHYSIQUE] Trou blanc.docx",
+    "title": "Trou blanc",
+    "path": "Physique/[PHYSIQUE] Trou blanc.docx",
+    "mtime": "2026-08-30T20:46:44.488147",
+    "size": 50583
+  },
+  {
+    "filename": "[PHYSIQUE] Trou de ver.docx",
+    "title": "Trou de ver",
+    "path": "Physique/[PHYSIQUE] Trou de ver.docx",
+    "mtime": "2026-08-30T20:46:44.488147",
+    "size": 35612
+  },
+  {
+    "filename": "[PHYSIQUE] Trou noir de Kerr.docx",
+    "title": "Trou noir de Kerr",
+    "path": "Physique/[PHYSIQUE] Trou noir de Kerr.docx",
+    "mtime": "2026-08-30T20:46:44.548147",
+    "size": 16231409
+  },
+  {
+    "filename": "[PHYSIQUE] Télescopes spatiaux d’observation.docx",
+    "title": "Télescopes spatiaux d’observation",
+    "path": "Physique/[PHYSIQUE] Télescopes spatiaux d’observation.docx",
+    "mtime": "2026-08-30T20:46:44.552147",
+    "size": 1103865
+  },
+  {
+    "filename": "[PHYSIQUE] Une heure dure 60 minutes.docx",
+    "title": "Une heure dure 60 minutes",
+    "path": "Physique/[PHYSIQUE] Une heure dure 60 minutes.docx",
+    "mtime": "2026-08-30T20:46:44.553147",
+    "size": 17883
+  },
+  {
+    "filename": "[PHYSIQUE] Vibration moléculaire.docx",
+    "title": "Vibration moléculaire",
+    "path": "Physique/[PHYSIQUE] Vibration moléculaire.docx",
+    "mtime": "2026-08-30T20:46:44.554147",
+    "size": 289732
+  },
+  {
+    "filename": "[PHYSIQUE] Vitesses spatiales.docx",
+    "title": "Vitesses spatiales",
+    "path": "Physique/[PHYSIQUE] Vitesses spatiales.docx",
+    "mtime": "2026-08-30T20:46:44.559147",
+    "size": 828845
+  },
+  {
+    "filename": "[PHYSIQUE] Wimp.docx",
+    "title": "Wimp",
+    "path": "Physique/[PHYSIQUE] Wimp.docx",
+    "mtime": "2026-08-30T20:46:44.559147",
+    "size": 16370
+  },
+  {
+    "filename": "[PHYSIQUE] effet Coanda.docx",
+    "title": "effet Coanda",
+    "path": "Physique/[PHYSIQUE] effet Coanda.docx",
+    "mtime": "2026-08-30T20:46:44.559147",
+    "size": 20032
+  },
+  {
+    "filename": "[PHYSIQUE] effet Compton.docx",
+    "title": "effet Compton",
+    "path": "Physique/[PHYSIQUE] effet Compton.docx",
+    "mtime": "2026-08-30T20:46:44.564147",
+    "size": 912938
+  },
+  {
+    "filename": "[PHYSIQUE] effet Joule.docx",
+    "title": "effet Joule",
+    "path": "Physique/[PHYSIQUE] effet Joule.docx",
+    "mtime": "2026-08-30T20:46:44.565147",
+    "size": 276837
+  },
+  {
+    "filename": "[PHYSIQUE] effet Magnus.docx",
+    "title": "effet Magnus",
+    "path": "Physique/[PHYSIQUE] effet Magnus.docx",
+    "mtime": "2026-08-30T20:46:44.587147",
+    "size": 3970360
+  },
+  {
+    "filename": "[PHYSIQUE] onde de Rossby.docx",
+    "title": "onde de Rossby",
+    "path": "Physique/[PHYSIQUE] onde de Rossby.docx",
+    "mtime": "2026-08-30T20:46:44.588146",
+    "size": 64717
+  },
+  {
+    "filename": "[PHYSIQUE] pH.docx",
+    "title": "pH",
+    "path": "Physique/[PHYSIQUE] pH.docx",
+    "mtime": "2026-08-30T20:46:44.589146",
+    "size": 162024
+  },
+  {
+    "filename": "[PHYSIQUE] rayon de Schwarzschild.docx",
+    "title": "rayon de Schwarzschild",
+    "path": "Physique/[PHYSIQUE] rayon de Schwarzschild.docx",
+    "mtime": "2026-08-30T20:46:44.589146",
+    "size": 99452
+  },
+  {
+    "filename": "[PHYSIQUE] Émission thermoionique.docx",
+    "title": "Émission thermoionique",
+    "path": "Physique/[PHYSIQUE] Émission thermoionique.docx",
+    "mtime": "2026-08-30T20:46:44.590147",
+    "size": 83840
+  },
+  {
+    "filename": "[PHYSIQUE] Équation d'Einstein.docx",
+    "title": "Équation d'Einstein",
+    "path": "Physique/[PHYSIQUE] Équation d'Einstein.docx",
+    "mtime": "2026-08-30T20:46:44.590147",
+    "size": 55329
+  },
+  {
+    "filename": "[PHYSIQUE] Équation d'orbite.docx",
+    "title": "Équation d'orbite",
+    "path": "Physique/[PHYSIQUE] Équation d'orbite.docx",
+    "mtime": "2026-08-30T20:46:44.593147",
+    "size": 623324
+  },
+  {
+    "filename": "[PHYSIQUE] Équation de Langevin.docx",
+    "title": "Équation de Langevin",
+    "path": "Physique/[PHYSIQUE] Équation de Langevin.docx",
+    "mtime": "2026-08-30T20:46:44.594146",
+    "size": 74552
+  },
+  {
+    "filename": "[PHYSIQUE] Équation de Sellmeier.docx",
+    "title": "Équation de Sellmeier",
+    "path": "Physique/[PHYSIQUE] Équation de Sellmeier.docx",
+    "mtime": "2026-08-30T20:46:44.594146",
+    "size": 28506
+  },
+  {
+    "filename": "[PHYSIQUE] Équations de Boussinesq.docx",
+    "title": "Équations de Boussinesq",
+    "path": "Physique/[PHYSIQUE] Équations de Boussinesq.docx",
+    "mtime": "2026-08-30T20:46:44.620146",
+    "size": 4904520
+  },
+  {
+    "filename": "[PHYSIQUE] Évaporation des trous noirs.docx",
+    "title": "Évaporation des trous noirs",
+    "path": "Physique/[PHYSIQUE] Évaporation des trous noirs.docx",
+    "mtime": "2026-08-30T20:46:44.622146",
+    "size": 103727
+  }
 ]

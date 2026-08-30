@@ -1,10 +1,58 @@
 [
-  "[HISTOIRE] Programme Apollo.docx",
-  "[HISTOIRE] Programme Artemis.docx",
-  "[HISTOIRE] Programme Gemini.docx",
-  "[HISTOIRE] Programme ISS.docx",
-  "[HISTOIRE] Programme Navette spatiale.docx",
-  "[HISTOIRE] Programme Shuttle-Mir.docx",
-  "[HISTOIRE] Projet Manhattan.docx",
-  "[HISTOIRE] Événement de la Toungouska.docx"
+  {
+    "filename": "[HISTOIRE] Programme Apollo.docx",
+    "title": "Programme Apollo",
+    "path": "Histoire/[HISTOIRE] Programme Apollo.docx",
+    "mtime": "2026-08-30T20:46:43.030156",
+    "size": 904957
+  },
+  {
+    "filename": "[HISTOIRE] Programme Artemis.docx",
+    "title": "Programme Artemis",
+    "path": "Histoire/[HISTOIRE] Programme Artemis.docx",
+    "mtime": "2026-08-30T20:46:43.033156",
+    "size": 828265
+  },
+  {
+    "filename": "[HISTOIRE] Programme Gemini.docx",
+    "title": "Programme Gemini",
+    "path": "Histoire/[HISTOIRE] Programme Gemini.docx",
+    "mtime": "2026-08-30T20:46:43.034156",
+    "size": 254929
+  },
+  {
+    "filename": "[HISTOIRE] Programme ISS.docx",
+    "title": "Programme ISS",
+    "path": "Histoire/[HISTOIRE] Programme ISS.docx",
+    "mtime": "2026-08-30T20:46:43.037156",
+    "size": 1100544
+  },
+  {
+    "filename": "[HISTOIRE] Programme Navette spatiale.docx",
+    "title": "Programme Navette spatiale",
+    "path": "Histoire/[HISTOIRE] Programme Navette spatiale.docx",
+    "mtime": "2026-08-30T20:46:43.041156",
+    "size": 981817
+  },
+  {
+    "filename": "[HISTOIRE] Programme Shuttle-Mir.docx",
+    "title": "Programme Shuttle-Mir",
+    "path": "Histoire/[HISTOIRE] Programme Shuttle-Mir.docx",
+    "mtime": "2026-08-30T20:46:43.042156",
+    "size": 154180
+  },
+  {
+    "filename": "[HISTOIRE] Projet Manhattan.docx",
+    "title": "Projet Manhattan",
+    "path": "Histoire/[HISTOIRE] Projet Manhattan.docx",
+    "mtime": "2026-08-30T20:46:43.042156",
+    "size": 20691
+  },
+  {
+    "filename": "[HISTOIRE] Événement de la Toungouska.docx",
+    "title": "Événement de la Toungouska",
+    "path": "Histoire/[HISTOIRE] Événement de la Toungouska.docx",
+    "mtime": "2026-08-30T20:46:43.045156",
+    "size": 586416
+  }
 ]
