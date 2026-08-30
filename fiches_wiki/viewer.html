@@ -85,11 +85,11 @@
       const dl = document.getElementById('downloadLink');
       const container = document.getElementById('frameContainer');
 
-      // If the opened file is from the Histoire category, remove the "Accueil" link
-      // to avoid navigating away while viewing historical Word files.
+      // If the opened file is inside a category folder (contains '/'), remove the "Accueil" link
+      // This applies to all categories so the viewer doesn't navigate away from the embedded doc.
       try {
         const homeLink = document.querySelector('a[href="/"]');
-        if (fileParam && fileParam.toLowerCase().startsWith('histoire/')) {
+        if (fileParam && fileParam.includes('/')) {
           if (homeLink) homeLink.remove();
         }
       } catch (e) {
