@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Résultats de recherche</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body class="bg-slate-100 text-gray-800">
+  <header class="bg-white shadow">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center gap-4">
+      <a href="index.html" class="text-indigo-600 font-bold">← Accueil</a>
+      <h1 class="text-xl font-semibold">Résultats de recherche</h1>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    <div class="mb-6">
+      <label for="q" class="sr-only">Recherche</label>
+      <div class="flex gap-2">
+        <input id="q" class="flex-1 p-3 rounded-lg border" placeholder="Rechercher..." />
+        <button id="doSearch" class="bg-indigo-600 text-white px-4 rounded-lg">Rechercher</button>
+      </div>
+    </div>
+
+    <section id="results" class="bg-white rounded-lg shadow p-4">
+      <div id="message" class="text-sm text-gray-500">Chargement…</div>
+      <ul id="list" class="mt-2 space-y-2"></ul>
+    </section>
+  </main>
+
+  <script>
+    (function(){
+      const categories = ['Biologie','Cryptographie','Histoire','Maths','Personne','Physique','SI'];
+      const base = 'fiches_wiki/';
+
+      function qs(name){ const params = new URLSearchParams(location.search); return params.get(name) || ''; }
+      function normalize(s){ return s.toLowerCase().replace(/\.(docx|doc)$/i,'').replace(/^\[.*?\]\s*/,'').trim(); }
+
+      const input = document.getElementById('q');
+      const list = document.getElementById('list');
+      const msg = document.getElementById('message');
+
+      async function loadAllIndexes(){
+        const map = {};
+        await Promise.all(categories.map(async cat=>{
+          try{ const res = await fetch(`${base}${cat}/index.json`, {cache:'no-store'}); map[cat] = res.ok? await res.json() : []; }catch(e){ map[cat]=[] }
+        }));
+        return map;
+      }
+
+      function render(matches){
+        list.innerHTML = '';
+        if(!matches || matches.length===0){ msg.textContent='Aucun résultat.'; return }
+        msg.textContent = `${matches.length} résultat(s)`;
+        matches.forEach(m=>{
+          const li = document.createElement('li');
+          li.className = 'p-3 border rounded hover:bg-gray-50';
+          const a = document.createElement('a');
+          a.href = `${base}viewer.html?file=${encodeURIComponent(m.cat + '/' + m.file)}`;
+          a.textContent = m.name + ' (' + m.cat + ')';
+          a.addEventListener('click', function(e){
+            // open viewer in same tab
+            e.preventDefault();
+            location.href = this.href;
+          });
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+      }
+
+      async function doQuery(q){
+        const idx = await loadAllIndexes();
+        const qn = q.toLowerCase().trim();
+        if(qn.length===0){ render([]); return }
+        const matches = [];
+        for(const cat of Object.keys(idx)){
+          for(const file of idx[cat]){
+            const name = normalize(file);
+            if(name.includes(qn)) matches.push({cat, file, name});
+          }
+        }
+        matches.sort((a,b)=> a.name.localeCompare(b.name,'fr'));
+        render(matches);
+      }
+
+      // initialize
+      const q0 = qs('q') || qs('query') || '';
+      input.value = q0;
+      doQuery(q0);
+
+      document.getElementById('doSearch').addEventListener('click', ()=>{ const v = input.value; history.replaceState(null,'', `?q=${encodeURIComponent(v)}`); doQuery(v); });
+      input.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ const v=input.value; history.replaceState(null,'', `?q=${encodeURIComponent(v)}`); doQuery(v); } });
+    })();
+  </script>
+</body>
+</html>

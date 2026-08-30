@@ -234,7 +234,8 @@
       input.addEventListener('focus', doSearch);
       document.addEventListener('click', (e)=>{ if(!results.contains(e.target) && e.target !== input) results.classList.add('hidden'); });
 
-      btn.addEventListener('click', ()=>{ search(input.value); input.focus(); });
+      btn.addEventListener('click', ()=>{ window.location.href = `search.html?q=${encodeURIComponent(input.value)}`; });
+      input.addEventListener('keydown', (e)=>{ if(e.key === 'Enter'){ window.location.href = `search.html?q=${encodeURIComponent(input.value)}`; } });
 
       // load indexes on startup
       loadAllIndexes();
