@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enceinte connectée - Jules DUCASSE--FERNANDEZ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Navigation -->
+  <header class="bg-white shadow">
+    <div class="max-w-5xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="index.html" class="hover:underline">Accueil</a>
+        <a href="cv.html" class="hover:underline">CV</a>
+        <a href="projets.html" class="text-indigo-600 font-medium">Projets</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-10 space-y-4">
+    <!-- Titre + bouton retour alignés -->
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-3xl font-bold text-indigo-700">Enceinte connectée</h2>
+        <a href="projets.html" class="px-4 py-2 bg-indigo-600 text-white font-semibold rounded-lg shadow hover:bg-indigo-700 transition">
+        ← Retour
+        </a>
+    </div>
+
+    <!-- Description  -->
+    <p class="text-lg font-bold">Description : </p>
+    <p class="text-lg font-normal"> 
+        Réalisation d'une enceinte connectée en utilisant un ESP32 pour la connexion bluetooth A2DP, un DAC externe connecté en I2C et d’un écran tactile pour le contrôle. <br>
+        Le préamplificateur avec le contrôle de tonalité, l’amplificateur de puissance et les haut-parleurs (HP) sont achetés dans le commerce. <br>
+        L’entrée peut être bluetooth ou filaire, le choix se fait en utilisant un switch (avec des leds pour indiquer le choix).
+    </p><br>
+
+    <!-- Etapes  -->
+    <p class="text-lg font-bold"> Etapes :</p>
+    <ul class="list-disc pl-5 font-normal space-y-1">
+        <li>Codage en C++ du transfert du flux audio en Bluetooth A2DP. Comme tous mes projets j’utilise un GitHub personnel</li>
+        <li>Codage de la redirection du flux en I2C sur le DAC externe (ayant un taux d’échantillonnage fréquence et bits supérieur à l’ESP32)</li>
+        <li>Codage de l’écran tactile (affichage des métadonnées et création des boutons)</li>
+        <li>Recherche des composants nécessaires (préamplificateur avec contrôle de tonalité, amplificateur, transformateur d’alimentation 230VAC-24VAC, haut-parleur, etc)</li>
+        <li>Réalisation du schéma électronique </li>
+        <li>Ajout de ponts diviseur de tension pour l’alimentation AC 12V et 5V ; ajout d’un pont de diode pour redresser le 5V destiné aux leds et l’ESP32)</li>
+    </ul><br>
+
+    <!-- Environnement technique  -->
+    <p class="text-lg font-bold">Environnement technique : </p>
+    <p class="text-lg font-normal"> 
+        ArduinoIDE, ESP32, Bluetooth, I2C, DAC, C++, EasyEDA
+    </p><br>
+
+    <!-- Images -->
+    <div class="mt-8 space-y-6">
+        <img src="img/enceinte1.jpg" alt="Enceinte connectée 1" class="mx-auto rounded-lg shadow-md max-w-full">
+        <img src="img/enceinte2.png" alt="Enceinte connectée 2" class="mx-auto rounded-lg shadow-md max-w-full">
+        <img src="img/enceinte3.png" alt="Enceinte connectée 3" class="mx-auto rounded-lg shadow-md max-w-full">
+    </div>
+  </main>
+
+  <!-- Bouton Retour en haut -->
+  <button 
+    id="backToTopBtn" 
+    onclick="scrollToTop()" 
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <!-- Script -->
+  <script>
+    const backToTopBtn = document.getElementById("backToTopBtn");
+  
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove("opacity-0", "invisible");
+        backToTopBtn.classList.add("opacity-100", "visible");
+      } else {
+        backToTopBtn.classList.add("opacity-0", "invisible");
+        backToTopBtn.classList.remove("opacity-100", "visible");
+      }
+    });
+  
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+  
+</body>
+</html>
