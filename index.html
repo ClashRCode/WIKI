@@ -34,24 +34,30 @@
       <div class="absolute inset-0 bg-black/20"></div>
       <div class="relative max-w-4xl mx-auto px-4 py-32 text-center">
           <h2 class="text-5xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-lg tracking-tight gold-outline">Bienvenue sur mon Wiki</h2>
-          <p class="text-xl md:text-2xl font-semibold text-white max-w-2xl mx-auto gold-outline-sub">
+          <p class="text-xl md:text-3xl font-semibold text-white max-w-2xl mx-auto gold-outline-sub">
             Retrouvez mes projets et fiches de cours.
           </p>
 
         <!-- Barre de recherche (au-dessus du fond, centrée) -->
           <div class="relative max-w-2xl mx-auto mt-6">
-          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-            <i class="fas fa-search text-white/80 text-xl"></i>
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <i class="fas fa-search text-white/80 text-xl"></i>
+            </div>
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="Rechercher dans le wiki..."
+              class="w-full py-4 pl-12 pr-4 text-lg bg-white/60 rounded-xl shadow-sm transition-colors duration-150 focus:bg-white/90 focus:shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 border border-white/20"
+              autocomplete="off"
+              aria-label="Rechercher dans le wiki"
+            />
+            <button id="searchBtn" class="absolute right-2 top-1/2 -translate-y-1/2 bg-indigo-600 text-white p-2 rounded-lg hover:bg-indigo-700">
+              <i class="fas fa-arrow-right"></i>
+            </button>
+
+            <!-- Résultats de recherche déroulants (alignés à gauche) -->
+            <div id="searchResults" class="absolute left-0 mt-2 w-full bg-white rounded-lg shadow-lg border border-gray-200 max-h-72 overflow-auto hidden z-50 text-left"></div>
           </div>
-          <input
-            type="text"
-            placeholder="Rechercher dans le wiki..."
-            class="w-full py-4 pl-12 pr-4 text-lg bg-white/60 rounded-xl shadow-sm transition-colors duration-150 focus:bg-white/95 focus:shadow-md focus:outline-none focus:ring-2 focus:ring-indigo-500 border border-white/20"
-          />
-          <button class="absolute right-2 top-1/2 -translate-y-1/2 bg-indigo-600 text-white p-2 rounded-lg hover:bg-indigo-700">
-            <i class="fas fa-arrow-right"></i>
-          </button>
-        </div>
       </div>
     </div>
   </section>
@@ -164,6 +170,76 @@
 
   <!-- Script -->
   <script>
+    // --- Search implementation: loads category indexes and searches titles ---
+    (function(){
+      const categories = ['Biologie','Cryptographie','Histoire','Maths','Personne','Physique','SI'];
+      const base = 'fiches_wiki/';
+      let indexes = null;
+
+      async function loadAllIndexes(){
+        const map = {};
+        await Promise.all(categories.map(async cat => {
+          try{
+            const res = await fetch(`${base}${cat}/index.json`, {cache: 'no-store'});
+            if(res.ok){
+              const data = await res.json();
+              map[cat] = Array.isArray(data)? data.slice() : [];
+            } else {
+              map[cat] = [];
+            }
+          }catch(e){ map[cat]=[] }
+        }));
+        indexes = map;
+      }
+
+      function normalize(s){ return s.toLowerCase().replace(/\.(docx|doc)$/i,'').replace(/^\[.*?\]\s*/,'').trim(); }
+
+      // debounce helper
+      function debounce(fn, ms){ let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a), ms); } }
+
+      const input = document.getElementById('searchInput');
+      const results = document.getElementById('searchResults');
+      const btn = document.getElementById('searchBtn');
+
+      function renderMatches(matches){
+        if(!matches || matches.length===0){ results.innerHTML = '<div class="p-3 text-sm text-gray-500">Aucun résultat</div>'; results.classList.remove('hidden'); return }
+        const html = matches.map(m=>{
+          const safe = m.name.replace(/</g,'&lt;');
+          const fileParam = encodeURIComponent(`${m.cat}/${m.file}`);
+          const href = `${base}viewer.html?file=${fileParam}`;
+          return `<a href="${href}" target="_blank" rel="noopener" class="block px-4 py-2 hover:bg-indigo-50 text-sm text-gray-800">${safe} <span class="text-xs text-gray-400">(${m.cat})</span></a>`;
+        }).join('');
+        results.innerHTML = html; results.classList.remove('hidden');
+      }
+
+      function search(term){
+        if(!indexes) return renderMatches([]);
+        const q = term.toLowerCase().trim();
+        if(q.length===0) return results.classList.add('hidden');
+        const matches = [];
+        for(const cat of Object.keys(indexes)){
+          for(const file of indexes[cat]){
+            const name = normalize(file);
+            if(name.includes(q)) matches.push({cat, file, name});
+          }
+        }
+        // sort by category then name
+        matches.sort((a,b)=> a.name.localeCompare(b.name,'fr'));
+        renderMatches(matches.slice(0,50));
+      }
+
+      const doSearch = debounce(()=> search(input.value), 180);
+
+      input.addEventListener('input', doSearch);
+      input.addEventListener('focus', doSearch);
+      document.addEventListener('click', (e)=>{ if(!results.contains(e.target) && e.target !== input) results.classList.add('hidden'); });
+
+      btn.addEventListener('click', ()=>{ search(input.value); input.focus(); });
+
+      // load indexes on startup
+      loadAllIndexes();
+    })();
+
     const backToTopBtn = document.getElementById("backToTopBtn");
   
     window.addEventListener("scroll", () => {
