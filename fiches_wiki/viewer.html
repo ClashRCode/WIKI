@@ -6,7 +6,7 @@
   <title>Afficheur de document</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>html,body,#viewer{height:100%;margin:0}</style>
-</head>
+ </head>
 <body class="bg-slate-50 text-gray-800">
   <header class="bg-white shadow p-4">
     <div class="w-full flex items-center justify-between px-4">
@@ -14,25 +14,52 @@
         <a href="/" class="text-sm text-indigo-600 hover:underline">Accueil</a>
         <span id="fileName" class="text-lg font-medium"></span>
       </div>
-      <div class="flex items-center space-x-3">
+      <div>
         <a id="downloadLink" class="text-sm text-gray-600 hover:underline" target="_blank" rel="noopener noreferrer">Télécharger</a>
-        <button id="openPdfBtn" class="text-sm text-gray-600 hover:underline">Ouvrir en PDF</button>
-        <button id="printBtn" class="text-sm text-gray-600 hover:underline">Imprimer</button>
-        <button id="fsBtn" class="text-sm text-gray-600 hover:underline">Plein écran</button>
       </div>
     </div>
   </header>
 
   <div id="viewer" class="w-full mt-4 h-[calc(100%-96px)]">
-    <div id="frameContainer" class="w-full h-full bg-white shadow-inner relative"></div>
+    <div id="frameContainer" class="w-full h-full bg-white shadow-inner"></div>
   </div>
 
-  <div id="fallback" class="hidden p-4 text-center text-sm text-gray-700">
-    <p>Impossible de charger l'affichage intégré. Vous pouvez télécharger le fichier ou l'ouvrir dans une autre application.</p>
-    <p class="mt-2"><a id="fallbackLink" class="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">Ouvrir le fichier</a></p>
-  </div>
+  <!DOCTYPE html>
+  <html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Afficheur de document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!--
+      Petit style pour que le conteneur prenne toute la hauteur disponible.
+      Gardez-le minimal pour rester compatible avec GitHub Pages / navigateurs.
+    -->
+    <style>html,body,#viewer{height:100%;margin:0}</style>
+   </head>
+  <body class="bg-slate-50 text-gray-800">
+    <!-- En‑tête contenant le nom du fichier et un lien de téléchargement direct -->
+    <header class="bg-white shadow p-4">
+      <div class="w-full flex items-center justify-between px-4">
+        <div class="flex items-center space-x-3">
+          <!-- Lien vers l'accueil du site -->
+          <a href="/" class="text-sm text-indigo-600 hover:underline">Accueil</a>
+          <!-- Le nom du fichier affiché dynamiquement par le script -->
+          <span id="fileName" class="text-lg font-medium"></span>
+        </div>
+        <div>
+          <!-- Lien de téléchargement direct : utile si l'affichage embarqué échoue -->
+          <a id="downloadLink" class="text-sm text-gray-600 hover:underline" target="_blank" rel="noopener noreferrer">Télécharger</a>
+        </div>
+      </div>
+    </header>
 
-  <script>
+    <!-- Zone principale contenant l'iframe Office Online -->
+    <div id="viewer" class="w-full mt-4 h-[calc(100%-96px)]">
+      <div id="frameContainer" class="w-full h-full bg-white shadow-inner"></div>
+    </div>
+
+    <script>
       /*
         viewer.html
         - Reçoit un paramètre de requête `file` contenant le chemin relatif du .doc/.docx
@@ -100,52 +127,7 @@
       iframe.style.height = '100%';
       iframe.frameBorder = '0';
       iframe.title = 'Afficheur de document';
-      iframe.loading = 'lazy';
       container.appendChild(iframe);
-
-      // Toolbar buttons
-      const dlBtn = document.getElementById('downloadLink');
-      const openPdfBtn = document.getElementById('openPdfBtn');
-      const printBtn = document.getElementById('printBtn');
-      const fsBtn = document.getElementById('fsBtn');
-      const fallback = document.getElementById('fallback');
-      const fallbackLink = document.getElementById('fallbackLink');
-
-      dl.href = fileUrl;
-      fallbackLink.href = fileUrl;
-
-      // If the file is already a PDF, open PDF directly
-      function isPDF(url){ return url.toLowerCase().endsWith('.pdf'); }
-      openPdfBtn.addEventListener('click', ()=>{
-        if(isPDF(fileUrl)) window.open(fileUrl, '_blank', 'noopener');
-        else window.open(officeSrc, '_blank', 'noopener');
-      });
-
-      printBtn.addEventListener('click', ()=>{
-        // Best-effort: open the file in a new tab where user can print
-        window.open(fileUrl, '_blank', 'noopener');
-      });
-
-      fsBtn.addEventListener('click', ()=>{
-        const el = document.getElementById('frameContainer');
-        if (el.requestFullscreen) el.requestFullscreen();
-        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-        else alert('Mode plein écran non pris en charge par ce navigateur.');
-      });
-
-      // Fallback handling: if iframe doesn't fire load within timeout, show fallback
-      let loaded = false;
-      const loadTimeout = setTimeout(()=>{
-        if(!loaded){
-          container.style.display = 'none';
-          fallback.classList.remove('hidden');
-        }
-      }, 8000);
-
-      iframe.addEventListener('load', ()=>{
-        loaded = true;
-        clearTimeout(loadTimeout);
-      });
 
       // --- View counter: store in localStorage and broadcast to other tabs ---
       (function(){
