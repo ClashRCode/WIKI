@@ -19,97 +19,70 @@
   </header>
 
   <main class="max-w-4xl mx-auto px-4 py-10 space-y-6">
-    <div class="flex items-center gap-4 mb-4">
-      <img src="../img/biologie.png" alt="Biologie" class="w-12 h-12">
-      <div class="flex-1">
-        <h2 class="text-3xl font-bold text-indigo-700">Biologie</h2>
+    <div class="flex items-center space-x-3 mb-4">
+      <img src="../img/biologie.png" alt="biologie" class="w-10 h-10" />
+      <h2 id="pageTitle" class="text-3xl font-bold text-indigo-700">Biologie</h2>
+      <div class="ml-auto">
+        <a href="../index.html" class="px-4 py-2 bg-indigo-600 text-white font-semibold rounded-lg shadow hover:bg-indigo-700 transition">← Retour</a>
       </div>
-      <a href="../index.html" class="px-4 py-2 bg-indigo-600 text-white font-semibold rounded-lg shadow hover:bg-indigo-700 transition">← Retour</a>
     </div>
 
-    <!-- Liste des Fiches -->
-    <p class="text-lg">Liste des fiches</p>
+    <p class="text-lg">Liste des fiches (ordre alphabétique)</p>
 
     <div id="listContainer">
-      <ul id="fileList" class="list-disc pl-6 space-y-2">
-        <li>Chargement...</li>
-      </ul>
+      <p class="text-sm text-gray-500">Chargement…</p>
     </div>
 
     <script>
-      // Charge dynamiquement la liste des fichiers .doc/.docx présents
-      // dans le dossier `fiches_wiki/Biologie/` et les affiche triés.
-      // Remarques :
-      // - Le script fonctionne uniquement si le serveur HTTP expose
-      //   un index de répertoire (ex. `python -m http.server`).
-      // - Il filtre les fichiers .doc et .docx et enlève le préfixe
-      //   "[BIO]" pour l'affichage.
-      async function loadDocxList() {
-        // Élément <ul> qui contiendra la liste construite
-        const container = document.getElementById('fileList');
+      // Récupère et affiche les fichiers .doc/.docx du dossier `Biologie/`
+      async function loadBiologyFiles() {
+        const dir = 'Biologie/';
         try {
-          // Récupère la page d'index du dossier `Biologie/`
-          const res = await fetch('Biologie/');
+          const res = await fetch(dir);
           if (!res.ok) throw new Error('Impossible de lister le dossier');
-
-          // Récupère le HTML de l'index et le parse pour extraire les liens
           const text = await res.text();
+          // parser l'index de dossier (fonctionne avec python -m http.server et serveurs similaires)
           const parser = new DOMParser();
           const doc = parser.parseFromString(text, 'text/html');
           const anchors = Array.from(doc.querySelectorAll('a'));
-
-          // Transforme en noms de fichiers et ne garde que les .doc/.docx
           const files = anchors
             .map(a => a.getAttribute('href'))
-            // ignore les liens parent (../) et garde les extensions .doc/.docx
-            .filter(h => h && !h.startsWith('../') && /\.(docx|doc)$/i.test(h));
+            .filter(href => href && (href.toLowerCase().endsWith('.docx') || href.toLowerCase().endsWith('.doc')))
+            .map(href => decodeURIComponent(href.replace(/\/+$/,'')));
 
-          // Supprime les doublons éventuels
           const unique = Array.from(new Set(files));
+          unique.sort((a,b) => a.localeCompare(b, 'fr', {sensitivity: 'base'}));
 
-          // Fonction utilitaire : retire le préfixe [BIO] et l'extension
-          function displayName(fname) {
-            return fname
-              .replace(/^\[BIO\]\s*/i, '') // supprime [BIO] si présent
-              .replace(/\.[^.]+$/, '')       // retire l'extension
-              .trim();                        // enlève les espaces superflus
-          }
-
-          // Trie alphabétiquement selon le nom affiché (insensible à la casse)
-          unique.sort((a, b) => {
-            const A = displayName(a).toLowerCase();
-            const B = displayName(b).toLowerCase();
-            return A.localeCompare(B);
-          });
-
-          // Message si aucun document
+          const container = document.getElementById('listContainer');
           if (unique.length === 0) {
-            container.innerHTML = '<li>Aucun document trouvé.</li>';
+            container.innerHTML = '<p class="text-sm text-gray-500">Aucune fiche trouvée.</p>';
             return;
           }
-
-          // Reconstruit la liste dans le DOM
-          container.innerHTML = '';
-          unique.forEach(fname => {
+          const ul = document.createElement('ul');
+          ul.className = 'list-disc pl-6 space-y-2';
+          unique.forEach(filename => {
+            // display name: remove leading [BIO] or [BIO] with optional space
+            let display = filename.replace(/^\[BIO\]\s*/i, '');
+            // also remove extension for display
+            display = display.replace(/\.(docx|doc)$/i, '');
             const li = document.createElement('li');
             const a = document.createElement('a');
-            // Lien vers le fichier dans le dossier `Biologie/`
-            a.href = 'Biologie/' + fname;
-            // Texte du lien : nom nettoyé
-            a.textContent = displayName(fname);
+            a.href = dir + filename;
+            a.textContent = display;
+            a.className = 'text-indigo-700 hover:underline';
             li.appendChild(a);
-            container.appendChild(li);
+            ul.appendChild(li);
           });
-
-        } catch (e) {
-          // En cas d'erreur (ex. pas d'index de dossier), on affiche un message
-          container.innerHTML = '<li>Impossible de charger la liste automatiquement.</li>';
-          console.warn(e);
+          container.innerHTML = '';
+          container.appendChild(ul);
+        } catch (err) {
+          const container = document.getElementById('listContainer');
+          container.innerHTML = '<p class="text-sm text-red-500">Erreur lors du chargement des fiches.</p>';
+          console.error(err);
         }
       }
 
-      // Lance le chargement une fois le DOM prêt
-      document.addEventListener('DOMContentLoaded', loadDocxList);
+      document.addEventListener('DOMContentLoaded', loadBiologyFiles);
     </script>
 
   </main>
