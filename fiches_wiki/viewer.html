@@ -85,6 +85,18 @@
       const dl = document.getElementById('downloadLink');
       const container = document.getElementById('frameContainer');
 
+      // If the opened file is from the Histoire category, remove the "Accueil" link
+      // to avoid navigating away while viewing historical Word files.
+      try {
+        const homeLink = document.querySelector('a[href="/"]');
+        if (fileParam && fileParam.toLowerCase().startsWith('histoire/')) {
+          if (homeLink) homeLink.remove();
+        }
+      } catch (e) {
+        // non-blocking: if DOM lookup fails, continue normally
+        console.warn('Could not modify home link visibility', e);
+      }
+
       if(!fileParam){
         // Message d'erreur visible si l'URL est appelée sans paramètre
         container.innerHTML = '<p class="p-4 text-red-600">Aucun fichier spécifié.</p>';
