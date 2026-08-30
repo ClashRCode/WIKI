@@ -1,0 +1,36 @@
+name: Generate Indexes
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Run index generator
+        run: |
+          python3 scripts/generate_indexes.py
+
+      - name: Commit changed index.json files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fiches_wiki/**/index.json || true
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: regenerate fiches_wiki index.json files [ci skip]" || true
+            git push origin HEAD
+          else
+            echo "No index changes to commit"
+          fi
