@@ -27,47 +27,34 @@
       </div>
     </div>
 
-    <p class="text-lg">Liste des fiches (ordre alphabétique)</p>
+    <!-- Liste des fiches -->
+    <p class="text-lg">Liste des fiches</p>
 
     <div id="listContainer">
       <p class="text-sm text-gray-500">Chargement…</p>
     </div>
 
     <script>
-      // Récupère et affiche les fichiers .doc/.docx du dossier `Biologie/`
+      // Récupère et affiche les fichiers .doc/.docx du dossier `Biologie/`.
+      // Fallback: si le serveur n'expose pas d'index de dossier (ex: GitHub Pages),
+      // on interroge l'API GitHub si le méta `github-repo` est défini ou peut être inféré.
       async function loadBiologyFiles() {
         const dir = 'Biologie/';
-        try {
-          const res = await fetch(dir);
-          if (!res.ok) throw new Error('Impossible de lister le dossier');
-          const text = await res.text();
-          // parser l'index de dossier (fonctionne avec python -m http.server et serveurs similaires)
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(text, 'text/html');
-          const anchors = Array.from(doc.querySelectorAll('a'));
-          const files = anchors
-            .map(a => a.getAttribute('href'))
-            .filter(href => href && (href.toLowerCase().endsWith('.docx') || href.toLowerCase().endsWith('.doc')))
-            .map(href => decodeURIComponent(href.replace(/\/+$/,'')));
+        const container = document.getElementById('listContainer');
 
-          const unique = Array.from(new Set(files));
-          unique.sort((a,b) => a.localeCompare(b, 'fr', {sensitivity: 'base'}));
-
-          const container = document.getElementById('listContainer');
-          if (unique.length === 0) {
+        function renderList(files) {
+          if (!files || files.length === 0) {
             container.innerHTML = '<p class="text-sm text-gray-500">Aucune fiche trouvée.</p>';
             return;
           }
           const ul = document.createElement('ul');
           ul.className = 'list-disc pl-6 space-y-2';
-          unique.forEach(filename => {
-            // display name: remove leading [BIO] or [BIO] with optional space
+          files.forEach(filename => {
             let display = filename.replace(/^\[BIO\]\s*/i, '');
-            // also remove extension for display
             display = display.replace(/\.(docx|doc)$/i, '');
             const li = document.createElement('li');
             const a = document.createElement('a');
-            a.href = dir + filename;
+            a.href = dir + encodeURIComponent(filename);
             a.textContent = display;
             a.className = 'text-indigo-700 hover:underline';
             li.appendChild(a);
@@ -75,10 +62,58 @@
           });
           container.innerHTML = '';
           container.appendChild(ul);
+        }
+
+        // 1) tentative : fetch relatif (index de dossier fourni par le serveur)
+        try {
+          const res = await fetch(dir, {cache: 'no-store'});
+          if (res.ok) {
+            const text = await res.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, 'text/html');
+            const anchors = Array.from(doc.querySelectorAll('a'));
+            const files = anchors
+              .map(a => a.getAttribute('href'))
+              .filter(href => href && (href.toLowerCase().endsWith('.docx') || href.toLowerCase().endsWith('.doc')))
+              .map(href => decodeURIComponent(href.replace(/\/+$/,'')));
+            const unique = Array.from(new Set(files));
+            unique.sort((a,b) => a.localeCompare(b, 'fr', {sensitivity: 'base'}));
+            if (unique.length > 0) { renderList(unique); return; }
+          }
+        } catch (e) {
+          console.debug('Directory index fetch failed, will try GitHub API fallback.', e);
+        }
+
+        // 2) fallback: GitHub API (works for public repos). Determine owner/repo from
+        // <meta name="github-repo" content="owner/repo"> or try to infer from github.io URL.
+        let repo = null;
+        const meta = document.querySelector('meta[name="github-repo"]');
+        if (meta && meta.content) repo = meta.content.trim();
+        if (!repo && location.hostname.endsWith('github.io')) {
+          const owner = location.hostname.split('.')[0];
+          const segments = location.pathname.replace(/^\//,'').split('/');
+          const repoName = segments[0] || '';
+          if (owner && repoName) repo = owner + '/' + repoName;
+        }
+
+        if (!repo) {
+          container.innerHTML = '<p class="text-sm text-gray-500">Impossible de lister automatiquement ici. Pour activer la liste automatique sur GitHub Pages, ajoutez dans &lt;head&gt; : &lt;meta name="github-repo" content="owner/repo"&gt; ou générez un fichier JSON d’index.</p>';
+          return;
+        }
+
+        const apiUrl = `https://api.github.com/repos/${repo}/contents/fiches_wiki/Biologie`;
+        try {
+          const apiRes = await fetch(apiUrl);
+          if (!apiRes.ok) throw new Error('GitHub API error: ' + apiRes.status);
+          const json = await apiRes.json();
+          const files = json
+            .filter(item => item.type === 'file' && (item.name.toLowerCase().endsWith('.doc') || item.name.toLowerCase().endsWith('.docx')))
+            .map(item => item.name)
+            .sort((a,b) => a.localeCompare(b, 'fr', {sensitivity: 'base'}));
+          renderList(files);
         } catch (err) {
-          const container = document.getElementById('listContainer');
-          container.innerHTML = '<p class="text-sm text-red-500">Erreur lors du chargement des fiches.</p>';
           console.error(err);
+          container.innerHTML = '<p class="text-sm text-red-500">Erreur lors du chargement via l\'API GitHub. Vérifiez que le dépôt est public et que la meta `github-repo` est correctement configurée.</p>';
         }
       }
 
@@ -94,6 +129,20 @@
     class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
     ↑ Top
   </button>
+
+  <script>
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.remove('opacity-0','invisible');
+        backToTopBtn.classList.add('opacity-100','visible');
+      } else {
+        backToTopBtn.classList.add('opacity-0','invisible');
+        backToTopBtn.classList.remove('opacity-100','visible');
+      }
+    });
+    function scrollToTop(){ window.scrollTo({ top: 0, behavior: 'smooth' }); }
+  </script>
 
 </body>
 </html>
