@@ -53,21 +53,34 @@
       function render(matches){
         list.innerHTML = '';
         if(!matches || matches.length===0){ msg.textContent='Aucun résultat.'; return }
-        msg.textContent = `${matches.length} résultat(s)`;
-        matches.forEach(m=>{
-          const li = document.createElement('li');
-          li.className = 'p-3 border rounded hover:bg-gray-50';
-          const a = document.createElement('a');
-          a.href = `${base}viewer.html?file=${encodeURIComponent(m.cat + '/' + m.file)}`;
-          a.textContent = m.name + ' (' + m.cat + ')';
-          a.addEventListener('click', function(e){
-            // open viewer in same tab
-            e.preventDefault();
-            location.href = this.href;
+        const total = matches.length;
+        msg.textContent = `${total} résultat(s)`;
+        // group by category
+        const groups = {};
+        matches.forEach(m => { groups[m.cat] = groups[m.cat] || []; groups[m.cat].push(m); });
+        for(const cat of categories){
+          const items = groups[cat];
+          if(!items || items.length === 0) continue;
+          // visual separator
+          const sep = document.createElement('hr');
+          sep.className = 'my-3 border-gray-200';
+          list.appendChild(sep);
+          // category header
+          const header = document.createElement('li');
+          header.className = 'text-lg font-semibold text-gray-800 mt-2';
+          header.textContent = `${cat} (${items.length})`;
+          list.appendChild(header);
+          items.forEach(m=>{
+            const li = document.createElement('li');
+            li.className = 'p-3 border rounded hover:bg-gray-50';
+            const a = document.createElement('a');
+            a.href = `${base}viewer.html?file=${encodeURIComponent(m.cat + '/' + m.file)}`;
+            a.textContent = m.name;
+            a.addEventListener('click', function(e){ e.preventDefault(); location.href = this.href; });
+            li.appendChild(a);
+            list.appendChild(li);
           });
-          li.appendChild(a);
-          list.appendChild(li);
-        });
+        }
       }
 
       async function doQuery(q){
