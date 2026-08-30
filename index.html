@@ -250,7 +250,7 @@
             if(name.includes(q)) matches.push({cat, file, name});
           }
         }
-        // sort by category then name
+        // sort by category, then name 
         matches.sort((a,b)=> a.name.localeCompare(b.name,'fr'));
         renderMatches(matches.slice(0,50));
       }
