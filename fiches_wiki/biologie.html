@@ -102,38 +102,9 @@
           });
 
         } catch (e) {
-          // Si la lecture de l'index HTTP échoue (ex. pas d'index de dossier),
-          // on tente de charger un fichier JSON pré-généré `Biologie/list.json`
-          // généré par le script `fiches_wiki/generate_bio_list.py`.
-          console.warn('Fetch directory failed, trying JSON fallback', e);
-          try {
-            const res2 = await fetch('Biologie/list.json');
-            if (!res2.ok) throw new Error('JSON fallback introuvable');
-            const json = await res2.json();
-            if (!Array.isArray(json) || json.length === 0) {
-              container.innerHTML = '<li>Aucun document trouvé.</li>';
-              return;
-            }
-            // trie et affiche comme précédemment
-            json.sort((a,b) => {
-              const A = a.replace(/^\[BIO\]\s*/i, '').replace(/\.[^.]+$/, '').toLowerCase();
-              const B = b.replace(/^\[BIO\]\s*/i, '').replace(/\.[^.]+$/, '').toLowerCase();
-              return A.localeCompare(B);
-            });
-            container.innerHTML = '';
-            json.forEach(fname => {
-              const li = document.createElement('li');
-              const a = document.createElement('a');
-              a.href = 'Biologie/' + fname;
-              a.textContent = fname.replace(/^\[BIO\]\s*/i, '').replace(/\.[^.]+$/, '');
-              li.appendChild(a);
-              container.appendChild(li);
-            });
-            return;
-          } catch (e2) {
-            container.innerHTML = '<li>Impossible de charger la liste automatiquement.</li>';
-            console.warn(e2);
-          }
+          // En cas d'erreur (ex. pas d'index de dossier), on affiche un message
+          container.innerHTML = '<li>Impossible de charger la liste automatiquement.</li>';
+          console.warn(e);
         }
       }
 
