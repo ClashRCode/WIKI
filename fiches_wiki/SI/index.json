@@ -1,104 +1,716 @@
 [
-  "[SI] Accouplement, embrayage et frein.docx",
-  "[SI] Accélérateur MHD.docx",
-  "[SI] Aciers et fontes.docx",
-  "[SI] Antenne MIMO.docx",
-  "[SI] Antenne plasma.docx",
-  "[SI] Antenne réseau à commande de phase.docx",
-  "[SI] Antenne.docx",
-  "[SI] Asservissement, régulation et automatique.docx",
-  "[SI] Aérofrein.docx",
-  "[SI] Aérofreinage.docx",
-  "[SI] Ballute.docx",
-  "[SI] Boite de vitesses.docx",
-  "[SI] Breguet Atlantic.docx",
-  "[SI] Caméra LSST.docx",
-  "[SI] Courroie et chaine.docx",
-  "[SI] Crew Dragon.docx",
-  "[SI] Cryptographie.docx",
-  "[SI] Dassault Breguet  Dornier Alpha Jet.docx",
-  "[SI] Dassault Mirage 2000.docx",
-  "[SI] Dassault Mirage 5.docx",
-  "[SI] Dassault Mirage G.docx",
-  "[SI] Dassault Mystère IV.docx",
-  "[SI] Dassault Neuron.docx",
-  "[SI] Dassault Rafale.docx",
-  "[SI] Dureté Vickers.docx",
-  "[SI] Engrenage.docx",
-  "[SI] Essais des matériaux.docx",
-  "[SI] Filetage, visserie et boulonnerie.docx",
-  "[SI] Freins à disque et tambours.docx",
-  "[SI] Freins électromagnétiques.docx",
-  "[SI] Furtivité.docx",
-  "[SI] Goupilles, circlips, rivetage, support-butée, cône de fixation.docx",
-  "[SI] Grumman F-14 Tomcat.docx",
-  "[SI] Hawker Hurricane.docx",
-  "[SI] Hawker Tempest.docx",
-  "[SI] Hawker Typhoon.docx",
-  "[SI] Horloge atomique.docx",
-  "[SI] Intelligence Artificielle.docx",
-  "[SI] Joint d'étanchéité.docx",
-  "[SI] KM3NeT.docx",
-  "[SI] Laser Interferometer Space Antenna LISA.docx",
-  "[SI] le Pykrète.docx",
-  "[SI] le Starlite.docx",
-  "[SI] Le Télescope Einstein.docx",
-  "[SI] Liaison arbre-moyeu.docx",
-  "[SI] Liaison glissière.docx",
-  "[SI] Liaison élastique - ressort.docx",
-  "[SI] Lockheed F-117 Nighthawk.docx",
-  "[SI] Matériaux ferreux.docx",
-  "[SI] Matériaux.docx",
-  "[SI] McDonnell Douglas F-15 Eagle.docx",
-  "[SI] Microscope à effet tunnel.docx",
-  "[SI] Mikoyan-Gourevitch MiG-105.docx",
-  "[SI] Mikoyan-Gourevitch MiG-23.docx",
-  "[SI] Mikoyan-Gourevitch MiG-31.docx",
-  "[SI] Moteur Stirling.docx",
-  "[SI] Moteur à détonation rotative.docx",
-  "[SI] Moteur à explosion.docx",
-  "[SI] Moteur-fusée.docx",
-  "[SI] Métaux non ferreux.docx",
-  "[SI] Nano voiture.docx",
-  "[SI] Nanotube de carbone.docx",
-  "[SI] NASA X-43 Scramjet.docx",
-  "[SI] North American P-51 Mustang.docx",
-  "[SI] Northrop B-2 Spirit.docx",
-  "[SI] Observatoire Vera Rubin.docx",
-  "[SI] Oriol.docx",
-  "[SI] Palier lisse, coussinet et rotule.docx",
-  "[SI] Plastiques et élastomères.docx",
-  "[SI] Postcombustion.docx",
-  "[SI] Poussée vectorielle.docx",
-  "[SI] Propulseur magnétoplasmadynamique.docx",
-  "[SI] Propulseur à effet Hall (ionique).docx",
-  "[SI] Propulsion magnéto-plasmique à impulsion spécifique variable.docx",
-  "[SI] Propulsion magnéto-plasmique.docx",
-  "[SI] Qubits d'antimatière.docx",
-  "[SI] Radar Nostradamus.docx",
-  "[SI] Radar.docx",
-  "[SI] Rdm.docx",
-  "[SI] Roulements.docx",
-  "[SI] Réacteur nucléaire.docx",
-  "[SI] Soudage.docx",
-  "[SI] Soukhoï Su-34.docx",
-  "[SI] Soukhoï Su-37.docx",
-  "[SI] Soukhoï Su-47 Berkut.docx",
-  "[SI] Soukhoï Su-57.docx",
-  "[SI] Soukhoï Su-75.docx",
-  "[SI] Soyouz.docx",
-  "[SI] Supermarine Seafire.docx",
-  "[SI] Supermarine Spitfire.docx",
-  "[SI] Symbole schéma, unités et normes.docx",
-  "[SI] Système de combat aérien du futur SCAF.docx",
-  "[SI] Train d'engrenage.docx",
-  "[SI] Traitement thermique.docx",
-  "[SI] Traitements de surface.docx",
-  "[SI] Télescope géant européen (ELT).docx",
-  "[SI] V-MAX.docx",
-  "[SI] Variateur de vitesse mécanique.docx",
-  "[SI] Vis d'Archimède.docx",
-  "[SI] VORTEX (Véhicule Orbital Réutilisable de Transport et d’Exploration).docx",
-  "[SI] Vérins.docx",
-  "[SI] Winglets.docx"
+  {
+    "filename": "[SI] Accouplement, embrayage et frein.docx",
+    "title": "Accouplement, embrayage et frein",
+    "path": "SI/[SI] Accouplement, embrayage et frein.docx",
+    "mtime": "2026-08-30T20:46:44.647146",
+    "size": 5839993
+  },
+  {
+    "filename": "[SI] Accélérateur MHD.docx",
+    "title": "Accélérateur MHD",
+    "path": "SI/[SI] Accélérateur MHD.docx",
+    "mtime": "2026-08-30T20:46:44.650146",
+    "size": 199526
+  },
+  {
+    "filename": "[SI] Aciers et fontes.docx",
+    "title": "Aciers et fontes",
+    "path": "SI/[SI] Aciers et fontes.docx",
+    "mtime": "2026-08-30T20:46:44.665146",
+    "size": 3109630
+  },
+  {
+    "filename": "[SI] Antenne MIMO.docx",
+    "title": "Antenne MIMO",
+    "path": "SI/[SI] Antenne MIMO.docx",
+    "mtime": "2026-08-30T20:46:44.667146",
+    "size": 205576
+  },
+  {
+    "filename": "[SI] Antenne plasma.docx",
+    "title": "Antenne plasma",
+    "path": "SI/[SI] Antenne plasma.docx",
+    "mtime": "2026-08-30T20:46:44.667146",
+    "size": 43138
+  },
+  {
+    "filename": "[SI] Antenne réseau à commande de phase.docx",
+    "title": "Antenne réseau à commande de phase",
+    "path": "SI/[SI] Antenne réseau à commande de phase.docx",
+    "mtime": "2026-08-30T20:46:44.673146",
+    "size": 1093085
+  },
+  {
+    "filename": "[SI] Antenne.docx",
+    "title": "Antenne",
+    "path": "SI/[SI] Antenne.docx",
+    "mtime": "2026-08-30T20:46:44.679146",
+    "size": 1128218
+  },
+  {
+    "filename": "[SI] Asservissement, régulation et automatique.docx",
+    "title": "Asservissement, régulation et automatique",
+    "path": "SI/[SI] Asservissement, régulation et automatique.docx",
+    "mtime": "2026-08-30T20:46:44.736145",
+    "size": 11013734
+  },
+  {
+    "filename": "[SI] Aérofrein.docx",
+    "title": "Aérofrein",
+    "path": "SI/[SI] Aérofrein.docx",
+    "mtime": "2026-08-30T20:46:44.738146",
+    "size": 137470
+  },
+  {
+    "filename": "[SI] Aérofreinage.docx",
+    "title": "Aérofreinage",
+    "path": "SI/[SI] Aérofreinage.docx",
+    "mtime": "2026-08-30T20:46:44.738146",
+    "size": 186847
+  },
+  {
+    "filename": "[SI] Ballute.docx",
+    "title": "Ballute",
+    "path": "SI/[SI] Ballute.docx",
+    "mtime": "2026-08-30T20:46:44.739146",
+    "size": 56022
+  },
+  {
+    "filename": "[SI] Boite de vitesses.docx",
+    "title": "Boite de vitesses",
+    "path": "SI/[SI] Boite de vitesses.docx",
+    "mtime": "2026-08-30T20:46:44.740146",
+    "size": 748941
+  },
+  {
+    "filename": "[SI] Breguet Atlantic.docx",
+    "title": "Breguet Atlantic",
+    "path": "SI/[SI] Breguet Atlantic.docx",
+    "mtime": "2026-08-30T20:46:44.741146",
+    "size": 152715
+  },
+  {
+    "filename": "[SI] Caméra LSST.docx",
+    "title": "Caméra LSST",
+    "path": "SI/[SI] Caméra LSST.docx",
+    "mtime": "2026-08-30T20:46:44.743145",
+    "size": 305983
+  },
+  {
+    "filename": "[SI] Courroie et chaine.docx",
+    "title": "Courroie et chaine",
+    "path": "SI/[SI] Courroie et chaine.docx",
+    "mtime": "2026-08-30T20:46:44.761145",
+    "size": 3773235
+  },
+  {
+    "filename": "[SI] Crew Dragon.docx",
+    "title": "Crew Dragon",
+    "path": "SI/[SI] Crew Dragon.docx",
+    "mtime": "2026-08-30T20:46:44.809145",
+    "size": 8419091
+  },
+  {
+    "filename": "[SI] Cryptographie.docx",
+    "title": "Cryptographie",
+    "path": "SI/[SI] Cryptographie.docx",
+    "mtime": "2026-08-30T20:46:44.810145",
+    "size": 371598
+  },
+  {
+    "filename": "[SI] Dassault Breguet  Dornier Alpha Jet.docx",
+    "title": "Dassault Breguet  Dornier Alpha Jet",
+    "path": "SI/[SI] Dassault Breguet  Dornier Alpha Jet.docx",
+    "mtime": "2026-08-30T20:46:44.811145",
+    "size": 143787
+  },
+  {
+    "filename": "[SI] Dassault Mirage 2000.docx",
+    "title": "Dassault Mirage 2000",
+    "path": "SI/[SI] Dassault Mirage 2000.docx",
+    "mtime": "2026-08-30T20:46:44.818145",
+    "size": 1827398
+  },
+  {
+    "filename": "[SI] Dassault Mirage 5.docx",
+    "title": "Dassault Mirage 5",
+    "path": "SI/[SI] Dassault Mirage 5.docx",
+    "mtime": "2026-08-30T20:46:44.819145",
+    "size": 110553
+  },
+  {
+    "filename": "[SI] Dassault Mirage G.docx",
+    "title": "Dassault Mirage G",
+    "path": "SI/[SI] Dassault Mirage G.docx",
+    "mtime": "2026-08-30T20:46:44.819145",
+    "size": 303535
+  },
+  {
+    "filename": "[SI] Dassault Mystère IV.docx",
+    "title": "Dassault Mystère IV",
+    "path": "SI/[SI] Dassault Mystère IV.docx",
+    "mtime": "2026-08-30T20:46:44.821145",
+    "size": 269364
+  },
+  {
+    "filename": "[SI] Dassault Neuron.docx",
+    "title": "Dassault Neuron",
+    "path": "SI/[SI] Dassault Neuron.docx",
+    "mtime": "2026-08-30T20:46:44.822145",
+    "size": 143771
+  },
+  {
+    "filename": "[SI] Dassault Rafale.docx",
+    "title": "Dassault Rafale",
+    "path": "SI/[SI] Dassault Rafale.docx",
+    "mtime": "2026-08-30T20:46:44.828145",
+    "size": 1472621
+  },
+  {
+    "filename": "[SI] Dureté Vickers.docx",
+    "title": "Dureté Vickers",
+    "path": "SI/[SI] Dureté Vickers.docx",
+    "mtime": "2026-08-30T20:46:44.829145",
+    "size": 129474
+  },
+  {
+    "filename": "[SI] Engrenage.docx",
+    "title": "Engrenage",
+    "path": "SI/[SI] Engrenage.docx",
+    "mtime": "2026-08-30T20:46:44.863145",
+    "size": 7445065
+  },
+  {
+    "filename": "[SI] Essais des matériaux.docx",
+    "title": "Essais des matériaux",
+    "path": "SI/[SI] Essais des matériaux.docx",
+    "mtime": "2026-08-30T20:46:44.889145",
+    "size": 4839070
+  },
+  {
+    "filename": "[SI] Filetage, visserie et boulonnerie.docx",
+    "title": "Filetage, visserie et boulonnerie",
+    "path": "SI/[SI] Filetage, visserie et boulonnerie.docx",
+    "mtime": "2026-08-30T20:46:44.923145",
+    "size": 7529702
+  },
+  {
+    "filename": "[SI] Freins à disque et tambours.docx",
+    "title": "Freins à disque et tambours",
+    "path": "SI/[SI] Freins à disque et tambours.docx",
+    "mtime": "2026-08-30T20:46:44.926145",
+    "size": 251919
+  },
+  {
+    "filename": "[SI] Freins électromagnétiques.docx",
+    "title": "Freins électromagnétiques",
+    "path": "SI/[SI] Freins électromagnétiques.docx",
+    "mtime": "2026-08-30T20:46:44.927145",
+    "size": 110887
+  },
+  {
+    "filename": "[SI] Furtivité.docx",
+    "title": "Furtivité",
+    "path": "SI/[SI] Furtivité.docx",
+    "mtime": "2026-08-30T20:46:44.928144",
+    "size": 217218
+  },
+  {
+    "filename": "[SI] Goupilles, circlips, rivetage, support-butée, cône de fixation.docx",
+    "title": "Goupilles, circlips, rivetage, support-butée, cône de fixation",
+    "path": "SI/[SI] Goupilles, circlips, rivetage, support-butée, cône de fixation.docx",
+    "mtime": "2026-08-30T20:46:44.947144",
+    "size": 4217259
+  },
+  {
+    "filename": "[SI] Grumman F-14 Tomcat.docx",
+    "title": "Grumman F-14 Tomcat",
+    "path": "SI/[SI] Grumman F-14 Tomcat.docx",
+    "mtime": "2026-08-30T20:46:44.950144",
+    "size": 460937
+  },
+  {
+    "filename": "[SI] Hawker Hurricane.docx",
+    "title": "Hawker Hurricane",
+    "path": "SI/[SI] Hawker Hurricane.docx",
+    "mtime": "2026-08-30T20:46:44.951144",
+    "size": 175211
+  },
+  {
+    "filename": "[SI] Hawker Tempest.docx",
+    "title": "Hawker Tempest",
+    "path": "SI/[SI] Hawker Tempest.docx",
+    "mtime": "2026-08-30T20:46:44.952144",
+    "size": 169595
+  },
+  {
+    "filename": "[SI] Hawker Typhoon.docx",
+    "title": "Hawker Typhoon",
+    "path": "SI/[SI] Hawker Typhoon.docx",
+    "mtime": "2026-08-30T20:46:44.952144",
+    "size": 145954
+  },
+  {
+    "filename": "[SI] Horloge atomique.docx",
+    "title": "Horloge atomique",
+    "path": "SI/[SI] Horloge atomique.docx",
+    "mtime": "2026-08-30T20:46:44.953144",
+    "size": 56162
+  },
+  {
+    "filename": "[SI] Intelligence Artificielle.docx",
+    "title": "Intelligence Artificielle",
+    "path": "SI/[SI] Intelligence Artificielle.docx",
+    "mtime": "2026-08-30T20:46:44.959144",
+    "size": 1227886
+  },
+  {
+    "filename": "[SI] Joint d'étanchéité.docx",
+    "title": "Joint d'étanchéité",
+    "path": "SI/[SI] Joint d'étanchéité.docx",
+    "mtime": "2026-08-30T20:46:44.969144",
+    "size": 2249109
+  },
+  {
+    "filename": "[SI] KM3NeT.docx",
+    "title": "KM3NeT",
+    "path": "SI/[SI] KM3NeT.docx",
+    "mtime": "2026-08-30T20:46:44.970144",
+    "size": 154780
+  },
+  {
+    "filename": "[SI] Laser Interferometer Space Antenna LISA.docx",
+    "title": "Laser Interferometer Space Antenna LISA",
+    "path": "SI/[SI] Laser Interferometer Space Antenna LISA.docx",
+    "mtime": "2026-08-30T20:46:44.972144",
+    "size": 542247
+  },
+  {
+    "filename": "[SI] Le Télescope Einstein.docx",
+    "title": "Le Télescope Einstein",
+    "path": "SI/[SI] Le Télescope Einstein.docx",
+    "mtime": "2026-08-30T20:46:44.973144",
+    "size": 319129
+  },
+  {
+    "filename": "[SI] Liaison arbre-moyeu.docx",
+    "title": "Liaison arbre-moyeu",
+    "path": "SI/[SI] Liaison arbre-moyeu.docx",
+    "mtime": "2026-08-30T20:46:44.986144",
+    "size": 2703494
+  },
+  {
+    "filename": "[SI] Liaison glissière.docx",
+    "title": "Liaison glissière",
+    "path": "SI/[SI] Liaison glissière.docx",
+    "mtime": "2026-08-30T20:46:45.004144",
+    "size": 4786338
+  },
+  {
+    "filename": "[SI] Liaison élastique - ressort.docx",
+    "title": "Liaison élastique - ressort",
+    "path": "SI/[SI] Liaison élastique - ressort.docx",
+    "mtime": "2026-08-30T20:46:45.021144",
+    "size": 3960514
+  },
+  {
+    "filename": "[SI] Lockheed F-117 Nighthawk.docx",
+    "title": "Lockheed F-117 Nighthawk",
+    "path": "SI/[SI] Lockheed F-117 Nighthawk.docx",
+    "mtime": "2026-08-30T20:46:45.023144",
+    "size": 230618
+  },
+  {
+    "filename": "[SI] Matériaux ferreux.docx",
+    "title": "Matériaux ferreux",
+    "path": "SI/[SI] Matériaux ferreux.docx",
+    "mtime": "2026-08-30T20:46:45.038144",
+    "size": 3057661
+  },
+  {
+    "filename": "[SI] Matériaux.docx",
+    "title": "Matériaux",
+    "path": "SI/[SI] Matériaux.docx",
+    "mtime": "2026-08-30T20:46:45.055144",
+    "size": 3805810
+  },
+  {
+    "filename": "[SI] McDonnell Douglas F-15 Eagle.docx",
+    "title": "McDonnell Douglas F-15 Eagle",
+    "path": "SI/[SI] McDonnell Douglas F-15 Eagle.docx",
+    "mtime": "2026-08-30T20:46:45.057144",
+    "size": 190093
+  },
+  {
+    "filename": "[SI] Microscope à effet tunnel.docx",
+    "title": "Microscope à effet tunnel",
+    "path": "SI/[SI] Microscope à effet tunnel.docx",
+    "mtime": "2026-08-30T20:46:45.057144",
+    "size": 41036
+  },
+  {
+    "filename": "[SI] Mikoyan-Gourevitch MiG-105.docx",
+    "title": "Mikoyan-Gourevitch MiG-105",
+    "path": "SI/[SI] Mikoyan-Gourevitch MiG-105.docx",
+    "mtime": "2026-08-30T20:46:45.058144",
+    "size": 199332
+  },
+  {
+    "filename": "[SI] Mikoyan-Gourevitch MiG-23.docx",
+    "title": "Mikoyan-Gourevitch MiG-23",
+    "path": "SI/[SI] Mikoyan-Gourevitch MiG-23.docx",
+    "mtime": "2026-08-30T20:46:45.059144",
+    "size": 234027
+  },
+  {
+    "filename": "[SI] Mikoyan-Gourevitch MiG-31.docx",
+    "title": "Mikoyan-Gourevitch MiG-31",
+    "path": "SI/[SI] Mikoyan-Gourevitch MiG-31.docx",
+    "mtime": "2026-08-30T20:46:45.060144",
+    "size": 252639
+  },
+  {
+    "filename": "[SI] Moteur Stirling.docx",
+    "title": "Moteur Stirling",
+    "path": "SI/[SI] Moteur Stirling.docx",
+    "mtime": "2026-08-30T20:46:45.077144",
+    "size": 3822610
+  },
+  {
+    "filename": "[SI] Moteur à détonation rotative.docx",
+    "title": "Moteur à détonation rotative",
+    "path": "SI/[SI] Moteur à détonation rotative.docx",
+    "mtime": "2026-08-30T20:46:45.079144",
+    "size": 172365
+  },
+  {
+    "filename": "[SI] Moteur à explosion.docx",
+    "title": "Moteur à explosion",
+    "path": "SI/[SI] Moteur à explosion.docx",
+    "mtime": "2026-08-30T20:46:45.088144",
+    "size": 1812880
+  },
+  {
+    "filename": "[SI] Moteur-fusée.docx",
+    "title": "Moteur-fusée",
+    "path": "SI/[SI] Moteur-fusée.docx",
+    "mtime": "2026-08-30T20:46:45.092144",
+    "size": 651721
+  },
+  {
+    "filename": "[SI] Métaux non ferreux.docx",
+    "title": "Métaux non ferreux",
+    "path": "SI/[SI] Métaux non ferreux.docx",
+    "mtime": "2026-08-30T20:46:45.107143",
+    "size": 3037995
+  },
+  {
+    "filename": "[SI] NASA X-43 Scramjet.docx",
+    "title": "NASA X-43 Scramjet",
+    "path": "SI/[SI] NASA X-43 Scramjet.docx",
+    "mtime": "2026-08-30T20:46:45.108143",
+    "size": 142422
+  },
+  {
+    "filename": "[SI] Nano voiture.docx",
+    "title": "Nano voiture",
+    "path": "SI/[SI] Nano voiture.docx",
+    "mtime": "2026-08-30T20:46:45.109143",
+    "size": 33021
+  },
+  {
+    "filename": "[SI] Nanotube de carbone.docx",
+    "title": "Nanotube de carbone",
+    "path": "SI/[SI] Nanotube de carbone.docx",
+    "mtime": "2026-08-30T20:46:45.110143",
+    "size": 178867
+  },
+  {
+    "filename": "[SI] North American P-51 Mustang.docx",
+    "title": "North American P-51 Mustang",
+    "path": "SI/[SI] North American P-51 Mustang.docx",
+    "mtime": "2026-08-30T20:46:45.111143",
+    "size": 316219
+  },
+  {
+    "filename": "[SI] Northrop B-2 Spirit.docx",
+    "title": "Northrop B-2 Spirit",
+    "path": "SI/[SI] Northrop B-2 Spirit.docx",
+    "mtime": "2026-08-30T20:46:45.113143",
+    "size": 448540
+  },
+  {
+    "filename": "[SI] Observatoire Vera Rubin.docx",
+    "title": "Observatoire Vera Rubin",
+    "path": "SI/[SI] Observatoire Vera Rubin.docx",
+    "mtime": "2026-08-30T20:46:45.120143",
+    "size": 1821650
+  },
+  {
+    "filename": "[SI] Oriol.docx",
+    "title": "Oriol",
+    "path": "SI/[SI] Oriol.docx",
+    "mtime": "2026-08-30T20:46:45.123143",
+    "size": 639470
+  },
+  {
+    "filename": "[SI] Palier lisse, coussinet et rotule.docx",
+    "title": "Palier lisse, coussinet et rotule",
+    "path": "SI/[SI] Palier lisse, coussinet et rotule.docx",
+    "mtime": "2026-08-30T20:46:45.135143",
+    "size": 3492443
+  },
+  {
+    "filename": "[SI] Plastiques et élastomères.docx",
+    "title": "Plastiques et élastomères",
+    "path": "SI/[SI] Plastiques et élastomères.docx",
+    "mtime": "2026-08-30T20:46:45.151143",
+    "size": 3010212
+  },
+  {
+    "filename": "[SI] Postcombustion.docx",
+    "title": "Postcombustion",
+    "path": "SI/[SI] Postcombustion.docx",
+    "mtime": "2026-08-30T20:46:45.153143",
+    "size": 173475
+  },
+  {
+    "filename": "[SI] Poussée vectorielle.docx",
+    "title": "Poussée vectorielle",
+    "path": "SI/[SI] Poussée vectorielle.docx",
+    "mtime": "2026-08-30T20:46:45.153143",
+    "size": 61695
+  },
+  {
+    "filename": "[SI] Propulseur magnétoplasmadynamique.docx",
+    "title": "Propulseur magnétoplasmadynamique",
+    "path": "SI/[SI] Propulseur magnétoplasmadynamique.docx",
+    "mtime": "2026-08-30T20:46:45.154143",
+    "size": 41883
+  },
+  {
+    "filename": "[SI] Propulseur à effet Hall (ionique).docx",
+    "title": "Propulseur à effet Hall (ionique)",
+    "path": "SI/[SI] Propulseur à effet Hall (ionique).docx",
+    "mtime": "2026-08-30T20:46:45.155143",
+    "size": 179932
+  },
+  {
+    "filename": "[SI] Propulsion magnéto-plasmique à impulsion spécifique variable.docx",
+    "title": "Propulsion magnéto-plasmique à impulsion spécifique variable",
+    "path": "SI/[SI] Propulsion magnéto-plasmique à impulsion spécifique variable.docx",
+    "mtime": "2026-08-30T20:46:45.156143",
+    "size": 241868
+  },
+  {
+    "filename": "[SI] Propulsion magnéto-plasmique.docx",
+    "title": "Propulsion magnéto-plasmique",
+    "path": "SI/[SI] Propulsion magnéto-plasmique.docx",
+    "mtime": "2026-08-30T20:46:45.156143",
+    "size": 60140
+  },
+  {
+    "filename": "[SI] Qubits d'antimatière.docx",
+    "title": "Qubits d'antimatière",
+    "path": "SI/[SI] Qubits d'antimatière.docx",
+    "mtime": "2026-08-30T20:46:45.156143",
+    "size": 42743
+  },
+  {
+    "filename": "[SI] Radar Nostradamus.docx",
+    "title": "Radar Nostradamus",
+    "path": "SI/[SI] Radar Nostradamus.docx",
+    "mtime": "2026-08-30T20:46:45.157143",
+    "size": 48689
+  },
+  {
+    "filename": "[SI] Radar.docx",
+    "title": "Radar",
+    "path": "SI/[SI] Radar.docx",
+    "mtime": "2026-08-30T20:46:45.169143",
+    "size": 3952544
+  },
+  {
+    "filename": "[SI] Rdm.docx",
+    "title": "Rdm",
+    "path": "SI/[SI] Rdm.docx",
+    "mtime": "2026-08-30T20:46:45.192143",
+    "size": 5783113
+  },
+  {
+    "filename": "[SI] Roulements.docx",
+    "title": "Roulements",
+    "path": "SI/[SI] Roulements.docx",
+    "mtime": "2026-08-30T20:46:45.264143",
+    "size": 15450515
+  },
+  {
+    "filename": "[SI] Réacteur nucléaire.docx",
+    "title": "Réacteur nucléaire",
+    "path": "SI/[SI] Réacteur nucléaire.docx",
+    "mtime": "2026-08-30T20:46:45.268142",
+    "size": 289764
+  },
+  {
+    "filename": "[SI] Soudage.docx",
+    "title": "Soudage",
+    "path": "SI/[SI] Soudage.docx",
+    "mtime": "2026-08-30T20:46:45.301142",
+    "size": 7582628
+  },
+  {
+    "filename": "[SI] Soukhoï Su-34.docx",
+    "title": "Soukhoï Su-34",
+    "path": "SI/[SI] Soukhoï Su-34.docx",
+    "mtime": "2026-08-30T20:46:45.304142",
+    "size": 238978
+  },
+  {
+    "filename": "[SI] Soukhoï Su-37.docx",
+    "title": "Soukhoï Su-37",
+    "path": "SI/[SI] Soukhoï Su-37.docx",
+    "mtime": "2026-08-30T20:46:45.305142",
+    "size": 202543
+  },
+  {
+    "filename": "[SI] Soukhoï Su-47 Berkut.docx",
+    "title": "Soukhoï Su-47 Berkut",
+    "path": "SI/[SI] Soukhoï Su-47 Berkut.docx",
+    "mtime": "2026-08-30T20:46:45.306142",
+    "size": 173832
+  },
+  {
+    "filename": "[SI] Soukhoï Su-57.docx",
+    "title": "Soukhoï Su-57",
+    "path": "SI/[SI] Soukhoï Su-57.docx",
+    "mtime": "2026-08-30T20:46:45.307142",
+    "size": 206444
+  },
+  {
+    "filename": "[SI] Soukhoï Su-75.docx",
+    "title": "Soukhoï Su-75",
+    "path": "SI/[SI] Soukhoï Su-75.docx",
+    "mtime": "2026-08-30T20:46:45.307142",
+    "size": 136738
+  },
+  {
+    "filename": "[SI] Soyouz.docx",
+    "title": "Soyouz",
+    "path": "SI/[SI] Soyouz.docx",
+    "mtime": "2026-08-30T20:46:45.313142",
+    "size": 2439634
+  },
+  {
+    "filename": "[SI] Supermarine Seafire.docx",
+    "title": "Supermarine Seafire",
+    "path": "SI/[SI] Supermarine Seafire.docx",
+    "mtime": "2026-08-30T20:46:45.315142",
+    "size": 187781
+  },
+  {
+    "filename": "[SI] Supermarine Spitfire.docx",
+    "title": "Supermarine Spitfire",
+    "path": "SI/[SI] Supermarine Spitfire.docx",
+    "mtime": "2026-08-30T20:46:45.316142",
+    "size": 197996
+  },
+  {
+    "filename": "[SI] Symbole schéma, unités et normes.docx",
+    "title": "Symbole schéma, unités et normes",
+    "path": "SI/[SI] Symbole schéma, unités et normes.docx",
+    "mtime": "2026-08-30T20:46:45.341142",
+    "size": 5777824
+  },
+  {
+    "filename": "[SI] Système de combat aérien du futur SCAF.docx",
+    "title": "Système de combat aérien du futur SCAF",
+    "path": "SI/[SI] Système de combat aérien du futur SCAF.docx",
+    "mtime": "2026-08-30T20:46:45.344142",
+    "size": 416676
+  },
+  {
+    "filename": "[SI] Train d'engrenage.docx",
+    "title": "Train d'engrenage",
+    "path": "SI/[SI] Train d'engrenage.docx",
+    "mtime": "2026-08-30T20:46:45.352142",
+    "size": 1841842
+  },
+  {
+    "filename": "[SI] Traitement thermique.docx",
+    "title": "Traitement thermique",
+    "path": "SI/[SI] Traitement thermique.docx",
+    "mtime": "2026-08-30T20:46:45.353142",
+    "size": 114083
+  },
+  {
+    "filename": "[SI] Traitements de surface.docx",
+    "title": "Traitements de surface",
+    "path": "SI/[SI] Traitements de surface.docx",
+    "mtime": "2026-08-30T20:46:45.370142",
+    "size": 3312930
+  },
+  {
+    "filename": "[SI] Télescope géant européen (ELT).docx",
+    "title": "Télescope géant européen (ELT)",
+    "path": "SI/[SI] Télescope géant européen (ELT).docx",
+    "mtime": "2026-08-30T20:46:45.372142",
+    "size": 227235
+  },
+  {
+    "filename": "[SI] V-MAX.docx",
+    "title": "V-MAX",
+    "path": "SI/[SI] V-MAX.docx",
+    "mtime": "2026-08-30T20:46:45.372142",
+    "size": 171631
+  },
+  {
+    "filename": "[SI] VORTEX (Véhicule Orbital Réutilisable de Transport et d’Exploration).docx",
+    "title": "VORTEX (Véhicule Orbital Réutilisable de Transport et d’Exploration)",
+    "path": "SI/[SI] VORTEX (Véhicule Orbital Réutilisable de Transport et d’Exploration).docx",
+    "mtime": "2026-08-30T20:46:45.374142",
+    "size": 811383
+  },
+  {
+    "filename": "[SI] Variateur de vitesse mécanique.docx",
+    "title": "Variateur de vitesse mécanique",
+    "path": "SI/[SI] Variateur de vitesse mécanique.docx",
+    "mtime": "2026-08-30T20:46:45.377142",
+    "size": 801700
+  },
+  {
+    "filename": "[SI] Vis d'Archimède.docx",
+    "title": "Vis d'Archimède",
+    "path": "SI/[SI] Vis d'Archimède.docx",
+    "mtime": "2026-08-30T20:46:45.381142",
+    "size": 1154174
+  },
+  {
+    "filename": "[SI] Vérins.docx",
+    "title": "Vérins",
+    "path": "SI/[SI] Vérins.docx",
+    "mtime": "2026-08-30T20:46:45.410142",
+    "size": 5773383
+  },
+  {
+    "filename": "[SI] Winglets.docx",
+    "title": "Winglets",
+    "path": "SI/[SI] Winglets.docx",
+    "mtime": "2026-08-30T20:46:45.412142",
+    "size": 82126
+  },
+  {
+    "filename": "[SI] le Pykrète.docx",
+    "title": "le Pykrète",
+    "path": "SI/[SI] le Pykrète.docx",
+    "mtime": "2026-08-30T20:46:45.412142",
+    "size": 18906
+  },
+  {
+    "filename": "[SI] le Starlite.docx",
+    "title": "le Starlite",
+    "path": "SI/[SI] le Starlite.docx",
+    "mtime": "2026-08-30T20:46:45.412142",
+    "size": 18492
+  }
 ]

@@ -1,9 +1,51 @@
 [
-  "[PERSONNALITE] Alain Aspect.docx",
-  "[PERSONNALITE] Alan Turing.docx",
-  "[PERSONNALITE] Albert Einstein.docx",
-  "[PERSONNALITE] Auguste.docx",
-  "[PERSONNALITE] François Arago.docx",
-  "[PERSONNALITE] Jules César.docx",
-  "[PERSONNALITE] Napoléon Bonaparte.docx"
+  {
+    "filename": "[PERSONNALITE] Alain Aspect.docx",
+    "title": "Alain Aspect",
+    "path": "Personne/[PERSONNALITE] Alain Aspect.docx",
+    "mtime": "2026-08-30T20:46:43.720152",
+    "size": 137148
+  },
+  {
+    "filename": "[PERSONNALITE] Alan Turing.docx",
+    "title": "Alan Turing",
+    "path": "Personne/[PERSONNALITE] Alan Turing.docx",
+    "mtime": "2026-08-30T20:46:43.721152",
+    "size": 259403
+  },
+  {
+    "filename": "[PERSONNALITE] Albert Einstein.docx",
+    "title": "Albert Einstein",
+    "path": "Personne/[PERSONNALITE] Albert Einstein.docx",
+    "mtime": "2026-08-30T20:46:43.722152",
+    "size": 133408
+  },
+  {
+    "filename": "[PERSONNALITE] Auguste.docx",
+    "title": "Auguste",
+    "path": "Personne/[PERSONNALITE] Auguste.docx",
+    "mtime": "2026-08-30T20:46:43.725152",
+    "size": 687321
+  },
+  {
+    "filename": "[PERSONNALITE] François Arago.docx",
+    "title": "François Arago",
+    "path": "Personne/[PERSONNALITE] François Arago.docx",
+    "mtime": "2026-08-30T20:46:43.726151",
+    "size": 78991
+  },
+  {
+    "filename": "[PERSONNALITE] Jules César.docx",
+    "title": "Jules César",
+    "path": "Personne/[PERSONNALITE] Jules César.docx",
+    "mtime": "2026-08-30T20:46:43.733151",
+    "size": 1661018
+  },
+  {
+    "filename": "[PERSONNALITE] Napoléon Bonaparte.docx",
+    "title": "Napoléon Bonaparte",
+    "path": "Personne/[PERSONNALITE] Napoléon Bonaparte.docx",
+    "mtime": "2026-08-30T20:46:43.735152",
+    "size": 364045
+  }
 ]

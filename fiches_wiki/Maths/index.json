@@ -1,82 +1,562 @@
 [
-  "[MATHS] Anneaux et arithmétique.docx",
-  "[MATHS] Application linéaire.docx",
-  "[MATHS] Arithmétique.docx",
-  "[MATHS] Base de la logique.docx",
-  "[MATHS] Calcul algébrique - Somme.docx",
-  "[MATHS] Calcul de primitives et intégrales.docx",
-  "[MATHS] Calcul différentiel.docx",
-  "[MATHS] Calcul matriciel - A FINIR.docx",
-  "[MATHS] Cardioïde.docx",
-  "[MATHS] Clothoïde.docx",
-  "[MATHS] Compacité, connexité par arcs, espaces vectoriels de dimension finie.docx",
-  "[MATHS] Comparaison de suites et de fonctions.docx",
-  "[MATHS] Compléments d'algèbre linéaire.docx",
-  "[MATHS] Conique.docx",
-  "[MATHS] Courbe brachistochrone.docx",
-  "[MATHS] Cycloïde.docx",
-  "[MATHS] Dodécaèdre.docx",
-  "[MATHS] Dénombrement.docx",
-  "[MATHS] Dérivabilité.docx",
-  "[MATHS] Dérivation et intégration des fonctions vectorielles.docx",
-  "[MATHS] Développements limités DL.docx",
-  "[MATHS] Ellipsoïde de révolution.docx",
-  "[MATHS] Endomorphismes des espaces euclidiens.docx",
-  "[MATHS] Ensembles, applications, relations.docx",
-  "[MATHS] Espace vectoriel de dimension finie.docx",
-  "[MATHS] Espace vectoriel.docx",
-  "[MATHS] Espaces probabilisés dénombrables.docx",
-  "[MATHS] Espaces préhilbertiens et euclidiens.docx",
-  "[MATHS] Factorielle.docx",
-  "[MATHS] Familles sommables.docx",
-  "[MATHS] Figure de Chladni.docx",
-  "[MATHS] Fonctions convexes.docx",
-  "[MATHS] Fonctions définies par une intégrale.docx",
-  "[MATHS] Fonctions usuelles.docx",
-  "[MATHS] Fractales.docx",
-  "[MATHS] Fractions rationnelles.docx",
-  "[MATHS] Groupe symétrique et déterminant.docx",
-  "[MATHS] Géodésique.docx",
-  "[MATHS] Icosaèdre.docx",
-  "[MATHS] Intégrale d'une fonction continue sur un segment - A FINIR.docx",
-  "[MATHS] Intégrales généralisées et fonctions intégrables.docx",
-  "[MATHS] Inégalités, valeur absolue, partie entière.docx",
-  "[MATHS] Les ensembles de Nombre.docx",
-  "[MATHS] Les groupes.docx",
-  "[MATHS] Limites et continuité.docx",
-  "[MATHS] Lois de probabilié.docx",
-  "[MATHS] Loxodromie & Orthodromie.docx",
-  "[MATHS] Lunules d'Hippocrate.docx",
-  "[MATHS] Matrice et application linéaire.docx",
-  "[MATHS] Mouvement brownien.docx",
-  "[MATHS] Méthode des éléments finis.docx",
-  "[MATHS] Nombre d'or.docx",
-  "[MATHS] Nombre métallique.docx",
-  "[MATHS] Nombre plastique.docx",
-  "[MATHS] Nombres complexes.docx",
-  "[MATHS] Ovales de Cassini.docx",
-  "[MATHS] Pavage de Penrose.docx",
-  "[MATHS] Pi.docx",
-  "[MATHS] Polynômes d'endomorphismes.docx",
-  "[MATHS] Polynômes à une indéterminée.docx",
-  "[MATHS] Pourquoi on ne peut pas diviser par zéro.docx",
-  "[MATHS] Probabilités sur un univers fini.docx",
-  "[MATHS] Quadrature du cercle.docx",
-  "[MATHS] Ruban de Möbius.docx",
-  "[MATHS] Réduction des endomorphismes.docx",
-  "[MATHS] Scutoide.docx",
-  "[MATHS] Spirale d'Euler.docx",
-  "[MATHS] Suites de nombres réels ou complexes.docx",
-  "[MATHS] Suites et séries de fonction.docx",
-  "[MATHS] Systèmes linéaires.docx",
-  "[MATHS] Séries numériques.docx",
-  "[MATHS] Séries vectorielles et numériques.docx",
-  "[MATHS] Topologie des espaces vectoriels normés.docx",
-  "[MATHS] Transformée de Fourier.docx",
-  "[MATHS] Transformée de Laplace.docx",
-  "[MATHS] Trigonométrie.docx",
-  "[MATHS] Variable aléatoire finie.docx",
-  "[MATHS] Variables aléatoires discrètes.docx",
-  "[MATHS] Équations différentielles linéaires.docx",
-  "[MATHS] Équations différentielles.docx"
+  {
+    "filename": "[MATHS] Anneaux et arithmétique.docx",
+    "title": "Anneaux et arithmétique",
+    "path": "Maths/[MATHS] Anneaux et arithmétique.docx",
+    "mtime": "2026-08-30T20:46:43.063155",
+    "size": 3433381
+  },
+  {
+    "filename": "[MATHS] Application linéaire.docx",
+    "title": "Application linéaire",
+    "path": "Maths/[MATHS] Application linéaire.docx",
+    "mtime": "2026-08-30T20:46:43.078155",
+    "size": 2739127
+  },
+  {
+    "filename": "[MATHS] Arithmétique.docx",
+    "title": "Arithmétique",
+    "path": "Maths/[MATHS] Arithmétique.docx",
+    "mtime": "2026-08-30T20:46:43.083155",
+    "size": 915638
+  },
+  {
+    "filename": "[MATHS] Base de la logique.docx",
+    "title": "Base de la logique",
+    "path": "Maths/[MATHS] Base de la logique.docx",
+    "mtime": "2026-08-30T20:46:43.087155",
+    "size": 706057
+  },
+  {
+    "filename": "[MATHS] Calcul algébrique - Somme.docx",
+    "title": "Calcul algébrique - Somme",
+    "path": "Maths/[MATHS] Calcul algébrique - Somme.docx",
+    "mtime": "2026-08-30T20:46:43.089155",
+    "size": 400912
+  },
+  {
+    "filename": "[MATHS] Calcul de primitives et intégrales.docx",
+    "title": "Calcul de primitives et intégrales",
+    "path": "Maths/[MATHS] Calcul de primitives et intégrales.docx",
+    "mtime": "2026-08-30T20:46:43.097155",
+    "size": 1414061
+  },
+  {
+    "filename": "[MATHS] Calcul différentiel.docx",
+    "title": "Calcul différentiel",
+    "path": "Maths/[MATHS] Calcul différentiel.docx",
+    "mtime": "2026-08-30T20:46:43.110155",
+    "size": 2610503
+  },
+  {
+    "filename": "[MATHS] Calcul matriciel - A FINIR.docx",
+    "title": "Calcul matriciel - A FINIR",
+    "path": "Maths/[MATHS] Calcul matriciel - A FINIR.docx",
+    "mtime": "2026-08-30T20:46:43.118155",
+    "size": 1333842
+  },
+  {
+    "filename": "[MATHS] Cardioïde.docx",
+    "title": "Cardioïde",
+    "path": "Maths/[MATHS] Cardioïde.docx",
+    "mtime": "2026-08-30T20:46:43.119155",
+    "size": 61314
+  },
+  {
+    "filename": "[MATHS] Clothoïde.docx",
+    "title": "Clothoïde",
+    "path": "Maths/[MATHS] Clothoïde.docx",
+    "mtime": "2026-08-30T20:46:43.120155",
+    "size": 241399
+  },
+  {
+    "filename": "[MATHS] Compacité, connexité par arcs, espaces vectoriels de dimension finie.docx",
+    "title": "Compacité, connexité par arcs, espaces vectoriels de dimension finie",
+    "path": "Maths/[MATHS] Compacité, connexité par arcs, espaces vectoriels de dimension finie.docx",
+    "mtime": "2026-08-30T20:46:43.127155",
+    "size": 1431188
+  },
+  {
+    "filename": "[MATHS] Comparaison de suites et de fonctions.docx",
+    "title": "Comparaison de suites et de fonctions",
+    "path": "Maths/[MATHS] Comparaison de suites et de fonctions.docx",
+    "mtime": "2026-08-30T20:46:43.131155",
+    "size": 708419
+  },
+  {
+    "filename": "[MATHS] Compléments d'algèbre linéaire.docx",
+    "title": "Compléments d'algèbre linéaire",
+    "path": "Maths/[MATHS] Compléments d'algèbre linéaire.docx",
+    "mtime": "2026-08-30T20:46:43.139155",
+    "size": 1436251
+  },
+  {
+    "filename": "[MATHS] Conique.docx",
+    "title": "Conique",
+    "path": "Maths/[MATHS] Conique.docx",
+    "mtime": "2026-08-30T20:46:43.140155",
+    "size": 174034
+  },
+  {
+    "filename": "[MATHS] Courbe brachistochrone.docx",
+    "title": "Courbe brachistochrone",
+    "path": "Maths/[MATHS] Courbe brachistochrone.docx",
+    "mtime": "2026-08-30T20:46:43.141155",
+    "size": 104085
+  },
+  {
+    "filename": "[MATHS] Cycloïde.docx",
+    "title": "Cycloïde",
+    "path": "Maths/[MATHS] Cycloïde.docx",
+    "mtime": "2026-08-30T20:46:43.145155",
+    "size": 1063914
+  },
+  {
+    "filename": "[MATHS] Dodécaèdre.docx",
+    "title": "Dodécaèdre",
+    "path": "Maths/[MATHS] Dodécaèdre.docx",
+    "mtime": "2026-08-30T20:46:43.146155",
+    "size": 387088
+  },
+  {
+    "filename": "[MATHS] Dénombrement.docx",
+    "title": "Dénombrement",
+    "path": "Maths/[MATHS] Dénombrement.docx",
+    "mtime": "2026-08-30T20:46:43.153155",
+    "size": 1196851
+  },
+  {
+    "filename": "[MATHS] Dérivabilité.docx",
+    "title": "Dérivabilité",
+    "path": "Maths/[MATHS] Dérivabilité.docx",
+    "mtime": "2026-08-30T20:46:43.161155",
+    "size": 1622718
+  },
+  {
+    "filename": "[MATHS] Dérivation et intégration des fonctions vectorielles.docx",
+    "title": "Dérivation et intégration des fonctions vectorielles",
+    "path": "Maths/[MATHS] Dérivation et intégration des fonctions vectorielles.docx",
+    "mtime": "2026-08-30T20:46:43.179155",
+    "size": 3467478
+  },
+  {
+    "filename": "[MATHS] Développements limités DL.docx",
+    "title": "Développements limités DL",
+    "path": "Maths/[MATHS] Développements limités DL.docx",
+    "mtime": "2026-08-30T20:46:43.186155",
+    "size": 1236143
+  },
+  {
+    "filename": "[MATHS] Ellipsoïde de révolution.docx",
+    "title": "Ellipsoïde de révolution",
+    "path": "Maths/[MATHS] Ellipsoïde de révolution.docx",
+    "mtime": "2026-08-30T20:46:43.187155",
+    "size": 133755
+  },
+  {
+    "filename": "[MATHS] Endomorphismes des espaces euclidiens.docx",
+    "title": "Endomorphismes des espaces euclidiens",
+    "path": "Maths/[MATHS] Endomorphismes des espaces euclidiens.docx",
+    "mtime": "2026-08-30T20:46:43.202155",
+    "size": 3063768
+  },
+  {
+    "filename": "[MATHS] Ensembles, applications, relations.docx",
+    "title": "Ensembles, applications, relations",
+    "path": "Maths/[MATHS] Ensembles, applications, relations.docx",
+    "mtime": "2026-08-30T20:46:43.207155",
+    "size": 882460
+  },
+  {
+    "filename": "[MATHS] Espace vectoriel de dimension finie.docx",
+    "title": "Espace vectoriel de dimension finie",
+    "path": "Maths/[MATHS] Espace vectoriel de dimension finie.docx",
+    "mtime": "2026-08-30T20:46:43.226155",
+    "size": 3657088
+  },
+  {
+    "filename": "[MATHS] Espace vectoriel.docx",
+    "title": "Espace vectoriel",
+    "path": "Maths/[MATHS] Espace vectoriel.docx",
+    "mtime": "2026-08-30T20:46:43.236154",
+    "size": 1718816
+  },
+  {
+    "filename": "[MATHS] Espaces probabilisés dénombrables.docx",
+    "title": "Espaces probabilisés dénombrables",
+    "path": "Maths/[MATHS] Espaces probabilisés dénombrables.docx",
+    "mtime": "2026-08-30T20:46:43.242154",
+    "size": 1092799
+  },
+  {
+    "filename": "[MATHS] Espaces préhilbertiens et euclidiens.docx",
+    "title": "Espaces préhilbertiens et euclidiens",
+    "path": "Maths/[MATHS] Espaces préhilbertiens et euclidiens.docx",
+    "mtime": "2026-08-30T20:46:43.267154",
+    "size": 4653352
+  },
+  {
+    "filename": "[MATHS] Factorielle.docx",
+    "title": "Factorielle",
+    "path": "Maths/[MATHS] Factorielle.docx",
+    "mtime": "2026-08-30T20:46:43.270154",
+    "size": 155727
+  },
+  {
+    "filename": "[MATHS] Familles sommables.docx",
+    "title": "Familles sommables",
+    "path": "Maths/[MATHS] Familles sommables.docx",
+    "mtime": "2026-08-30T20:46:43.274154",
+    "size": 836725
+  },
+  {
+    "filename": "[MATHS] Figure de Chladni.docx",
+    "title": "Figure de Chladni",
+    "path": "Maths/[MATHS] Figure de Chladni.docx",
+    "mtime": "2026-08-30T20:46:43.276154",
+    "size": 230369
+  },
+  {
+    "filename": "[MATHS] Fonctions convexes.docx",
+    "title": "Fonctions convexes",
+    "path": "Maths/[MATHS] Fonctions convexes.docx",
+    "mtime": "2026-08-30T20:46:43.281154",
+    "size": 977815
+  },
+  {
+    "filename": "[MATHS] Fonctions définies par une intégrale.docx",
+    "title": "Fonctions définies par une intégrale",
+    "path": "Maths/[MATHS] Fonctions définies par une intégrale.docx",
+    "mtime": "2026-08-30T20:46:43.308154",
+    "size": 5194979
+  },
+  {
+    "filename": "[MATHS] Fonctions usuelles.docx",
+    "title": "Fonctions usuelles",
+    "path": "Maths/[MATHS] Fonctions usuelles.docx",
+    "mtime": "2026-08-30T20:46:43.320154",
+    "size": 2006440
+  },
+  {
+    "filename": "[MATHS] Fractales.docx",
+    "title": "Fractales",
+    "path": "Maths/[MATHS] Fractales.docx",
+    "mtime": "2026-08-30T20:46:43.325154",
+    "size": 1272190
+  },
+  {
+    "filename": "[MATHS] Fractions rationnelles.docx",
+    "title": "Fractions rationnelles",
+    "path": "Maths/[MATHS] Fractions rationnelles.docx",
+    "mtime": "2026-08-30T20:46:43.329154",
+    "size": 732648
+  },
+  {
+    "filename": "[MATHS] Groupe symétrique et déterminant.docx",
+    "title": "Groupe symétrique et déterminant",
+    "path": "Maths/[MATHS] Groupe symétrique et déterminant.docx",
+    "mtime": "2026-08-30T20:46:43.340154",
+    "size": 2302585
+  },
+  {
+    "filename": "[MATHS] Géodésique.docx",
+    "title": "Géodésique",
+    "path": "Maths/[MATHS] Géodésique.docx",
+    "mtime": "2026-08-30T20:46:43.351154",
+    "size": 2081876
+  },
+  {
+    "filename": "[MATHS] Icosaèdre.docx",
+    "title": "Icosaèdre",
+    "path": "Maths/[MATHS] Icosaèdre.docx",
+    "mtime": "2026-08-30T20:46:43.375154",
+    "size": 4522516
+  },
+  {
+    "filename": "[MATHS] Intégrale d'une fonction continue sur un segment - A FINIR.docx",
+    "title": "Intégrale d'une fonction continue sur un segment - A FINIR",
+    "path": "Maths/[MATHS] Intégrale d'une fonction continue sur un segment - A FINIR.docx",
+    "mtime": "2026-08-30T20:46:43.380154",
+    "size": 682582
+  },
+  {
+    "filename": "[MATHS] Intégrales généralisées et fonctions intégrables.docx",
+    "title": "Intégrales généralisées et fonctions intégrables",
+    "path": "Maths/[MATHS] Intégrales généralisées et fonctions intégrables.docx",
+    "mtime": "2026-08-30T20:46:43.393153",
+    "size": 2483818
+  },
+  {
+    "filename": "[MATHS] Inégalités, valeur absolue, partie entière.docx",
+    "title": "Inégalités, valeur absolue, partie entière",
+    "path": "Maths/[MATHS] Inégalités, valeur absolue, partie entière.docx",
+    "mtime": "2026-08-30T20:46:43.397153",
+    "size": 721492
+  },
+  {
+    "filename": "[MATHS] Les ensembles de Nombre.docx",
+    "title": "Les ensembles de Nombre",
+    "path": "Maths/[MATHS] Les ensembles de Nombre.docx",
+    "mtime": "2026-08-30T20:46:43.400153",
+    "size": 551761
+  },
+  {
+    "filename": "[MATHS] Les groupes.docx",
+    "title": "Les groupes",
+    "path": "Maths/[MATHS] Les groupes.docx",
+    "mtime": "2026-08-30T20:46:43.412153",
+    "size": 2471279
+  },
+  {
+    "filename": "[MATHS] Limites et continuité.docx",
+    "title": "Limites et continuité",
+    "path": "Maths/[MATHS] Limites et continuité.docx",
+    "mtime": "2026-08-30T20:46:43.422153",
+    "size": 1904310
+  },
+  {
+    "filename": "[MATHS] Lois de probabilié.docx",
+    "title": "Lois de probabilié",
+    "path": "Maths/[MATHS] Lois de probabilié.docx",
+    "mtime": "2026-08-30T20:46:43.438153",
+    "size": 2953712
+  },
+  {
+    "filename": "[MATHS] Loxodromie & Orthodromie.docx",
+    "title": "Loxodromie & Orthodromie",
+    "path": "Maths/[MATHS] Loxodromie & Orthodromie.docx",
+    "mtime": "2026-08-30T20:46:43.440153",
+    "size": 292490
+  },
+  {
+    "filename": "[MATHS] Lunules d'Hippocrate.docx",
+    "title": "Lunules d'Hippocrate",
+    "path": "Maths/[MATHS] Lunules d'Hippocrate.docx",
+    "mtime": "2026-08-30T20:46:43.441153",
+    "size": 204210
+  },
+  {
+    "filename": "[MATHS] Matrice et application linéaire.docx",
+    "title": "Matrice et application linéaire",
+    "path": "Maths/[MATHS] Matrice et application linéaire.docx",
+    "mtime": "2026-08-30T20:46:43.453153",
+    "size": 2471427
+  },
+  {
+    "filename": "[MATHS] Mouvement brownien.docx",
+    "title": "Mouvement brownien",
+    "path": "Maths/[MATHS] Mouvement brownien.docx",
+    "mtime": "2026-08-30T20:46:43.463153",
+    "size": 1692429
+  },
+  {
+    "filename": "[MATHS] Méthode des éléments finis.docx",
+    "title": "Méthode des éléments finis",
+    "path": "Maths/[MATHS] Méthode des éléments finis.docx",
+    "mtime": "2026-08-30T20:46:43.465153",
+    "size": 405381
+  },
+  {
+    "filename": "[MATHS] Nombre d'or.docx",
+    "title": "Nombre d'or",
+    "path": "Maths/[MATHS] Nombre d'or.docx",
+    "mtime": "2026-08-30T20:46:43.468153",
+    "size": 414032
+  },
+  {
+    "filename": "[MATHS] Nombre métallique.docx",
+    "title": "Nombre métallique",
+    "path": "Maths/[MATHS] Nombre métallique.docx",
+    "mtime": "2026-08-30T20:46:43.468153",
+    "size": 132586
+  },
+  {
+    "filename": "[MATHS] Nombre plastique.docx",
+    "title": "Nombre plastique",
+    "path": "Maths/[MATHS] Nombre plastique.docx",
+    "mtime": "2026-08-30T20:46:43.469153",
+    "size": 126294
+  },
+  {
+    "filename": "[MATHS] Nombres complexes.docx",
+    "title": "Nombres complexes",
+    "path": "Maths/[MATHS] Nombres complexes.docx",
+    "mtime": "2026-08-30T20:46:43.481153",
+    "size": 2347213
+  },
+  {
+    "filename": "[MATHS] Ovales de Cassini.docx",
+    "title": "Ovales de Cassini",
+    "path": "Maths/[MATHS] Ovales de Cassini.docx",
+    "mtime": "2026-08-30T20:46:43.482153",
+    "size": 40919
+  },
+  {
+    "filename": "[MATHS] Pavage de Penrose.docx",
+    "title": "Pavage de Penrose",
+    "path": "Maths/[MATHS] Pavage de Penrose.docx",
+    "mtime": "2026-08-30T20:46:43.487153",
+    "size": 1164145
+  },
+  {
+    "filename": "[MATHS] Pi.docx",
+    "title": "Pi",
+    "path": "Maths/[MATHS] Pi.docx",
+    "mtime": "2026-08-30T20:46:43.489153",
+    "size": 356577
+  },
+  {
+    "filename": "[MATHS] Polynômes d'endomorphismes.docx",
+    "title": "Polynômes d'endomorphismes",
+    "path": "Maths/[MATHS] Polynômes d'endomorphismes.docx",
+    "mtime": "2026-08-30T20:46:43.499153",
+    "size": 1981939
+  },
+  {
+    "filename": "[MATHS] Polynômes à une indéterminée.docx",
+    "title": "Polynômes à une indéterminée",
+    "path": "Maths/[MATHS] Polynômes à une indéterminée.docx",
+    "mtime": "2026-08-30T20:46:43.506153",
+    "size": 1311363
+  },
+  {
+    "filename": "[MATHS] Pourquoi on ne peut pas diviser par zéro.docx",
+    "title": "Pourquoi on ne peut pas diviser par zéro",
+    "path": "Maths/[MATHS] Pourquoi on ne peut pas diviser par zéro.docx",
+    "mtime": "2026-08-30T20:46:43.507153",
+    "size": 31312
+  },
+  {
+    "filename": "[MATHS] Probabilités sur un univers fini.docx",
+    "title": "Probabilités sur un univers fini",
+    "path": "Maths/[MATHS] Probabilités sur un univers fini.docx",
+    "mtime": "2026-08-30T20:46:43.522153",
+    "size": 2892032
+  },
+  {
+    "filename": "[MATHS] Quadrature du cercle.docx",
+    "title": "Quadrature du cercle",
+    "path": "Maths/[MATHS] Quadrature du cercle.docx",
+    "mtime": "2026-08-30T20:46:43.523153",
+    "size": 28041
+  },
+  {
+    "filename": "[MATHS] Ruban de Möbius.docx",
+    "title": "Ruban de Möbius",
+    "path": "Maths/[MATHS] Ruban de Möbius.docx",
+    "mtime": "2026-08-30T20:46:43.524153",
+    "size": 285253
+  },
+  {
+    "filename": "[MATHS] Réduction des endomorphismes.docx",
+    "title": "Réduction des endomorphismes",
+    "path": "Maths/[MATHS] Réduction des endomorphismes.docx",
+    "mtime": "2026-08-30T20:46:43.545153",
+    "size": 4132643
+  },
+  {
+    "filename": "[MATHS] Scutoide.docx",
+    "title": "Scutoide",
+    "path": "Maths/[MATHS] Scutoide.docx",
+    "mtime": "2026-08-30T20:46:43.547153",
+    "size": 188364
+  },
+  {
+    "filename": "[MATHS] Spirale d'Euler.docx",
+    "title": "Spirale d'Euler",
+    "path": "Maths/[MATHS] Spirale d'Euler.docx",
+    "mtime": "2026-08-30T20:46:43.565152",
+    "size": 3491224
+  },
+  {
+    "filename": "[MATHS] Suites de nombres réels ou complexes.docx",
+    "title": "Suites de nombres réels ou complexes",
+    "path": "Maths/[MATHS] Suites de nombres réels ou complexes.docx",
+    "mtime": "2026-08-30T20:46:43.571152",
+    "size": 951149
+  },
+  {
+    "filename": "[MATHS] Suites et séries de fonction.docx",
+    "title": "Suites et séries de fonction",
+    "path": "Maths/[MATHS] Suites et séries de fonction.docx",
+    "mtime": "2026-08-30T20:46:43.590152",
+    "size": 3580122
+  },
+  {
+    "filename": "[MATHS] Systèmes linéaires.docx",
+    "title": "Systèmes linéaires",
+    "path": "Maths/[MATHS] Systèmes linéaires.docx",
+    "mtime": "2026-08-30T20:46:43.593152",
+    "size": 411965
+  },
+  {
+    "filename": "[MATHS] Séries numériques.docx",
+    "title": "Séries numériques",
+    "path": "Maths/[MATHS] Séries numériques.docx",
+    "mtime": "2026-08-30T20:46:43.601152",
+    "size": 1601570
+  },
+  {
+    "filename": "[MATHS] Séries vectorielles et numériques.docx",
+    "title": "Séries vectorielles et numériques",
+    "path": "Maths/[MATHS] Séries vectorielles et numériques.docx",
+    "mtime": "2026-08-30T20:46:43.621152",
+    "size": 3956009
+  },
+  {
+    "filename": "[MATHS] Topologie des espaces vectoriels normés.docx",
+    "title": "Topologie des espaces vectoriels normés",
+    "path": "Maths/[MATHS] Topologie des espaces vectoriels normés.docx",
+    "mtime": "2026-08-30T20:46:43.632152",
+    "size": 1907191
+  },
+  {
+    "filename": "[MATHS] Transformée de Fourier.docx",
+    "title": "Transformée de Fourier",
+    "path": "Maths/[MATHS] Transformée de Fourier.docx",
+    "mtime": "2026-08-30T20:46:43.633152",
+    "size": 238336
+  },
+  {
+    "filename": "[MATHS] Transformée de Laplace.docx",
+    "title": "Transformée de Laplace",
+    "path": "Maths/[MATHS] Transformée de Laplace.docx",
+    "mtime": "2026-08-30T20:46:43.635152",
+    "size": 257223
+  },
+  {
+    "filename": "[MATHS] Trigonométrie.docx",
+    "title": "Trigonométrie",
+    "path": "Maths/[MATHS] Trigonométrie.docx",
+    "mtime": "2026-08-30T20:46:43.640152",
+    "size": 925350
+  },
+  {
+    "filename": "[MATHS] Variable aléatoire finie.docx",
+    "title": "Variable aléatoire finie",
+    "path": "Maths/[MATHS] Variable aléatoire finie.docx",
+    "mtime": "2026-08-30T20:46:43.659152",
+    "size": 3760943
+  },
+  {
+    "filename": "[MATHS] Variables aléatoires discrètes.docx",
+    "title": "Variables aléatoires discrètes",
+    "path": "Maths/[MATHS] Variables aléatoires discrètes.docx",
+    "mtime": "2026-08-30T20:46:43.675152",
+    "size": 2982695
+  },
+  {
+    "filename": "[MATHS] Équations différentielles linéaires.docx",
+    "title": "Équations différentielles linéaires",
+    "path": "Maths/[MATHS] Équations différentielles linéaires.docx",
+    "mtime": "2026-08-30T20:46:43.688152",
+    "size": 2411011
+  },
+  {
+    "filename": "[MATHS] Équations différentielles.docx",
+    "title": "Équations différentielles",
+    "path": "Maths/[MATHS] Équations différentielles.docx",
+    "mtime": "2026-08-30T20:46:43.718152",
+    "size": 5567484
+  }
 ]

@@ -1,57 +1,387 @@
 [
-  "[BIO] ADN-polymérase.docx",
-  "[BIO] ADN.docx",
-  "[BIO] Anatomie et physiologie.docx",
-  "[BIO] Anecdotes corps humain.docx",
-  "[BIO] Aquaponie.docx",
-  "[BIO] ARN-polymérase.docx",
-  "[BIO] ARN.docx",
-  "[BIO] Astrocyte.docx",
-  "[BIO] Asymétrie.docx",
-  "[BIO] Autophagie.docx",
-  "[BIO] Bactériophage.docx",
-  "[BIO] Biologie fondamentale.docx",
-  "[BIO] Bois bioluminescent.docx",
-  "[BIO] Cellule de Schwann.docx",
-  "[BIO] Cerveau triunique.docx",
-  "[BIO] Cerveau.docx",
-  "[BIO] Chaîne respiratoire.docx",
-  "[BIO] Ciseaux génétiques.docx",
-  "[BIO] Contracion musculaire.docx",
-  "[BIO] Différenciation cellulaire.docx",
-  "[BIO] Division cellulaire.docx",
-  "[BIO] Ependymocyte.docx",
-  "[BIO] Extrémophile.docx",
-  "[BIO] Fasciculation.docx",
-  "[BIO] Fuseau mitotique.docx",
-  "[BIO] Gene suicide.docx",
-  "[BIO] Hématopoïèse.docx",
-  "[BIO] Injection de vinyle et corrosion.docx",
-  "[BIO] Kératinocyte.docx",
-  "[BIO] Le vol silencieux des chouettes.docx",
-  "[BIO] Microglie.docx",
-  "[BIO] Muscles.docx",
-  "[BIO] Mycète radiotrophe.docx",
-  "[BIO] Myocarde.docx",
-  "[BIO] Mécanobiologie.docx",
-  "[BIO] Mélanocyte.docx",
-  "[BIO] Oligodendrocyte.docx",
-  "[BIO] Optogénétique.docx",
-  "[BIO] Phagothérapie.docx",
-  "[BIO] Pompe sodium-potassium.docx",
-  "[BIO] Protéine DMTF1.docx",
-  "[BIO] Protéine motrice.docx",
-  "[BIO] Régénération cellulaire.docx",
-  "[BIO] Rétine artificielle.docx",
-  "[BIO] Secousse hypnique.docx",
-  "[BIO] Sommeil.docx",
-  "[BIO] Systeme nerveux.docx",
-  "[BIO] Système circulatoire.docx",
-  "[BIO] Système endocrinien.docx",
-  "[BIO] Système immunitaire.docx",
-  "[BIO] Tardigrades et transfert génétique.docx",
-  "[BIO] Thérapie sonogénétique.docx",
-  "[BIO] Utilisation de 10% du cerveau.docx",
-  "[BIO] Virus et absence de gravité.docx",
-  "[BIO] Vol des insectes.docx"
+  {
+    "filename": "[BIO] ADN-polymérase.docx",
+    "title": "ADN-polymérase",
+    "path": "Biologie/[BIO] ADN-polymérase.docx",
+    "mtime": "2026-08-30T20:46:42.662417",
+    "size": 121631
+  },
+  {
+    "filename": "[BIO] ADN.docx",
+    "title": "ADN",
+    "path": "Biologie/[BIO] ADN.docx",
+    "mtime": "2026-08-30T20:46:42.668158",
+    "size": 1294249
+  },
+  {
+    "filename": "[BIO] ARN-polymérase.docx",
+    "title": "ARN-polymérase",
+    "path": "Biologie/[BIO] ARN-polymérase.docx",
+    "mtime": "2026-08-30T20:46:42.669158",
+    "size": 43372
+  },
+  {
+    "filename": "[BIO] ARN.docx",
+    "title": "ARN",
+    "path": "Biologie/[BIO] ARN.docx",
+    "mtime": "2026-08-30T20:46:42.670158",
+    "size": 72707
+  },
+  {
+    "filename": "[BIO] Anatomie et physiologie.docx",
+    "title": "Anatomie et physiologie",
+    "path": "Biologie/[BIO] Anatomie et physiologie.docx",
+    "mtime": "2026-08-30T20:46:42.867157",
+    "size": 36147225
+  },
+  {
+    "filename": "[BIO] Anecdotes corps humain.docx",
+    "title": "Anecdotes corps humain",
+    "path": "Biologie/[BIO] Anecdotes corps humain.docx",
+    "mtime": "2026-08-30T20:46:42.868157",
+    "size": 21880
+  },
+  {
+    "filename": "[BIO] Aquaponie.docx",
+    "title": "Aquaponie",
+    "path": "Biologie/[BIO] Aquaponie.docx",
+    "mtime": "2026-08-30T20:46:42.869157",
+    "size": 170916
+  },
+  {
+    "filename": "[BIO] Astrocyte.docx",
+    "title": "Astrocyte",
+    "path": "Biologie/[BIO] Astrocyte.docx",
+    "mtime": "2026-08-30T20:46:42.870157",
+    "size": 137731
+  },
+  {
+    "filename": "[BIO] Asymétrie.docx",
+    "title": "Asymétrie",
+    "path": "Biologie/[BIO] Asymétrie.docx",
+    "mtime": "2026-08-30T20:46:42.870157",
+    "size": 30503
+  },
+  {
+    "filename": "[BIO] Autophagie.docx",
+    "title": "Autophagie",
+    "path": "Biologie/[BIO] Autophagie.docx",
+    "mtime": "2026-08-30T20:46:42.870157",
+    "size": 128788
+  },
+  {
+    "filename": "[BIO] Bactériophage.docx",
+    "title": "Bactériophage",
+    "path": "Biologie/[BIO] Bactériophage.docx",
+    "mtime": "2026-08-30T20:46:42.878156",
+    "size": 1322974
+  },
+  {
+    "filename": "[BIO] Biologie fondamentale.docx",
+    "title": "Biologie fondamentale",
+    "path": "Biologie/[BIO] Biologie fondamentale.docx",
+    "mtime": "2026-08-30T20:46:42.898156",
+    "size": 3522773
+  },
+  {
+    "filename": "[BIO] Bois bioluminescent.docx",
+    "title": "Bois bioluminescent",
+    "path": "Biologie/[BIO] Bois bioluminescent.docx",
+    "mtime": "2026-08-30T20:46:42.901156",
+    "size": 1475642
+  },
+  {
+    "filename": "[BIO] Cellule de Schwann.docx",
+    "title": "Cellule de Schwann",
+    "path": "Biologie/[BIO] Cellule de Schwann.docx",
+    "mtime": "2026-08-30T20:46:42.903156",
+    "size": 184338
+  },
+  {
+    "filename": "[BIO] Cerveau triunique.docx",
+    "title": "Cerveau triunique",
+    "path": "Biologie/[BIO] Cerveau triunique.docx",
+    "mtime": "2026-08-30T20:46:42.904156",
+    "size": 259013
+  },
+  {
+    "filename": "[BIO] Cerveau.docx",
+    "title": "Cerveau",
+    "path": "Biologie/[BIO] Cerveau.docx",
+    "mtime": "2026-08-30T20:46:42.910156",
+    "size": 1215415
+  },
+  {
+    "filename": "[BIO] Chaîne respiratoire.docx",
+    "title": "Chaîne respiratoire",
+    "path": "Biologie/[BIO] Chaîne respiratoire.docx",
+    "mtime": "2026-08-30T20:46:42.915156",
+    "size": 790062
+  },
+  {
+    "filename": "[BIO] Ciseaux génétiques.docx",
+    "title": "Ciseaux génétiques",
+    "path": "Biologie/[BIO] Ciseaux génétiques.docx",
+    "mtime": "2026-08-30T20:46:42.915156",
+    "size": 66813
+  },
+  {
+    "filename": "[BIO] Contracion musculaire.docx",
+    "title": "Contracion musculaire",
+    "path": "Biologie/[BIO] Contracion musculaire.docx",
+    "mtime": "2026-08-30T20:46:42.916156",
+    "size": 104305
+  },
+  {
+    "filename": "[BIO] Différenciation cellulaire.docx",
+    "title": "Différenciation cellulaire",
+    "path": "Biologie/[BIO] Différenciation cellulaire.docx",
+    "mtime": "2026-08-30T20:46:42.916156",
+    "size": 113676
+  },
+  {
+    "filename": "[BIO] Division cellulaire.docx",
+    "title": "Division cellulaire",
+    "path": "Biologie/[BIO] Division cellulaire.docx",
+    "mtime": "2026-08-30T20:46:42.918156",
+    "size": 410152
+  },
+  {
+    "filename": "[BIO] Ependymocyte.docx",
+    "title": "Ependymocyte",
+    "path": "Biologie/[BIO] Ependymocyte.docx",
+    "mtime": "2026-08-30T20:46:42.919156",
+    "size": 34821
+  },
+  {
+    "filename": "[BIO] Extrémophile.docx",
+    "title": "Extrémophile",
+    "path": "Biologie/[BIO] Extrémophile.docx",
+    "mtime": "2026-08-30T20:46:42.920156",
+    "size": 41760
+  },
+  {
+    "filename": "[BIO] Fasciculation.docx",
+    "title": "Fasciculation",
+    "path": "Biologie/[BIO] Fasciculation.docx",
+    "mtime": "2026-08-30T20:46:42.920156",
+    "size": 21518
+  },
+  {
+    "filename": "[BIO] Fuseau mitotique.docx",
+    "title": "Fuseau mitotique",
+    "path": "Biologie/[BIO] Fuseau mitotique.docx",
+    "mtime": "2026-08-30T20:46:42.920156",
+    "size": 59064
+  },
+  {
+    "filename": "[BIO] Gene suicide.docx",
+    "title": "Gene suicide",
+    "path": "Biologie/[BIO] Gene suicide.docx",
+    "mtime": "2026-08-30T20:46:42.920156",
+    "size": 39673
+  },
+  {
+    "filename": "[BIO] Hématopoïèse.docx",
+    "title": "Hématopoïèse",
+    "path": "Biologie/[BIO] Hématopoïèse.docx",
+    "mtime": "2026-08-30T20:46:42.921156",
+    "size": 200415
+  },
+  {
+    "filename": "[BIO] Injection de vinyle et corrosion.docx",
+    "title": "Injection de vinyle et corrosion",
+    "path": "Biologie/[BIO] Injection de vinyle et corrosion.docx",
+    "mtime": "2026-08-30T20:46:42.923156",
+    "size": 282912
+  },
+  {
+    "filename": "[BIO] Kératinocyte.docx",
+    "title": "Kératinocyte",
+    "path": "Biologie/[BIO] Kératinocyte.docx",
+    "mtime": "2026-08-30T20:46:42.923156",
+    "size": 72694
+  },
+  {
+    "filename": "[BIO] Le vol silencieux des chouettes.docx",
+    "title": "Le vol silencieux des chouettes",
+    "path": "Biologie/[BIO] Le vol silencieux des chouettes.docx",
+    "mtime": "2026-08-30T20:46:42.924156",
+    "size": 374409
+  },
+  {
+    "filename": "[BIO] Microglie.docx",
+    "title": "Microglie",
+    "path": "Biologie/[BIO] Microglie.docx",
+    "mtime": "2026-08-30T20:46:42.925156",
+    "size": 34323
+  },
+  {
+    "filename": "[BIO] Muscles.docx",
+    "title": "Muscles",
+    "path": "Biologie/[BIO] Muscles.docx",
+    "mtime": "2026-08-30T20:46:42.928156",
+    "size": 656644
+  },
+  {
+    "filename": "[BIO] Mycète radiotrophe.docx",
+    "title": "Mycète radiotrophe",
+    "path": "Biologie/[BIO] Mycète radiotrophe.docx",
+    "mtime": "2026-08-30T20:46:42.928156",
+    "size": 41561
+  },
+  {
+    "filename": "[BIO] Myocarde.docx",
+    "title": "Myocarde",
+    "path": "Biologie/[BIO] Myocarde.docx",
+    "mtime": "2026-08-30T20:46:42.929156",
+    "size": 35598
+  },
+  {
+    "filename": "[BIO] Mécanobiologie.docx",
+    "title": "Mécanobiologie",
+    "path": "Biologie/[BIO] Mécanobiologie.docx",
+    "mtime": "2026-08-30T20:46:42.935156",
+    "size": 2000233
+  },
+  {
+    "filename": "[BIO] Mélanocyte.docx",
+    "title": "Mélanocyte",
+    "path": "Biologie/[BIO] Mélanocyte.docx",
+    "mtime": "2026-08-30T20:46:42.937156",
+    "size": 461639
+  },
+  {
+    "filename": "[BIO] Oligodendrocyte.docx",
+    "title": "Oligodendrocyte",
+    "path": "Biologie/[BIO] Oligodendrocyte.docx",
+    "mtime": "2026-08-30T20:46:42.937156",
+    "size": 150965
+  },
+  {
+    "filename": "[BIO] Optogénétique.docx",
+    "title": "Optogénétique",
+    "path": "Biologie/[BIO] Optogénétique.docx",
+    "mtime": "2026-08-30T20:46:42.938156",
+    "size": 709493
+  },
+  {
+    "filename": "[BIO] Phagothérapie.docx",
+    "title": "Phagothérapie",
+    "path": "Biologie/[BIO] Phagothérapie.docx",
+    "mtime": "2026-08-30T20:46:42.938156",
+    "size": 36350
+  },
+  {
+    "filename": "[BIO] Pompe sodium-potassium.docx",
+    "title": "Pompe sodium-potassium",
+    "path": "Biologie/[BIO] Pompe sodium-potassium.docx",
+    "mtime": "2026-08-30T20:46:42.939156",
+    "size": 146315
+  },
+  {
+    "filename": "[BIO] Protéine DMTF1.docx",
+    "title": "Protéine DMTF1",
+    "path": "Biologie/[BIO] Protéine DMTF1.docx",
+    "mtime": "2026-08-30T20:46:42.939156",
+    "size": 132946
+  },
+  {
+    "filename": "[BIO] Protéine motrice.docx",
+    "title": "Protéine motrice",
+    "path": "Biologie/[BIO] Protéine motrice.docx",
+    "mtime": "2026-08-30T20:46:42.940156",
+    "size": 265812
+  },
+  {
+    "filename": "[BIO] Régénération cellulaire.docx",
+    "title": "Régénération cellulaire",
+    "path": "Biologie/[BIO] Régénération cellulaire.docx",
+    "mtime": "2026-08-30T20:46:42.941156",
+    "size": 32099
+  },
+  {
+    "filename": "[BIO] Rétine artificielle.docx",
+    "title": "Rétine artificielle",
+    "path": "Biologie/[BIO] Rétine artificielle.docx",
+    "mtime": "2026-08-30T20:46:42.941156",
+    "size": 31452
+  },
+  {
+    "filename": "[BIO] Secousse hypnique.docx",
+    "title": "Secousse hypnique",
+    "path": "Biologie/[BIO] Secousse hypnique.docx",
+    "mtime": "2026-08-30T20:46:42.941156",
+    "size": 23586
+  },
+  {
+    "filename": "[BIO] Sommeil.docx",
+    "title": "Sommeil",
+    "path": "Biologie/[BIO] Sommeil.docx",
+    "mtime": "2026-08-30T20:46:42.942156",
+    "size": 147259
+  },
+  {
+    "filename": "[BIO] Systeme nerveux.docx",
+    "title": "Systeme nerveux",
+    "path": "Biologie/[BIO] Systeme nerveux.docx",
+    "mtime": "2026-08-30T20:46:42.945156",
+    "size": 578900
+  },
+  {
+    "filename": "[BIO] Système circulatoire.docx",
+    "title": "Système circulatoire",
+    "path": "Biologie/[BIO] Système circulatoire.docx",
+    "mtime": "2026-08-30T20:46:42.949156",
+    "size": 971563
+  },
+  {
+    "filename": "[BIO] Système endocrinien.docx",
+    "title": "Système endocrinien",
+    "path": "Biologie/[BIO] Système endocrinien.docx",
+    "mtime": "2026-08-30T20:46:42.951156",
+    "size": 379033
+  },
+  {
+    "filename": "[BIO] Système immunitaire.docx",
+    "title": "Système immunitaire",
+    "path": "Biologie/[BIO] Système immunitaire.docx",
+    "mtime": "2026-08-30T20:46:42.955156",
+    "size": 855336
+  },
+  {
+    "filename": "[BIO] Tardigrades et transfert génétique.docx",
+    "title": "Tardigrades et transfert génétique",
+    "path": "Biologie/[BIO] Tardigrades et transfert génétique.docx",
+    "mtime": "2026-08-30T20:46:42.957156",
+    "size": 363215
+  },
+  {
+    "filename": "[BIO] Thérapie sonogénétique.docx",
+    "title": "Thérapie sonogénétique",
+    "path": "Biologie/[BIO] Thérapie sonogénétique.docx",
+    "mtime": "2026-08-30T20:46:42.957156",
+    "size": 147428
+  },
+  {
+    "filename": "[BIO] Utilisation de 10% du cerveau.docx",
+    "title": "Utilisation de 10% du cerveau",
+    "path": "Biologie/[BIO] Utilisation de 10% du cerveau.docx",
+    "mtime": "2026-08-30T20:46:42.958156",
+    "size": 18828
+  },
+  {
+    "filename": "[BIO] Virus et absence de gravité.docx",
+    "title": "Virus et absence de gravité",
+    "path": "Biologie/[BIO] Virus et absence de gravité.docx",
+    "mtime": "2026-08-30T20:46:42.958156",
+    "size": 39241
+  },
+  {
+    "filename": "[BIO] Vol des insectes.docx",
+    "title": "Vol des insectes",
+    "path": "Biologie/[BIO] Vol des insectes.docx",
+    "mtime": "2026-08-30T20:46:42.959156",
+    "size": 272233
+  }
 ]
