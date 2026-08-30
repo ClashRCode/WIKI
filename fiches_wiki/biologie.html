@@ -22,98 +22,84 @@
     <div class="flex items-center space-x-3 mb-4">
       <img src="../img/biologie.png" alt="biologie" class="w-10 h-10" />
       <h2 id="pageTitle" class="text-3xl font-bold text-indigo-700">Biologie</h2>
-      <div class="ml-auto">
-        <a href="../index.html" class="px-4 py-2 bg-indigo-600 text-white font-semibold rounded-lg shadow hover:bg-indigo-700 transition">← Retour</a>
-      </div>
-    </div>
+      <script>
+        // Récupère et affiche les fichiers .doc/.docx du dossier `Biologie/`.
+        // Tentative 1: fetch de l'index du dossier (expose HTML par python -m http.server).
+        // Tentative 2: lecture de `Biologie/index.json` (généré par script local) si la première échoue.
+        async function loadBiologyFiles() {
+          const dir = 'Biologie/';
+          const container = document.getElementById('listContainer');
 
-    <!-- Liste des fiches -->
-    <p class="text-lg">Liste des fiches</p>
-
-    <div id="listContainer">
-      <p class="text-sm text-gray-500">Chargement…</p>
-    </div>
-
-    <script>
-      // Récupère et affiche les fichiers .doc/.docx du dossier `Biologie/`.
-      // Fallback: si le serveur n'expose pas d'index de dossier (ex: GitHub Pages),
-      // on interroge l'API GitHub si le méta `github-repo` est défini ou peut être inféré.
-      async function loadBiologyFiles() {
-        const dir = 'Biologie/';
-        const container = document.getElementById('listContainer');
-
-        function renderList(files) {
-          if (!files || files.length === 0) {
-            container.innerHTML = '<p class="text-sm text-gray-500">Aucune fiche trouvée.</p>';
-            return;
-          }
-          const ul = document.createElement('ul');
-          ul.className = 'list-disc pl-6 space-y-2';
-          files.forEach(filename => {
-            let display = filename.replace(/^\[BIO\]\s*/i, '');
-            display = display.replace(/\.(docx|doc)$/i, '');
-            const li = document.createElement('li');
-            const a = document.createElement('a');
-            a.href = dir + encodeURIComponent(filename);
-            a.textContent = display;
-            a.className = 'text-indigo-700 hover:underline';
-            li.appendChild(a);
-            ul.appendChild(li);
-          });
-          container.innerHTML = '';
-          container.appendChild(ul);
-        }
-
-        // 1) tentative : fetch relatif (index de dossier fourni par le serveur)
-        try {
-          const res = await fetch(dir, {cache: 'no-store'});
-          if (res.ok) {
-            const text = await res.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(text, 'text/html');
-            const anchors = Array.from(doc.querySelectorAll('a'));
-            const files = anchors
-              .map(a => a.getAttribute('href'))
-              .filter(href => href && (href.toLowerCase().endsWith('.docx') || href.toLowerCase().endsWith('.doc')))
-              .map(href => decodeURIComponent(href.replace(/\/+$/,'')));
+          async function renderList(files) {
             const unique = Array.from(new Set(files));
             unique.sort((a,b) => a.localeCompare(b, 'fr', {sensitivity: 'base'}));
-            if (unique.length > 0) { renderList(unique); return; }
+            if (unique.length === 0) {
+              container.innerHTML = '<p class="text-sm text-gray-500">Aucune fiche trouvée.</p>';
+              return;
+            }
+            const ul = document.createElement('ul');
+            ul.className = 'list-disc pl-6 space-y-2';
+            unique.forEach(filename => {
+              let display = filename.replace(/^\[BIO\]\s*/i, '');
+              display = display.replace(/\.(docx|doc)$/i, '');
+              const li = document.createElement('li');
+              const a = document.createElement('a');
+              a.href = dir + filename;
+              a.textContent = display;
+              a.className = 'text-indigo-700 hover:underline';
+              li.appendChild(a);
+              ul.appendChild(li);
+            });
+            container.innerHTML = '';
+            container.appendChild(ul);
           }
-        } catch (e) {
-          console.debug('Directory index fetch failed, will try GitHub API fallback.', e);
+
+          // Try 1: fetch directory listing (HTML)
+          try {
+            const res = await fetch(dir, {cache: 'no-store'});
+            if (res.ok && res.headers.get('content-type') && res.headers.get('content-type').includes('text/html')) {
+              const text = await res.text();
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(text, 'text/html');
+              const anchors = Array.from(doc.querySelectorAll('a'));
+              const files = anchors
+                .map(a => a.getAttribute('href'))
+                .filter(href => href && (href.toLowerCase().endsWith('.docx') || href.toLowerCase().endsWith('.doc')))
+                .map(href => decodeURIComponent(href.replace(/\/+$/,'')));
+              await renderList(files);
+              return;
+            }
+            // If not HTML, fallthrough to JSON attempt
+          } catch (err) {
+            console.warn('Liste dossier inaccessible, essai de fallback JSON', err);
+          }
+
+          // Try 2: fetch pre-generated JSON index
+          try {
+            const jres = await fetch(dir + 'index.json', {cache: 'no-store'});
+            if (jres.ok) {
+              const data = await jres.json();
+              if (Array.isArray(data)) {
+                await renderList(data.filter(f => typeof f === 'string'));
+                return;
+              }
+            }
+          } catch (err) {
+            console.warn('Fallback JSON indisponible', err);
+          }
+
+          // Aucun mécanisme disponible
+          container.innerHTML = '<p class="text-sm text-red-500">Impossible de lister le dossier. Exécutez un serveur (ex. `python -m http.server`) ou générez `Biologie/index.json`.</p>';
         }
 
-        // 2) fallback: GitHub API (works for public repos). Determine owner/repo from
-        // <meta name="github-repo" content="owner/repo"> or try to infer from github.io URL.
-        let repo = null;
-        const meta = document.querySelector('meta[name="github-repo"]');
-        if (meta && meta.content) repo = meta.content.trim();
-        if (!repo && location.hostname.endsWith('github.io')) {
-          const owner = location.hostname.split('.')[0];
-          const segments = location.pathname.replace(/^\//,'').split('/');
-          const repoName = segments[0] || '';
-          if (owner && repoName) repo = owner + '/' + repoName;
-        }
-
-        if (!repo) {
-          container.innerHTML = '<p class="text-sm text-gray-500">Impossible de lister automatiquement ici. Pour activer la liste automatique sur GitHub Pages, ajoutez dans &lt;head&gt; : &lt;meta name="github-repo" content="owner/repo"&gt; ou générez un fichier JSON d’index.</p>';
-          return;
-        }
-
-        const apiUrl = `https://api.github.com/repos/${repo}/contents/fiches_wiki/Biologie`;
-        try {
-          const apiRes = await fetch(apiUrl);
-          if (!apiRes.ok) throw new Error('GitHub API error: ' + apiRes.status);
-          const json = await apiRes.json();
-          const files = json
-            .filter(item => item.type === 'file' && (item.name.toLowerCase().endsWith('.doc') || item.name.toLowerCase().endsWith('.docx')))
-            .map(item => item.name)
-            .sort((a,b) => a.localeCompare(b, 'fr', {sensitivity: 'base'}));
-          renderList(files);
+        document.addEventListener('DOMContentLoaded', loadBiologyFiles);
+      </script>
+          container.innerHTML = '';
+          container.appendChild(ul);
         } catch (err) {
+          const container = document.getElementById('listContainer');
+          container.innerHTML = '<p class="text-sm text-red-500">Erreur lors du chargement des fiches.</p>';
           console.error(err);
-          container.innerHTML = '<p class="text-sm text-red-500">Erreur lors du chargement via l\'API GitHub. Vérifiez que le dépôt est public et que la meta `github-repo` est correctement configurée.</p>';
         }
       }
 
