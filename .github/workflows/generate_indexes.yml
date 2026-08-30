@@ -1,8 +1,5 @@
 name: Generate Indexes
 
-permissions:
-  contents: write
-
 on:
   push:
     branches: [ main, master ]
@@ -26,45 +23,14 @@ jobs:
         run: |
           python3 scripts/generate_indexes.py
 
-      - name: Commit changed index.json files (push or PR)
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: ${{ github.ref_name }}
-          REPO: ${{ github.repository }}
+      - name: Commit changed index.json files
         run: |
-          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add fiches_wiki/**/index.json || true
-          if git diff --staged --quiet; then
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: regenerate fiches_wiki index.json files [ci skip]" || true
+            git push origin HEAD
+          else
             echo "No index changes to commit"
-            exit 0
           fi
-
-          git commit -m "chore: regenerate fiches_wiki index.json files [ci skip]" || true
-
-          # Configure authenticated remote using GITHUB_TOKEN
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}
-
-          # Try pushing to the current branch first
-          if git push origin HEAD:${BRANCH}; then
-            echo "Pushed regenerated indexes to ${BRANCH}"
-            exit 0
-          fi
-
-          echo "Push to ${BRANCH} failed — creating a branch and opening a Pull Request"
-          TS=$(date +%s)
-          PR_BRANCH="regenerate-indexes-${TS}"
-          git push origin HEAD:${PR_BRANCH}
-
-          PR_TITLE="chore: regenerate fiches_wiki index.json files [ci skip]"
-          PR_BODY="This Pull Request was created automatically by the CI to contain regenerated index.json files for the fiches_wiki categories. If you approve, merge to apply the changes."
-
-          # Build JSON payload (avoid relying on jq)
-          read -r -d '' PAYLOAD <<EOF || true
-{ "title": "${PR_TITLE}", "body": "${PR_BODY}", "head": "${PR_BRANCH}", "base": "${BRANCH}" }
-EOF
-
-          # Create PR using GitHub REST API
-          curl -s -H "Authorization: token ${GITHUB_TOKEN}" -H "Accept: application/vnd.github.v3+json" \
-            -X POST https://api.github.com/repos/${REPO}/pulls -d "$PAYLOAD" || true
