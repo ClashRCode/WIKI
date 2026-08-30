@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Génère fiches_wiki/Biologie/index.json contenant la liste des fichiers .doc/.docx
-Usage: python scripts/generate_biologie_index.py
+Génère fiches_wiki/Histoire/index.json
+Usage: python scripts/generate_histoire_index.py
 """
 import json
 from pathlib import Path
 
-root = Path(__file__).resolve().parents[1] / 'fiches_wiki' / 'Biologie'
+root = Path(__file__).resolve().parents[1] / 'fiches_wiki' / 'Histoire'
 if not root.exists():
     print('Dossier introuvable:', root)
     raise SystemExit(1)
