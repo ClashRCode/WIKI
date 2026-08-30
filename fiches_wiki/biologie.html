@@ -44,7 +44,10 @@
               display = display.replace(/\.(docx|doc)$/i, '');
               const li = document.createElement('li');
               const a = document.createElement('a');
-              a.href = dir + filename;
+              // Open using viewer.html to embed Office Online when available
+              a.href = 'viewer.html?file=' + encodeURIComponent(dir + filename);
+              a.target = '_blank';
+              a.rel = 'noopener noreferrer';
               a.textContent = display;
               a.className = 'text-indigo-700 hover:underline';
               li.appendChild(a);
