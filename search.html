@@ -74,12 +74,18 @@
           list.appendChild(header);
           items.forEach(m=>{
             const li = document.createElement('li');
-            li.className = 'p-3 border rounded hover:bg-gray-50';
+            li.className = 'p-3 border rounded hover:bg-gray-50 flex justify-between items-center';
             const a = document.createElement('a');
-            a.href = `${base}viewer.html?file=${encodeURIComponent(m.cat + '/' + m.file)}`;
+            const fileKey = m.cat + '/' + m.file;
+            a.href = `${base}viewer.html?file=${encodeURIComponent(fileKey)}`;
             a.textContent = m.name;
+            a.dataset.file = fileKey;
             a.addEventListener('click', function(e){ e.preventDefault(); location.href = this.href; });
+            const span = document.createElement('span');
+            span.className = 'ml-2 text-sm text-gray-500 viewcount';
+            span.textContent = `Nombre de lectures : ${parseInt(localStorage.getItem('views:' + fileKey) || '0',10) || 0}`;
             li.appendChild(a);
+            li.appendChild(span);
             list.appendChild(li);
           });
         }
@@ -107,6 +113,21 @@
 
       document.getElementById('doSearch').addEventListener('click', ()=>{ const v = input.value; history.replaceState(null,'', `?q=${encodeURIComponent(v)}`); doQuery(v); });
       input.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ const v=input.value; history.replaceState(null,'', `?q=${encodeURIComponent(v)}`); doQuery(v); } });
+      // Listen for view updates from viewer tabs
+      try{
+        const bc = new BroadcastChannel('views');
+        bc.onmessage = (ev)=>{
+          try{
+            const f = ev.data.file;
+            const c = ev.data.count;
+            const el = document.querySelector(`[data-file="${f}"]`);
+            if(el){
+              const span = el.parentElement.querySelector('.viewcount');
+              if(span) span.textContent = `Nombre de lectures : ${c}`;
+            }
+          }catch(e){}
+        };
+      }catch(e){}
     })();
   </script>
 </body>

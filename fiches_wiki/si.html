@@ -38,19 +38,26 @@
               return;
             }
             const ul = document.createElement('ul');
-            ul.className = 'list-disc pl-6 space-y-2';
+            ul.className = 'space-y-2 divide-y divide-gray-100';
             unique.forEach(filename => {
               let display = filename.replace(/^\[SI\]\s*/i, '');
               display = display.replace(/\.(docx|doc)$/i, '');
               const li = document.createElement('li');
+              li.className = 'flex items-center justify-between py-2';
               const a = document.createElement('a');
+              const fileKey = dir + filename;
               // Open with viewer to display in-browser when possible
-              a.href = 'viewer.html?file=' + encodeURIComponent(dir + filename);
+              a.href = 'viewer.html?file=' + encodeURIComponent(fileKey);
               a.target = '_blank';
               a.rel = 'noopener noreferrer';
               a.textContent = display;
-              a.className = 'text-indigo-700 hover:underline';
+              a.className = 'text-indigo-700 hover:underline flex-1';
+              a.dataset.file = fileKey;
+              const span = document.createElement('span');
+              span.className = 'ml-4 text-sm text-gray-500 text-right w-48 viewcount';
+              span.textContent = `Nombre de lectures : ${parseInt(localStorage.getItem('views:' + fileKey) || '0', 10) || 0}`;
               li.appendChild(a);
+              li.appendChild(span);
               ul.appendChild(li);
             });
             container.innerHTML = '';
@@ -94,6 +101,17 @@
           // Aucun mécanisme disponible
           container.innerHTML = '<p class="text-sm text-red-500">Impossible de lister le dossier. Exécutez un serveur (ex. `python -m http.server`) ou générez `Biologie/index.json`.</p>';
         }
+
+        try{
+          const bc = new BroadcastChannel('views');
+          bc.onmessage = (ev)=>{
+            try{
+              const f = ev.data.file;
+              const el = document.querySelector(`[data-file="${f}"]`);
+              if(el){ const span = el.parentElement.querySelector('.viewcount'); if(span) span.textContent = `Nombre de lectures : ${ev.data.count}`; }
+            }catch(e){}
+          };
+        }catch(e){}
 
         document.addEventListener('DOMContentLoaded', loadBiologyFiles);
       </script>

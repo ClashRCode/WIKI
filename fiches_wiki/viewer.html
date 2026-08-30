@@ -129,6 +129,32 @@
       iframe.title = 'Afficheur de document';
       container.appendChild(iframe);
 
+      // --- View counter: store in localStorage and broadcast to other tabs ---
+      (function(){
+        try{
+          const key = 'views:' + fileParam;
+          const prev = parseInt(localStorage.getItem(key) || '0', 10) || 0;
+          const next = prev + 1;
+          localStorage.setItem(key, String(next));
+          // Update displayed file name and show a labeled view count
+          const name = decodeURIComponent(fileParam).split('/').pop();
+          const fileNameElLocal = document.getElementById('fileName');
+          if (fileNameElLocal) {
+            fileNameElLocal.textContent = name;
+            let fv = document.getElementById('fileViews');
+            if (!fv) {
+              fv = document.createElement('span');
+              fv.id = 'fileViews';
+              fv.className = 'ml-2 text-sm text-gray-500';
+              fileNameElLocal.parentElement.appendChild(fv);
+            }
+            fv.textContent = `Nombre de lectures : ${next}`;
+          }
+          // Broadcast the update so other pages can refresh counts live
+          try{ const bc = new BroadcastChannel('views'); bc.postMessage({ file: fileParam, count: next }); }catch(e){}
+        }catch(e){ console.warn('Could not update view counter', e); }
+      })();
+
       // Note de sécurité : le viewer charge un domaine externe. Nous ajoutons rel=noopener
       // sur le lien de téléchargement pour éviter les attaques par ouverture de fenêtre.
     </script>
