@@ -94,18 +94,11 @@
 
         document.addEventListener('DOMContentLoaded', loadBiologyFiles);
       </script>
-          container.innerHTML = '';
-          container.appendChild(ul);
-        } catch (err) {
-          const container = document.getElementById('listContainer');
-          container.innerHTML = '<p class="text-sm text-red-500">Erreur lors du chargement des fiches.</p>';
-          console.error(err);
-        }
-      }
+    </div>
 
-      document.addEventListener('DOMContentLoaded', loadBiologyFiles);
-    </script>
-
+    <div id="listContainer">
+      <p class="text-sm text-gray-500">Chargement…</p>
+    </div>
   </main>
 
   <!-- Bouton Retour en haut -->
