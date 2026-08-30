@@ -1,16 +1,19 @@
-"""Compatibilité: wrapper qui appelle `generate_indexes.py Biologie`.
-Ne pas supprimer si vous avez des automatisations qui appellent ce fichier.
+#!/usr/bin/env python3
 """
+Génère fiches_wiki/Biologie/index.json contenant la liste des fichiers .doc/.docx
+Usage:
+  python scripts/generate_biologie_index.py
+"""
+import json
 from pathlib import Path
-import subprocess
-import sys
 
-here = Path(__file__).resolve().parents[0]
-script = here / 'generate_indexes.py'
-if not script.exists():
-  print('Script introuvable:', script)
-  raise SystemExit(1)
+root = Path(__file__).resolve().parents[1] / 'fiches_wiki' / 'Biologie'
+if not root.exists():
+    print('Dossier introuvable:', root)
+    raise SystemExit(1)
 
-cmd = [sys.executable, str(script), 'Biologie']
-res = subprocess.run(cmd)
-raise SystemExit(res.returncode)
+files = sorted([p.name for p in root.iterdir() if p.suffix.lower() in ('.doc', '.docx')])
+out = root / 'index.json'
+with out.open('w', encoding='utf-8') as f:
+    json.dump(files, f, ensure_ascii=False, indent=2)
+print('Wrote', out)
