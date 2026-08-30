@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Afficheur de document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>html,body,#viewer{height:100%;margin:0}</style>
+ </head>
+<body class="bg-slate-50 text-gray-800">
+  <header class="bg-white shadow p-4">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <a href="/" class="text-sm text-indigo-600 hover:underline">Accueil</a>
+        <span id="fileName" class="text-lg font-medium"></span>
+      </div>
+      <div>
+        <a id="downloadLink" class="text-sm text-gray-600 hover:underline" target="_blank" rel="noopener noreferrer">Télécharger</a>
+      </div>
+    </div>
+  </header>
+
+  <div id="viewer" class="max-w-5xl mx-auto mt-4 h-[calc(100%-96px)]">
+    <div id="frameContainer" class="w-full h-full bg-white shadow-inner"></div>
+  </div>
+
+  <!DOCTYPE html>
+  <html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Afficheur de document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!--
+      Petit style pour que le conteneur prenne toute la hauteur disponible.
+      Gardez-le minimal pour rester compatible avec GitHub Pages / navigateurs.
+    -->
+    <style>html,body,#viewer{height:100%;margin:0}</style>
+   </head>
+  <body class="bg-slate-50 text-gray-800">
+    <!-- En‑tête contenant le nom du fichier et un lien de téléchargement direct -->
+    <header class="bg-white shadow p-4">
+      <div class="max-w-5xl mx-auto flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <!-- Lien vers l'accueil du site -->
+          <a href="/" class="text-sm text-indigo-600 hover:underline">Accueil</a>
+          <!-- Le nom du fichier affiché dynamiquement par le script -->
+          <span id="fileName" class="text-lg font-medium"></span>
+        </div>
+        <div>
+          <!-- Lien de téléchargement direct : utile si l'affichage embarqué échoue -->
+          <a id="downloadLink" class="text-sm text-gray-600 hover:underline" target="_blank" rel="noopener noreferrer">Télécharger</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Zone principale contenant l'iframe Office Online -->
+    <div id="viewer" class="max-w-5xl mx-auto mt-4 h-[calc(100%-96px)]">
+      <div id="frameContainer" class="w-full h-full bg-white shadow-inner"></div>
+    </div>
+
+    <script>
+      /*
+        viewer.html
+        - Reçoit un paramètre de requête `file` contenant le chemin relatif du .doc/.docx
+          Exemple : viewer.html?file=Histoire/Mon%20doc.docx
+        - Construit une URL absolue vers le fichier et l'encode pour l'iframe Office Online
+        - Affiche le nom du fichier et un lien de téléchargement
+
+        Limitations importantes:
+        - L'outil Office Online (view.officeapps.live.com) exige que la ressource soit
+          accessible publiquement (pas seulement sur localhost). Sur GitHub Pages cela fonctionne.
+        - Si vous testez localement (localhost), l'iframe peut rester vide pour des raisons
+          de sécurité / accessibilité réseau.
+      */
+
+      // Récupère un paramètre de l'URL
+      function getParam(name){
+        const params = new URLSearchParams(window.location.search);
+        return params.get(name);
+      }
+
+      const fileParam = getParam('file');
+      const fileNameEl = document.getElementById('fileName');
+      const dl = document.getElementById('downloadLink');
+      const container = document.getElementById('frameContainer');
+
+      if(!fileParam){
+        // Message d'erreur visible si l'URL est appelée sans paramètre
+        container.innerHTML = '<p class="p-4 text-red-600">Aucun fichier spécifié.</p>';
+        throw new Error('file param missing');
+      }
+
+      // Construire une URL absolue à partir du chemin relatif fourni.
+      // Important : `new URL(..., window.location.href)` résout correctement les chemins.
+      const fileUrl = new URL(decodeURIComponent(fileParam), window.location.href).href;
+
+      // Affiche le nom du fichier (dernier segment du chemin)
+      fileNameEl.textContent = decodeURIComponent(fileParam).split('/').pop();
+
+      // Lien direct vers le fichier (ouvre dans un nouvel onglet)
+      dl.href = fileUrl;
+      dl.textContent = 'Ouvrir le fichier original';
+
+      /*
+        Intégration Office Online :
+        - Office propose une URL d'embed : https://view.officeapps.live.com/op/embed.aspx?src=<URL>
+        - Nous encodons l'URL du fichier et l'utilisons comme src de l'iframe
+        - L'iframe occupe tout le conteneur `#frameContainer`
+      */
+      const officeSrc = 'https://view.officeapps.live.com/op/embed.aspx?src=' + encodeURIComponent(fileUrl);
+      const iframe = document.createElement('iframe');
+      iframe.src = officeSrc;
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+      iframe.frameBorder = '0';
+      iframe.title = 'Afficheur de document';
+      container.appendChild(iframe);
+
+      // Note de sécurité : le viewer charge un domaine externe. Nous ajoutons rel=noopener
+      // sur le lien de téléchargement pour éviter les attaques par ouverture de fenêtre.
+    </script>
+  </body>
+  </html>
