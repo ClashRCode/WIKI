@@ -103,20 +103,10 @@
             a.addEventListener('click', function(e){ e.preventDefault(); location.href = this.href; });
             const span = document.createElement('span');
             span.className = 'ml-2 text-sm text-gray-500 viewcount';
-            span.textContent = 'Chargement…';
+            span.textContent = `Nombre de lectures : ${parseInt(localStorage.getItem('views:' + fileKey) || '0',10) || 0}`;
             li.appendChild(a);
             li.appendChild(span);
             list.appendChild(li);
-
-            fetch(`/api/views?file=${encodeURIComponent(fileKey)}`, { cache: 'no-store' })
-              .then(r => r.ok ? r.json() : Promise.reject())
-              .then(data => {
-                span.textContent = `Nombre de lectures : ${Number(data.count || 0)}`;
-                localStorage.setItem('views:' + fileKey, String(Number(data.count || 0)));
-              })
-              .catch(() => {
-                span.textContent = `Nombre de lectures : ${parseInt(localStorage.getItem('views:' + fileKey) || '0', 10) || 0}`;
-              });
           });
         }
       }

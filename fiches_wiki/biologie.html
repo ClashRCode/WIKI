@@ -55,21 +55,10 @@
               a.dataset.file = fileKey;
               const span = document.createElement('span');
               span.className = 'ml-4 text-sm text-gray-500 text-right w-48 viewcount';
-              span.textContent = 'Chargement…';
+              span.textContent = `Nombre de lectures : ${parseInt(localStorage.getItem('views:' + fileKey) || '0', 10) || 0}`;
               li.appendChild(a);
               li.appendChild(span);
               ul.appendChild(li);
-
-              fetch(`/api/views?file=${encodeURIComponent(fileKey)}`, { cache: 'no-store' })
-                .then(res => res.ok ? res.json() : Promise.reject(new Error('API unavailable')))
-                .then(data => {
-                  const count = Number(data.count || 0);
-                  span.textContent = `Nombre de lectures : ${count}`;
-                  localStorage.setItem('views:' + fileKey, String(count));
-                })
-                .catch(() => {
-                  span.textContent = `Nombre de lectures : ${parseInt(localStorage.getItem('views:' + fileKey) || '0', 10) || 0}`;
-                });
             });
             container.innerHTML = '';
             container.appendChild(ul);
