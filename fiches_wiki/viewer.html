@@ -101,12 +101,49 @@
 
       function normalizeSpeechText(text) {
         return text
+          .replace(/\r\n/g, '\n')
           .replace(/(\d+)\.(\d{1,3})/g, '$1 virgule $2')
           .replace(/(\d+),(\d{1,3})/g, '$1 virgule $2')
           .replace(/\s+/g, ' ')
           .replace(/\[[^\]]*\]/g, ' ')
           .replace(/\u00A0/g, ' ')
           .trim();
+      }
+
+      function isLikelyHeading(text) {
+        const cleaned = text.replace(/\s+/g, ' ').trim();
+        if (!cleaned) return false;
+        if (/^(sommaire|table des mati(?:eres|ères)|index|contenu|résumé|resume)$/i.test(cleaned)) return false;
+        const words = cleaned.split(/\s+/).filter(Boolean);
+        if (words.length > 12) return false;
+        if (/(?:\bchapitre\b|\bpartie\b|\bsection\b|\bobjectif\b|\bintroduction\b|\bconclusion\b)/i.test(cleaned)) {
+          return true;
+        }
+        return /^[A-ZÀ-Ö0-9][A-Za-zÀ-Öéèêëàçùûîïôöœæ0-9'’\- ]{2,80}$/.test(cleaned) && !/[.!?]$/.test(cleaned);
+      }
+
+      function buildSpeechBlocks(text) {
+        const normalized = normalizeSpeechText(text);
+        const rawBlocks = normalized.split(/\n+/).map(part => part.trim()).filter(Boolean);
+        const blocks = [];
+
+        rawBlocks.forEach(block => {
+          const cleaned = block.replace(/\s+/g, ' ').trim();
+          if (!cleaned) return;
+
+          if (isLikelyHeading(cleaned)) {
+            blocks.push(`Changement de chapitre. ${cleaned}.`);
+            return;
+          }
+
+          if (/^(sommaire|table des mati(?:eres|ères)|index|contenu|résumé|resume)$/i.test(cleaned)) {
+            return;
+          }
+
+          blocks.push(cleaned);
+        });
+
+        return blocks.length ? blocks : [normalized];
       }
 
       function readTextOutLoud(source, config = {}) {
@@ -118,10 +155,10 @@
 
         const options = {
           lang: 'fr-FR',
-          rate: 0.85,
-          pitch: 0.9,
+          rate: 0.7,
+          pitch: 0.8,
           volume: 1,
-          pauseAfterSentence: 220,
+          pauseAfterParagraph: 900,
           ...config
         };
 
@@ -138,23 +175,23 @@
 
         synth.cancel();
 
-        const chunks = cleaned.match(/[^.!?]+[.!?]?/g) || [cleaned];
+        const blocks = buildSpeechBlocks(cleaned);
         let index = 0;
 
         function playNextChunk() {
-          if (index >= chunks.length) {
+          if (index >= blocks.length) {
             if (stopReadBtn) stopReadBtn.classList.add('hidden');
             if (readAloudBtn) readAloudBtn.textContent = '🔊 Lire à voix haute';
             return { ok: true, finished: true };
           }
 
-          const sentence = chunks[index].trim();
-          if (!sentence) {
+          const block = blocks[index].trim();
+          if (!block) {
             index += 1;
             return playNextChunk();
           }
 
-          const utterance = new SpeechSynthesisUtterance(sentence);
+          const utterance = new SpeechSynthesisUtterance(block);
           const voice = chooseFrenchVoice();
           utterance.lang = options.lang;
           utterance.rate = options.rate;
@@ -164,10 +201,10 @@
 
           utterance.onend = () => {
             index += 1;
-            if (index < chunks.length) {
+            if (index < blocks.length) {
               const wait = window.setTimeout(() => {
                 playNextChunk();
-              }, options.pauseAfterSentence);
+              }, options.pauseAfterParagraph);
               window.__speechPauseTimer = wait;
             } else {
               playNextChunk();
@@ -180,7 +217,7 @@
           }
 
           synth.speak(utterance);
-          return { ok: true, currentChunk: sentence };
+          return { ok: true, currentChunk: block };
         }
 
         if (stopReadBtn) stopReadBtn.classList.remove('hidden');
@@ -232,7 +269,7 @@
           const docText = await extractDocumentText();
           const textToRead = docText || getSpeechText();
 
-          readTextOutLoud(textToRead, { lang: 'fr-FR', rate: 0.85, pitch: 0.9, pauseAfterSentence: 260 });
+          readTextOutLoud(textToRead, { lang: 'fr-FR', rate: 0.7, pitch: 0.8, pauseAfterParagraph: 1100 });
 
           readAloudBtn.disabled = false;
           readAloudBtn.textContent = '🔊 Lire à voix haute';
