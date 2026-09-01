@@ -118,9 +118,10 @@
 
         const options = {
           lang: 'fr-FR',
-          rate: 0.9,
-          pitch: 0.95,
+          rate: 0.85,
+          pitch: 0.9,
           volume: 1,
+          pauseAfterSentence: 220,
           ...config
         };
 
@@ -163,8 +164,20 @@
 
           utterance.onend = () => {
             index += 1;
-            playNextChunk();
+            if (index < chunks.length) {
+              const wait = window.setTimeout(() => {
+                playNextChunk();
+              }, options.pauseAfterSentence);
+              window.__speechPauseTimer = wait;
+            } else {
+              playNextChunk();
+            }
           };
+
+          if (window.__speechPauseTimer) {
+            window.clearTimeout(window.__speechPauseTimer);
+            window.__speechPauseTimer = null;
+          }
 
           synth.speak(utterance);
           return { ok: true, currentChunk: sentence };
@@ -219,7 +232,7 @@
           const docText = await extractDocumentText();
           const textToRead = docText || getSpeechText();
 
-          readTextOutLoud(textToRead, { lang: 'fr-FR', rate: 0.9, pitch: 0.95 });
+          readTextOutLoud(textToRead, { lang: 'fr-FR', rate: 0.85, pitch: 0.9, pauseAfterSentence: 260 });
 
           readAloudBtn.disabled = false;
           readAloudBtn.textContent = '🔊 Lire à voix haute';
