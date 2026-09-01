@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Afficheur de document</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mammoth@1.7.0/mammoth.browser.min.js"></script>
   <style>html,body,#viewer{height:100%;margin:0}</style>
  </head>
 <body class="bg-slate-50 text-gray-800">
@@ -158,6 +159,26 @@
         return playNextChunk();
       }
 
+      async function extractDocumentText() {
+        if (!fileParam) return null;
+
+        try {
+          const fileUrl = new URL(decodeURIComponent(fileParam), window.location.href).href;
+          const response = await fetch(fileUrl, { cache: 'no-store' });
+          if (!response.ok) {
+            throw new Error('Fetch document failed: ' + response.status);
+          }
+
+          const arrayBuffer = await response.arrayBuffer();
+          const result = await mammoth.extractRawText({ arrayBuffer });
+          const extractedText = (result && result.value || '').replace(/\s+/g, ' ').trim();
+          return extractedText || null;
+        } catch (error) {
+          console.warn('Impossible d’extraire le texte du document .docx:', error);
+          return null;
+        }
+      }
+
       function getSpeechText() {
         const fallbackTitle = (fileParam ? decodeURIComponent(fileParam).split('/').pop() : document.title || 'Document')
           .replace(/\.[^.]+$/, '')
@@ -175,8 +196,17 @@
       }
 
       if (readAloudBtn) {
-        readAloudBtn.addEventListener('click', () => {
-          readTextOutLoud(getSpeechText(), { lang: 'fr-FR', rate: 1, pitch: 1.1 });
+        readAloudBtn.addEventListener('click', async () => {
+          readAloudBtn.disabled = true;
+          readAloudBtn.textContent = '⏳ Extraction…';
+
+          const docText = await extractDocumentText();
+          const textToRead = docText || getSpeechText();
+
+          readTextOutLoud(textToRead, { lang: 'fr-FR', rate: 1, pitch: 1.1 });
+
+          readAloudBtn.disabled = false;
+          readAloudBtn.textContent = '🔊 Lire à voix haute';
         });
       }
 
