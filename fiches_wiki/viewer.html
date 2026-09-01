@@ -18,7 +18,6 @@
       <div class="flex items-center gap-3">
         <button id="readAloudBtn" type="button" class="text-sm px-3 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">🔊 Lire à voix haute</button>
         <button id="pauseReadBtn" type="button" class="text-sm px-3 py-2 rounded-lg bg-amber-500 text-white hover:bg-amber-600 transition hidden">⏸ Pause</button>
-        <button id="restartChapterBtn" type="button" class="text-sm px-3 py-2 rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300 transition hidden">↩️ Début chapitre</button>
         <button id="stopReadBtn" type="button" class="text-sm px-3 py-2 rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300 transition hidden">⏹ Arrêter</button>
         <a id="downloadLink" class="text-sm text-gray-600 hover:underline" target="_blank" rel="noopener noreferrer">Télécharger</a>
       </div>
@@ -91,7 +90,6 @@
       const container = document.getElementById('frameContainer');
       const readAloudBtn = document.getElementById('readAloudBtn');
       const pauseReadBtn = document.getElementById('pauseReadBtn');
-      const restartChapterBtn = document.getElementById('restartChapterBtn');
       const stopReadBtn = document.getElementById('stopReadBtn');
 
       function chooseFrenchVoice() {
@@ -217,7 +215,6 @@
             } else {
               if (stopReadBtn) stopReadBtn.classList.add('hidden');
               if (pauseReadBtn) pauseReadBtn.classList.add('hidden');
-              if (restartChapterBtn) restartChapterBtn.classList.add('hidden');
               if (readAloudBtn) readAloudBtn.textContent = '🔊 Lire à voix haute';
             }
           };
@@ -231,7 +228,6 @@
           if (index >= blocks.length) {
             if (stopReadBtn) stopReadBtn.classList.add('hidden');
             if (pauseReadBtn) pauseReadBtn.classList.add('hidden');
-            if (restartChapterBtn) restartChapterBtn.classList.add('hidden');
             if (readAloudBtn) readAloudBtn.textContent = '🔊 Lire à voix haute';
             return { ok: true, finished: true };
           }
@@ -253,7 +249,6 @@
 
         if (stopReadBtn) stopReadBtn.classList.remove('hidden');
         if (pauseReadBtn) pauseReadBtn.classList.remove('hidden');
-        if (restartChapterBtn) restartChapterBtn.classList.remove('hidden');
         if (readAloudBtn) readAloudBtn.textContent = '🔊 En cours…';
 
         isPaused = false;
@@ -349,24 +344,6 @@
         });
       }
 
-      if (restartChapterBtn) {
-        restartChapterBtn.addEventListener('click', () => {
-          if (!window.speechSynthesis) return;
-          window.speechSynthesis.cancel();
-          if (currentReadSession && currentReadSession.blocks && currentReadSession.blocks.length) {
-            currentReadSession.index = 0;
-            const textToRead = currentReadSession.blocks.join(' ');
-            readTextOutLoud(textToRead, {
-              lang: 'fr-FR',
-              rate: 0.7,
-              pitch: 0.8,
-              pauseBeforeBlock: 1500,
-              pauseAfterBlock: 1100
-            });
-          }
-        });
-      }
-
       if (stopReadBtn) {
         stopReadBtn.addEventListener('click', () => {
           if (window.speechSynthesis) {
@@ -380,7 +357,6 @@
             pauseReadBtn.classList.add('hidden');
             pauseReadBtn.textContent = '⏸ Pause';
           }
-          if (restartChapterBtn) restartChapterBtn.classList.add('hidden');
           stopReadBtn.classList.add('hidden');
           if (readAloudBtn) readAloudBtn.textContent = '🔊 Lire à voix haute';
           currentReadSession = null;
