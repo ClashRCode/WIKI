@@ -8,12 +8,20 @@
 
   function getLocalCount(fileKey) {
     const key = STORAGE_PREFIX + normalizeFileKey(fileKey);
-    return Number(parseInt(localStorage.getItem(key) || '0', 10) || 0);
+    try {
+      return Number(parseInt(localStorage.getItem(key) || '0', 10) || 0);
+    } catch (error) {
+      return 0;
+    }
   }
 
   function setLocalCount(fileKey, count) {
     const key = STORAGE_PREFIX + normalizeFileKey(fileKey);
-    localStorage.setItem(key, String(Number(count || 0)));
+    try {
+      localStorage.setItem(key, String(Number(count || 0)));
+    } catch (error) {
+      // localStorage is only a secondary fallback; it must never replace the server state.
+    }
   }
 
   function renderCount(node, count) {
