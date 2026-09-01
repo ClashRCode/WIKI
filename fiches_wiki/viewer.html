@@ -90,6 +90,25 @@
       const readAloudBtn = document.getElementById('readAloudBtn');
       const stopReadBtn = document.getElementById('stopReadBtn');
 
+      function chooseFrenchVoice() {
+        const synth = window.speechSynthesis;
+        if (!synth || !synth.getVoices) return null;
+        const voices = synth.getVoices();
+        const preferred = voices.find(v => /fr/i.test(v.lang) && /french|france|fran[cç]ais/i.test(v.name))
+          || voices.find(v => /fr/i.test(v.lang));
+        return preferred || null;
+      }
+
+      function normalizeSpeechText(text) {
+        return text
+          .replace(/(\d+)\.(\d{1,3})/g, '$1 virgule $2')
+          .replace(/(\d+),(\d{1,3})/g, '$1 virgule $2')
+          .replace(/\s+/g, ' ')
+          .replace(/\[[^\]]*\]/g, ' ')
+          .replace(/\u00A0/g, ' ')
+          .trim();
+      }
+
       function readTextOutLoud(source, config = {}) {
         const synth = window.speechSynthesis;
         if (!synth) {
@@ -99,8 +118,8 @@
 
         const options = {
           lang: 'fr-FR',
-          rate: 1,
-          pitch: 1.1,
+          rate: 0.9,
+          pitch: 0.95,
           volume: 1,
           ...config
         };
@@ -111,12 +130,7 @@
             ? source.textContent
             : '';
 
-        const cleaned = sourceText
-          .replace(/\s+/g, ' ')
-          .replace(/\[[^\]]*\]/g, ' ')
-          .replace(/\u00A0/g, ' ')
-          .trim();
-
+        const cleaned = normalizeSpeechText(sourceText);
         if (!cleaned) {
           return { ok: false, reason: 'No text to read' };
         }
@@ -140,10 +154,12 @@
           }
 
           const utterance = new SpeechSynthesisUtterance(sentence);
+          const voice = chooseFrenchVoice();
           utterance.lang = options.lang;
           utterance.rate = options.rate;
           utterance.pitch = options.pitch;
           utterance.volume = options.volume;
+          if (voice) utterance.voice = voice;
 
           utterance.onend = () => {
             index += 1;
@@ -203,7 +219,7 @@
           const docText = await extractDocumentText();
           const textToRead = docText || getSpeechText();
 
-          readTextOutLoud(textToRead, { lang: 'fr-FR', rate: 1, pitch: 1.1 });
+          readTextOutLoud(textToRead, { lang: 'fr-FR', rate: 0.9, pitch: 0.95 });
 
           readAloudBtn.disabled = false;
           readAloudBtn.textContent = '🔊 Lire à voix haute';
