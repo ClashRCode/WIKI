@@ -133,12 +133,12 @@
           const cleaned = block.replace(/\s+/g, ' ').trim();
           if (!cleaned) return;
 
-          if (isLikelyHeading(cleaned)) {
-            blocks.push(`Changement de chapitre. ${cleaned}.`);
+          if (/^(sommaire|table des mati(?:eres|ères)|index|contenu|résumé|resume)$/i.test(cleaned)) {
             return;
           }
 
-          if (/^(sommaire|table des mati(?:eres|ères)|index|contenu|résumé|resume)$/i.test(cleaned)) {
+          if (isLikelyHeading(cleaned)) {
+            blocks.push(`Changement de chapitre. ${cleaned}.`);
             return;
           }
 
@@ -157,8 +157,8 @@
 
         const options = {
           lang: 'fr-FR',
-          rate: 0.7,
-          pitch: 0.8,
+          rate: 0.6,
+          pitch: 0.75,
           volume: 1,
           pauseBeforeBlock: 1500,
           pauseAfterBlock: 1100,
@@ -195,7 +195,13 @@
           utterance.rate = options.rate;
           utterance.pitch = options.pitch;
           utterance.volume = options.volume;
+          utterance.text = utterance.text.replace(/\s+/g, ' ').trim();
           if (voice) utterance.voice = voice;
+
+          if (/Changement de chapitre\./i.test(block)) {
+            utterance.rate = options.rate * 0.9;
+            utterance.pitch = options.pitch + 0.15;
+          }
 
           utterance.onstart = () => {
             if (window.__speechPauseTimer) {
@@ -318,8 +324,8 @@
 
           readTextOutLoud(textToRead, {
             lang: 'fr-FR',
-            rate: 0.7,
-            pitch: 0.8,
+            rate: 0.65,
+            pitch: 0.75,
             pauseBeforeBlock: 1500,
             pauseAfterBlock: 1100
           });
