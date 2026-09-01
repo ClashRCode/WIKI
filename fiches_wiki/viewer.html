@@ -17,6 +17,8 @@
       </div>
       <div class="flex items-center gap-3">
         <button id="readAloudBtn" type="button" class="text-sm px-3 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">🔊 Lire à voix haute</button>
+        <button id="pauseReadBtn" type="button" class="text-sm px-3 py-2 rounded-lg bg-amber-500 text-white hover:bg-amber-600 transition hidden">⏸ Pause</button>
+        <button id="restartChapterBtn" type="button" class="text-sm px-3 py-2 rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300 transition hidden">↩️ Début chapitre</button>
         <button id="stopReadBtn" type="button" class="text-sm px-3 py-2 rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300 transition hidden">⏹ Arrêter</button>
         <a id="downloadLink" class="text-sm text-gray-600 hover:underline" target="_blank" rel="noopener noreferrer">Télécharger</a>
       </div>
@@ -88,6 +90,8 @@
       const dl = document.getElementById('downloadLink');
       const container = document.getElementById('frameContainer');
       const readAloudBtn = document.getElementById('readAloudBtn');
+      const pauseReadBtn = document.getElementById('pauseReadBtn');
+      const restartChapterBtn = document.getElementById('restartChapterBtn');
       const stopReadBtn = document.getElementById('stopReadBtn');
 
       function chooseFrenchVoice() {
@@ -158,7 +162,8 @@
           rate: 0.7,
           pitch: 0.8,
           volume: 1,
-          pauseAfterParagraph: 900,
+          pauseBeforeBlock: 1500,
+          pauseAfterBlock: 1100,
           ...config
         };
 
@@ -177,15 +182,10 @@
 
         const blocks = buildSpeechBlocks(cleaned);
         let index = 0;
+        let isPaused = false;
 
-        function playNextChunk() {
-          if (index >= blocks.length) {
-            if (stopReadBtn) stopReadBtn.classList.add('hidden');
-            if (readAloudBtn) readAloudBtn.textContent = '🔊 Lire à voix haute';
-            return { ok: true, finished: true };
-          }
-
-          const block = blocks[index].trim();
+        function speakBlockAt(indexValue) {
+          const block = blocks[indexValue].trim();
           if (!block) {
             index += 1;
             return playNextChunk();
@@ -199,29 +199,64 @@
           utterance.volume = options.volume;
           if (voice) utterance.voice = voice;
 
+          utterance.onstart = () => {
+            if (window.__speechPauseTimer) {
+              window.clearTimeout(window.__speechPauseTimer);
+              window.__speechPauseTimer = null;
+            }
+          };
+
           utterance.onend = () => {
+            if (isPaused) return;
             index += 1;
             if (index < blocks.length) {
               const wait = window.setTimeout(() => {
-                playNextChunk();
-              }, options.pauseAfterParagraph);
+                if (!isPaused) playNextChunk();
+              }, options.pauseAfterBlock);
               window.__speechPauseTimer = wait;
             } else {
-              playNextChunk();
+              if (stopReadBtn) stopReadBtn.classList.add('hidden');
+              if (pauseReadBtn) pauseReadBtn.classList.add('hidden');
+              if (restartChapterBtn) restartChapterBtn.classList.add('hidden');
+              if (readAloudBtn) readAloudBtn.textContent = '🔊 Lire à voix haute';
             }
           };
+
+          synth.speak(utterance);
+          return { ok: true, currentChunk: block };
+        }
+
+        function playNextChunk() {
+          if (isPaused) return { ok: true, paused: true };
+          if (index >= blocks.length) {
+            if (stopReadBtn) stopReadBtn.classList.add('hidden');
+            if (pauseReadBtn) pauseReadBtn.classList.add('hidden');
+            if (restartChapterBtn) restartChapterBtn.classList.add('hidden');
+            if (readAloudBtn) readAloudBtn.textContent = '🔊 Lire à voix haute';
+            return { ok: true, finished: true };
+          }
 
           if (window.__speechPauseTimer) {
             window.clearTimeout(window.__speechPauseTimer);
             window.__speechPauseTimer = null;
           }
 
-          synth.speak(utterance);
-          return { ok: true, currentChunk: block };
+          const wait = window.setTimeout(() => {
+            if (!isPaused) {
+              speakBlockAt(index);
+            }
+          }, options.pauseBeforeBlock);
+          window.__speechPauseTimer = wait;
+
+          return { ok: true, waitingBeforeBlock: true };
         }
 
         if (stopReadBtn) stopReadBtn.classList.remove('hidden');
+        if (pauseReadBtn) pauseReadBtn.classList.remove('hidden');
+        if (restartChapterBtn) restartChapterBtn.classList.remove('hidden');
         if (readAloudBtn) readAloudBtn.textContent = '🔊 En cours…';
+
+        isPaused = false;
         return playNextChunk();
       }
 
@@ -261,18 +296,74 @@
         return `Document ${fallbackTitle}. Cette fiche est accessible dans le wiki. Consultez le contenu pour plus de détails.`;
       }
 
+      let currentReadSession = null;
+
       if (readAloudBtn) {
         readAloudBtn.addEventListener('click', async () => {
+          if (currentReadSession && currentReadSession.isPaused) {
+            currentReadSession.isPaused = false;
+            if (window.speechSynthesis && window.speechSynthesis.resume) {
+              window.speechSynthesis.resume();
+            }
+            if (pauseReadBtn) pauseReadBtn.textContent = '⏸ Pause';
+            return;
+          }
+
           readAloudBtn.disabled = true;
           readAloudBtn.textContent = '⏳ Extraction…';
 
           const docText = await extractDocumentText();
           const textToRead = docText || getSpeechText();
 
-          readTextOutLoud(textToRead, { lang: 'fr-FR', rate: 0.7, pitch: 0.8, pauseAfterParagraph: 1100 });
+          currentReadSession = {
+            isPaused: false,
+            blocks: buildSpeechBlocks(normalizeSpeechText(textToRead)),
+            index: 0
+          };
+
+          readTextOutLoud(textToRead, {
+            lang: 'fr-FR',
+            rate: 0.7,
+            pitch: 0.8,
+            pauseBeforeBlock: 1500,
+            pauseAfterBlock: 1100
+          });
 
           readAloudBtn.disabled = false;
           readAloudBtn.textContent = '🔊 Lire à voix haute';
+        });
+      }
+
+      if (pauseReadBtn) {
+        pauseReadBtn.addEventListener('click', () => {
+          if (!window.speechSynthesis) return;
+          if (pauseReadBtn.textContent.includes('Pause')) {
+            window.speechSynthesis.pause();
+            pauseReadBtn.textContent = '▶️ Reprendre';
+            if (currentReadSession) currentReadSession.isPaused = true;
+          } else {
+            window.speechSynthesis.resume();
+            pauseReadBtn.textContent = '⏸ Pause';
+            if (currentReadSession) currentReadSession.isPaused = false;
+          }
+        });
+      }
+
+      if (restartChapterBtn) {
+        restartChapterBtn.addEventListener('click', () => {
+          if (!window.speechSynthesis) return;
+          window.speechSynthesis.cancel();
+          if (currentReadSession && currentReadSession.blocks && currentReadSession.blocks.length) {
+            currentReadSession.index = 0;
+            const textToRead = currentReadSession.blocks.join(' ');
+            readTextOutLoud(textToRead, {
+              lang: 'fr-FR',
+              rate: 0.7,
+              pitch: 0.8,
+              pauseBeforeBlock: 1500,
+              pauseAfterBlock: 1100
+            });
+          }
         });
       }
 
@@ -281,8 +372,18 @@
           if (window.speechSynthesis) {
             window.speechSynthesis.cancel();
           }
+          if (window.__speechPauseTimer) {
+            window.clearTimeout(window.__speechPauseTimer);
+            window.__speechPauseTimer = null;
+          }
+          if (pauseReadBtn) {
+            pauseReadBtn.classList.add('hidden');
+            pauseReadBtn.textContent = '⏸ Pause';
+          }
+          if (restartChapterBtn) restartChapterBtn.classList.add('hidden');
           stopReadBtn.classList.add('hidden');
           if (readAloudBtn) readAloudBtn.textContent = '🔊 Lire à voix haute';
+          currentReadSession = null;
         });
       }
 
