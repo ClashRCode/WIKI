@@ -14,7 +14,9 @@
         <a href="/" class="text-sm text-indigo-600 hover:underline">Accueil</a>
         <span id="fileName" class="text-lg font-medium"></span>
       </div>
-      <div>
+      <div class="flex items-center gap-3">
+        <button id="readAloudBtn" type="button" class="text-sm px-3 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 transition">🔊 Lire à voix haute</button>
+        <button id="stopReadBtn" type="button" class="text-sm px-3 py-2 rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300 transition hidden">⏹ Arrêter</button>
         <a id="downloadLink" class="text-sm text-gray-600 hover:underline" target="_blank" rel="noopener noreferrer">Télécharger</a>
       </div>
     </div>
@@ -84,6 +86,109 @@
       const fileNameEl = document.getElementById('fileName');
       const dl = document.getElementById('downloadLink');
       const container = document.getElementById('frameContainer');
+      const readAloudBtn = document.getElementById('readAloudBtn');
+      const stopReadBtn = document.getElementById('stopReadBtn');
+
+      function readTextOutLoud(source, config = {}) {
+        const synth = window.speechSynthesis;
+        if (!synth) {
+          console.warn("La synthèse vocale n'est pas supportée dans ce navigateur.");
+          return { ok: false, reason: 'speechSynthesis unavailable' };
+        }
+
+        const options = {
+          lang: 'fr-FR',
+          rate: 1,
+          pitch: 1.1,
+          volume: 1,
+          ...config
+        };
+
+        const sourceText = typeof source === 'string'
+          ? source
+          : source && typeof source.textContent === 'string'
+            ? source.textContent
+            : '';
+
+        const cleaned = sourceText
+          .replace(/\s+/g, ' ')
+          .replace(/\[[^\]]*\]/g, ' ')
+          .replace(/\u00A0/g, ' ')
+          .trim();
+
+        if (!cleaned) {
+          return { ok: false, reason: 'No text to read' };
+        }
+
+        synth.cancel();
+
+        const chunks = cleaned.match(/[^.!?]+[.!?]?/g) || [cleaned];
+        let index = 0;
+
+        function playNextChunk() {
+          if (index >= chunks.length) {
+            if (stopReadBtn) stopReadBtn.classList.add('hidden');
+            if (readAloudBtn) readAloudBtn.textContent = '🔊 Lire à voix haute';
+            return { ok: true, finished: true };
+          }
+
+          const sentence = chunks[index].trim();
+          if (!sentence) {
+            index += 1;
+            return playNextChunk();
+          }
+
+          const utterance = new SpeechSynthesisUtterance(sentence);
+          utterance.lang = options.lang;
+          utterance.rate = options.rate;
+          utterance.pitch = options.pitch;
+          utterance.volume = options.volume;
+
+          utterance.onend = () => {
+            index += 1;
+            playNextChunk();
+          };
+
+          synth.speak(utterance);
+          return { ok: true, currentChunk: sentence };
+        }
+
+        if (stopReadBtn) stopReadBtn.classList.remove('hidden');
+        if (readAloudBtn) readAloudBtn.textContent = '🔊 En cours…';
+        return playNextChunk();
+      }
+
+      function getSpeechText() {
+        const fallbackTitle = (fileParam ? decodeURIComponent(fileParam).split('/').pop() : document.title || 'Document')
+          .replace(/\.[^.]+$/, '')
+          .replace(/[_-]+/g, ' ')
+          .trim();
+
+        const bodyText = document.body ? document.body.textContent || '' : '';
+        const visibleText = bodyText.replace(/\s+/g, ' ').trim();
+
+        if (visibleText && visibleText.length > fallbackTitle.length + 15) {
+          return visibleText;
+        }
+
+        return `Document ${fallbackTitle}. Cette fiche est accessible dans le wiki. Consultez le contenu pour plus de détails.`;
+      }
+
+      if (readAloudBtn) {
+        readAloudBtn.addEventListener('click', () => {
+          readTextOutLoud(getSpeechText(), { lang: 'fr-FR', rate: 1, pitch: 1.1 });
+        });
+      }
+
+      if (stopReadBtn) {
+        stopReadBtn.addEventListener('click', () => {
+          if (window.speechSynthesis) {
+            window.speechSynthesis.cancel();
+          }
+          stopReadBtn.classList.add('hidden');
+          if (readAloudBtn) readAloudBtn.textContent = '🔊 Lire à voix haute';
+        });
+      }
 
       // If the opened file is inside a category folder (contains '/'), remove the "Accueil" link
       // This applies to all categories so the viewer doesn't navigate away from the embedded doc.
