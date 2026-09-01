@@ -6,6 +6,7 @@
   <title>WIKI - Jules DUCASSE--FERNANDEZ</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="wiki-counter.js"></script>
   <style>
     /* Golden outline for hero text: use -webkit-text-stroke where available,
        fall back to multiple text-shadows to simulate an outline. */
@@ -214,6 +215,26 @@
       const results = document.getElementById('searchResults');
       const btn = document.getElementById('searchBtn');
 
+      function refreshLiveCounts(){
+        document.querySelectorAll('[data-file]').forEach((anchor) => {
+          const fileKey = anchor.dataset.file;
+          const span = anchor.querySelector('.viewcount');
+          if (!fileKey || !span) return;
+          const fallback = parseInt(localStorage.getItem('views:' + fileKey) || '0', 10) || 0;
+          span.textContent = `Nombre de lectures : ${fallback}`;
+          fetch(`/api/views?file=${encodeURIComponent(fileKey)}`, { cache: 'no-store' })
+            .then((res) => res.ok ? res.json() : Promise.reject(new Error('API not available')))
+            .then((data) => {
+              const count = Number(data.count || 0);
+              span.textContent = `Nombre de lectures : ${count}`;
+              localStorage.setItem('views:' + fileKey, String(count));
+            })
+            .catch(() => {
+              span.textContent = `Nombre de lectures : ${fallback}`;
+            });
+        });
+      }
+
       function renderMatches(matches){
         if(!matches || matches.length===0){ results.innerHTML = '<div class="p-3 text-sm text-gray-500">Aucun résultat</div>'; results.classList.remove('hidden'); return }
         const total = matches.length;
@@ -237,6 +258,7 @@
           html += '</div>';
         }
         results.innerHTML = html; results.classList.remove('hidden');
+        refreshLiveCounts();
       }
 
       function search(term){

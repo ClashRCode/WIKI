@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Afficheur de document</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../wiki-counter.js"></script>
   <style>html,body,#viewer{height:100%;margin:0}</style>
  </head>
 <body class="bg-slate-50 text-gray-800">
@@ -129,14 +130,41 @@
       iframe.title = 'Afficheur de document';
       container.appendChild(iframe);
 
-      // --- View counter: store in localStorage and broadcast to other tabs ---
-      (function(){
-        try{
-          const key = 'views:' + fileParam;
-          const prev = parseInt(localStorage.getItem(key) || '0', 10) || 0;
+      async function getPersistedViewCount(fileKey) {
+        try {
+          const res = await fetch(`/api/views?file=${encodeURIComponent(fileKey)}`, { cache: 'no-store' });
+          if (!res.ok) throw new Error('API unavailable');
+          const data = await res.json();
+          return Number(data.count || 0);
+        } catch (err) {
+          const fallback = parseInt(localStorage.getItem('views:' + fileKey) || '0', 10) || 0;
+          return fallback;
+        }
+      }
+
+      async function incrementPersistedViewCount(fileKey) {
+        try {
+          const res = await fetch(`/api/views?file=${encodeURIComponent(fileKey)}&increment=1`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            cache: 'no-store'
+          });
+          if (!res.ok) throw new Error('API unavailable');
+          const data = await res.json();
+          return Number(data.count || 0);
+        } catch (err) {
+          const prev = parseInt(localStorage.getItem('views:' + fileKey) || '0', 10) || 0;
           const next = prev + 1;
-          localStorage.setItem(key, String(next));
-          // Update displayed file name and show a labeled view count
+          localStorage.setItem('views:' + fileKey, String(next));
+          return next;
+        }
+      }
+
+      // --- View counter: store in a persistent backend and fallback to localStorage if needed ---
+      (async function(){
+        try{
+          const key = fileParam;
+          const next = await incrementPersistedViewCount(key);
           const name = decodeURIComponent(fileParam).split('/').pop();
           const fileNameElLocal = document.getElementById('fileName');
           if (fileNameElLocal) {
@@ -150,7 +178,6 @@
             }
             fv.textContent = `Nombre de lectures : ${next}`;
           }
-          // Broadcast the update so other pages can refresh counts live
           try{ const bc = new BroadcastChannel('views'); bc.postMessage({ file: fileParam, count: next }); }catch(e){}
         }catch(e){ console.warn('Could not update view counter', e); }
       })();

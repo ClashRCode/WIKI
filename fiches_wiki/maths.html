@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Maths - Fiches</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../wiki-counter.js"></script>
  </head>
 <body class="bg-slate-50 text-gray-800 font-sans">
 
@@ -59,6 +60,17 @@
               li.appendChild(a);
               li.appendChild(span);
               ul.appendChild(li);
+
+              fetch(`/api/views?file=${encodeURIComponent(fileKey)}`, { cache: 'no-store' })
+                .then(res => res.ok ? res.json() : Promise.reject(new Error('API unavailable')))
+                .then(data => {
+                  const count = Number(data.count || 0);
+                  span.textContent = `Nombre de lectures : ${count}`;
+                  localStorage.setItem('views:' + fileKey, String(count));
+                })
+                .catch(() => {
+                  span.textContent = `Nombre de lectures : ${parseInt(localStorage.getItem('views:' + fileKey) || '0', 10) || 0}`;
+                });
             });
             container.innerHTML = '';
             container.appendChild(ul);
@@ -126,6 +138,9 @@
         }catch(e){}
 
         document.addEventListener('DOMContentLoaded', loadBiologyFiles);
+        if (window.WikiCounter) {
+          window.WikiCounter.bindLiveUpdates();
+        }
       </script>
     </div>
 
