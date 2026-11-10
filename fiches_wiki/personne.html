@@ -23,90 +23,74 @@
       <img src="../img/personne.png" alt="personne" class="w-10 h-10" />
       <h2 id="pageTitle" class="text-3xl font-bold text-indigo-700">Personnalité</h2>
       <script>
-        // Liste les fiches du dossier `fiches_wiki/Personne/` du dépôt GitHub.
-        // GitHub Pages ne permet pas de lister un dossier : on passe par l'API GitHub.
-        // Chaque fiche .html est ouverte directement ; un .docx sans fiche html
-        // reste consultable via viewer.html.
-        const GITHUB_API = 'https://api.github.com/repos/ClashRCode/WIKI/contents/fiches_wiki/Personne?ref=main&cachebust=' + Date.now();
-        const FOLDER_PATH = 'fiches_wiki/Personne/'; // chemin relatif depuis cette page
+        // Liste statique des fichiers HTML disponibles dans fiches_wiki/Personne/
+        // Chaque entrée peut être un fichier HTML direct ou un fichier DOCX à ouvrir via viewer.html
+        const FOLDER_PATH = 'fiches_wiki/Personne/';
 
-        async function loadPeopleFiles() {
+        const peopleFiles = [
+          { name: '[PERSONNALITE] Auguste.html', display: 'Auguste', type: 'html' },
+          { name: '[PERSONNALITE] Jules César.html', display: 'Jules César', type: 'html' },
+          { name: '[PERSONNALITE] Napoléon Bonaparte.html', display: 'Napoléon Bonaparte', type: 'html' },
+          { name: '[PERSONNALITE] Alain Aspect.docx', display: 'Alain Aspect', type: 'docx' },
+          { name: '[PERSONNALITE] Alan Turing.docx', display: 'Alan Turing', type: 'docx' },
+          { name: '[PERSONNALITE] Albert Einstein.docx', display: 'Albert Einstein', type: 'docx' },
+          { name: '[PERSONNALITE] François Arago.docx', display: 'François Arago', type: 'docx' }
+        ];
+
+        function displayName(filename) {
+          return filename.replace(/^\[PERSONNALITE\]\s*/i, '').replace(/\.(html|docx|doc)$/i, '');
+        }
+
+        function makeRow(fileKey, display, href) {
+          const li = document.createElement('li');
+          li.className = 'flex items-center justify-between py-2';
+          const a = document.createElement('a');
+          a.href = href;
+          a.textContent = display;
+          a.className = 'text-indigo-700 hover:underline flex-1';
+          a.dataset.file = fileKey;
+          const span = document.createElement('span');
+          span.className = 'ml-4 text-sm text-gray-500 text-right w-48 viewcount';
+          span.textContent = `Nombre de lectures : ${parseInt(localStorage.getItem('views:' + fileKey) || '0', 10) || 0}`;
+          li.appendChild(a);
+          li.appendChild(span);
+          return li;
+        }
+
+        function renderList(files) {
+          if (files.length === 0) {
+            document.getElementById('listContainer').innerHTML = '<p class="text-sm text-gray-500">Aucune fiche trouvée.</p>';
+            return;
+          }
+          const ul = document.createElement('ul');
+          ul.className = 'space-y-2 divide-y divide-gray-100';
+          files.forEach(f => ul.appendChild(makeRow(f.key, f.display, f.href)));
+          document.getElementById('listContainer').innerHTML = '';
+          document.getElementById('listContainer').appendChild(ul);
+        }
+
+        function loadPeopleFiles() {
           const container = document.getElementById('listContainer');
-
-          const displayName = (filename) =>
-            filename.replace(/^\[PERSONNALITE\]\s*/i, '').replace(/\.(html|docx|doc)$/i, '');
-
-          function makeRow(fileKey, display, href) {
-            const li = document.createElement('li');
-            li.className = 'flex items-center justify-between py-2';
-            const a = document.createElement('a');
-            a.href = href;
-            a.textContent = display;
-            a.className = 'text-indigo-700 hover:underline flex-1';
-            a.dataset.file = fileKey;
-            const span = document.createElement('span');
-            span.className = 'ml-4 text-sm text-gray-500 text-right w-48 viewcount';
-            span.textContent = `Nombre de lectures : ${parseInt(localStorage.getItem('views:' + fileKey) || '0', 10) || 0}`;
-            li.appendChild(a);
-            li.appendChild(span);
-            return li;
-          }
-
-          function renderList(files) {
-            // files : [{ name, href }] déjà triés par nom
-            if (files.length === 0) {
-              container.innerHTML = '<p class="text-sm text-gray-500">Aucune fiche trouvée.</p>';
-              return;
+          
+          const files = peopleFiles.map(file => {
+            const fileKey = FOLDER_PATH + file.name;
+            if (file.type === 'html') {
+              return { 
+                key: fileKey, 
+                display: file.display, 
+                href: encodeURI(fileKey) 
+              };
+            } else {
+              return { 
+                key: fileKey, 
+                display: file.display, 
+                href: 'viewer.html?file=' + encodeURIComponent(fileKey) 
+              };
             }
-            const ul = document.createElement('ul');
-            ul.className = 'space-y-2 divide-y divide-gray-100';
-            files.forEach(f => ul.appendChild(makeRow(f.key, f.display, f.href)));
-            container.innerHTML = '';
-            container.appendChild(ul);
-          }
+          });
 
-          try {
-            const res = await fetch(GITHUB_API, { cache: 'no-store' });
-            if (res.status === 403) {
-              container.innerHTML = '<p class="text-sm text-red-500">Limite de requêtes API GitHub atteinte (60/h). Réessayez dans quelques minutes.</p>';
-              return;
-            }
-            if (!res.ok) throw new Error('API GitHub : ' + res.status);
-            const entries = await res.json();
-            if (!Array.isArray(entries)) throw new Error('Réponse API inattendue');
-
-            // Regrouper par nom de base : la fiche .html prime sur le .docx
-            const byStem = new Map();
-            entries.forEach(e => {
-              if (e.type !== 'file') return;
-              const m = e.name.match(/^(.*)\.(html|docx|doc)$/i);
-              if (!m) return;
-              const stem = m[1].toLowerCase();
-              if (!byStem.has(stem)) byStem.set(stem, []);
-              byStem.get(stem).push(e);
-            });
-
-            const files = [];
-            byStem.forEach(list => {
-              const html = list.find(e => e.name.toLowerCase().endsWith('.html'));
-              const docx = list.find(e => !e.name.toLowerCase().endsWith('.html'));
-              const name = (html || docx).name;
-              const display = displayName(name);
-              if (html) {
-                files.push({ key: FOLDER_PATH + html.name, display: display, href: encodeURI(FOLDER_PATH + html.name) });
-              } else {
-                // pas encore de fiche html : ouverture via le viewer comme avant
-                const fileKey = FOLDER_PATH + docx.name;
-                files.push({ key: fileKey, display: display, href: 'viewer.html?file=' + encodeURIComponent(fileKey) });
-              }
-            });
-
-            files.sort((a, b) => a.display.localeCompare(b.display, 'fr', { sensitivity: 'base' }));
-            renderList(files);
-          } catch (err) {
-            console.warn('Listing via API GitHub impossible', err);
-            container.innerHTML = '<p class="text-sm text-red-500">Impossible de lister les fiches (API GitHub injoignable). Vérifiez votre connexion et réessayez.</p>';
-          }
+          files.sort((a, b) => a.display.localeCompare(b.display, 'fr', { sensitivity: 'base' }));
+          renderList(files);
         }
 
         try {
