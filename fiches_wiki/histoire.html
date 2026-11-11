@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Histoire - Fiches</title>
   <script src="https://cdn.tailwindcss.com"></script>
- </head>
+</head>
 <body class="bg-slate-50 text-gray-800 font-sans">
 
   <!-- Navigation -->
@@ -23,110 +23,77 @@
       <img src="../img/histoire.png" alt="histoire" class="w-10 h-10" />
       <h2 id="pageTitle" class="text-3xl font-bold text-indigo-700">Histoire</h2>
       <script>
-        // Récupère et affiche les fichiers .doc/.docx du dossier `Histoire/`.
-        // Tentative 1: fetch de l'index du dossier (expose HTML par python -m http.server).
-        // Tentative 2: lecture de `Histoire/index.json` (généré par script local) si la première échoue.
-        async function loadBiologyFiles() {
-          const dir = 'Histoire/';
-          const container = document.getElementById('listContainer');
+        // Liste statique des fichiers disponibles dans Histoire/
+        const FOLDER_PATH = 'Histoire/';
 
-          async function renderList(files) {
-            const unique = Array.from(new Set(files));
-            unique.sort((a,b) => a.localeCompare(b, 'fr', {sensitivity: 'base'}));
-            if (unique.length === 0) {
-              container.innerHTML = '<p class="text-sm text-gray-500">Aucune fiche trouvée.</p>';
-              return;
-            }
-            const ul = document.createElement('ul');
-            ul.className = 'space-y-2 divide-y divide-gray-100';
-              unique.forEach(fn => {
-                let display = fn.replace(/^\[HISTOIRE\]\s*/i, '');
-                display = display.replace(/\.(docx|doc)$/i, '');
-                  const li = document.createElement('li');
-                  li.className = 'flex items-center justify-between py-2';
-                  const a = document.createElement('a');
-                  const fileKey = dir + fn;
-                  // Open with bundled viewer that embeds Office Online for in-browser display
-                  a.href = 'viewer.html?file=' + encodeURIComponent(fileKey);
-                  a.target = '_blank';
-                  a.rel = 'noopener noreferrer';
-                  a.textContent = display;
-                  a.className = 'text-indigo-700 hover:underline flex-1';
-                  a.dataset.file = fileKey;
-                  const span = document.createElement('span');
-                  span.className = 'ml-4 text-sm text-gray-500 text-right w-48 viewcount';
-                  span.textContent = `Nombre de lectures : ${parseInt(localStorage.getItem('views:' + fileKey) || '0',10) || 0}`;
-                  // provide a small download attribute fallback (user can right-click if needed)
-                  li.appendChild(a);
-                  li.appendChild(span);
-                  ul.appendChild(li);
-            });
-            container.innerHTML = '';
-            container.appendChild(ul);
-          }
+        const categoryFiles = [
+          { name: '[HISTOIRE] Programme Apollo.docx', display: 'Programme Apollo', type: 'docx' },
+          { name: '[HISTOIRE] Programme Artemis.docx', display: 'Programme Artemis', type: 'docx' },
+          { name: '[HISTOIRE] Programme Gemini.docx', display: 'Programme Gemini', type: 'docx' },
+          { name: '[HISTOIRE] Programme ISS.docx', display: 'Programme ISS', type: 'docx' },
+          { name: '[HISTOIRE] Programme Navette spatiale.docx', display: 'Programme Navette spatiale', type: 'docx' },
+          { name: '[HISTOIRE] Programme Shuttle-Mir.docx', display: 'Programme Shuttle-Mir', type: 'docx' },
+          { name: '[HISTOIRE] Projet Manhattan.docx', display: 'Projet Manhattan', type: 'docx' },
+          { name: '[HISTOIRE] Événement de la Toungouska.docx', display: 'Événement de la Toungouska', type: 'docx' },
+        ];
 
-          // Try 1: fetch directory listing (HTML)
-          try {
-            const res = await fetch(dir, {cache: 'no-store'});
-            if (res.ok && res.headers.get('content-type') && res.headers.get('content-type').includes('text/html')) {
-              const text = await res.text();
-              const parser = new DOMParser();
-              const doc = parser.parseFromString(text, 'text/html');
-              const anchors = Array.from(doc.querySelectorAll('a'));
-              const files = anchors
-                .map(a => a.getAttribute('href'))
-                .filter(href => href && (href.toLowerCase().endsWith('.docx') || href.toLowerCase().endsWith('.doc')))
-                .map(href => decodeURIComponent(href.replace(/\/+$/,'')));
-              await renderList(files);
-              return;
-            }
-            // If not HTML, fallthrough to JSON attempt
-          } catch (err) {
-            console.warn('Liste dossier inaccessible, essai de fallback JSON', err);
-          }
-
-          // Try 2: fetch pre-generated JSON index
-          try {
-            const jres = await fetch(dir + 'index.json', {cache: 'no-store'});
-            if (jres.ok) {
-              const data = await jres.json();
-              if (Array.isArray(data)) {
-                // support array of strings or array of objects { filename, path, title }
-                const files = data
-                  .map(item => {
-                    if (typeof item === 'string') return item;
-                    if (item && typeof item === 'object') {
-                      if (item.filename) return item.filename;
-                      if (item.path) return item.path.split('/').pop();
-                      if (item.title) return item.title + '.docx';
-                    }
-                    return null;
-                  })
-                  .filter(f => typeof f === 'string');
-                await renderList(files);
-                return;
-              }
-            }
-          } catch (err) {
-            console.warn('Fallback JSON indisponible', err);
-          }
-
-          // Aucun mécanisme disponible
-          container.innerHTML = `<p class="text-sm text-red-500">Impossible de lister le dossier. Exécutez un serveur (ex. \`python -m http.server\`) ou générez \`${dir}index.json\`.</p>`;
+        function makeRow(fileKey, display, href) {
+          const li = document.createElement('li');
+          li.className = 'flex items-center justify-between py-2';
+          const a = document.createElement('a');
+          a.href = href;
+          a.textContent = display;
+          a.className = 'text-indigo-700 hover:underline flex-1';
+          a.dataset.file = fileKey;
+          const span = document.createElement('span');
+          span.className = 'ml-4 text-sm text-gray-500 text-right w-48 viewcount';
+          span.textContent = `Nombre de lectures : ${parseInt(localStorage.getItem('views:' + fileKey) || '0', 10) || 0}`;
+          li.appendChild(a);
+          li.appendChild(span);
+          return li;
         }
 
-        try{
-          const bc = new BroadcastChannel('views');
-          bc.onmessage = (ev)=>{
-            try{
-              const f = ev.data.file;
-              const el = document.querySelector(`[data-file="${f}"]`);
-              if(el){ const span = el.parentElement.querySelector('.viewcount'); if(span) span.textContent = `Nombre de lectures : ${ev.data.count}`; }
-            }catch(e){}
-          };
-        }catch(e){}
+        function renderList(files) {
+          if (files.length === 0) {
+            document.getElementById('listContainer').innerHTML = '<p class="text-sm text-gray-500">Aucune fiche trouvée.</p>';
+            return;
+          }
+          const ul = document.createElement('ul');
+          ul.className = 'space-y-2 divide-y divide-gray-100';
+          files.forEach(f => ul.appendChild(makeRow(f.key, f.display, f.href)));
+          document.getElementById('listContainer').innerHTML = '';
+          document.getElementById('listContainer').appendChild(ul);
+        }
 
-        document.addEventListener('DOMContentLoaded', loadBiologyFiles);
+        function loadFiles() {
+          const files = categoryFiles.map(file => {
+            const fileKey = FOLDER_PATH + file.name;
+            if (file.type === 'html') {
+              return { key: fileKey, display: file.display, href: encodeURI(fileKey) };
+            } else {
+              return { key: fileKey, display: file.display, href: 'viewer.html?file=' + encodeURIComponent(fileKey) };
+            }
+          });
+
+          files.sort((a, b) => a.display.localeCompare(b.display, 'fr', { sensitivity: 'base' }));
+          renderList(files);
+        }
+
+        try {
+          const bc = new BroadcastChannel('views');
+          bc.onmessage = (ev) => {
+            try {
+              const f = ev.data.file;
+              const el = document.querySelector(`[data-file="${CSS.escape(f)}"]`);
+              if (el) {
+                const span = el.parentElement.querySelector('.viewcount');
+                if (span) span.textContent = `Nombre de lectures : ${ev.data.count}`;
+              }
+            } catch (e) {}
+          };
+        } catch (e) {}
+
+        document.addEventListener('DOMContentLoaded', loadFiles);
       </script>
     </div>
 
@@ -136,9 +103,9 @@
   </main>
 
   <!-- Bouton Retour en haut -->
-  <button 
-    id="backToTopBtn" 
-    onclick="scrollToTop()" 
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
     class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
     ↑ Top
   </button>
@@ -154,7 +121,7 @@
         backToTopBtn.classList.remove('opacity-100','visible');
       }
     });
-    function scrollToTop(){ window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
   </script>
 
 </body>

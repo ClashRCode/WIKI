@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SI - Fiches</title>
   <script src="https://cdn.tailwindcss.com"></script>
- </head>
+</head>
 <body class="bg-slate-50 text-gray-800 font-sans">
 
   <!-- Navigation -->
@@ -23,109 +23,171 @@
       <img src="../img/SI.png" alt="science de l'ingénieur" class="w-10 h-10" />
       <h2 id="pageTitle" class="text-3xl font-bold text-indigo-700">Science de l'ingénieur</h2>
       <script>
-        // Récupère et affiche les fichiers .doc/.docx du dossier `SI/`.
-        // Tentative 1: fetch de l'index du dossier (expose HTML par python -m http.server).
-        // Tentative 2: lecture de `SI/index.json` (généré par script local) si la première échoue.
-        async function loadBiologyFiles() {
-          const dir = 'SI/';
-          const container = document.getElementById('listContainer');
+        // Liste statique des fichiers disponibles dans SI/
+        const FOLDER_PATH = 'SI/';
 
-          async function renderList(files) {
-            const unique = Array.from(new Set(files));
-            unique.sort((a,b) => a.localeCompare(b, 'fr', {sensitivity: 'base'}));
-            if (unique.length === 0) {
-              container.innerHTML = '<p class="text-sm text-gray-500">Aucune fiche trouvée.</p>';
-              return;
-            }
-            const ul = document.createElement('ul');
-            ul.className = 'space-y-2 divide-y divide-gray-100';
-            unique.forEach(filename => {
-              let display = filename.replace(/^\[SI\]\s*/i, '');
-              display = display.replace(/\.(docx|doc)$/i, '');
-              const li = document.createElement('li');
-              li.className = 'flex items-center justify-between py-2';
-              const a = document.createElement('a');
-              const fileKey = dir + filename;
-              // Open with viewer to display in-browser when possible
-              a.href = 'viewer.html?file=' + encodeURIComponent(fileKey);
-              a.target = '_blank';
-              a.rel = 'noopener noreferrer';
-              a.textContent = display;
-              a.className = 'text-indigo-700 hover:underline flex-1';
-              a.dataset.file = fileKey;
-              const span = document.createElement('span');
-              span.className = 'ml-4 text-sm text-gray-500 text-right w-48 viewcount';
-              span.textContent = `Nombre de lectures : ${parseInt(localStorage.getItem('views:' + fileKey) || '0', 10) || 0}`;
-              li.appendChild(a);
-              li.appendChild(span);
-              ul.appendChild(li);
-            });
-            container.innerHTML = '';
-            container.appendChild(ul);
-          }
+        const siFiles = [
+          { name: '[SI] Accélérateur MHD.docx', display: 'Accélérateur MHD', type: 'docx' },
+          { name: '[SI] Accouplement, embrayage et frein.docx', display: 'Accouplement, embrayage et frein', type: 'docx' },
+          { name: '[SI] Aciers et fontes.docx', display: 'Aciers et fontes', type: 'docx' },
+          { name: '[SI] Aérofrein.docx', display: 'Aérofrein', type: 'docx' },
+          { name: '[SI] Aérofreinage.docx', display: 'Aérofreinage', type: 'docx' },
+          { name: '[SI] Antenne MIMO.docx', display: 'Antenne MIMO', type: 'docx' },
+          { name: '[SI] Antenne plasma.docx', display: 'Antenne plasma', type: 'docx' },
+          { name: '[SI] Antenne réseau à commande de phase.docx', display: 'Antenne réseau à commande de phase', type: 'docx' },
+          { name: '[SI] Antenne.docx', display: 'Antenne', type: 'docx' },
+          { name: '[SI] Asservissement, régulation et automatique.docx', display: 'Asservissement, régulation et automatique', type: 'docx' },
+          { name: '[SI] Ballute.docx', display: 'Ballute', type: 'docx' },
+          { name: '[SI] Boite de vitesses.docx', display: 'Boite de vitesses', type: 'docx' },
+          { name: '[SI] Breguet Atlantic.docx', display: 'Breguet Atlantic', type: 'docx' },
+          { name: '[SI] Caméra LSST.docx', display: 'Caméra LSST', type: 'docx' },
+          { name: '[SI] Courroie et chaine.docx', display: 'Courroie et chaine', type: 'docx' },
+          { name: '[SI] Crew Dragon.docx', display: 'Crew Dragon', type: 'docx' },
+          { name: '[SI] Cryptographie.docx', display: 'Cryptographie', type: 'docx' },
+          { name: '[SI] Dassault Breguet  Dornier Alpha Jet.docx', display: 'Dassault Breguet  Dornier Alpha Jet', type: 'docx' },
+          { name: '[SI] Dassault Mirage 2000.docx', display: 'Dassault Mirage 2000', type: 'docx' },
+          { name: '[SI] Dassault Mirage 5.docx', display: 'Dassault Mirage 5', type: 'docx' },
+          { name: '[SI] Dassault Mirage G.docx', display: 'Dassault Mirage G', type: 'docx' },
+          { name: '[SI] Dassault Mystère IV.docx', display: 'Dassault Mystère IV', type: 'docx' },
+          { name: '[SI] Dassault Neuron.docx', display: 'Dassault Neuron', type: 'docx' },
+          { name: '[SI] Dassault Rafale.docx', display: 'Dassault Rafale', type: 'docx' },
+          { name: '[SI] Dureté Vickers.docx', display: 'Dureté Vickers', type: 'docx' },
+          { name: '[SI] Engrenage.docx', display: 'Engrenage', type: 'docx' },
+          { name: '[SI] Essais des matériaux.docx', display: 'Essais des matériaux', type: 'docx' },
+          { name: '[SI] Filetage, visserie et boulonnerie.docx', display: 'Filetage, visserie et boulonnerie', type: 'docx' },
+          { name: '[SI] Freins à disque et tambours.docx', display: 'Freins à disque et tambours', type: 'docx' },
+          { name: '[SI] Freins électromagnétiques.docx', display: 'Freins électromagnétiques', type: 'docx' },
+          { name: '[SI] Furtivité.docx', display: 'Furtivité', type: 'docx' },
+          { name: '[SI] Goupilles, circlips, rivetage, support-butée, cône de fixation.docx', display: 'Goupilles, circlips, rivetage, support-butée, cône de fixation', type: 'docx' },
+          { name: '[SI] Grumman F-14 Tomcat.docx', display: 'Grumman F-14 Tomcat', type: 'docx' },
+          { name: '[SI] Hawker Hurricane.docx', display: 'Hawker Hurricane', type: 'docx' },
+          { name: '[SI] Hawker Tempest.docx', display: 'Hawker Tempest', type: 'docx' },
+          { name: '[SI] Hawker Typhoon.docx', display: 'Hawker Typhoon', type: 'docx' },
+          { name: '[SI] Horloge atomique.docx', display: 'Horloge atomique', type: 'docx' },
+          { name: '[SI] Intelligence Artificielle.docx', display: 'Intelligence Artificielle', type: 'docx' },
+          { name: '[SI] Joint d étanchéité.docx', display: 'Joint détanchéité', type: 'docx' },
+          { name: '[SI] KM3NeT.docx', display: 'KM3NeT', type: 'docx' },
+          { name: '[SI] Laser Interferometer Space Antenna LISA.docx', display: 'Laser Interferometer Space Antenna LISA', type: 'docx' },
+          { name: '[SI] Le Télescope Einstein.docx', display: 'Le Télescope Einstein', type: 'docx' },
+          { name: '[SI] Liaison arbre-moyeu.docx', display: 'Liaison arbre-moyeu', type: 'docx' },
+          { name: '[SI] Liaison glissière.docx', display: 'Liaison glissière', type: 'docx' },
+          { name: '[SI] Liaison élastique - ressort.docx', display: 'Liaison élastique - ressort', type: 'docx' },
+          { name: '[SI] Lockheed F-117 Nighthawk.docx', display: 'Lockheed F-117 Nighthawk', type: 'docx' },
+          { name: '[SI] Matériaux ferreux.docx', display: 'Matériaux ferreux', type: 'docx' },
+          { name: '[SI] Matériaux.docx', display: 'Matériaux', type: 'docx' },
+          { name: '[SI] McDonnell Douglas F-15 Eagle.docx', display: 'McDonnell Douglas F-15 Eagle', type: 'docx' },
+          { name: '[SI] Microscope à effet tunnel.docx', display: 'Microscope à effet tunnel', type: 'docx' },
+          { name: '[SI] Mikoyan-Gourevitch MiG-105.docx', display: 'Mikoyan-Gourevitch MiG-105', type: 'docx' },
+          { name: '[SI] Mikoyan-Gourevitch MiG-23.docx', display: 'Mikoyan-Gourevitch MiG-23', type: 'docx' },
+          { name: '[SI] Mikoyan-Gourevitch MiG-31.docx', display: 'Mikoyan-Gourevitch MiG-31', type: 'docx' },
+          { name: '[SI] Moteur Stirling.docx', display: 'Moteur Stirling', type: 'docx' },
+          { name: '[SI] Moteur à détonation rotative.docx', display: 'Moteur à détonation rotative', type: 'docx' },
+          { name: '[SI] Moteur à explosion.docx', display: 'Moteur à explosion', type: 'docx' },
+          { name: '[SI] Moteur-fusée.docx', display: 'Moteur-fusée', type: 'docx' },
+          { name: '[SI] Métaux non ferreux.docx', display: 'Métaux non ferreux', type: 'docx' },
+          { name: '[SI] NASA X-43 Scramjet.docx', display: 'NASA X-43 Scramjet', type: 'docx' },
+          { name: '[SI] Nano voiture.docx', display: 'Nano voiture', type: 'docx' },
+          { name: '[SI] Nanotube de carbone.docx', display: 'Nanotube de carbone', type: 'docx' },
+          { name: '[SI] North American P-51 Mustang.docx', display: 'North American P-51 Mustang', type: 'docx' },
+          { name: '[SI] Northrop B-2 Spirit.docx', display: 'Northrop B-2 Spirit', type: 'docx' },
+          { name: '[SI] Observatoire Vera Rubin.docx', display: 'Observatoire Vera Rubin', type: 'docx' },
+          { name: '[SI] Oriol.docx', display: 'Oriol', type: 'docx' },
+          { name: '[SI] Palier lisse, coussinet et rotule.docx', display: 'Palier lisse, coussinet et rotule', type: 'docx' },
+          { name: '[SI] Plastiques et élastomères.docx', display: 'Plastiques et élastomères', type: 'docx' },
+          { name: '[SI] Postcombustion.docx', display: 'Postcombustion', type: 'docx' },
+          { name: '[SI] Poussée vectorielle.docx', display: 'Poussée vectorielle', type: 'docx' },
+          { name: '[SI] Propulseur magnétoplasmadynamique.docx', display: 'Propulseur magnétoplasmadynamique', type: 'docx' },
+          { name: '[SI] Propulseur à effet Hall (ionique).docx', display: 'Propulseur à effet Hall (ionique)', type: 'docx' },
+          { name: '[SI] Propulsion magnéto-plasmique à impulsion spécifique variable.docx', display: 'Propulsion magnéto-plasmique à impulsion spécifique variable', type: 'docx' },
+          { name: '[SI] Propulsion magnéto-plasmique.docx', display: 'Propulsion magnéto-plasmique', type: 'docx' },
+          { name: '[SI] Qubits d antimatière.docx', display: 'Qubits d antimatière', type: 'docx' },
+          { name: '[SI] Radar Nostradamus.docx', display: 'Radar Nostradamus', type: 'docx' },
+          { name: '[SI] Radar.docx', display: 'Radar', type: 'docx' },
+          { name: '[SI] Rdm.docx', display: 'Rdm', type: 'docx' },
+          { name: '[SI] Roulements.docx', display: 'Roulements', type: 'docx' },
+          { name: '[SI] Réacteur nucléaire.docx', display: 'Réacteur nucléaire', type: 'docx' },
+          { name: '[SI] Soudage.docx', display: 'Soudage', type: 'docx' },
+          { name: '[SI] Soukhoï Su-34.docx', display: 'Soukhoï Su-34', type: 'docx' },
+          { name: '[SI] Soukhoï Su-37.docx', display: 'Soukhoï Su-37', type: 'docx' },
+          { name: '[SI] Soukhoï Su-47 Berkut.docx', display: 'Soukhoï Su-47 Berkut', type: 'docx' },
+          { name: '[SI] Soukhoï Su-57.docx', display: 'Soukhoï Su-57', type: 'docx' },
+          { name: '[SI] Soukhoï Su-75.docx', display: 'Soukhoï Su-75', type: 'docx' },
+          { name: '[SI] Soyouz.docx', display: 'Soyouz', type: 'docx' },
+          { name: '[SI] Supermarine Seafire.docx', display: 'Supermarine Seafire', type: 'docx' },
+          { name: '[SI] Supermarine Spitfire.docx', display: 'Supermarine Spitfire', type: 'docx' },
+          { name: '[SI] Symbole schéma, unités et normes.docx', display: 'Symbole schéma, unités et normes', type: 'docx' },
+          { name: '[SI] Système de combat aérien du futur SCAF.docx', display: 'Système de combat aérien du futur SCAF', type: 'docx' },
+          { name: '[SI] Train d engrenage.docx', display: 'Train dengrenage', type: 'docx' },
+          { name: '[SI] Traitement thermique.docx', display: 'Traitement thermique', type: 'docx' },
+          { name: '[SI] Traitements de surface.docx', display: 'Traitements de surface', type: 'docx' },
+          { name: '[SI] Telescope géant européen (ELT).docx', display: 'Telescope géant européen (ELT)', type: 'docx' },
+          { name: '[SI] V-MAX.docx', display: 'V-MAX', type: 'docx' },
+          { name: '[SI] VORTEX (Véhicule Orbital Réutilisable de Transport et dExploration).docx', display: 'VORTEX (Véhicule Orbital Réutilisable de Transport et dExploration)', type: 'docx' },
+          { name: '[SI] Variateur de vitesse mécanique.docx', display: 'Variateur de vitesse mécanique', type: 'docx' },
+          { name: '[SI] Vis d Archimède.docx', display: 'Vis dArchimède', type: 'docx' },
+          { name: '[SI] Vérins.docx', display: 'Vérins', type: 'docx' },
+          { name: '[SI] Winglets.docx', display: 'Winglets', type: 'docx' },
+          { name: '[SI] le Pykrète.docx', display: 'le Pykrète', type: 'docx' },
+          { name: '[SI] le Starlite.docx', display: 'le Starlite', type: 'docx' }
+        ];
 
-          // Try 1: fetch directory listing (HTML)
-          try {
-            const res = await fetch(dir, {cache: 'no-store'});
-            if (res.ok && res.headers.get('content-type') && res.headers.get('content-type').includes('text/html')) {
-              const text = await res.text();
-              const parser = new DOMParser();
-              const doc = parser.parseFromString(text, 'text/html');
-              const anchors = Array.from(doc.querySelectorAll('a'));
-              const files = anchors
-                .map(a => a.getAttribute('href'))
-                .filter(href => href && (href.toLowerCase().endsWith('.docx') || href.toLowerCase().endsWith('.doc')))
-                .map(href => decodeURIComponent(href.replace(/\/+$/,'')));
-              await renderList(files);
-              return;
-            }
-            // If not HTML, fallthrough to JSON attempt
-          } catch (err) {
-            console.warn('Liste dossier inaccessible, essai de fallback JSON', err);
-          }
-
-          // Try 2: fetch pre-generated JSON index
-          try {
-            const jres = await fetch(dir + 'index.json', {cache: 'no-store'});
-            if (jres.ok) {
-              const data = await jres.json();
-              if (Array.isArray(data)) {
-                // support array of strings or array of objects { filename, path, title }
-                const files = data
-                  .map(item => {
-                    if (typeof item === 'string') return item;
-                    if (item && typeof item === 'object') {
-                      if (item.filename) return item.filename;
-                      if (item.path) return item.path.split('/').pop();
-                      if (item.title) return item.title + '.docx';
-                    }
-                    return null;
-                  })
-                  .filter(f => typeof f === 'string');
-                await renderList(files);
-                return;
-              }
-            }
-          } catch (err) {
-            console.warn('Fallback JSON indisponible', err);
-          }
-
-          // Aucun mécanisme disponible
-          container.innerHTML = `<p class="text-sm text-red-500">Impossible de lister le dossier. Exécutez un serveur (ex. \`python -m http.server\`) ou générez \`${dir}index.json\`.</p>`;
+        function makeRow(fileKey, display, href) {
+          const li = document.createElement('li');
+          li.className = 'flex items-center justify-between py-2';
+          const a = document.createElement('a');
+          a.href = href;
+          a.textContent = display;
+          a.className = 'text-indigo-700 hover:underline flex-1';
+          a.dataset.file = fileKey;
+          const span = document.createElement('span');
+          span.className = 'ml-4 text-sm text-gray-500 text-right w-48 viewcount';
+          span.textContent = `Nombre de lectures : ${parseInt(localStorage.getItem('views:' + fileKey) || '0', 10) || 0}`;
+          li.appendChild(a);
+          li.appendChild(span);
+          return li;
         }
 
-        try{
-          const bc = new BroadcastChannel('views');
-          bc.onmessage = (ev)=>{
-            try{
-              const f = ev.data.file;
-              const el = document.querySelector(`[data-file="${f}"]`);
-              if(el){ const span = el.parentElement.querySelector('.viewcount'); if(span) span.textContent = `Nombre de lectures : ${ev.data.count}`; }
-            }catch(e){}
-          };
-        }catch(e){}
+        function renderList(files) {
+          if (files.length === 0) {
+            document.getElementById('listContainer').innerHTML = '<p class="text-sm text-gray-500">Aucune fiche trouvée.</p>';
+            return;
+          }
+          const ul = document.createElement('ul');
+          ul.className = 'space-y-2 divide-y divide-gray-100';
+          files.forEach(f => ul.appendChild(makeRow(f.key, f.display, f.href)));
+          document.getElementById('listContainer').innerHTML = '';
+          document.getElementById('listContainer').appendChild(ul);
+        }
 
-        document.addEventListener('DOMContentLoaded', loadBiologyFiles);
+        function loadSIFiles() {
+          const files = siFiles.map(file => {
+            const fileKey = FOLDER_PATH + file.name;
+            if (file.type === 'html') {
+              return { key: fileKey, display: file.display, href: encodeURI(fileKey) };
+            } else {
+              return { key: fileKey, display: file.display, href: 'viewer.html?file=' + encodeURIComponent(fileKey) };
+            }
+          });
+
+          files.sort((a, b) => a.display.localeCompare(b.display, 'fr', { sensitivity: 'base' }));
+          renderList(files);
+        }
+
+        try {
+          const bc = new BroadcastChannel('views');
+          bc.onmessage = (ev) => {
+            try {
+              const f = ev.data.file;
+              const el = document.querySelector(`[data-file="${CSS.escape(f)}"]`);
+              if (el) {
+                const span = el.parentElement.querySelector('.viewcount');
+                if (span) span.textContent = `Nombre de lectures : ${ev.data.count}`;
+              }
+            } catch (e) {}
+          };
+        } catch (e) {}
+
+        document.addEventListener('DOMContentLoaded', loadSIFiles);
       </script>
     </div>
 
@@ -135,9 +197,9 @@
   </main>
 
   <!-- Bouton Retour en haut -->
-  <button 
-    id="backToTopBtn" 
-    onclick="scrollToTop()" 
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
     class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
     ↑ Top
   </button>

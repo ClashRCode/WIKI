@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Physique - Fiches</title>
+  <title>Physique</title>
   <script src="https://cdn.tailwindcss.com"></script>
- </head>
+</head>
 <body class="bg-slate-50 text-gray-800 font-sans">
 
   <!-- Navigation -->
@@ -23,109 +23,307 @@
       <img src="../img/physique.png" alt="physique" class="w-10 h-10" />
       <h2 id="pageTitle" class="text-3xl font-bold text-indigo-700">Physique</h2>
       <script>
-        // Récupère et affiche les fichiers .doc/.docx du dossier `Physique/`.
-        // Tentative 1: fetch de l'index du dossier (expose HTML par python -m http.server).
-        // Tentative 2: lecture de `Physique/index.json` (généré par script local) si la première échoue.
-        async function loadBiologyFiles() {
-          const dir = 'Physique/';
-          const container = document.getElementById('listContainer');
+        // Liste statique des fichiers disponibles dans Physique/
+        const FOLDER_PATH = 'Physique/';
 
-          async function renderList(files) {
-            const unique = Array.from(new Set(files));
-            unique.sort((a,b) => a.localeCompare(b, 'fr', {sensitivity: 'base'}));
-            if (unique.length === 0) {
-              container.innerHTML = '<p class="text-sm text-gray-500">Aucune fiche trouvée.</p>';
-              return;
-            }
-            const ul = document.createElement('ul');
-            ul.className = 'space-y-2 divide-y divide-gray-100';
-            unique.forEach(filename => {
-              let display = filename.replace(/^\[PHYSIQUE\]\s*/i, '');
-              display = display.replace(/\.(docx|doc)$/i, '');
-              const li = document.createElement('li');
-              li.className = 'flex items-center justify-between py-2';
-              const a = document.createElement('a');
-              const fileKey = dir + filename;
-              // Open with viewer to display in-browser when possible
-              a.href = 'viewer.html?file=' + encodeURIComponent(fileKey);
-              a.target = '_blank';
-              a.rel = 'noopener noreferrer';
-              a.textContent = display;
-              a.className = 'text-indigo-700 hover:underline flex-1';
-              a.dataset.file = fileKey;
-              const span = document.createElement('span');
-              span.className = 'ml-4 text-sm text-gray-500 text-right w-48 viewcount';
-              span.textContent = `Nombre de lectures : ${parseInt(localStorage.getItem('views:' + fileKey) || '0', 10) || 0}`;
-              li.appendChild(a);
-              li.appendChild(span);
-              ul.appendChild(li);
-            });
-            container.innerHTML = '';
-            container.appendChild(ul);
-          }
+        const categoryFiles = [
+          { name: '[PHYSIQUE] Allée de tourbillons de Karman.docx', display: 'Allée de tourbillons de Karman', type: 'docx' },
+          { name: '[PHYSIQUE] Anneau de Bishop.docx', display: 'Anneau de Bishop', type: 'docx' },
+          { name: '[PHYSIQUE] Année-lumière.docx', display: 'Année-lumière', type: 'docx' },
+          { name: '[PHYSIQUE] Anomalie Pioneer.docx', display: 'Anomalie Pioneer', type: 'docx' },
+          { name: '[PHYSIQUE] Antigravité.docx', display: 'Antigravité', type: 'docx' },
+          { name: '[PHYSIQUE] Antimatière.docx', display: 'Antimatière', type: 'docx' },
+          { name: '[PHYSIQUE] Assistance gravitationnelle.docx', display: 'Assistance gravitationnelle', type: 'docx' },
+          { name: '[PHYSIQUE] Atome froid.docx', display: 'Atome froid', type: 'docx' },
+          { name: '[PHYSIQUE] Aérocapture.docx', display: 'Aérocapture', type: 'docx' },
+          { name: '[PHYSIQUE] Baryon.docx', display: 'Baryon', type: 'docx' },
+          { name: '[PHYSIQUE] Boson de Higgs.docx', display: 'Boson de Higgs', type: 'docx' },
+          { name: '[PHYSIQUE] Boson de jauge.docx', display: 'Boson de jauge', type: 'docx' },
+          { name: '[PHYSIQUE] Bruit de grenaille.docx', display: 'Bruit de grenaille', type: 'docx' },
+          { name: '[PHYSIQUE] Bruit thermique.docx', display: 'Bruit thermique', type: 'docx' },
+          { name: '[PHYSIQUE] Capillarité.docx', display: 'Capillarité', type: 'docx' },
+          { name: '[PHYSIQUE] Capture balistique.docx', display: 'Capture balistique', type: 'docx' },
+          { name: '[PHYSIQUE] Ceinture de Kuiper.docx', display: 'Ceinture de Kuiper', type: 'docx' },
+          { name: '[PHYSIQUE] Ceinture de Van Allen.docx', display: 'Ceinture de Van Allen', type: 'docx' },
+          { name: '[PHYSIQUE] Champ sillage.docx', display: 'Champ sillage', type: 'docx' },
+          { name: '[PHYSIQUE] Chargeon.docx', display: 'Chargeon', type: 'docx' },
+          { name: '[PHYSIQUE] Chat de Schrödinger.docx', display: 'Chat de Schrödinger', type: 'docx' },
+          { name: '[PHYSIQUE] Chromodynamique quantique.docx', display: 'Chromodynamique quantique', type: 'docx' },
+          { name: '[PHYSIQUE] Condensat de Bose-Einstein.docx', display: 'Condensat de Bose-Einstein', type: 'docx' },
+          { name: '[PHYSIQUE] Conduction thermique.docx', display: 'Conduction thermique', type: 'docx' },
+          { name: '[PHYSIQUE] Constante de Hubble.docx', display: 'Constante de Hubble', type: 'docx' },
+          { name: '[PHYSIQUE] Corps noir.docx', display: 'Corps noir', type: 'docx' },
+          { name: '[PHYSIQUE] Couche électronique.docx', display: 'Couche électronique', type: 'docx' },
+          { name: '[PHYSIQUE] Courant de Foucault.docx', display: 'Courant de Foucault', type: 'docx' },
+          { name: '[PHYSIQUE] Cycle de l'eau.docx', display: 'Cycle de l'eau', type: 'docx' },
+          { name: '[PHYSIQUE] Cycle du vent.docx', display: 'Cycle du vent', type: 'docx' },
+          { name: '[PHYSIQUE] Diagramme de Hertzsprung-Russell.docx', display: 'Diagramme de Hertzsprung-Russell', type: 'docx' },
+          { name: '[PHYSIQUE] Diffraction.docx', display: 'Diffraction', type: 'docx' },
+          { name: '[PHYSIQUE] Diffusion Bhabha.docx', display: 'Diffusion Bhabha', type: 'docx' },
+          { name: '[PHYSIQUE] Diffusion Brillouin.docx', display: 'Diffusion Brillouin', type: 'docx' },
+          { name: '[PHYSIQUE] Diffusion Raman.docx', display: 'Diffusion Raman', type: 'docx' },
+          { name: '[PHYSIQUE] Diffusion Rayleigh.docx', display: 'Diffusion Rayleigh', type: 'docx' },
+          { name: '[PHYSIQUE] Diffusion de Mie.docx', display: 'Diffusion de Mie', type: 'docx' },
+          { name: '[PHYSIQUE] Diffusion des particules.docx', display: 'Diffusion des particules', type: 'docx' },
+          { name: '[PHYSIQUE] Disque protoplanétaire.docx', display: 'Disque protoplanétaire', type: 'docx' },
+          { name: '[PHYSIQUE] Dualité onde corpuscule.docx', display: 'Dualité onde corpuscule', type: 'docx' },
+          { name: '[PHYSIQUE] Dynamique des fluides.docx', display: 'Dynamique des fluides', type: 'docx' },
+          { name: '[PHYSIQUE] Eau superionique.docx', display: 'Eau superionique', type: 'docx' },
+          { name: '[PHYSIQUE] Eau.docx', display: 'Eau', type: 'docx' },
+          { name: '[PHYSIQUE] Effet  Weissenberg.docx', display: 'Effet  Weissenberg', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Djanibekov.docx', display: 'Effet Djanibekov', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Doppler.docx', display: 'Effet Doppler', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Faraday.docx', display: 'Effet Faraday', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Hall de spin.docx', display: 'Effet Hall de spin', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Hall quantique.docx', display: 'Effet Hall quantique', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Hall.docx', display: 'Effet Hall', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Hanle.docx', display: 'Effet Hanle', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Leidenfrost.docx', display: 'Effet Leidenfrost', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Lense-Thirring.docx', display: 'Effet Lense-Thirring', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Oberth.docx', display: 'Effet Oberth', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Poynting-Robertson.docx', display: 'Effet Poynting-Robertson', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Rossiter-McLaughlin.docx', display: 'Effet Rossiter-McLaughlin', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Sachs-Wolfe.docx', display: 'Effet Sachs-Wolfe', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Sagnac.docx', display: 'Effet Sagnac', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Scharnhorst.docx', display: 'Effet Scharnhorst', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Shapiro.docx', display: 'Effet Shapiro', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Stark.docx', display: 'Effet Stark', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Sunyaev-Zel'dovich.docx', display: 'Effet Sunyaev-Zel'dovich', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Tcherenkov.docx', display: 'Effet Tcherenkov', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Tyndall.docx', display: 'Effet Tyndall', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Venturi.docx', display: 'Effet Venturi', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Wigner.docx', display: 'Effet Wigner', type: 'docx' },
+          { name: '[PHYSIQUE] Effet YORP.docx', display: 'Effet YORP', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Yarkovsky.docx', display: 'Effet Yarkovsky', type: 'docx' },
+          { name: '[PHYSIQUE] Effet Zeeman.docx', display: 'Effet Zeeman', type: 'docx' },
+          { name: '[PHYSIQUE] Effet de peau.docx', display: 'Effet de peau', type: 'docx' },
+          { name: '[PHYSIQUE] Effet de sol.docx', display: 'Effet de sol', type: 'docx' },
+          { name: '[PHYSIQUE] Effet photoélectrique.docx', display: 'Effet photoélectrique', type: 'docx' },
+          { name: '[PHYSIQUE] Effet riblet.docx', display: 'Effet riblet', type: 'docx' },
+          { name: '[PHYSIQUE] Effet tunnel.docx', display: 'Effet tunnel', type: 'docx' },
+          { name: '[PHYSIQUE] Effondrement gravitationnel.docx', display: 'Effondrement gravitationnel', type: 'docx' },
+          { name: '[PHYSIQUE] Elasto-gravité du pliage souple.docx', display: 'Elasto-gravité du pliage souple', type: 'docx' },
+          { name: '[PHYSIQUE] Energie & matière noire.docx', display: 'Energie & matière noire', type: 'docx' },
+          { name: '[PHYSIQUE] Ergosphère.docx', display: 'Ergosphère', type: 'docx' },
+          { name: '[PHYSIQUE] Etoile à Neutron.docx', display: 'Etoile à Neutron', type: 'docx' },
+          { name: '[PHYSIQUE] Extinction (astronomie).docx', display: 'Extinction (astronomie)', type: 'docx' },
+          { name: '[PHYSIQUE] Fermion.docx', display: 'Fermion', type: 'docx' },
+          { name: '[PHYSIQUE] Feu de methanol.docx', display: 'Feu de methanol', type: 'docx' },
+          { name: '[PHYSIQUE] Figures de Widmanstätten.docx', display: 'Figures de Widmanstätten', type: 'docx' },
+          { name: '[PHYSIQUE] Filaments de galaxies.docx', display: 'Filaments de galaxies', type: 'docx' },
+          { name: '[PHYSIQUE] Fluide.docx', display: 'Fluide', type: 'docx' },
+          { name: '[PHYSIQUE] Force centrifuge.docx', display: 'Force centrifuge', type: 'docx' },
+          { name: '[PHYSIQUE] Force de Coriolis.docx', display: 'Force de Coriolis', type: 'docx' },
+          { name: '[PHYSIQUE] Formalisme de Jones.docx', display: 'Formalisme de Jones', type: 'docx' },
+          { name: '[PHYSIQUE] Furtivité plasmique.docx', display: 'Furtivité plasmique', type: 'docx' },
+          { name: '[PHYSIQUE] Fusion nucléaire.docx', display: 'Fusion nucléaire', type: 'docx' },
+          { name: '[PHYSIQUE] Fusion par confinement inertiel.docx', display: 'Fusion par confinement inertiel', type: 'docx' },
+          { name: '[PHYSIQUE] Galaxie.docx', display: 'Galaxie', type: 'docx' },
+          { name: '[PHYSIQUE] Gegenschein.docx', display: 'Gegenschein', type: 'docx' },
+          { name: '[PHYSIQUE] Gravitoélectromagnétisme.docx', display: 'Gravitoélectromagnétisme', type: 'docx' },
+          { name: '[PHYSIQUE] Gravité quantique.docx', display: 'Gravité quantique', type: 'docx' },
+          { name: '[PHYSIQUE] Hadron.docx', display: 'Hadron', type: 'docx' },
+          { name: '[PHYSIQUE] Heiligenschein.docx', display: 'Heiligenschein', type: 'docx' },
+          { name: '[PHYSIQUE] Holon.docx', display: 'Holon', type: 'docx' },
+          { name: '[PHYSIQUE] Horizon (trou noir).docx', display: 'Horizon (trou noir)', type: 'docx' },
+          { name: '[PHYSIQUE] Hypérons.docx', display: 'Hypérons', type: 'docx' },
+          { name: '[PHYSIQUE] Induction électromagnétique.docx', display: 'Induction électromagnétique', type: 'docx' },
+          { name: '[PHYSIQUE] Interaction faible.docx', display: 'Interaction faible', type: 'docx' },
+          { name: '[PHYSIQUE] Interaction forte.docx', display: 'Interaction forte', type: 'docx' },
+          { name: '[PHYSIQUE] Interaction gravitationnelle.docx', display: 'Interaction gravitationnelle', type: 'docx' },
+          { name: '[PHYSIQUE] Interaction rayonnement-matière.docx', display: 'Interaction rayonnement-matière', type: 'docx' },
+          { name: '[PHYSIQUE] Interaction électromagnétique.docx', display: 'Interaction électromagnétique', type: 'docx' },
+          { name: '[PHYSIQUE] Interaction élémentaire.docx', display: 'Interaction élémentaire', type: 'docx' },
+          { name: '[PHYSIQUE] Intrication quantique.docx', display: 'Intrication quantique', type: 'docx' },
+          { name: '[PHYSIQUE] Ion.docx', display: 'Ion', type: 'docx' },
+          { name: '[PHYSIQUE] Isotope.docx', display: 'Isotope', type: 'docx' },
+          { name: '[PHYSIQUE] KEK.docx', display: 'KEK', type: 'docx' },
+          { name: '[PHYSIQUE] Kevlar.docx', display: 'Kevlar', type: 'docx' },
+          { name: '[PHYSIQUE] L'espace-temps de Minkowski.docx', display: 'L'espace-temps de Minkowski', type: 'docx' },
+          { name: '[PHYSIQUE] LASER.docx', display: 'LASER', type: 'docx' },
+          { name: '[PHYSIQUE] LHC CERN.docx', display: 'LHC CERN', type: 'docx' },
+          { name: '[PHYSIQUE] Lentille gravitationnelle.docx', display: 'Lentille gravitationnelle', type: 'docx' },
+          { name: '[PHYSIQUE] Leptons.docx', display: 'Leptons', type: 'docx' },
+          { name: '[PHYSIQUE] Liaison optique laser pré-compensée par optique adaptative.docx', display: 'Liaison optique laser pré-compensée par optique adaptative', type: 'docx' },
+          { name: '[PHYSIQUE] Loi de Cauchy (optique).docx', display: 'Loi de Cauchy (optique)', type: 'docx' },
+          { name: '[PHYSIQUE] Loi de Hooke.docx', display: 'Loi de Hooke', type: 'docx' },
+          { name: '[PHYSIQUE] Loi de Malus.docx', display: 'Loi de Malus', type: 'docx' },
+          { name: '[PHYSIQUE] Lois de Fick.docx', display: 'Lois de Fick', type: 'docx' },
+          { name: '[PHYSIQUE] Lois de Snell-Descartes.docx', display: 'Lois de Snell-Descartes', type: 'docx' },
+          { name: '[PHYSIQUE] Longueur d'onde de Compton.docx', display: 'Longueur d'onde de Compton', type: 'docx' },
+          { name: '[PHYSIQUE] Longueur de Planck.docx', display: 'Longueur de Planck', type: 'docx' },
+          { name: '[PHYSIQUE] Lumière zodiacale.docx', display: 'Lumière zodiacale', type: 'docx' },
+          { name: '[PHYSIQUE] Magnitude.docx', display: 'Magnitude', type: 'docx' },
+          { name: '[PHYSIQUE] Manoeure orbitale.docx', display: 'Manoeure orbitale', type: 'docx' },
+          { name: '[PHYSIQUE] Marée terrestre.docx', display: 'Marée terrestre', type: 'docx' },
+          { name: '[PHYSIQUE] Marée.docx', display: 'Marée', type: 'docx' },
+          { name: '[PHYSIQUE] Mesons.docx', display: 'Mesons', type: 'docx' },
+          { name: '[PHYSIQUE] Mirvage.docx', display: 'Mirvage', type: 'docx' },
+          { name: '[PHYSIQUE] Moment cinétique.docx', display: 'Moment cinétique', type: 'docx' },
+          { name: '[PHYSIQUE] Mécanique céleste - simplifié.docx', display: 'Mécanique céleste - simplifié', type: 'docx' },
+          { name: '[PHYSIQUE] Mécanique céleste.docx', display: 'Mécanique céleste', type: 'docx' },
+          { name: '[PHYSIQUE] Mécanique des fluides.docx', display: 'Mécanique des fluides', type: 'docx' },
+          { name: '[PHYSIQUE] Métafluide programmable.docx', display: 'Métafluide programmable', type: 'docx' },
+          { name: '[PHYSIQUE] Métasurfaces et matériaux accordables.docx', display: 'Métasurfaces et matériaux accordables', type: 'docx' },
+          { name: '[PHYSIQUE] Nombre de Mach.docx', display: 'Nombre de Mach', type: 'docx' },
+          { name: '[PHYSIQUE] Nombre de Strouhal.docx', display: 'Nombre de Strouhal', type: 'docx' },
+          { name: '[PHYSIQUE] Nuage d'Oort.docx', display: 'Nuage d'Oort', type: 'docx' },
+          { name: '[PHYSIQUE] Nucléosynthèse.docx', display: 'Nucléosynthèse', type: 'docx' },
+          { name: '[PHYSIQUE] Onde d'Alfven.docx', display: 'Onde d'Alfven', type: 'docx' },
+          { name: '[PHYSIQUE] Onde de Bloch.docx', display: 'Onde de Bloch', type: 'docx' },
+          { name: '[PHYSIQUE] Onde gravitationnelle.docx', display: 'Onde gravitationnelle', type: 'docx' },
+          { name: '[PHYSIQUE] Orbite de Lissajous.docx', display: 'Orbite de Lissajous', type: 'docx' },
+          { name: '[PHYSIQUE] Orbite de halo presque rectiligne.docx', display: 'Orbite de halo presque rectiligne', type: 'docx' },
+          { name: '[PHYSIQUE] Orbite de halo.docx', display: 'Orbite de halo', type: 'docx' },
+          { name: '[PHYSIQUE] Orbite de transfert.docx', display: 'Orbite de transfert', type: 'docx' },
+          { name: '[PHYSIQUE] Orbite satellite.docx', display: 'Orbite satellite', type: 'docx' },
+          { name: '[PHYSIQUE] Oscillateur harmonique.docx', display: 'Oscillateur harmonique', type: 'docx' },
+          { name: '[PHYSIQUE] Overwhelmingly Large Telescope.docx', display: 'Overwhelmingly Large Telescope', type: 'docx' },
+          { name: '[PHYSIQUE] Oxygène noir - Copie.docx', display: 'Oxygène noir - Copie', type: 'docx' },
+          { name: '[PHYSIQUE] Paradoxe de Klein.docx', display: 'Paradoxe de Klein', type: 'docx' },
+          { name: '[PHYSIQUE] Paradoxe de l'information.docx', display: 'Paradoxe de l'information', type: 'docx' },
+          { name: '[PHYSIQUE] Parallaxe.docx', display: 'Parallaxe', type: 'docx' },
+          { name: '[PHYSIQUE] Pendule de Foucault.docx', display: 'Pendule de Foucault', type: 'docx' },
+          { name: '[PHYSIQUE] Phonon.docx', display: 'Phonon', type: 'docx' },
+          { name: '[PHYSIQUE] Physique des particules.docx', display: 'Physique des particules', type: 'docx' },
+          { name: '[PHYSIQUE] Piézoélectrique.docx', display: 'Piézoélectrique', type: 'docx' },
+          { name: '[PHYSIQUE] Plasma.docx', display: 'Plasma', type: 'docx' },
+          { name: '[PHYSIQUE] Points de Lagrange.docx', display: 'Points de Lagrange', type: 'docx' },
+          { name: '[PHYSIQUE] Poussée d'Archimède.docx', display: 'Poussée d'Archimède', type: 'docx' },
+          { name: '[PHYSIQUE] Pression de rayonnement.docx', display: 'Pression de rayonnement', type: 'docx' },
+          { name: '[PHYSIQUE] Principe d'incertitude de Heisenberg.docx', display: 'Principe d'incertitude de Heisenberg', type: 'docx' },
+          { name: '[PHYSIQUE] Problème à N corps.docx', display: 'Problème à N corps', type: 'docx' },
+          { name: '[PHYSIQUE] Processus de Penrose.docx', display: 'Processus de Penrose', type: 'docx' },
+          { name: '[PHYSIQUE] Propagation ionosphérique.docx', display: 'Propagation ionosphérique', type: 'docx' },
+          { name: '[PHYSIQUE] Précession.docx', display: 'Précession', type: 'docx' },
+          { name: '[PHYSIQUE] Quarks.docx', display: 'Quarks', type: 'docx' },
+          { name: '[PHYSIQUE] Quasar.docx', display: 'Quasar', type: 'docx' },
+          { name: '[PHYSIQUE] Quasi-étoile.docx', display: 'Quasi-étoile', type: 'docx' },
+          { name: '[PHYSIQUE] Radioactivité.docx', display: 'Radioactivité', type: 'docx' },
+          { name: '[PHYSIQUE] Radiotélescope.docx', display: 'Radiotélescope', type: 'docx' },
+          { name: '[PHYSIQUE] Rayonnement fossile.docx', display: 'Rayonnement fossile', type: 'docx' },
+          { name: '[PHYSIQUE] Rayonnement spatial.docx', display: 'Rayonnement spatial', type: 'docx' },
+          { name: '[PHYSIQUE] Rayonnement thermique.docx', display: 'Rayonnement thermique', type: 'docx' },
+          { name: '[PHYSIQUE] Rebond atmosphérique.docx', display: 'Rebond atmosphérique', type: 'docx' },
+          { name: '[PHYSIQUE] Redshift.docx', display: 'Redshift', type: 'docx' },
+          { name: '[PHYSIQUE] Refroidissement d'atomes par laser.docx', display: 'Refroidissement d'atomes par laser', type: 'docx' },
+          { name: '[PHYSIQUE] Relation de conjugaison optique.docx', display: 'Relation de conjugaison optique', type: 'docx' },
+          { name: '[PHYSIQUE] Rentrée atmosphérique.docx', display: 'Rentrée atmosphérique', type: 'docx' },
+          { name: '[PHYSIQUE] Rotation gravitationnelle.docx', display: 'Rotation gravitationnelle', type: 'docx' },
+          { name: '[PHYSIQUE] Singularité annulaire.docx', display: 'Singularité annulaire', type: 'docx' },
+          { name: '[PHYSIQUE] Skyrmion.docx', display: 'Skyrmion', type: 'docx' },
+          { name: '[PHYSIQUE] Skyrmions bits.docx', display: 'Skyrmions bits', type: 'docx' },
+          { name: '[PHYSIQUE] Soliton optique.docx', display: 'Soliton optique', type: 'docx' },
+          { name: '[PHYSIQUE] Spaghettification.docx', display: 'Spaghettification', type: 'docx' },
+          { name: '[PHYSIQUE] Spin.docx', display: 'Spin', type: 'docx' },
+          { name: '[PHYSIQUE] Spinon.docx', display: 'Spinon', type: 'docx' },
+          { name: '[PHYSIQUE] Stockage de données numériques sur ADN.docx', display: 'Stockage de données numériques sur ADN', type: 'docx' },
+          { name: '[PHYSIQUE] Super-Kamiokande.docx', display: 'Super-Kamiokande', type: 'docx' },
+          { name: '[PHYSIQUE] Super-bassin gravitationnel.docx', display: 'Super-bassin gravitationnel', type: 'docx' },
+          { name: '[PHYSIQUE] Supercavitation.docx', display: 'Supercavitation', type: 'docx' },
+          { name: '[PHYSIQUE] Superfluidité.docx', display: 'Superfluidité', type: 'docx' },
+          { name: '[PHYSIQUE] Supergravité.docx', display: 'Supergravité', type: 'docx' },
+          { name: '[PHYSIQUE] Superradiance.docx', display: 'Superradiance', type: 'docx' },
+          { name: '[PHYSIQUE] Supersymétrie.docx', display: 'Supersymétrie', type: 'docx' },
+          { name: '[PHYSIQUE] Supraconducteur.docx', display: 'Supraconducteur', type: 'docx' },
+          { name: '[PHYSIQUE] Sursaut radio rapide.docx', display: 'Sursaut radio rapide', type: 'docx' },
+          { name: '[PHYSIQUE] Tache d'Airy.docx', display: 'Tache d'Airy', type: 'docx' },
+          { name: '[PHYSIQUE] Tachyon.docx', display: 'Tachyon', type: 'docx' },
+          { name: '[PHYSIQUE] Température.docx', display: 'Température', type: 'docx' },
+          { name: '[PHYSIQUE] Tension superficielle.docx', display: 'Tension superficielle', type: 'docx' },
+          { name: '[PHYSIQUE] Tenségrité.docx', display: 'Tenségrité', type: 'docx' },
+          { name: '[PHYSIQUE] Terminateur.docx', display: 'Terminateur', type: 'docx' },
+          { name: '[PHYSIQUE] Thorium.docx', display: 'Thorium', type: 'docx' },
+          { name: '[PHYSIQUE] Théorie des cordes.docx', display: 'Théorie des cordes', type: 'docx' },
+          { name: '[PHYSIQUE] Théorie des profils minces.docx', display: 'Théorie des profils minces', type: 'docx' },
+          { name: '[PHYSIQUE] Théorie des quanta.docx', display: 'Théorie des quanta', type: 'docx' },
+          { name: '[PHYSIQUE] Théorie des supercordes.docx', display: 'Théorie des supercordes', type: 'docx' },
+          { name: '[PHYSIQUE] Théorie du chaos.docx', display: 'Théorie du chaos', type: 'docx' },
+          { name: '[PHYSIQUE] Théorème de fluctuation-dissipation.docx', display: 'Théorème de fluctuation-dissipation', type: 'docx' },
+          { name: '[PHYSIQUE] Tomographie à contraste de phase hiérarchique HiP-CT.docx', display: 'Tomographie à contraste de phase hiérarchique HiP-CT', type: 'docx' },
+          { name: '[PHYSIQUE] Trajectoire de retour libre.docx', display: 'Trajectoire de retour libre', type: 'docx' },
+          { name: '[PHYSIQUE] Transfert radiatif.docx', display: 'Transfert radiatif', type: 'docx' },
+          { name: '[PHYSIQUE] Trou blanc.docx', display: 'Trou blanc', type: 'docx' },
+          { name: '[PHYSIQUE] Trou de ver.docx', display: 'Trou de ver', type: 'docx' },
+          { name: '[PHYSIQUE] Trou noir de Kerr.docx', display: 'Trou noir de Kerr', type: 'docx' },
+          { name: '[PHYSIQUE] Télescopes spatiaux d’observation.docx', display: 'Télescopes spatiaux d’observation', type: 'docx' },
+          { name: '[PHYSIQUE] Une heure dure 60 minutes.docx', display: 'Une heure dure 60 minutes', type: 'docx' },
+          { name: '[PHYSIQUE] Vibration moléculaire.docx', display: 'Vibration moléculaire', type: 'docx' },
+          { name: '[PHYSIQUE] Vitesses spatiales.docx', display: 'Vitesses spatiales', type: 'docx' },
+          { name: '[PHYSIQUE] Wimp.docx', display: 'Wimp', type: 'docx' },
+          { name: '[PHYSIQUE] effet Coanda.docx', display: 'effet Coanda', type: 'docx' },
+          { name: '[PHYSIQUE] effet Compton.docx', display: 'effet Compton', type: 'docx' },
+          { name: '[PHYSIQUE] effet Joule.docx', display: 'effet Joule', type: 'docx' },
+          { name: '[PHYSIQUE] effet Magnus.docx', display: 'effet Magnus', type: 'docx' },
+          { name: '[PHYSIQUE] onde de Rossby.docx', display: 'onde de Rossby', type: 'docx' },
+          { name: '[PHYSIQUE] pH.docx', display: 'pH', type: 'docx' },
+          { name: '[PHYSIQUE] rayon de Schwarzschild.docx', display: 'rayon de Schwarzschild', type: 'docx' },
+          { name: '[PHYSIQUE] Émission thermoionique.docx', display: 'Émission thermoionique', type: 'docx' },
+          { name: '[PHYSIQUE] Équation d'Einstein.docx', display: 'Équation d'Einstein', type: 'docx' },
+          { name: '[PHYSIQUE] Équation d'orbite.docx', display: 'Équation d'orbite', type: 'docx' },
+          { name: '[PHYSIQUE] Équation de Langevin.docx', display: 'Équation de Langevin', type: 'docx' },
+          { name: '[PHYSIQUE] Équation de Sellmeier.docx', display: 'Équation de Sellmeier', type: 'docx' },
+          { name: '[PHYSIQUE] Équations de Boussinesq.docx', display: 'Équations de Boussinesq', type: 'docx' },
+          { name: '[PHYSIQUE] Évaporation des trous noirs.docx', display: 'Évaporation des trous noirs', type: 'docx' },
+        ];
 
-          // Try 1: fetch directory listing (HTML)
-          try {
-            const res = await fetch(dir, {cache: 'no-store'});
-            if (res.ok && res.headers.get('content-type') && res.headers.get('content-type').includes('text/html')) {
-              const text = await res.text();
-              const parser = new DOMParser();
-              const doc = parser.parseFromString(text, 'text/html');
-              const anchors = Array.from(doc.querySelectorAll('a'));
-              const files = anchors
-                .map(a => a.getAttribute('href'))
-                .filter(href => href && (href.toLowerCase().endsWith('.docx') || href.toLowerCase().endsWith('.doc')))
-                .map(href => decodeURIComponent(href.replace(/\/+$/,'')));
-              await renderList(files);
-              return;
-            }
-            // If not HTML, fallthrough to JSON attempt
-          } catch (err) {
-            console.warn('Liste dossier inaccessible, essai de fallback JSON', err);
-          }
-
-          // Try 2: fetch pre-generated JSON index
-          try {
-            const jres = await fetch(dir + 'index.json', {cache: 'no-store'});
-            if (jres.ok) {
-              const data = await jres.json();
-              if (Array.isArray(data)) {
-                // support array of strings or array of objects { filename, path, title }
-                const files = data
-                  .map(item => {
-                    if (typeof item === 'string') return item;
-                    if (item && typeof item === 'object') {
-                      if (item.filename) return item.filename;
-                      if (item.path) return item.path.split('/').pop();
-                      if (item.title) return item.title + '.docx';
-                    }
-                    return null;
-                  })
-                  .filter(f => typeof f === 'string');
-                await renderList(files);
-                return;
-              }
-            }
-          } catch (err) {
-            console.warn('Fallback JSON indisponible', err);
-          }
-
-          // Aucun mécanisme disponible
-          container.innerHTML = `<p class="text-sm text-red-500">Impossible de lister le dossier. Exécutez un serveur (ex. \`python -m http.server\`) ou générez \`${dir}index.json\`.</p>`;
+        function makeRow(fileKey, display, href) {
+          const li = document.createElement('li');
+          li.className = 'flex items-center justify-between py-2';
+          const a = document.createElement('a');
+          a.href = href;
+          a.textContent = display;
+          a.className = 'text-indigo-700 hover:underline flex-1';
+          a.dataset.file = fileKey;
+          const span = document.createElement('span');
+          span.className = 'ml-4 text-sm text-gray-500 text-right w-48 viewcount';
+          span.textContent = `Nombre de lectures : ${parseInt(localStorage.getItem('views:' + fileKey) || '0', 10) || 0}`;
+          li.appendChild(a);
+          li.appendChild(span);
+          return li;
         }
 
-        try{
-          const bc = new BroadcastChannel('views');
-          bc.onmessage = (ev)=>{
-            try{
-              const f = ev.data.file;
-              const el = document.querySelector(`[data-file="${f}"]`);
-              if(el){ const span = el.parentElement.querySelector('.viewcount'); if(span) span.textContent = `Nombre de lectures : ${ev.data.count}`; }
-            }catch(e){}
-          };
-        }catch(e){}
+        function renderList(files) {
+          if (files.length === 0) {
+            document.getElementById('listContainer').innerHTML = '<p class="text-sm text-gray-500">Aucune fiche trouvée.</p>';
+            return;
+          }
+          const ul = document.createElement('ul');
+          ul.className = 'space-y-2 divide-y divide-gray-100';
+          files.forEach(f => ul.appendChild(makeRow(f.key, f.display, f.href)));
+          document.getElementById('listContainer').innerHTML = '';
+          document.getElementById('listContainer').appendChild(ul);
+        }
 
-        document.addEventListener('DOMContentLoaded', loadBiologyFiles);
+        function loadFiles() {
+          const files = categoryFiles.map(file => {
+            const fileKey = FOLDER_PATH + file.name;
+            if (file.type === 'html') {
+              return { key: fileKey, display: file.display, href: encodeURI(fileKey) };
+            } else {
+              return { key: fileKey, display: file.display, href: 'viewer.html?file=' + encodeURIComponent(fileKey) };
+            }
+          });
+
+          files.sort((a, b) => a.display.localeCompare(b.display, 'fr', { sensitivity: 'base' }));
+          renderList(files);
+        }
+
+        try {
+          const bc = new BroadcastChannel('views');
+          bc.onmessage = (ev) => {
+            try {
+              const f = ev.data.file;
+              const el = document.querySelector(`[data-file="${CSS.escape(f)}"]`);
+              if (el) {
+                const span = el.parentElement.querySelector('.viewcount');
+                if (span) span.textContent = `Nombre de lectures : ${ev.data.count}`;
+              }
+            } catch (e) {}
+          };
+        } catch (e) {}
+
+        document.addEventListener('DOMContentLoaded', loadFiles);
       </script>
     </div>
 
@@ -135,9 +333,9 @@
   </main>
 
   <!-- Bouton Retour en haut -->
-  <button 
-    id="backToTopBtn" 
-    onclick="scrollToTop()" 
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
     class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
     ↑ Top
   </button>
@@ -153,7 +351,7 @@
         backToTopBtn.classList.remove('opacity-100','visible');
       }
     });
-    function scrollToTop(){ window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
   </script>
 
 </body>

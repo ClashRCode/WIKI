@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Biologie - Fiches</title>
   <script src="https://cdn.tailwindcss.com"></script>
- </head>
+</head>
 <body class="bg-slate-50 text-gray-800 font-sans">
 
   <!-- Navigation -->
@@ -23,110 +23,124 @@
       <img src="../img/biologie.png" alt="biologie" class="w-10 h-10" />
       <h2 id="pageTitle" class="text-3xl font-bold text-indigo-700">Biologie</h2>
       <script>
-        // Récupère et affiche les fichiers .doc/.docx du dossier `Biologie/`.
-        // Tentative 1: fetch de l'index du dossier (expose HTML par python -m http.server).
-        // Tentative 2: lecture de `Biologie/index.json` (généré par script local) si la première échoue.
-        async function loadBiologyFiles() {
-          const dir = 'Biologie/';
-          const container = document.getElementById('listContainer');
+        // Liste statique des fichiers disponibles dans Biologie/
+        const FOLDER_PATH = 'Biologie/';
 
-          async function renderList(files) {
-            const unique = Array.from(new Set(files));
-            unique.sort((a,b) => a.localeCompare(b, 'fr', {sensitivity: 'base'}));
-            if (unique.length === 0) {
-              container.innerHTML = '<p class="text-sm text-gray-500">Aucune fiche trouvée.</p>';
-              return;
-            }
-            const ul = document.createElement('ul');
-            ul.className = 'space-y-2 divide-y divide-gray-100';
-            unique.forEach(filename => {
-              let display = filename.replace(/^\[BIO\]\s*/i, '');
-              display = display.replace(/\.(docx|doc)$/i, '');
-              const li = document.createElement('li');
-              li.className = 'flex items-center justify-between py-2';
-              const a = document.createElement('a');
-              const fileKey = dir + filename;
-              // Open using viewer.html to embed Office Online when available
-              a.href = 'viewer.html?file=' + encodeURIComponent(fileKey);
-              a.target = '_blank';
-              a.rel = 'noopener noreferrer';
-              a.textContent = display;
-              a.className = 'text-indigo-700 hover:underline flex-1';
-              a.dataset.file = fileKey;
-              const span = document.createElement('span');
-              span.className = 'ml-4 text-sm text-gray-500 text-right w-48 viewcount';
-              span.textContent = `Nombre de lectures : ${parseInt(localStorage.getItem('views:' + fileKey) || '0', 10) || 0}`;
-              li.appendChild(a);
-              li.appendChild(span);
-              ul.appendChild(li);
-            });
-            container.innerHTML = '';
-            container.appendChild(ul);
-          }
+        const categoryFiles = [
+          { name: '[BIO] ADN-polymérase.docx', display: 'ADN-polymérase', type: 'docx' },
+          { name: '[BIO] ADN.docx', display: 'ADN', type: 'docx' },
+          { name: '[BIO] ARN-polymérase.docx', display: 'ARN-polymérase', type: 'docx' },
+          { name: '[BIO] ARN.docx', display: 'ARN', type: 'docx' },
+          { name: '[BIO] Anatomie et physiologie.docx', display: 'Anatomie et physiologie', type: 'docx' },
+          { name: '[BIO] Anecdotes corps humain.docx', display: 'Anecdotes corps humain', type: 'docx' },
+          { name: '[BIO] Aquaponie.docx', display: 'Aquaponie', type: 'docx' },
+          { name: '[BIO] Astrocyte.docx', display: 'Astrocyte', type: 'docx' },
+          { name: '[BIO] Asymétrie.docx', display: 'Asymétrie', type: 'docx' },
+          { name: '[BIO] Autophagie.docx', display: 'Autophagie', type: 'docx' },
+          { name: '[BIO] Bactériophage.docx', display: 'Bactériophage', type: 'docx' },
+          { name: '[BIO] Biologie fondamentale.docx', display: 'Biologie fondamentale', type: 'docx' },
+          { name: '[BIO] Bois bioluminescent.docx', display: 'Bois bioluminescent', type: 'docx' },
+          { name: '[BIO] Cellule de Schwann.docx', display: 'Cellule de Schwann', type: 'docx' },
+          { name: '[BIO] Cerveau triunique.docx', display: 'Cerveau triunique', type: 'docx' },
+          { name: '[BIO] Cerveau.docx', display: 'Cerveau', type: 'docx' },
+          { name: '[BIO] Chaîne respiratoire.docx', display: 'Chaîne respiratoire', type: 'docx' },
+          { name: '[BIO] Ciseaux génétiques.docx', display: 'Ciseaux génétiques', type: 'docx' },
+          { name: '[BIO] Contracion musculaire.docx', display: 'Contracion musculaire', type: 'docx' },
+          { name: '[BIO] Différenciation cellulaire.docx', display: 'Différenciation cellulaire', type: 'docx' },
+          { name: '[BIO] Division cellulaire.docx', display: 'Division cellulaire', type: 'docx' },
+          { name: '[BIO] Ependymocyte.docx', display: 'Ependymocyte', type: 'docx' },
+          { name: '[BIO] Extrémophile.docx', display: 'Extrémophile', type: 'docx' },
+          { name: '[BIO] Fasciculation.docx', display: 'Fasciculation', type: 'docx' },
+          { name: '[BIO] Fuseau mitotique.docx', display: 'Fuseau mitotique', type: 'docx' },
+          { name: '[BIO] Gene suicide.docx', display: 'Gene suicide', type: 'docx' },
+          { name: '[BIO] Hématopoïèse.docx', display: 'Hématopoïèse', type: 'docx' },
+          { name: '[BIO] Injection de vinyle et corrosion.docx', display: 'Injection de vinyle et corrosion', type: 'docx' },
+          { name: '[BIO] Kératinocyte.docx', display: 'Kératinocyte', type: 'docx' },
+          { name: '[BIO] Le vol silencieux des chouettes.docx', display: 'Le vol silencieux des chouettes', type: 'docx' },
+          { name: '[BIO] Microglie.docx', display: 'Microglie', type: 'docx' },
+          { name: '[BIO] Muscles.docx', display: 'Muscles', type: 'docx' },
+          { name: '[BIO] Mycète radiotrophe.docx', display: 'Mycète radiotrophe', type: 'docx' },
+          { name: '[BIO] Myocarde.docx', display: 'Myocarde', type: 'docx' },
+          { name: '[BIO] Mécanobiologie.docx', display: 'Mécanobiologie', type: 'docx' },
+          { name: '[BIO] Mélanocyte.docx', display: 'Mélanocyte', type: 'docx' },
+          { name: '[BIO] Oligodendrocyte.docx', display: 'Oligodendrocyte', type: 'docx' },
+          { name: '[BIO] Optogénétique.docx', display: 'Optogénétique', type: 'docx' },
+          { name: '[BIO] Phagothérapie.docx', display: 'Phagothérapie', type: 'docx' },
+          { name: '[BIO] Pompe sodium-potassium.docx', display: 'Pompe sodium-potassium', type: 'docx' },
+          { name: '[BIO] Protéine DMTF1.docx', display: 'Protéine DMTF1', type: 'docx' },
+          { name: '[BIO] Protéine motrice.docx', display: 'Protéine motrice', type: 'docx' },
+          { name: '[BIO] Régénération cellulaire.docx', display: 'Régénération cellulaire', type: 'docx' },
+          { name: '[BIO] Rétine artificielle.docx', display: 'Rétine artificielle', type: 'docx' },
+          { name: '[BIO] Secousse hypnique.docx', display: 'Secousse hypnique', type: 'docx' },
+          { name: '[BIO] Sommeil.docx', display: 'Sommeil', type: 'docx' },
+          { name: '[BIO] Systeme nerveux.docx', display: 'Systeme nerveux', type: 'docx' },
+          { name: '[BIO] Système circulatoire.docx', display: 'Système circulatoire', type: 'docx' },
+          { name: '[BIO] Système endocrinien.docx', display: 'Système endocrinien', type: 'docx' },
+          { name: '[BIO] Système immunitaire.docx', display: 'Système immunitaire', type: 'docx' },
+          { name: '[BIO] Tardigrades et transfert génétique.docx', display: 'Tardigrades et transfert génétique', type: 'docx' },
+          { name: '[BIO] Thérapie sonogénétique.docx', display: 'Thérapie sonogénétique', type: 'docx' },
+          { name: '[BIO] Utilisation de 10% du cerveau.docx', display: 'Utilisation de 10% du cerveau', type: 'docx' },
+          { name: '[BIO] Virus et absence de gravité.docx', display: 'Virus et absence de gravité', type: 'docx' },
+          { name: '[BIO] Vol des insectes.docx', display: 'Vol des insectes', type: 'docx' },
+        ];
 
-          // Try 1: fetch directory listing (HTML)
-          try {
-            const res = await fetch(dir, {cache: 'no-store'});
-            if (res.ok && res.headers.get('content-type') && res.headers.get('content-type').includes('text/html')) {
-              const text = await res.text();
-              const parser = new DOMParser();
-              const doc = parser.parseFromString(text, 'text/html');
-              const anchors = Array.from(doc.querySelectorAll('a'));
-              const files = anchors
-                .map(a => a.getAttribute('href'))
-                .filter(href => href && (href.toLowerCase().endsWith('.docx') || href.toLowerCase().endsWith('.doc')))
-                .map(href => decodeURIComponent(href.replace(/\/+$/,'')));
-              await renderList(files);
-              return;
-            }
-            // If not HTML, fallthrough to JSON attempt
-          } catch (err) {
-            console.warn('Liste dossier inaccessible, essai de fallback JSON', err);
-          }
-
-          // Try 2: fetch pre-generated JSON index
-          try {
-            const jres = await fetch(dir + 'index.json', {cache: 'no-store'});
-            if (jres.ok) {
-              const data = await jres.json();
-              if (Array.isArray(data)) {
-                // support array of strings or array of objects { filename, path, title }
-                const files = data
-                  .map(item => {
-                    if (typeof item === 'string') return item;
-                    if (item && typeof item === 'object') {
-                      if (item.filename) return item.filename;
-                      if (item.path) return item.path.split('/').pop();
-                      if (item.title) return item.title + '.docx';
-                    }
-                    return null;
-                  })
-                  .filter(f => typeof f === 'string');
-                await renderList(files);
-                return;
-              }
-            }
-          } catch (err) {
-            console.warn('Fallback JSON indisponible', err);
-          }
-
-          // Aucun mécanisme disponible
-          container.innerHTML = `<p class="text-sm text-red-500">Impossible de lister le dossier. Exécutez un serveur (ex. \`python -m http.server\`) ou générez \`${dir}index.json\`.</p>`;
+        function makeRow(fileKey, display, href) {
+          const li = document.createElement('li');
+          li.className = 'flex items-center justify-between py-2';
+          const a = document.createElement('a');
+          a.href = href;
+          a.textContent = display;
+          a.className = 'text-indigo-700 hover:underline flex-1';
+          a.dataset.file = fileKey;
+          const span = document.createElement('span');
+          span.className = 'ml-4 text-sm text-gray-500 text-right w-48 viewcount';
+          span.textContent = `Nombre de lectures : ${parseInt(localStorage.getItem('views:' + fileKey) || '0', 10) || 0}`;
+          li.appendChild(a);
+          li.appendChild(span);
+          return li;
         }
 
-        // Live updates when viewer increments counts in another tab
-        try{
-          const bc = new BroadcastChannel('views');
-          bc.onmessage = (ev)=>{
-            try{
-              const f = ev.data.file;
-              const el = document.querySelector(`[data-file="${f}"]`);
-              if(el){ const span = el.parentElement.querySelector('.viewcount'); if(span) span.textContent = `Nombre de lectures : ${ev.data.count}`; }
-            }catch(e){}
-          };
-        }catch(e){}
+        function renderList(files) {
+          if (files.length === 0) {
+            document.getElementById('listContainer').innerHTML = '<p class="text-sm text-gray-500">Aucune fiche trouvée.</p>';
+            return;
+          }
+          const ul = document.createElement('ul');
+          ul.className = 'space-y-2 divide-y divide-gray-100';
+          files.forEach(f => ul.appendChild(makeRow(f.key, f.display, f.href)));
+          document.getElementById('listContainer').innerHTML = '';
+          document.getElementById('listContainer').appendChild(ul);
+        }
 
-        document.addEventListener('DOMContentLoaded', loadBiologyFiles);
+        function loadFiles() {
+          const files = categoryFiles.map(file => {
+            const fileKey = FOLDER_PATH + file.name;
+            if (file.type === 'html') {
+              return { key: fileKey, display: file.display, href: encodeURI(fileKey) };
+            } else {
+              return { key: fileKey, display: file.display, href: 'viewer.html?file=' + encodeURIComponent(fileKey) };
+            }
+          });
+
+          files.sort((a, b) => a.display.localeCompare(b.display, 'fr', { sensitivity: 'base' }));
+          renderList(files);
+        }
+
+        try {
+          const bc = new BroadcastChannel('views');
+          bc.onmessage = (ev) => {
+            try {
+              const f = ev.data.file;
+              const el = document.querySelector(`[data-file="${CSS.escape(f)}"]`);
+              if (el) {
+                const span = el.parentElement.querySelector('.viewcount');
+                if (span) span.textContent = `Nombre de lectures : ${ev.data.count}`;
+              }
+            } catch (e) {}
+          };
+        } catch (e) {}
+
+        document.addEventListener('DOMContentLoaded', loadFiles);
       </script>
     </div>
 
@@ -136,9 +150,9 @@
   </main>
 
   <!-- Bouton Retour en haut -->
-  <button 
-    id="backToTopBtn" 
-    onclick="scrollToTop()" 
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
     class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
     ↑ Top
   </button>
@@ -154,7 +168,7 @@
         backToTopBtn.classList.remove('opacity-100','visible');
       }
     });
-    function scrollToTop(){ window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
   </script>
 
 </body>
