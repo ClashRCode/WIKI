@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chiffrement à dents de scie - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .content .citation {
+      border-left: 3px solid #4f46e5;
+      padding-left: 1rem;
+      font-style: italic;
+      color: #475569;
+      background-color: #f8fafc;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      padding-right: 1rem;
+      border-radius: 0 0.5rem 0.5rem 0;
+      margin: 1.5rem 0;
+    }
+
+    .content .quote-source {
+      text-align: right;
+      color: #94a3b8;
+      font-size: 0.875rem;
+      font-style: normal;
+      margin-top: 0.25rem;
+    }
+
+    .content .caption {
+      text-align: center;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #64748b;
+      margin-top: -0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .content figure {
+      margin: 1.5rem 0;
+    }
+
+    .content pre {
+      font-size: 0.8rem;
+    }
+
+    .content td img, .content th img {
+      display: inline-block;
+      margin: 0 0.15rem;
+      box-shadow: none;
+      max-height: 1.5rem;
+      height: auto;
+      width: auto;
+    }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#" class="toc-level-1"></a>
+<a href="#" class="toc-level-1"></a>
+
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h2 id="introduction">Introduction</h2>
+<p>Le chiffre à dents de scie, ou Railfence, est une méthode de chiffrement par transposition très simple à mettre en pratique. Elle consiste en la méthode suivante. On écrit le message sur deux lignes, en écrivant alternativement une lettre sur la ligne supérieure et une lettre sur la ligne inférieure. Le message crypté est obtenu en lisant alors le message écrit ainsi comme un texte classique. Par exemple, si on veut chiffrer le message : "QUI SEME LE VENT RECOLTE LA TEMPETE", on écrit :</p>
+<pre class="bg-slate-100 rounded-lg p-4 text-xs leading-relaxed overflow-x-auto mb-4 font-mono">
+Q   I   E   E   E   E   T   E   O   T   L   T   M   E   E
+  U   S   M   L   V   N   R   C   L   E   A   E   P   T
+</pre>
+<p>Le cryptogramme est donc QIEEE ETEOT LTMEE USMLV NRCLE AEPT.</p>
+<p>Pour déchiffrer un message chiffré avec cette méthode, on commence par couper le message en deux parties de même longueur. On écrit le début sur la première ligne, puis le second sur la deuxième ligne, en intercalant les lettres avec celles de la première ligne. La lecture en dents de scies donnera le message initial.</p>
+<p>On peut bien sûr envisager des variantes de ce chiffrement, par exemple avec des dents sur trois niveaux, en permutant les lettres deux à deux, avec des dents à longueur variable… Cependant, ceci reste une méthode de chiffrement de cour de récréation, qui n'apporte pas de sécurité sérieuse.</p>
+<h2 id="la-scytale-spartiate">La scytale spartiate</h2>
+<p><img src="data:image/jpeg;base64,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" alt="Illustration" />Le principe du chiffrement à dents de scie remonte au moins au Vè siècle avant Jésus-Christ, avec la scytale spartiate. La scytale est un bâton de bois autour duquel on enroule un ruban de parchemin. Le message est écrit de gauche à droite, en écrivant une lettre sur chaque circonvolution, et en passant à la ligne suivante une fois toutes les circonvolutions remplies. Une fois le parchemin déroulé, le message devient inintelligible.</p>
+<p>Pour déchiffrer, le destinataire doit posséder un bâton ayant exactement le même diamètre. Il lui suffit d'enrouler le parchemin autour du bâton pour retrouver le message original. Le diamètre du bâton constitue ainsi la clé de chiffrement.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 11 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

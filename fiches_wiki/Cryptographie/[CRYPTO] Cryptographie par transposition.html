@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cryptographie par transposition - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .content .citation {
+      border-left: 3px solid #4f46e5;
+      padding-left: 1rem;
+      font-style: italic;
+      color: #475569;
+      background-color: #f8fafc;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      padding-right: 1rem;
+      border-radius: 0 0.5rem 0.5rem 0;
+      margin: 1.5rem 0;
+    }
+
+    .content .quote-source {
+      text-align: right;
+      color: #94a3b8;
+      font-size: 0.875rem;
+      font-style: normal;
+      margin-top: 0.25rem;
+    }
+
+    .content .caption {
+      text-align: center;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #64748b;
+      margin-top: -0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .content figure {
+      margin: 1.5rem 0;
+    }
+
+    .content pre {
+      font-size: 0.8rem;
+    }
+
+    .content td img, .content th img {
+      display: inline-block;
+      margin: 0 0.15rem;
+      box-shadow: none;
+      max-height: 1.5rem;
+      height: auto;
+      width: auto;
+    }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#" class="toc-level-1"></a>
+<a href="#" class="toc-level-1"></a>
+<a href="#" class="toc-level-1"></a>
+<a href="#" class="toc-level-1"></a>
+<a href="#" class="toc-level-1"></a>
+<a href="#" class="toc-level-1"></a>
+
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h2 id="introduction">Introduction</h2>
+<p>Les méthodes de cryptographie par transposition sont celles pour lesquelles on chiffre le message en permutant l'ordre des lettres du message suivant des règles bien définies. Autrement dit, on produit un anagramme du message initial.</p>
+<p>Du fait qu'on ne change pas les lettres du message initial, on pourrait imaginer que ces procédés de chiffrement ne sont pas sûrs du tout. C'est effectivement le cas si on chiffre de petits messages, comme des mots, où le nombre d'anagrammes est très réduit. Mais dès que l'on s'intéresse à des messages assez grands, le nombre de transpositions possibles est extrêmement grand, et il est impossible de tester toutes les permutations possibles.</p>
+<p>Cela dit, il faut que l'expéditeur et le destinataire se mettent d'accord sur une façon de permuter les caractères de façon assez régulière pour qu'elle puisse s'appliquer à n'importe quel message. C'est ce choix qui va rendre le chiffrement par transposition plus ou moins résistant aux attaques. Nous décrivons ci-dessous une méthode pour se mettre d'accord sur la transposition effectuée à l'aide d'un unique mot clé.</p>
+<h2 id="les-transpositions-rectangulaires">Les transpositions rectangulaires</h2>
+<p>Pour effectuer un chiffrement par transposition rectangulaire, on commence par se mettre d'accord sur un mot-clé. Choisissons pour notre exemple le mot BIBMATH. On classe alors les lettres du mot BIBMATH par ordre alphabétique, et on attribue à chaque lettre son numéro dans l'ordre alphabétique. Ainsi, on donne à A le numéro 1, au premier B le numéro 2, au deuxième B le numéro 3, au H le numéro 4, etc….</p>
+<p>On crée ensuite un tableau de la façon suivante :</p>
+<ul class="list-disc pl-6 space-y-2 mb-4">
+<li>la première ligne est constituée par les lettres de la clé;
+</li>
+<li>la deuxième ligne est constituée par les numéros qui leur sont associés;
+</li>
+<li>on complète ensuite le tableau en le remplissant avec les lettres du message à chiffrer. On écrit sur chaque ligne autant de lettres que de lettres dans la clé. Eventuellement,la dernière ligne n'est pas complète.
+</li>
+</ul>
+<p>Par exemple, si on veut chiffrer "Je suis en Italie avec Maria", le tableau que l'on construit est le suivant :</p>
+<div class="overflow-x-auto mb-6"><table class="w-full text-sm border-collapse">
+<thead><tr>
+<th class="px-3 py-2 font-semibold text-left align-top">B</th>
+<th class="px-3 py-2 font-semibold text-left align-top">I</th>
+<th class="px-3 py-2 font-semibold text-left align-top">B</th>
+<th class="px-3 py-2 font-semibold text-left align-top">M</th>
+<th class="px-3 py-2 font-semibold text-left align-top">A</th>
+<th class="px-3 py-2 font-semibold text-left align-top">T</th>
+<th class="px-3 py-2 font-semibold text-left align-top">H</th>
+</tr></thead><tbody>
+<tr class="border-b border-slate-200"><td class="px-3 py-2 align-top">2</td><td class="px-3 py-2 align-top">5</td><td class="px-3 py-2 align-top">3</td><td class="px-3 py-2 align-top">6</td><td class="px-3 py-2 align-top">1</td><td class="px-3 py-2 align-top">7</td><td class="px-3 py-2 align-top">4</td></tr>
+<tr class="border-b border-slate-200"><td class="px-3 py-2 align-top">J</td><td class="px-3 py-2 align-top">E</td><td class="px-3 py-2 align-top">S</td><td class="px-3 py-2 align-top">U</td><td class="px-3 py-2 align-top">I</td><td class="px-3 py-2 align-top">S</td><td class="px-3 py-2 align-top">E</td></tr>
+<tr class="border-b border-slate-200"><td class="px-3 py-2 align-top">N</td><td class="px-3 py-2 align-top">I</td><td class="px-3 py-2 align-top">T</td><td class="px-3 py-2 align-top">A</td><td class="px-3 py-2 align-top">L</td><td class="px-3 py-2 align-top">I</td><td class="px-3 py-2 align-top">E</td></tr>
+<tr class="border-b border-slate-200"><td class="px-3 py-2 align-top">A</td><td class="px-3 py-2 align-top">V</td><td class="px-3 py-2 align-top">E</td><td class="px-3 py-2 align-top">C</td><td class="px-3 py-2 align-top">M</td><td class="px-3 py-2 align-top">A</td><td class="px-3 py-2 align-top">R</td></tr>
+<tr class="border-b border-slate-200"><td class="px-3 py-2 align-top">I</td><td class="px-3 py-2 align-top">A</td><td class="px-3 py-2 align-top"></td><td class="px-3 py-2 align-top"></td><td class="px-3 py-2 align-top"></td><td class="px-3 py-2 align-top"></td><td class="px-3 py-2 align-top"></td></tr>
+</tbody></table></div>
+<p>Ensuite, on écrit d'abord le contenu de la colonne numérotée 1, puis le contenu de la colonne numérotée 2, etc… Le message chiffré obtenu est alors :</p>
+<p>ILMJN AISTE EEREI VAUAC SIA</p>
+<p>Pour faire l'opération inverse (déchiffrer), il faut d'abord reconstituer pour chaque colonne le nombre de lignes que le tableau comprenait. Pour cela, on note n le nombre de lettres du message et c le nombre de lettres de la clé, qui est aussi le nombre de colonnes du tableau de chiffrement. Si n est un multiple de c, alors on a affaire à un tableau où toutes les colonnes ont la même hauteur, qui vaut n/c. Sinon, on note q le quotient dans la divison euclidienne de n par c, et r le reste. Il y aura alors r colonnes (les premières) qui auront pour hauteur q+1, et c-r colonnes (les dernières), qui auront pour hauteur q.</p>
+<p>Ensuite, on remplit le tableau en écrivant dans la colonne numérotée 1 les premières lettres du message, puis dans la colonne numérotée 2 les suivantes, et ainsi de suite… Le message clair se lit alors directement sur le tableau.</p>
+<h2 id="vaincre-les-chiffrements-par-transposition">Vaincre les chiffrements par transposition</h2>
+<p>Étonnamment, les chiffrements par transposition sont plutôt plus sûrs que les chiffrements par substitution; par exemple, alors qu'il est très facile avec un ordinateur de vaincre automatiquement le chiffre de Vigenère, c'est beaucoup plus difficile pour un chiffre par transposition. Bien souvent, il faut un élément supplémentaire, comme un mot probable, pour espérer pouvoir déchiffrer le message.</p>
+<p>Nous allons expliquer sur un exemple le décryptage d'un message chiffré posté par Nérosson sur le forum du site. Voici ce message :</p>
+<p>HSELO CLTNT LANYR OVCRC LUTOU SDLOI QOCSE TLROO OOIET VOIRO ESSOT SOAMT ENOIE AEMTU CLURE PQEIE AETAE ETEET NOOPN EBNSC RIFOR TEERT UIIDN IMIIR DMETO EXIDO UDNYN ORFSN DLNUN RIOSA NEEEC EPIEI ETMIU ESEIN SIFNI SINPE VOAER GTRAE PIEEA IPVBS SRCII LNIUI FOROS ALTAB UNNRS NDENE NSOSE IEEEN RFBTN LSRST AT</p>
+<p>Nérosson précisait que les décryptements des messages précédents sur ce canal ont aussi révélé une chose de toute première importance : les messages commencent toujours sous la forme : de (expéditeur) à (destinataire). Or, ici, nous savons que l'expéditeur est Freddy et que le destinataire est Yoshi. Le message clair commence donc par DE FREDDY A YOSHI.</p>
+<p>Une analyse des fréquences des lettres du texte, qui donne dans l'ordre des fréquences EIONSTRA, fait tout de suite penser à l'usage d'une transposition. Voyons comment procéder. On suppose que le lecteur est très familier avec les méthodes de chiffrement par transposition. Les outils en ligne évoqués sont disponibles sur cette page.</p>
+<h3 id="etape-1-trouver-la-longueur-de-la-cle">Etape 1 : Trouver la longueur de la clé</h3>
+<p>On va commencer par trouver la longueur de la clé de chiffrement. La première lettre du texte chiffré est H. Elle correspond très certainement au H de YOSHI qui apparait en début de message. Le H étant en 13è position dans le message clair, ceci indique que la clé fait au moins 13 caractères. On s'aide ensuite des deux Y qui sont dans le début du message clair. Ce sont des lettres rares, et elles n'apparaissent que deux fois dans le texte chiffré : en 14è et 134è position. Celui qui est en 14è position nous intéresse particulièrement. Il apparait dans l'étape de chiffrement après avoir lu toute la colonne du H initial et éventuellement une ou plusieurs autres colonnes. S'il y avait plusieurs colonnes lues avant d'arriver au Y, les colonnes aurait une longueur maximale de 7, ce qui donne une clé d'au moins 252/7=36 caractères : trop long pour espérer décrypter le message!</p>
+<p>On part donc de l'hypothèse que la colonne comprenant la lettre H dans l'étape de chiffrement comporte 13 caractères. Il y a alors deux possibilités :</p>
+<ul class="list-disc pl-6 space-y-2 mb-4">
+<li>le tableau comprend des colonnes de hauteur 13 et des colonnes de hauteur 12. Ceci revient à une clé de longueur 20 (entier juste au-dessus de 252/13), et il doit alors y avoir, puisque le message fait au total 252 caractères, 12 colonnes de 13 caractères (les premières) et 8 colonnes de 12 caractères. Mais c'est impossible, car alors la colonne de H, qui est la 13è du tableau, ne comporterait que 12 caractères et non 13! Cette hypothèse est à exclure.
+</li>
+<li>le tableau comprend des colonnes de hauteur 13 et des colonnes de hauteur 14. Ceci revient à une clé de longueur 19, et à fabriquer un tableau avec 5 colonnes de 14 caractères, et 14 colonnes de 13 caractères : on fera désormais cette hypothèse dans la suite!
+</li>
+</ul>
+<h3 id="etape-2-le-relevement-du-tableau">Etape 2 : le relèvement du tableau</h3>
+<p>On va désormais essayer de fabriquer le tableau de chiffrement, qui comprend donc 5 colonnes de 14 caractères, et 14 colonnes de 13 caractères. On va d'abord tenter de retrouver le contenu des colonnes, sans prendre garde à l'ordre dans lequel elles apparaissent. Pour cela, on fabrique ces colonnes à partir du message chiffré en prenant successivement des blocs de 13 ou 14 lettres. Le choix d'un bloc de 13 ou 14 lettres est guidé par plusieurs éléments :</p>
+<ul class="list-disc pl-6 space-y-2 mb-4">
+<li>les têtes de colonnes du tableau sont les premières lettres du message : on en connait déjà 14, DEFREDDYAYOSHI.
+</li>
+<li>les colonnes qui peuvent avoir 14 caractères correspondent forcément à des têtes de colonne qui sont D,E,F,R,E (les 5 premières lettres du message).
+</li>
+<li>les deux premières têtes de colonne ont été identifiées. Il s'agit du H et du Y en 14è position. Ces deux premières colonnes ont une hauteur égale à 13.
+</li>
+<li>le deuxième Y est en position 134=14+120=14+314+613. Ainsi, il y aura entre le premier Y et le deuxième Y 3 colonnes à 14 éléments et 6 colonnes à 13 élements.
+</li>
+</ul>
+<p>Il faut alors essayer, un peu à tâtons, différentes combinaisons possibles de l'endroit où on prélève 14 lettres ou 13 lettres dans le message chiffré pour arriver à fabriquer un tableau répondant aux contraintes évoquées ci-dessus. Par exemple, si on commence en mettant les 3 colonnes de 14 lettres juste après celle de Y, et les deux dernières tout à la fin, c'est-à-dire en ayant la suite de longueur de colonnes suivantes (13,13,14,14,14,13,13,13,13,13,13,13,13,13,13,13,13,14,14) - en rouge, les colonnes dont on est sûr de la longueur, on obtient :</p>
+<pre class="bg-slate-100 rounded-lg p-4 text-xs leading-relaxed overflow-x-auto mb-4 font-mono">
+HYDOTTENEDYIIFGBOSE
+SRLOSUTERMNOENTSRNN
+EOOIOCABTEOSTIRSODR
+LVIEALENUTRAMSARSEF
+OCQTMUESIOFNIIECANB
+CROVTRTCIESEUNPILET
+LCCOEEERDXNEEPIITNN
+TLSINPEINIDESEELASL
+NUEROQTFIDLCEVENBOS
+TTTOIENOMONEIOAIUSR
+LOLEEIORIUUPNAIUNES
+AURSAEOTIDNISEPINIT
+NSOSEAPERNREIRVFREA
+  OOM            ET
+</pre>
+<p>On n'est pas si loin d'avoir toutes les lettres de DEFREDDYAYOSHI, mais il manque encore un R et un D. On doit chercher dans le tableau comment les faire apparaitre en première ligne en permutant des longueurs de colonne. Pour cela, ces D et ces R ne peuvent se trouver que dans les premières lignes ou les dernières lignes du tableau. Le seul D qui convient est celui situé sur la 3ème ligne, à l'avant-dernière colonne. Ceci implique de faire apparaitre les deux colonnes de 14 qui sont après le Y avant ce D, et donc que le tableau se termine nécessairement par deux colonnes de 13. Avec la nouvelle répartion (13,13,14,14,14,13,13,13,13,13,13,13,13,13,13,14,14,13,13), on obtient :</p>
+<pre class="bg-slate-100 rounded-lg p-4 text-xs leading-relaxed overflow-x-auto mb-4 font-mono">
+HYDOTTENEDYIIFGBRDN
+SRLOSUTERMNOENTSOER
+EOOIOCABTEOSTIRSSNF
+LVIEALENUTRAMSARAEB
+OCQTMUESIOFNIIECLNT
+CROVTRTCIESEUNPITSN
+LCCOEEERDXNEEPIIAOL
+TLSINPEINIDESEELBSS
+NUEROQTFIDLCEVENUER
+TTTOIENOMONEIOAINIS
+LOLEEIORIUUPNAIUNET
+AURSAEOTIDNISEPIREA
+NSOSEAPERNREIRVFSET
+  OOM          ON
+</pre>
+<p>Il manque encore un S et un A. Le S apparait naturellement sur la deuxième ligne, colonne 16. Pour le faire apparaitre sur la première ligne, il suffit de décaler une des deux dernières colonnes de 14 par exemple à la colonne du F (car le G en tête de colonne n'est pas très engageant). De plus, la colonne de R doit nécessairement avoir pour hauteur 14 pour ne pas faire disparaitre le dernier D, et on propose maintenant la répartition <strong>13,13</strong>,14,14,14,13,13,13,13,13,13,13,13,14,13,13,<strong>14,13,13</strong> :</p>
+<pre class="bg-slate-100 rounded-lg p-4 text-xs leading-relaxed overflow-x-auto mb-4 font-mono">
+HYDOTTENEDYIIFTSRDN
+SRLOSUTERMNOENRSOER
+EOOIOCABTEOSTIARSNF
+LVIEALENUTRAMSECAEB
+OCQTMUESIOFNIIPILNT
+CROVTRTCIESEUNIITSN
+LCCOEEERDXNEEPELAOL
+TLSINPEINIDESEENBSS
+NUEROQTFIDLCEVAIUER
+TTTOIENOMONEIOIUNIS
+LOLEEIORIUUPNAPINET
+AURSAEOTIDNISEVFREA
+NSOSEAPERNREIRBOSET
+  OOM        G  N
+</pre>
+<p>Il manque encore un A! Une façon raisonnable de l'obtenir, sans faire disparaitre de E par exemple, est de décaler les colonnes de 14 qui apparaissent en position 5 et 6 pour les mettre en position 7 et 8, c'est-à-dire de choisir la répartition suivante : 13,13,14,13,13,14,14,13,13,13,13,13,13,14,13,13,14,13,13. On obtient alors le tableau suivant, où toutes les lettres de DEFREDDYAYOSHI apparaissent dans la première ligne :</p>
+<pre class="bg-slate-100 rounded-lg p-4 text-xs leading-relaxed overflow-x-auto mb-4 font-mono">
+HYDOOEANEDYIIFTSRDN
+SRLOTMEERMNOENRSOER
+EOOISTTBTEOSTIARSNF
+LVIEOUANUTRAMSECAEB
+OCQTACESIOFNIIPILNT
+CROVMLECIESEUNIITSN
+LCCOTUTRDXNEEPELAOL
+TLSIEREINIDESEENBSS
+NUERNEEFIDLCEVAIUER
+TTTOOPTOMONEIOIUNIS
+LOLEIQNRIUUPNAPINET
+AURSEEOTIDNISEVFREA
+NSOSAIOERNREIRBOSET
+   O   EP      G  N
+</pre>
+<p>Est-ce gagné pour autant? Pas vraiment, car les lettres qui restent dans la première ligne, après le début du message, sont T,N,N,O,I, et ces lettres doivent constituer le début d'un mot. Ce n'est pas impossible, mais ce n'est pas la seule solution. Par exemple, avec la répartion très proche 13,13,14,13,13,14,13,13,14,13,13,13,13,14,13,13,14,13,13, on obtient le tableau :</p>
+<pre class="bg-slate-100 rounded-lg p-4 text-xs leading-relaxed overflow-x-auto mb-4 font-mono">
+HYDOOEAPEDYIIFTSRDN
+SRLOTMENEMNOENRSOER
+EOOISTTEREOSTIARSNF
+LVIEOUABTTRAMSECAEB
+OCQTACENUOFNIIPILNT
+CROVMLESIESEUNIITSN
+LCCOTUTCIXNEEPELAOL
+TLSIERERDIDESEENBSS
+NUERNEEINDLCEVAIUER
+TTTOOPTFIONEIOIUNIS
+LOLEIQNOMUUPNAPINET
+AURSEEORIDNISEVFREA
+NSOSAIOTINREIRBOSET
+   O  E  R    G  N
+</pre>
+<p>Cette fois, les lettres qui restent sont O,P,T,I,N, dont l'anagramme est POINT. C'est aussi une possibilité. Comme on le voit, il y a à ce stade plusieurs possibilités à envisager. Nous n'étudierons dans la suite qu'une possibilité, la bonne, c'est-à-dire la dernière!</p>
+<h3 id="etape-3-le-jeu-des-anagrammes">Etape 3 : Le jeu des anagrammes</h3>
+<p>La dernière étape consiste à remettre les colonnes précédentes de sorte d'obtenir le message clair; il faut donc faire des anagrammes judicieux! On peut partir par exemple de la 14è et 17è colonne, qui correspondent au bigramme FR du message clair. On peut les faire suivre de la 6è ou de la 9è colonne, qui commencent toutes deux par un E. Si on essaie avec la 9ème colonne, on obtient le résultat suivant :</p>
+<pre class="bg-slate-100 rounded-lg p-4 text-xs leading-relaxed overflow-x-auto mb-4 font-mono">
+FRE
+NOE
+ISR
+SAT
+ILU
+NTI
+PAI
+EBD
+VUN
+ONI
+ANM
+ERI
+RSI
+GNR
+</pre>
+<p>Les trigrammes EBD et GNR qui apparaissent sont très peu vraisemblables… C'est donc que que l'enchaînement est plutôt 14,17,9, et même 6,14,17,9, qui correspond donc à EFRE. On continue ensuite avec les D, et ainsi de suite (c'est très aisé avec l'outil en ligne mentionné plus haut), pour obtenir le message final suivant :</p>
+<p>DE FREDDY A YOSHI POINT LE NOMME NEROSSON TERRORISTE NOTOIRE S EST FAIT SAUTER AVEC LA BOMBE QU IL CONFECTIONNAIT POINT LES SERVICES MUNICIPAUX ONT COLLECTE LES DEBRIS DE L INTERESSE EN VUE DE LEUR INCINERATION POINT TOUTEFOIS IL MANQUE UN OEIL POINT PRIERE DE FAIRE SAVOIR SI NEROSSON ETAIT BORGNE</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 11 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
