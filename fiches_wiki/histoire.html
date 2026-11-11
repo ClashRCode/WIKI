@@ -23,19 +23,19 @@
       <img src="../img/histoire.png" alt="histoire" class="w-10 h-10" />
       <h2 id="pageTitle" class="text-3xl font-bold text-indigo-700">Histoire</h2>
       <script>
-        // Liste statique des fichiers disponibles dans Histoire/
-        const FOLDER_PATH = 'Histoire/';
+        // Liste dynamique des fiches du dossier `fiches_wiki/Histoire/` du dépôt GitHub.
+        // GitHub Pages ne permet pas de lister un dossier : on passe par l'API GitHub.
+        // Seuls les fichiers .html sont affichés ; toute nouvelle fiche ajoutée au
+        // dossier apparaît automatiquement, dans l'ordre alphabétique.
+        const GITHUB_API = 'https://api.github.com/repos/ClashRCode/WIKI/contents/fiches_wiki/Histoire?ref=main&cachebust=' + Date.now();
+        const FOLDER_PATH = 'Histoire/'; // chemin relatif depuis cette page
 
-        const categoryFiles = [
-          { name: '[HISTOIRE] Programme Apollo.html', display: 'Programme Apollo', type: 'html' },
-          { name: '[HISTOIRE] Programme Artemis.html', display: 'Programme Artemis', type: 'html' },
-          { name: '[HISTOIRE] Programme Gemini.html', display: 'Programme Gemini', type: 'html' },
-          { name: '[HISTOIRE] Programme ISS.html', display: 'Programme ISS', type: 'html' },
-          { name: '[HISTOIRE] Programme Navette spatiale.html', display: 'Programme Navette spatiale', type: 'html' },
-          { name: '[HISTOIRE] Programme Shuttle-Mir.html', display: 'Programme Shuttle-Mir', type: 'html' },
-          { name: '[HISTOIRE] Projet Manhattan.html', display: 'Projet Manhattan', type: 'html' },
-          { name: '[HISTOIRE] Événement de la Toungouska.html', display: 'Événement de la Toungouska', type: 'html' },
-        ];
+        function displayName(filename) {
+          return filename
+            .replace(/^\[[^\]]*\]\s*/i, '') // retire le préfixe [HISTOIRE]
+            .replace(/\.html?$/i, '')       // retire l'extension
+            .trim();
+        }
 
         function makeRow(fileKey, display, href) {
           const li = document.createElement('li');
@@ -65,18 +65,26 @@
           document.getElementById('listContainer').appendChild(ul);
         }
 
-        function loadFiles() {
-          const files = categoryFiles.map(file => {
-            const fileKey = FOLDER_PATH + file.name;
-            if (file.type === 'html') {
-              return { key: fileKey, display: file.display, href: encodeURI(fileKey) };
-            } else {
-              return { key: fileKey, display: file.display, href: 'viewer.html?file=' + encodeURIComponent(fileKey) };
-            }
-          });
+        async function loadFiles() {
+          try {
+            const res = await fetch(GITHUB_API);
+            if (!res.ok) throw new Error('API ' + res.status);
+            const entries = await res.json();
 
-          files.sort((a, b) => a.display.localeCompare(b.display, 'fr', { sensitivity: 'base' }));
-          renderList(files);
+            let files = entries
+              .filter(e => e.type === 'file' && /\.html?$/i.test(e.name))
+              .map(e => {
+                const fileKey = FOLDER_PATH + e.name;
+                return { key: fileKey, display: displayName(e.name), href: encodeURI(fileKey) };
+              });
+
+            // Tri alphabétique (insensible à la casse et aux accents)
+            files.sort((a, b) => a.display.localeCompare(b.display, 'fr', { sensitivity: 'base' }));
+            renderList(files);
+          } catch (err) {
+            document.getElementById('listContainer').innerHTML =
+              '<p class="text-sm text-red-500">Impossible de charger la liste des fiches (limite API GitHub ou connexion). Rechargez la page.</p>';
+          }
         }
 
         try {
