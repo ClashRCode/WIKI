@@ -3,33 +3,124 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Machine Enigma - WIKI</title>
+  <title>Sécurité des réseaux sans-fil Wifi - WIKI</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    .sidebar { position: sticky; top: 80px; height: calc(100vh - 80px); overflow-y: auto; }
-    .toc a { display: block; padding: 0.5rem 0.75rem; border-radius: 0.25rem; color: #475569; text-decoration: none; transition: all 0.2s; font-size: 0.9rem; }
-    .toc a:hover { background-color: #f1f5f9; color: #4f46e5; }
-    .toc a.active { background-color: #e0e7ff; color: #4f46e5; font-weight: 500; }
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
     .toc-level-1 { margin-left: 0; }
     .toc-level-2 { margin-left: 1rem; }
     .toc-level-3 { margin-left: 2rem; }
     .toc-level-4 { margin-left: 3rem; }
-    .content h1 { font-size: 2rem; font-weight: 800; color: #1e293b; border-bottom: 2px solid #4f46e5; padding-bottom: 0.5rem; margin-top: 1.5rem; margin-bottom: 1rem; }
-    .content h2 { font-size: 1.5rem; font-weight: 700; color: #334155; border-bottom: 1px solid #94a3b8; padding-bottom: 0.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
-    .content h3 { font-size: 1.25rem; font-weight: 600; color: #475569; margin-top: 1.25rem; margin-bottom: 0.5rem; }
-    .content h4 { font-size: 1.125rem; font-weight: 600; color: #64748b; margin-top: 1rem; margin-bottom: 0.5rem; }
-    .content p { line-height: 1.75; margin-bottom: 1rem; }
-    .content img { max-width: 100%; height: auto; border-radius: 0.5rem; margin: 1.5rem auto; display: block; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
-    .sidebar::-webkit-scrollbar { width: 6px; }
-    .sidebar::-webkit-scrollbar-track { background: #f1f5f9; }
-    .sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-    .sidebar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-    pre.cadre { background: #f1f5f9; border-radius: 0.5rem; padding: 1rem; overflow-x: auto; font-family: monospace; line-height: 1.5; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { margin-bottom: 0.4rem; line-height: 1.75; }
+    .content li > p { margin-bottom: 0.4rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content strong { font-weight: 600; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-gray-800 font-sans">
 
+  <!-- Header (même style que votre wiki) -->
   <header class="bg-white shadow">
     <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
       <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
@@ -39,8 +130,10 @@
     </div>
   </header>
 
+  <!-- Contenu principal avec sidebar -->
   <div class="max-w-7xl mx-auto px-4 py-8">
     <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
       <aside class="w-full lg:w-80 flex-shrink-0">
         <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
           <div class="flex items-center space-x-2 mb-4">
@@ -48,36 +141,36 @@
           </div>
           <nav class="toc space-y-1">
             <a href="#introduction" class="toc-level-1">Introduction</a>
-            <a href="#wep" class="toc-level-1">Fonctionnement du WEP</a>
-            <a href="#wpa" class="toc-level-1">Protocoles améliorés : WPA et WPA2</a>
+            <a href="#fonctionnement-du-wep" class="toc-level-1">Fonctionnement du WEP</a>
+            <a href="#protocoles-améliorés-wpa-et-wpa2" class="toc-level-1">Protocoles améliorés : WPA et WPA2</a>
           </nav>
         </div>
       </aside>
 
+      <!-- Contenu principal -->
       <main class="flex-1 min-w-0">
         <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
           <article class="content">
-            <h1 id="securite-des-reseaux-sans-fil-wifi">Sécurité des réseaux sans-fil Wifi</h1>
-
+            <h1 id="sécurité-des-réseaux-sans-fil-wifi">Sécurité des réseaux sans-fil Wifi</h1>
             <h2 id="introduction">Introduction</h2>
-            <p>Il n'y a rien de plus facile que d'espionner les données échangées à travers un réseau sans fil ! Pour les garder confidentielles, ou pour que votre voisin ne puisse pas utiliser librement votre box internet, il faut sécuriser ces réseaux, notamment en chiffrant les communications. Le premier protocole est proposé par l'IEEE (Institute of Electrical and Electronics Engineering, association à la base de nombreux standards en électronique) en 1997. Il porte le nom de WEP, pour <em>Wired Equivalent Privacy</em>, en français protection équivalente au câble. Le nom de Wifi (pour Wireless Fidelity) vient du consortium créé en 1999 par 6 compagnies de télécommunication pour promouvoir l'utilisation des normes de l'IEEE pour les réseaux sans fil.</p>
-            <p>Le protocole WEP se révéla rapidement obsolète. Il fut remplacé provisoirement en 2004 par le protocole WPA (<em>Wifi Protected Access</em>), qui ne nécessitait pas de changer le matériel, puis par une nouvelle norme, WPA2, incompatible. À partir de 2006, un équipement ne pouvait se revendiquer « compatible wifi » sans supporter cette nouvelle norme.</p>
-            <p>Dans la suite, nous allons décrire de façon succincte et simplifiée ces protocoles, en nous plaçant dans le cas de l'ordinateur qui souhaite échanger des données avec la box. La box est le point d'accès wifi. Elle possède un mot de passe (une clé) fixe qui est par exemple écrite au verso de la box (c'est le cas de la mienne !).</p>
-
-            <h2 id="wep">Fonctionnement du WEP</h2>
-            <p>Le protocole WEP chiffre les données à l'aide d'un algorithme de chiffrement par flots, appelé RC4. On commence par communiquer la clé de la box à l'ordinateur. Cette clé est une suite de 10 chiffres hexadécimaux (c'est-à-dire un chiffre de 0 à 9, ou les lettres A, B, C, D, E, F). Ceci constitue alors une clé de 40 bits. La box et l'ordinateur s'échangent ensuite (en clair) un vecteur d'initialisation.</p>
+            <p>Il n'y a rien de plus facile que d'espionner les données échangées à travers un réseau sans fil! Pour les garder confidentielles, ou pour que votre voisin ne puisse pas utiliser librement votre box internet, il faut sécuriser ces réseaux, notamment en chiffrant les communications. Le premier protocole est proposé par l'IEEE (Institute of Electrical and Electronics Engineering, association à la base de nombreux standards en électronique) en 1997. Il porte le nom de WEP, pour Wired Equivalent Privacy, en français protection équivalente au cable. Le nom de Wifi (pour Wireless Fidelity) vient du consortium créé en 1999 par 6 compagnies de télécommunication pour promouvoir l'utilisation des normes de l'IEEE pour les réseaux sans fil.</p>
+            <p>Le protocole WEP se révéla rapidement obsolète. Il fut remplacé provisoirement en 2004 par le protocole WPA (Wifi Protected Access), qui ne nécessitait pas de changer le matériel, puis par une nouvelle norme, WPA2, incompatible. A partir de 2006, un équipement ne pouvait se revendiquer "compatible wifi" sans supporter cette nouvelle norme.</p>
+            <p>Dans la suite, nous allons décrire de façon succinte et simplifiée ces protocoles, en nous plaçant dans le cas de l'ordinateur qui souhaite échanger des données avec la box. La box est le point d'accès wifi. Elle possède un mot de passe (une clé) fixe qui est par exemple écrite au verso de la box (c'est le cas de la mienne!).</p>
+            <h2 id="fonctionnement-du-wep">Fonctionnement du WEP</h2>
+            <p>Le protocole WEP chiffre les données à l'aide d'un algorithme de <a href="https://www.bibmath.net/crypto/index.php?action=affiche&amp;quoi=moderne/flots" target="_blank" rel="noopener">chiffrement par flots</a>, appelé RC4. On commence par communiquer la clé de la box à l'ordinateur. Cette clé est une suite de 10 chiffres hexadécimaux (c'est-à-dire un chiffre de 0 à 9, ou les lettres A,B,C,D,E,F). Ceci constitue alors une clé de 40 bits. La box et l'ordinateur s'échangent ensuite (en clair) un vecteur d'initialisation.</p>
             <p>L'algorithme RC4 calcule alors, à partir de cette clé et du vecteur d'initialisation, une suite pseudo-aléatoire de 0 et de 1. Ces nombres sont alors ajoutés, par un ou exclusif, comme dans le chiffre de Vernam, aux lettres du message clair. Ceci constitue le texte chiffré.</p>
-            <img src="images/wifi/001-001-img-0.jpeg" alt="Fonctionnement du WEP" />
-            <p>Ces algorithmes de chiffrement par flot ont un avantage : c'est leur rapidité. Mais ils ont aussi un défaut : il ne faut jamais que la même clé soit utilisée deux fois de suite. Or, ici, la suite pseudo-aléatoire semble construite à partir d'une clé de 64 bits, ce qui est assez correct. Mais en réalité, 40 bits de cette clé sont fixes : c'est la clé de la box. Seuls les 24 bits du vecteur d'initialisation changent, et une clé de 24 bits, cela n'est vraiment pas beaucoup (un peu plus de 16 millions de possibilités). Le paradoxe des anniversaires fait alors que, dès qu'on a envoyé environ 5000 paquets, on a plus d'une chance sur deux d'avoir utilisé la même clé !</p>
-            <p>Très vite, dès 2001, des attaques contre le WEP utilisant cette faille se sont développées, rendant ce protocole obsolète. Remarquons ici que la longueur de la clé ne fait pas la sécurité d'un système de cryptographie. La clé à entrer pourrait être aussi longue que l'on veut, beaucoup plus longue que 40 bits, cela ne renforcerait pas du tout la sécurité du WEP. C'est la taille du vecteur d'initialisation qui est trop petite !</p>
+            <p><img src="data:image/png;base64,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O+6okkyWVcu2beh66IG8/thgli0NU+YWLlnK648/wz6HH7xqcEmmLJq3gA9eH8oHrw9lXt4sli5esupx3tRpGY3trN9fwbefjGTALXeycO58Phs+gof/dgeHn3ICTVu2yFhcOXoLEBERJYPWDHiL0D/8X4RbrY7OZEz7HHawd9i9k9/xf9dl3TZ4QEmj7Zv6/dffmr140SJO/79LMn47vavvvIUrjunFefsfyd6HHMjI9z5k0fz53P70gIyfz4k/jOHaXueWWVb6+MZH7uW4c07PWGzdTzyWP91/F/+87iYG3HInWdnZHHJSD2585N6MlpkSQhERkTCn4H7uXpCkoO598/ni6359XvYFBxyV7e7UbdiAu14ZVNx+t10znhC267wLAz8cypuDnufnMeM54tcncuxZp2a8dhCgy0H78/mK5I507nnROZx4wVlM+XEijZtvT43tamY8JiWEIiKyzXP375IYV71GDXl4xBvF+fMXkL9gobVo28aTFF/zNq24+IZrdQFtgKysLFrv1D4x8SghFBERSbja9etRu349V0nIJktQVQQiIiIiSghFRERERAmhiIiIiCghFBERERElhCIiIiKihFBERERElBCKiIiIiBJCEREREVFCKCIiIiLbBt2pREREZBN56cY7MUtOPCuWLlv19/TR4+HFNxJbdiMTFlv+nHlbTNkpIRQREUlA7lD6x6wJPycuuGbNmzM7L4/po8eHxCahPk9wwpX0slNCKCIikmFWUvKgZ2XtAzRJYnyNmzbdZXZeHgmNDYAkxte4aVMaN23K919/ndhrr0mzZqvKcL2vW3fdK1tERERkW6ZBJSIiIiJKCEVERERECaGIiIiIKCEUERERESWEIiIiIqKEUERERESUEIqIiIiIEkIRERERUUIoIiIiIkoIRUREREQJoYiIiIgoIRQRERERJYQiIiIiooRQRERERJQQioiIiMhWKUdFICIi2wozOw84TyUhooRQRES2Xa2Bg1UMImWpyVhERERECaGIiIiIbMvM3VUKIiKybXzomTUEGqokRJQQioiIiEgKNRmLiIiIKCEUERERESWEIiIiIqKEUERERESUEIqIiIiIEkIRERERUUIoIiIiIkoIRURERGTbkaMiEBER2XjOPfnkfYtLSgYZtEpifHvvt19O3vTpzJw+PXGxbVerFrVq1wYgb/r0m5MU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" alt="Fonctionnement du WEP – figure 1" loading="lazy" /></p>
+            <p>Ces algorithmes de chiffrement par flot ont un avantage : c'est leur rapidité. Mais ils ont aussi un défaut : il ne faut jamais que la même clé soit utilisée deux fois de suite. Or, ici, la suite pseudo-aléatoire semble construite à partir d'une clé de 64 bits, ce qui est assez correct. Mais en réalité, 40 bits de cette clé sont fixes : c'est la clé de la box. Seuls les 24 bits du vecteur d'initialisation changent, et une clé de 24 bits, cela n'est vraiment pas beaucoup (un peu plus de 16 millions de possibilités). Le <a href="https://www.bibmath.net/crypto/index.php?action=affiche&amp;quoi=chasseur/anniversaire" target="_blank" rel="noopener">paradoxe des anniversaires</a> fait alors que, dès qu'on a envoyé environ 5000 paquets, on a plus d'une chance sur deux d'avoir utilisé la même clé!</p>
+            <p>Très vite, dès 2001, des attaques contre le WEP utilisant cette faille se sont développées, rendant ce protocole obsolète. Remarquons ici que la longueur de la clé ne fait pas la sécurité d'un système de cryptographie. La clé à entrer pourrait être aussi longue que l'on veut, beaucoup plus longue que 40 bits, cela ne renforcerait pas du tout la sécurité du WEP. C'est la taille du vecteur d'initialisation qui est trop petite!</p>
+            <h2 id="protocoles-améliorés-wpa-et-wpa2">Protocoles améliorés : WPA et WPA2</h2>
+            <p>Devant ce constat d'échec, le consortium gérant le Wifi se devait de réagir rapidement. Il commença en proposant une solution intermédiaire en 2004, le WPA. En effet, il y avait une contrainte supplémentaire à respecter. Le nouveau protocole devait être compatible avec le matériel existant, modulo une mise à jour logicielle, car il était impossible de le renouveler entièrement en une fois. C'est pourquoi le nouveau protocole WPA utilisait encore RC4. Mais il dispose en plus du Temporal Key Integrity Protocol, qui lui permet de changer les clés utilisées à chaque paquet. Ainsi, l'attaque décrite précédemment ne pouvait plus avoir lieu.</p>
+            <p>Cela dit, le WPA ne pouvait être qu'une solution temporaire, car certaines faiblesses structurelles du WEP, non décrites ici, n'étaient pas corrigées. Cela donna lieu au déploiement, à partir de 2006, du WPA2. Ce protocole utilise cette fois l'AES au lieu de RC4, et il ajoute aussi un réel contrôle de l'intégrité des données transmises. A la date où cette page est écrite (fin 2012), le WPA2 est toujours considéré comme sûr.</p>
+            <p>Ce n'est pas le cas du WPS, Wifi Protected Setup, un autre standard qui était destiné à simplifier l'usage du WPA2 et les différentes configurations du réseau possibles. Ce protocole fut introduit en 2007, mais une faille majeure a été découverte en 2011, et il est très déconseillé de l'utiliser!. Le protocole WPA3 arrive comme successeur plus fiable.</p>
 
-            <h2 id="wpa">Protocoles améliorés : WPA et WPA2</h2>
-            <p>Devant ce constat d'échec, le consortium gérant le Wifi se devait de réagir rapidement. Il commença en proposant une solution intermédiaire en 2004, le WPA. En effet, il y avait une contrainte supplémentaire à respecter. Le nouveau protocole devait être compatible avec le matériel existant, modulo une mise à jour logicielle, car il était impossible de le renouveler entièrement en une fois. C'est pourquoi le nouveau protocole WPA utilisait encore RC4. Mais il dispose en plus du <em>Temporal Key Integrity Protocol</em>, qui lui permet de changer les clés utilisées à chaque paquet. Ainsi, l'attaque décrite précédemment ne pouvait plus avoir lieu.</p>
-            <p>Cela dit, le WPA ne pouvait être qu'une solution temporaire, car certaines faiblesses structurelles du WEP, non décrites ici, n'étaient pas corrigées. Cela donna lieu au déploiement, à partir de 2006, du WPA2. Ce protocole utilise cette fois l'AES au lieu de RC4, et il ajoute aussi un réel contrôle de l'intégrité des données transmises. À la date où cette page est écrite (fin 2012), le WPA2 est toujours considéré comme sûr.</p>
-            <p>Ce n'est pas le cas du WPS, <em>Wifi Protected Setup</em>, un autre standard qui était destiné à simplifier l'usage du WPA2 et les différentes configurations du réseau possibles. Ce protocole fut introduit en 2007, mais une faille majeure a été découverte en 2011, et il est très déconseillé de l'utiliser !. Le protocole WPA3 arrive comme successeur plus fiable.</p>
-          
           </article>
 
+          <!-- Date de mise à jour -->
           <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
             <p>Dernière mise à jour : 14 novembre 2026</p>
           </div>
@@ -86,6 +179,7 @@
     </div>
   </div>
 
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
   <button
     id="backToTopBtn"
     onclick="scrollToTop()"
@@ -95,8 +189,10 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
       const tocLinks = document.querySelectorAll('.toc a');
       const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
       window.addEventListener('scroll', function() {
         let current = '';
         headings.forEach(heading => {
@@ -105,6 +201,7 @@
             current = heading.id;
           }
         });
+        
         tocLinks.forEach(link => {
           link.classList.remove('active');
           if (link.getAttribute('href') === '#' + current) {
@@ -112,6 +209,8 @@
           }
         });
       });
+      
+      // Bouton retour en haut
       const backToTopBtn = document.getElementById('backToTopBtn');
       window.addEventListener('scroll', () => {
         if (window.scrollY > 300) {
@@ -123,6 +222,7 @@
         }
       });
     });
+    
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
