@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Enigma - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .sidebar { position: sticky; top: 80px; height: calc(100vh - 80px); overflow-y: auto; }
+    .toc a { display: block; padding: 0.5rem 0.75rem; border-radius: 0.25rem; color: #475569; text-decoration: none; transition: all 0.2s; font-size: 0.9rem; }
+    .toc a:hover { background-color: #f1f5f9; color: #4f46e5; }
+    .toc a.active { background-color: #e0e7ff; color: #4f46e5; font-weight: 500; }
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    .content h1 { font-size: 2rem; font-weight: 800; color: #1e293b; border-bottom: 2px solid #4f46e5; padding-bottom: 0.5rem; margin-top: 1.5rem; margin-bottom: 1rem; }
+    .content h2 { font-size: 1.5rem; font-weight: 700; color: #334155; border-bottom: 1px solid #94a3b8; padding-bottom: 0.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    .content h3 { font-size: 1.25rem; font-weight: 600; color: #475569; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+    .content h4 { font-size: 1.125rem; font-weight: 600; color: #64748b; margin-top: 1rem; margin-bottom: 0.5rem; }
+    .content p { line-height: 1.75; margin-bottom: 1rem; }
+    .content img { max-width: 100%; height: auto; border-radius: 0.5rem; margin: 1.5rem auto; display: block; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+    .sidebar::-webkit-scrollbar { width: 6px; }
+    .sidebar::-webkit-scrollbar-track { background: #f1f5f9; }
+    .sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    .sidebar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    pre.cadre { background: #f1f5f9; border-radius: 0.5rem; padding: 1rem; overflow-x: auto; font-family: monospace; line-height: 1.5; }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#enigma" class="toc-level-1">L'Enigma</a>
+            <a href="#polonais" class="toc-level-1">Les avancées polonaises</a>
+            <a href="#bletchley" class="toc-level-1">Bletchley Park</a>
+            <a href="#fonctionnement" class="toc-level-1">Le fonctionnement</a>
+            <a href="#connexions" class="toc-level-2">Le tableau de connexions</a>
+            <a href="#rotors" class="toc-level-2">Les rotors</a>
+            <a href="#reflecteur" class="toc-level-2">Le réflecteur</a>
+            <a href="#cles" class="toc-level-1">Nombre de clés possibles</a>
+            <a href="#forces" class="toc-level-1">Point forts et faiblesses</a>
+          </nav>
+        </div>
+      </aside>
+
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <article class="content">
+            <h1 id="machine-enigma">Machine Enigma</h1>
+
+            <h2 id="introduction">Introduction</h2>
+            <p>Été 1940. La guerre semble avoir choisi son camp. La Pologne, la France ont capitulé. La Grande-Bretagne résiste, mais elle dépend, pour la moitié à peu près de son approvisionnement en matières premières, des importations maritimes. Or, dans les mers, les sous-marins allemands, les redoutables U-Boot, font régner la terreur, coulant de nombreux navires. Ils attaquent de nuit, en meutes. Pour leur coordination tactique, ils échangent de nombreux messages radios, avec le commandement à terre. Ces messages sont cryptés à l'aide d'une remarquable machine, l'Enigma.</p>
+
+            <h2 id="enigma">L'Enigma</h2>
+            <p>L'Enigma est une machine à chiffrer inventée initialement par Arthur Scherbius et Richard Ritter en 1918. Cette machine, créée par ses inventeurs pour s'amuser, connait en réalité un grand succès commercial, et près de 30 000 modèles civils sont vendus, notamment à des banques ou à de grandes compagnies.</p>
+            <img src="images/enigma/001-001-img-0.jpeg" alt="Machine Enigma" />
+            <p>L'armée allemande, qui sait l'importance du renseignement dans les conflits modernes, se dote alors massivement d'une version militaire de cette machine. Elle se présente sous la forme d'une caisse en bois de 34×28×15 cm, et pèse une douzaine de kilos. Elle est composée :</p>
+            <ul class="list-disc list-inside space-y-1 mb-4">
+              <li>d'un clavier alphabétique</li>
+              <li>d'un tableau de connexion</li>
+              <li>de 3 rotors mobiles à 26 positions</li>
+              <li>d'un rotor renvoi à 26 positions (le réflecteur)</li>
+              <li>d'un tableau de 26 ampoules correspondant aux 26 lettres de l'alphabet.</li>
+            </ul>
+            <p>Le principe de fonctionnement de l'Enigma est à la fois simple et astucieux. À chaque fois que l'on presse une lettre, un circuit électrique est fermé, et s'éclaire une ampoule qui correspond à la lettre codée. Le circuit qui est fermé dépend de la position des rotors. À chaque lettre frappée, un ou plusieurs des rotors mobiles tourne, changeant la substitution qui sera opérée à la prochaine touche pressée. De plus, le chiffrage est réversible : si en tapant A vous codez D, si vous aviez tapé D, vous auriez codé A. Ainsi, si le commandement allemand et le sous-marin ont le même réglage de départ, il suffit à l'opérateur du sous-marin de taper directement le message codé pour obtenir le message clair. Les Allemands avaient donc diffusé dans leurs services des carnets de code permettant de réactualiser chaque jour à minuit les machines, par la position initiale des rotors. Ces carnets de code étaient valables un mois.</p>
+            <img src="images/enigma/001-002-img-1.jpeg" alt="Machine Enigma (vue intérieure)" />
+            <p>Le nombre de clés est gigantesque (de l'ordre de 10<sup>20</sup>), et les Allemands ont une confiance totale en la machine Enigma, dont ils fabriqueront 100 000 exemplaires. Au su et au vu de tous, ils s'échangeront des communications radios cryptées, persuadés que jamais les Alliés ne les comprendraient.</p>
+
+            <h2 id="polonais">Les avancées polonaises</h2>
+            <p>La Pologne s'est trouvée ressuscitée en 1919 par le traité de Versailles. Craignant son voisin allemand (à juste titre !), elle se dote d'un très performant service du chiffre, et se tient à l'écoute des communications allemandes. Le renseignement polonais parvient à se procurer une machine Enigma civile et à comprendre sa façon de fonctionner. Malheureusement, les rotors des machines militaires étaient différents, et impossibles à reconstituer.</p>
+            <p>C'est d'abord une trahison qui va aider les Polonais, celle de Hans-Thilo Schmidt. Il est le frère de Rudolph Schmidt, qui est à la tête du corps des signaux de l'armée allemande et est celui qui a imposé la machine Enigma. Ayant des ressentiments envers son frère et la patrie (peut-être parce que lui-même fut écarté de l'armée après l'armistice de 1918), Hans-Thilo Schmidt vend en novembre 1931 à un agent secret français du nom de Rex les plans de la version militaire d'Enigma. Les Français, qui ont alors toutes les clés en mains, ne fabriquent pas de copie de la machine Enigma, mais ils procurent les documents aux Polonais.</p>
+            <p>Ceux-ci firent un travail remarquable, initié notamment par le jeune mathématicien (23 ans) Marian Rejewski. En comparant les messages envoyés le même jour, il parvient à reconstituer les rotors utilisés dans la version militaire de l'Enigma, et à en fabriquer une copie. Grâce à un travail collectif supplémentaire d'une année, un bureau fit le tableau des positions initiales, et une machine automatisée, baptisée « La Bombe », permettait d'automatiser le déchiffrement. Ainsi, vers le milieu des années 1930, la Pologne dispose de méthodes pour déchiffrer les messages allemands.</p>
+            <p>Las. En 1938, les Allemands changent le protocole d'envoi de leurs messages, et surtout, ils font passer de 3 à 5 le nombre de rotors de leurs Enigma. La Pologne perd le contact. Devant la gravité de la situation internationale, les Polonais font parvenir aux Anglais et aux Français en 1939 une Enigma, ainsi que l'ensemble de leurs découvertes.</p>
+
+            <h2 id="bletchley">Bletchley Park</h2>
+            <p>Les Anglais ont compris assez tard l'intérêt de la machine Enigma. En 1939, le service du chiffre décide de s'éloigner de Londres, et des futurs bombardements, pour s'installer, en toute discrétion, au manoir de Bletchley Park, dans la paisible campagne à 60 km au nord-ouest de Londres. Devant l'urgence de la situation, les meilleurs mathématiciens, linguistes, et même joueurs d'échecs sont appelés à Bletchley Park, où plusieurs milliers de personnes se côtoieront.</p>
+            <p>Parmi elles, Alan Turing, un logicien et mathématicien, qui, quelques années plus tôt, a conçu une machine universelle qui formalise la notion d'algorithme et est le précurseur des ordinateurs modernes. Il conçoit une nouvelle machine automatique, inspirée de la Bombe polonaise, pour déchiffrer les messages allemands. Les Anglais parachutèrent aussi des mines afin que les sous-marins allemands signalent la présence de ces mines dans leur message. Ainsi, la présence de ce mot probable aidait au déchiffrement. Les progrès sont alors considérables. Du premier au second semestre 1941, le tonnage coulé chute de moitié (de 2,9 millions de tonnes à 1,4 million).</p>
+            <p>En février 1942, une nouvelle version de la machine Enigma est mise en service, provoquant un nouveau trou noir dans le décryptage des messages. Grâce à des documents récupérés sur un sous-marin allemand, et à l'aide technique des États-Unis, Bletchley Park retrouve mi-1943, toujours sous l'impulsion de Turing, la faculté de décrypter les messages allemands. En 1944, le premier ordinateur de l'histoire, le Colossus, leur garantira une puissance de calcul suffisante jusqu'à la fin de la guerre : la bataille de l'Atlantique est gagnée ! Cela, d'autant que les Allemands ne se douteront jamais que leurs messages sont décryptés. Ils pensent, à juste titre, que les hommes ne peuvent venir à bout d'un travail aussi titanesque. Ils ne se doutent pas qu'à Bletchley Park, dans un manoir, une étrange machine réalise cette prouesse !</p>
+            <p>Le travail d'Alan Turing pour déchiffrer les messages allemands a profondément changé le cours de la seconde guerre mondiale. Plusieurs centaines de navires, leur équipage et leur cargaison, furent sauvés. Le débarquement de l'été 1944 a pu être préparé en toute sérénité... Grâce au génie d'un mathématicien !</p>
+
+            <h2 id="fonctionnement">Le fonctionnement</h2>
+            <p>Le codage Enigma effectué par la machine Enigma est à la fois simple et astucieux. Chaque lettre est remplacée par une autre, et la substitution opérée change d'une lettre à l'autre, un peu comme dans le chiffre de Vigenère. La machine Enigma est alimentée par une pile électrique. Quand on appuie sur une touche du clavier, un circuit électrique est fermé, et une lampe s'allume qui indique par quelle lettre on doit remplacer la lettre que l'on vient de frapper.</p>
+            <p>Concrètement, le circuit électrique est constitué de plusieurs éléments en chaîne :</p>
+
+            <h3 id="connexions">Le tableau de connexions</h3>
+            <p>Il permet d'échanger des paires de l'alphabet, deux à deux, au moyen de fiches. Il y a 6 fiches qui permettent donc d'échanger 12 lettres. Un tableau de connexions est donc une permutation très particulière où on a échangé au plus 6 paires. Par exemple, dans le tableau suivant (avec simplement 6 lettres), on a échangé A et C, D et F, tandis que B et E restent invariants.</p>
+            <img src="images/enigma/001-003-img-2.jpeg" alt="Tableau de connexions" />
+
+            <h3 id="rotors">Les rotors</h3>
+            <p>Un rotor est également une permutation, mais cette fois quelconque : à chaque lettre en entrée correspond une autre lettre.</p>
+            <img src="images/enigma/001-004-img-3.jpeg" alt="Rotor" />
+            <p>On peut composer les rotors, c'est-à-dire les mettre les uns à la suite des autres. La machine Enigma disposera, au gré de ses évolutions successives, de 3 à 6 rotors. Parmi ces rotors, seuls 3 sont utilisés pour le codage, et on a le choix de les placer dans l'ordre que l'on souhaite (ce qui constituera une partie de la clé).</p>
+            <p>Surtout, les rotors sont cylindriques, et ils peuvent tourner autour de leur axe. Ainsi, à chaque fois qu'on a tapé une lettre, le premier rotor tourne d'un cran, et la permutation qu'il engendre est changée. Observons ce changement sur la figure suivante : le rotor transforme initialement D en B. Lorsqu'il tourne d'un cran, cette liaison électrique D ---> B se retrouve remontée en C ---> A et, lorsque la prochaine lettre sera tapée, le rotor transformera cette fois D en C.</p>
+            <img src="images/enigma/001-005-img-4.jpeg" alt="Rotation d'un rotor" />
+            <p>Chaque rotor possède donc 26 positions. À chaque fois qu'une lettre est tapée, le premier rotor tourne d'un cran. Après 26 lettres, il est revenu à sa position initiale, et le second rotor tourne alors d'un cran. On recommence à tourner le premier rotor, et ainsi de suite... Quand le second rotor a retrouvé sa position initiale, c'est le troisième rotor qui tourne d'un cran.</p>
+
+            <h3 id="reflecteur">Le réflecteur</h3>
+            <p>Au bout des 3 rotors se situe une dernière permutation qui permet de revenir en arrière. On permute une dernière fois les lettres 2 par 2, et on les fait retraverser les rotors, et le tableau de connexion.</p>
+            <img src="images/enigma/001-006-img-5.jpeg" alt="Réflecteur" />
+            <p>Résumons sur la machine simplifiée suivante (6 lettres, 2 rotors) comment est codée la lettre A :</p>
+            <ul class="list-disc list-inside space-y-1 mb-4">
+              <li>on traverse le tableau de connexions : on obtient C.</li>
+              <li>on traverse les 2 rotors : on obtient successivement A et F.</li>
+              <li>on traverse le réflecteur où on obtient E, puis on renvoie dans les rotors pour obtenir F, A et finalement C après le tableau de connexions.</li>
+            </ul>
+            <p>Remarquons que si on avait tapé C, le courant aurait circulé dans l'autre sens et on aurait obtenu A.</p>
+            <img src="images/enigma/001-007-img-6.jpeg" alt="Machine simplifiée : codage de la lettre A" />
+
+            <h2 id="cles">Nombre de clés possibles</h2>
+            <p>Il y a trois éléments à connaitre pour pouvoir coder un message avec la machine Enigma.</p>
+            <ol class="list-decimal list-inside space-y-2 mb-4">
+              <li><strong>la position des 6 fiches du tableau de connexion :</strong> d'abord, il faut choisir 12 lettres parmi 26. C'est donc le nombre de combinaisons de 12 parmi 26, soit 26!/(12!14!). Maintenant, il faut choisir 6 paires de lettres parmi 12, soit 12!/6!, et comme la paire (A,D) donne la même connexion que la paire (D,A), il faut encore diviser par 2<sup>6</sup>. On trouve finalement 100 391 791 500.</li>
+              <li><strong>l'ordre des rotors :</strong> il y a autant d'ordres que de façons d'ordonner 3 éléments : 3! = 6.</li>
+              <li><strong>la position initiale des rotors :</strong> chaque rotor ayant 26 éléments, il y a 26×26×26 = 17 576 choix.</li>
+            </ol>
+            <p>On multiplie tout cela, et on obtient plus de 10<sup>16</sup> possibilités, ce qui est énorme pour l'époque !</p>
+            <p>Il est important de remarquer que les permutations employées dans les rotors et les réflecteurs ne peuvent pas être considérées comme faisant partie du secret. En effet, toutes les machines utilisent les mêmes, et il suffit donc d'en avoir une à disposition. Les Anglais, par exemple, en ont récupéré une pendant la guerre dans un sous-marin coulé. Ceci est une illustration d'un principe général en cryptographie, principe dit de <strong>Kerckhoffs</strong>, qui veut que tout le secret doit résider dans la clé secrète de chiffrement et de déchiffrement, et pas dans une quelconque confidentialité de l'algorithme (ici de la machine) qui ne peut être raisonnablement garantie.</p>
+
+            <h2 id="forces">Point forts et faiblesses</h2>
+            <p>Nous avons déjà décrit les points forts de la machine Enigma. Pour l'essentiel, c'est le nombre de clés énorme, et la réversibilité : si, avec la même clé secrète initiale, on tape le message clair, on obtient le message codé, et avec le message codé, on obtient le message clair.</p>
+            <p>L'une des failles de la machine Enigma est que jamais la lettre A ne sera codée par un A. Cela élimine un certain nombre de cas à inspecter. Une des autres faiblesses dépend plutôt du protocole utilisé par les Allemands : certains opérateurs (par exemple, ceux qui informaient de la météo) prenaient peu de précautions et commençaient toujours leurs messages par les mêmes mots (typiquement « Mon général... »). Les Anglais connaissaient ainsi pour une partie du message à la fois le texte clair et le texte codé, ce qui aide à retrouver la clé. Et comme c'est la même clé qui sert pour toutes les machines Enigma de l'armée allemande pour un jour donné, une erreur de protocole dans un message peut compromettre la sécurité de tous les autres !</p>
+          </article>
+
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

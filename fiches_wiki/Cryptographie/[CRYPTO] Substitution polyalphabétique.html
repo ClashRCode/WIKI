@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Enigma - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .sidebar { position: sticky; top: 80px; height: calc(100vh - 80px); overflow-y: auto; }
+    .toc a { display: block; padding: 0.5rem 0.75rem; border-radius: 0.25rem; color: #475569; text-decoration: none; transition: all 0.2s; font-size: 0.9rem; }
+    .toc a:hover { background-color: #f1f5f9; color: #4f46e5; }
+    .toc a.active { background-color: #e0e7ff; color: #4f46e5; font-weight: 500; }
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    .content h1 { font-size: 2rem; font-weight: 800; color: #1e293b; border-bottom: 2px solid #4f46e5; padding-bottom: 0.5rem; margin-top: 1.5rem; margin-bottom: 1rem; }
+    .content h2 { font-size: 1.5rem; font-weight: 700; color: #334155; border-bottom: 1px solid #94a3b8; padding-bottom: 0.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    .content h3 { font-size: 1.25rem; font-weight: 600; color: #475569; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+    .content h4 { font-size: 1.125rem; font-weight: 600; color: #64748b; margin-top: 1rem; margin-bottom: 0.5rem; }
+    .content p { line-height: 1.75; margin-bottom: 1rem; }
+    .content img { max-width: 100%; height: auto; border-radius: 0.5rem; margin: 1.5rem auto; display: block; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+    .sidebar::-webkit-scrollbar { width: 6px; }
+    .sidebar::-webkit-scrollbar-track { background: #f1f5f9; }
+    .sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    .sidebar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    pre.cadre { background: #f1f5f9; border-radius: 0.5rem; padding: 1rem; overflow-x: auto; font-family: monospace; line-height: 1.5; }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#vigenere" class="toc-level-1">Le chiffre de Vigenère</a>
+            <a href="#vaincre-vigenere" class="toc-level-1">Comment vaincre le chiffre de Vigenère</a>
+            <a href="#kasiski" class="toc-level-2">Le test de Kasiski</a>
+            <a href="#coincidence" class="toc-level-2">L'indice de coïncidence</a>
+            <a href="#autoclaves" class="toc-level-1">Les chiffres autoclaves</a>
+            <a href="#beaufort" class="toc-level-1">Le chiffre de Beaufort</a>
+            <a href="#jefferson" class="toc-level-1">Le cylindre de Jefferson</a>
+            <a href="#saint-cyr" class="toc-level-1">La réglette de Saint-Cyr</a>
+          </nav>
+        </div>
+      </aside>
+
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <article class="content">
+            <h1 id="substitution-polyalphabetique">Substitution polyalphabétique</h1>
+
+            <h2 id="vigenere">Le chiffre de Vigenère</h2>
+            <p>Même si l'on connaissait depuis fort longtemps les faiblesses de la cryptographie par substitution, et malgré les essais notamment d'Alberti, de Porta et de Trithème, il n'y eut pas entre César et le XVI<sup>e</sup> s. de véritable nouveau procédé cryptographique, à la fois sûr (pour les moyens de l'époque) et facile à utiliser ! Blaise de Vigenère, né en 1523, fut l'initiateur d'une nouvelle façon de chiffrer les messages qui mit en échec les cryptanalystes trois siècles durant. Vigenère était un personnage à multiples facettes, tantôt alchimiste, écrivain, historien, il était aussi diplomate au service des ducs de Nevers et des rois de France. C'est en 1586 qu'il publie son <em>Traicté des chiffres ou Secrètes manières d'escrire</em>, qui explique son nouveau chiffre (le texte intégral est disponible sur <a href="https://gallica.bnf.fr" class="text-indigo-600 hover:underline">le site de la Bibliothèque Nationale de France</a>).</p>
+            <p>L'idée de Vigenère est d'utiliser un <em>chiffre de César</em>, mais où le décalage utilisé change de lettres en lettres. Pour cela, on utilise une table composée de 26 alphabets, écrits dans l'ordre, mais décalés de ligne en ligne d'un caractère. On écrit encore en haut un alphabet complet, pour la clé, et à gauche, verticalement, un dernier alphabet, pour le texte à coder :</p>
+            <pre class="cadre">   A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+            A  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+            B  B C D E F G H I J K L M N O P Q R S T U V W X Y Z A
+            C  C D E F G H I J K L M N O P Q R S T U V W X Y Z A B
+            D  D E F G H I J K L M N O P Q R S T U V W X Y Z A B C
+            ...</pre>
+            <img src="images/polyalphabetique/001-001-img-0.jpeg" alt="Le chiffre de Vigenère : table" />
+            <p>Pour coder un message, on choisit une clé qui sera un mot de longueur arbitraire. On écrit ensuite cette clé sous le message à coder, en la répétant aussi souvent que nécessaire pour que sous chaque lettre du message à coder, on trouve une lettre de la clé. Pour coder, on regarde dans le tableau l'intersection de la ligne de la lettre à coder avec la colonne de la lettre de la clé.</p>
+            <p><strong>Exemple :</strong> on veut coder le texte « CRYPTOGRAPHIE » avec la clé « MATHWEB ». On commence par écrire la clé sous le texte à coder :</p>
+            <pre class="cadre">C R Y P T O G R A P H I E
+            M A T H W E B M A T H W E</pre>
+            <p>Pour coder la lettre C, la clé est donnée par la lettre M. On regarde dans le tableau l'intersection de la ligne donnée par le C de la première colonne, et de la colonne donnée par le M de la première ligne.</p>
+            <img src="images/polyalphabetique/001-002-img-1.jpeg" alt="Exemple de codage Vigenère" />
+            <p>On trouve O. Puis on continue. Sous le R on trouve le A. La lettre dans le tableau correspondant au R dans la colonne A est R. On remplace donc le R par lui-même. Pour le Y, la lettre de la clé est T. Dans la colonne T, le Y est remplacé par R. On continue ainsi et on trouve finalement le message chiffré : <code>ORRWPSHDAIOEI</code>.</p>
+            <p>Le chiffre de Vigenère comporte beaucoup de points forts. Il est très facile d'utilisation, et le déchiffrement est tout aussi facile si on connait la clé. Il suffit, sur la colonne de la lettre de la clé, de rechercher la lettre du message codé. À l'extrémité gauche de la ligne, on trouve la lettre du texte clair. Vous pouvez vous entrainer avec le message codé <code>TYQFLJ</code>, qu'on a codé avec la clé <code>EKETHR</code>.</p>
+            <p>En outre, l'exemple précédent fait bien apparaitre la grande caractéristique du code de Vigenère : la lettre E a été chiffrée en R, puis en M, la lettre P en W puis en I. Impossibilité par une analyse statistique simple de retrouver les lettres les plus courantes. Dernière chose, on peut produire une infinité de clés et il est très facile de convenir avec quelqu'un d'une clé donnée. Il résista aux travaux des cryptanalystes jusqu'au XIX<sup>e</sup> siècle. Pourtant, à quelques exceptions près, comme par exemple dans la correspondance de Marie-Antoinette, ce chiffre, et plus généralement les chiffres polyalphabétiques, furent peu utilisés. On leur préférait les codes à répertoires.</p>
+            <h3>Un peu d'histoire...</h3>
+            <p>On lit souvent, sur internet, des affirmations péremptoires comme celle-ci concernant le chiffre de Vigenère : « Il a laissé son nom au chiffrement de Vigenère dont la paternité revient à Giovan Battista Bellaso... ». En réalité, la table utilisée était déjà connue, et le chiffre dit « de Vigenère » a une histoire plus complexe que son nom ne le suggère.</p>
+            <img src="images/polyalphabetique/001-003-img-2.jpeg" alt="Le chiffre de Vigenère : suite" />
+            <img src="images/polyalphabetique/001-004-img-3.jpeg" alt="Table de Vigenère historique" />
+
+            <h2 id="vaincre-vigenere">Comment vaincre le chiffre de Vigenère</h2>
+            <p>Le système polyalphabétique de Vigenère résista pendant environ 3 siècles, jusqu'à ce que le mathématicien britannique Charles Babbage, connu notamment pour ses machines à différence, élabore la théorie de son décodage, vers 1854. Cette découverte assure la suprématie de l'Angleterre, et est gardée secrète alors qu'à l'automne 1854, l'Angleterre, la France, la Turquie et la Sardaigne déclarent la guerre à la Prusse. Ce n'est qu'en 1863 qu'un ancien major de l'armée prusse, Friedrich Kasiski, publie la méthode dans son livre de 95 pages <em>Die Geheimschriften und die Dechiffrir-Kunst</em>.</p>
+            <img src="images/polyalphabetique/001-005-img-4.jpeg" alt="Vaincre le chiffre de Vigenère" />
+
+            <h3 id="kasiski">Le test de Kasiski</h3>
+            <p><strong>L'essentiel : trouver la longueur de la clé.</strong> L'idée de Kasiski (et de Babbage avant lui) est d'analyser les séquences de 3 lettres répétées dans le texte codé, et de se dire que ces répétitions ne sont pas fortuites. Si une séquence de 3 lettres est répétée dans le message codé avec une distance d, on peut se dire qu'il s'agit de la même séquence de 3 lettres du texte initial, codée avec la même séquence de lettres de la clé. Par conséquent, si m est la longueur de la clé, pour que les 2 séquences soient codées avec les mêmes lettres de la clé, il faut que m divise d.</p>
+            <p>On peut donc prendre pour m le pgcd des distances des séquences répétées. Bien sûr, il faut faire preuve de discernement dans l'application de cette méthode, en ne tenant compte que des données significatives. Faisons l'analyse sur le texte suivant :</p>
+            <pre class="cadre">CS AZZMEQM, CO XRWF, CS DZRM GFMJECV. X'IMOQJ JC LB NLFMK CC LBM WCCZBM
+            KFIMSZJSZ CS URQJIOU. CS ZLPIE ECZ RMWWTV, SB KCCJ QMJ FCSOVJ GCI ZI ICCKS, MK
+            QMLL YL...</pre>
+            <p>(le texte clair, une fois déchiffré, est un extrait de <em>Les noces barbares</em>, de Yann Queffélec).</p>
+            <table class="min-w-full text-sm border border-gray-300 mb-4">
+            <thead class="bg-slate-100">
+                <tr><th class="border px-3 py-1">Séquence</th><th class="border px-3 py-1">Position</th><th class="border px-3 py-1">Distance</th><th class="border px-3 py-1">Décomposition</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="border px-3 py-1">COX</td><td class="border px-3 py-1">11-140</td><td class="border px-3 py-1">129</td><td class="border px-3 py-1">3·43</td></tr>
+                <tr><td class="border px-3 py-1">FCS</td><td class="border px-3 py-1">16-99</td><td class="border px-3 py-1">83</td><td class="border px-3 py-1">83</td></tr>
+                <tr><td class="border px-3 py-1">ZRM</td><td class="border px-3 py-1">20-83</td><td class="border px-3 py-1">63</td><td class="border px-3 py-1">3²·7</td></tr>
+                <tr><td class="border px-3 py-1">FMJ</td><td class="border px-3 py-1">24-162</td><td class="border px-3 py-1">138</td><td class="border px-3 py-1">2·3·23</td></tr>
+                <tr><td class="border px-3 py-1">CLB</td><td class="border px-3 py-1">37-46</td><td class="border px-3 py-1">9</td><td class="border px-3 py-1">3²</td></tr>
+                <tr><td class="border px-3 py-1">KCC</td><td class="border px-3 py-1">44-92</td><td class="border px-3 py-1">48</td><td class="border px-3 py-1">2³·3</td></tr>
+                <tr><td class="border px-3 py-1">WTV</td><td class="border px-3 py-1">87-133</td><td class="border px-3 py-1">46</td><td class="border px-3 py-1">2·23</td></tr>
+                <tr><td class="border px-3 py-1">CCJ</td><td class="border px-3 py-1">93-126</td><td class="border px-3 py-1">33</td><td class="border px-3 py-1">3·11</td></tr>
+                <tr><td class="border px-3 py-1">ICC</td><td class="border px-3 py-1">110-155</td><td class="border px-3 py-1">45</td><td class="border px-3 py-1">3²·5</td></tr>
+                <tr><td class="border px-3 py-1">MJI</td><td class="border px-3 py-1">136-163</td><td class="border px-3 py-1">27</td><td class="border px-3 py-1">3³</td></tr>
+            </tbody>
+            </table>
+            <p>Clairement, le diviseur commun est 3, qui apparait presque partout (il n'apparait pas pour la séquence FCS, mais celle-ci n'est pas significative, à moins d'imaginer que la longueur de la clé soit 83 !). La longueur de la clé est donc 3. À titre d'exercice, on pourrait appliquer la méthode décrite au paragraphe précédent pour retrouver les 3 lettres de la clé.</p>
+            <img src="images/polyalphabetique/001-006-img-5.jpeg" alt="Test de Kasiski" />
+            <img src="images/polyalphabetique/001-007-img-6.jpeg" alt="Tableau des séquences répétées" />
+
+            <h3 id="coincidence">L'indice de coïncidence</h3>
+            <p>Dans une langue usuelle, les lettres n'apparaissent pas toutes avec la même fréquence. C'est pourquoi l'indice de coïncidence d'un texte écrit en français (= I<sub>f</sub>) est très supérieur à l'indice de coïncidence d'un texte aléatoire (= I<sub>a</sub>) où les lettres ont une fréquence d'apparition identique. Ainsi une analyse statistique sur de nombreux textes a donné I<sub>f</sub> = 0,074, tandis qu'un petit calcul donne I<sub>a</sub> = 0,038 (= 1/26).</p>
+            <p>Revenons au chiffre de Vigenère. Supposons qu'on ait un texte codé de n lettres, la clé de codage faisant k lettres. On montre que l'indice de coïncidence du texte peut être approché par :</p>
+            <pre class="cadre">Ic = (1 / (k(n - 1))) · ( (If - Ia)·n + k·(n·Ia - If) )</pre>
+            <p>L'inversion de cette formule donne :</p>
+            <pre class="cadre">k = ( (If - Ia)·n ) / ( (n - 1)·Ic - n·Ia + If )</pre>
+            <p>Comme on peut calculer l'indice de coïncidence du texte, on peut, en théorie, trouver une valeur approchée de la longueur de la clé.</p>
+            <p>Pour notre programme qui décrypte automatiquement, nous n'avons toutefois pas choisi cette méthode, qui ne s'est pas avérée très précise. Nous avons plutôt écrit le texte, puis le texte en ne prenant qu'une lettre sur 2, puis le texte en ne prenant qu'une lettre sur 3, etc... On calcule l'indice de coïncidence à chaque fois. L'indice de coïncidence maximal est obtenu quand le texte est le moins aléatoire possible. S'il correspond au choix d'une lettre sur k, c'est que la longueur de la clé est k.</p>
+            <img src="images/polyalphabetique/001-009-img-8.jpeg" alt="L'indice de coïncidence" />
+            <img src="images/polyalphabetique/001-010-img-9.jpeg" alt="L'indice de coïncidence (suite)" />
+
+            <h2 id="autoclaves">Les chiffres autoclaves</h2>
+            <p>Une méthode de chiffrement est dite <strong>autoclave</strong> si elle emploie une partie du message clair comme clé de chiffrement.</p>
+            <p>Cette idée est due à Blaise de Vigenère, et voyons comment elle peut s'appliquer à son chiffre. On convient d'abord entre les deux parties d'une clé, qui ici est un mot. Pour chiffrer le message, on commence par chiffrer les premières lettres en utilisant les lettres de la clé. Lorsque les lettres de la clé sont épuisées, on utilise alors le message clair pour prolonger la clé. Par exemple, si on souhaite coder « LE CHIFFRE AUTOCLAVE » en utilisant ce procédé avec le mot clé « BLAISE », on obtient le résultat suivant :</p>
+            <pre class="cadre">Message clair   : L E C H I F F R E A U T O C L A V E
+            Clé             : B L A I S E L E C H I F F R E A U T
+            Message chiffré : M P C P A J Q V G H C Y T T P A P X</pre>
+            <p>À l'arrivée, on déchiffre les premières lettres du message chiffré avec la clé. Puis on reconstruit la clé peu à peu puisqu'on connait toujours les lettres précédentes du message clair.</p>
+            <p><strong>Avantages et inconvénients :</strong> l'avantage de ce chiffre est de résister aux attaques basées sur le fait de retrouver la longueur de la clé, attaques auxquelles est sensible le chiffre de Vigenère.</p>
+            <img src="images/polyalphabetique/001-011-img-10.jpeg" alt="Les chiffres autoclaves" />
+
+            <h2 id="beaufort">Le chiffre de Beaufort</h2>
+            <p>Le chiffre de Beaufort est une variante du chiffre de Vigenère. Il a été popularisé par l'amiral anglais Sir Francis Beaufort, qui a surtout laissé son nom à l'échelle de Beaufort, une échelle empirique utilisée par les marins pour mesurer la force du vent par la seule observation des effets du vent sur la surface de la mer.</p>
+            <p>Le chiffre de Beaufort utilise la même table que le chiffre de Vigenère, mais selon un procédé différent. Si on veut coder la lettre M avec la lettre clé O, alors on cherche dans la colonne du M où est situé le O. Au début de la ligne du O, on trouve la lettre chiffrée, ici C.</p>
+            <p>Autrement dit, là où le chiffre de Vigenère correspond à l'opération :</p>
+            <pre class="cadre">chiffré = clair + clé</pre>
+            <p>le chiffre de Beaufort correspond à l'opération :</p>
+            <pre class="cadre">chiffré = clé - clair</pre>
+            <p>Le principal avantage du chiffre de Beaufort sur celui de Vigenère est que l'algorithme est exactement identique pour chiffrer ou pour déchiffrer. Il existe aussi une variante dite « à l'allemande » du chiffre de Beaufort où l'opération effectuée est cette fois :</p>
+            <pre class="cadre">chiffré = clair - clé</pre>
+            <img src="images/polyalphabetique/001-012-img-11.jpeg" alt="Le chiffre de Beaufort" />
+            <img src="images/polyalphabetique/001-014-img-13.jpeg" alt="Le chiffre de Beaufort (suite)" />
+
+            <h2 id="jefferson">Le cylindre de Jefferson</h2>
+            <p>Thomas Jefferson, vers 1793, alors qu'il était secrétaire d'état de Georges Washington, et futur Président des États-Unis, avait conçu un instrument très ingénieux afin d'envoyer de petits messages codés dans le cadre d'opérations militaires « sur le terrain ». Le cylindre de Jefferson consiste en une série de 25 ou 26 roues, emboitées le long d'un axe fixe, et pouvant tourner indépendamment les unes des autres par rapport à cet axe. Sur chaque roue, on trouve les 26 lettres de l'alphabet, mais écrites dans un ordre quelconque (jamais le même pour chaque roue).</p>
+            <p>Pour chiffrer le mot CYLINDRE, on fait tourner les roues de sorte de faire apparaitre ce mot sur une ligne devant nos yeux. Puis on choisit une autre ligne, par exemple celle juste en dessous, et on envoie la série de lettres qui s'y trouve.</p>
+            <pre class="cadre">B V W B N S G V L
+            C Y L I N D R E   <- on écrit le message clair
+            E G A F U F Y Z M <- le message chiffré se lit juste en dessous
+            I Z D G K K D L B</pre>
+            <p>On chiffre le mot : CYLINDRE. On l'écrit sur la colonne entourée de bleu, en faisant tourner les roues. Le message chiffré se lit juste en dessous. Il commence donc par : EGAF...</p>
+            <p>Le destinataire, qui a reçu EGAFQYOR, écrit ce mot sur une des lignes du cylindre qu'il a en sa possession (il doit être exactement identique à celui de l'expéditeur), et recherche sur une autre ligne à quel message clair cela peut correspondre. Il s'agit bien d'une substitution polyalphabétique, car sur chaque roue les alphabets sont différents, et si A est suivi par F sur la première roue, il peut très bien être suivi par H sur la deuxième roue.</p>
+            <img src="images/polyalphabetique/001-015-img-14.jpeg" alt="Le cylindre de Jefferson" />
+            <p>Jefferson abandonna l'utilisation de ce cylindre dès 1802. Plusieurs années plus tard, il fut réinventé par le colonel français Bazeries en 1891, mais les autorités françaises refusèrent son utilisation, puis par le colonel italien Ducros en 1900. L'armée américaine elle-même réinventera une sorte de cylindre de Jefferson, le M-94 (aussi appelé CSP-488 par la marine, ou CSP-493 par les garde-côtes). La marine l'utilisa même jusqu'au milieu des années 1960 ! C'est le M-94 dont le programme précédent simule le fonctionnement.</p>
+            <p>Sur la photo de l'exemplaire précédent, on voit que les disques sont montés sur un axe et retenus par un écrou moleté. On peut donc facilement en changer l'ordre. La clé de chiffrement est l'ordre selon lequel on dispose ces disques. Avec 26 disques on a quand même 26! combinaisons, soit plus de 4×10<sup>26</sup>. Cet appareil ne craint pas la poussière, la boue ou la pluie... c'était ingénieux pour une utilisation en première ligne, d'autant que sa manipulation est aisée pour des non-spécialistes. Enfin, lorsqu'on chiffre un long message, on utilise plusieurs fois le cylindre, mais on ne prend pas toujours le message chiffré sur la même ligne. L'algorithme utilisé est donc différent pour chaque portion, ce qui complique la cryptanalyse.</p>
+            <img src="images/polyalphabetique/001-016-img-15.jpeg" alt="Le cylindre de Jefferson (M-94)" />
+
+            <h2 id="saint-cyr">La réglette de Saint-Cyr</h2>
+            <p>La réglette de Saint-Cyr est un instrument qui facilite l'utilisation du chiffre de Vigenère, plus simple à utiliser que le célèbre carré. Elle se présente sous la forme d'une règle à calculer, avec une partie fixe, le <strong>stator</strong>, et une partie mobile, le <strong>coulisseau</strong>. Sur le stator est écrit l'alphabet, et sur le coulisseau on trouve deux fois l'alphabet.</p>
+            <pre class="cadre">Partie fixe   : A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+            Partie mobile : A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</pre>
+            <p>Pour coder une lettre, on ajuste le coulisseau pour que sous le A du stator se trouve la lettre de la clé. Sous la lettre du message clair écrite sur le stator, on trouve la lettre du message chiffré.</p>
+            <p>On veut chiffrer la lettre N, la lettre de la clé étant O. On aligne ce O sous le A. Sous le N, on lit la lettre chiffrée : <strong>B</strong>.</p>
+            <p>Cette réglette servait dans la célèbre académie à instruire les futurs officiers aux techniques de la cryptographie.</p>
+            <img src="images/polyalphabetique/001-018-img-17.jpeg" alt="La réglette de Saint-Cyr" />
+
+          </article>
+
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

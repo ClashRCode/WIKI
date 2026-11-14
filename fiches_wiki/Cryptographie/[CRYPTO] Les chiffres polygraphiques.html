@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Enigma - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .sidebar { position: sticky; top: 80px; height: calc(100vh - 80px); overflow-y: auto; }
+    .toc a { display: block; padding: 0.5rem 0.75rem; border-radius: 0.25rem; color: #475569; text-decoration: none; transition: all 0.2s; font-size: 0.9rem; }
+    .toc a:hover { background-color: #f1f5f9; color: #4f46e5; }
+    .toc a.active { background-color: #e0e7ff; color: #4f46e5; font-weight: 500; }
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    .content h1 { font-size: 2rem; font-weight: 800; color: #1e293b; border-bottom: 2px solid #4f46e5; padding-bottom: 0.5rem; margin-top: 1.5rem; margin-bottom: 1rem; }
+    .content h2 { font-size: 1.5rem; font-weight: 700; color: #334155; border-bottom: 1px solid #94a3b8; padding-bottom: 0.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    .content h3 { font-size: 1.25rem; font-weight: 600; color: #475569; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+    .content h4 { font-size: 1.125rem; font-weight: 600; color: #64748b; margin-top: 1rem; margin-bottom: 0.5rem; }
+    .content p { line-height: 1.75; margin-bottom: 1rem; }
+    .content img { max-width: 100%; height: auto; border-radius: 0.5rem; margin: 1.5rem auto; display: block; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+    .sidebar::-webkit-scrollbar { width: 6px; }
+    .sidebar::-webkit-scrollbar-track { background: #f1f5f9; }
+    .sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    .sidebar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    pre.cadre { background: #f1f5f9; border-radius: 0.5rem; padding: 1rem; overflow-x: auto; font-family: monospace; line-height: 1.5; }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#blocs" class="toc-level-1">Chiffrement par blocs</a>
+            <a href="#hill-sans-maths" class="toc-level-1">Le chiffre de Hill (sans mathématiques)</a>
+            <a href="#hill-avec-maths" class="toc-level-1">Le chiffre de Hill (avec des mathématiques)</a>
+            <a href="#casser-hill" class="toc-level-1">Comment casser le chiffre de Hill</a>
+            <a href="#playfair" class="toc-level-1">Le chiffre de Playfair</a>
+            <a href="#quatre-carres" class="toc-level-1">Le chiffre des 4 carrés</a>
+          </nav>
+        </div>
+      </aside>
+
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <article class="content">
+            <h1 id="les-chiffres-polygraphiques">Les chiffres polygraphiques</h1>
+
+            <h2 id="blocs">Chiffrement par blocs</h2>
+            <p>Les <strong>chiffres polygraphiques</strong> sont des chiffres pour lesquels on partage d'abord le message chiffré en groupes d'un certain nombre de lettres. Pour chacun de ces groupes, on opère alors un algorithme de chiffrement (le plus souvent, une substitution) pour chiffrer le message.</p>
+            <p>Par exemple, on peut couper le message en blocs de deux lettres <code>LE MA TI NL ES OL EI LS EL EV EX</code>, et remplacer chacun de ces blocs de deux lettres par un autre bloc de deux lettres. On parle alors de chiffre <strong>digraphique</strong>. Le principal avantage est qu'il devient plus difficile de casser le chiffre par une étude statistique. Si tous les blocs de 2 lettres n'ont pas la même fréquence (ES est plus fréquent que XV), il y a désormais 26×26 = 676 couples à analyser, contre 26 lettres.</p>
+            <p>De nombreux algorithmes modernes de chiffrement fonctionnent sur ce principe. Comme ils ne sont pas basés sur des lettres, mais sur des données informatiques, on parle plutôt de <strong>chiffrement par blocs</strong> que de chiffrement polygraphique.</p>
+
+            <h2 id="hill-sans-maths">Le chiffre de Hill (sans mathématiques)</h2>
+            <p><strong>Lester Hill, mathématicien cryptographe (1891-1961)</strong>, publie en 1929 dans la revue <em>American Mathematical Monthly</em> un article intitulé <em>Cryptography in an algebraic alphabet</em>, où il détaille un nouveau type d'algorithme de chiffrement. Son idée est de continuer à utiliser des décalages du même type que celui du chiffre de César, mais en effectuant ces décalages simultanément sur des groupes de m lettres ! Bien sûr, plus m est grand, plus les analyses statistiques deviennent difficiles !</p>
+            <p>D'abord, nous remplaçons chaque lettre par son ordre dans l'alphabet - 1 : A devient 0, B devient 1, ..., Z devient 25. On groupe les nombres ainsi obtenus par m (prenons par exemple m = 2). Pour chaque bloc de m nombres à coder x<sub>1</sub>x<sub>2</sub>...x<sub>m</sub>, on calcule le texte codé en effectuant des combinaisons linéaires (ici m = 2) :</p>
+            <pre class="cadre">y1 = a·x1 + b·x2
+            y2 = c·x1 + d·x2</pre>
+            <p>Si a, b, c, d sont des entiers, y<sub>1</sub> et y<sub>2</sub> seront aussi des entiers. Pourtant, si l'on souhaite les reconvertir en lettres, il faudra qu'ils soient compris entre 0 et 25, ce dont on ne peut s'assurer. On les y ramène en prenant leur reste dans la division par 26. Si z<sub>1</sub> et z<sub>2</sub> sont les restes respectifs de y<sub>1</sub> et y<sub>2</sub> dans la division par 26, on peut retransformer z<sub>1</sub> et z<sub>2</sub> en lettres, et obtenir le message codé.</p>
+            <p>Le choix de la clé correspond ici au choix d'un nombre m, et au choix des combinaisons linéaires (les coefficients a, b, c, d), qui doivent satisfaire des critères mathématiques garantissant l'inversibilité.</p>
+            <p><strong>Exemple :</strong> codons « ELECTION » avec m = 2, a = 3, b = 5, c = 1, d = 2 :</p>
+            <ul class="list-disc list-inside space-y-1 mb-4">
+            <li>On découpe en blocs : EL | EC | TI | ON.</li>
+            <li>On convertit en nombres : 4-11 | 4-2 | 19-8 | 14-13.</li>
+            <li>On applique les combinaisons linéaires (premier bloc : y<sub>1</sub> = 3×4 + 5×11 = 67, y<sub>2</sub> = 1×4 + 2×11 = 26).</li>
+            <li>Restes modulo 26 : z<sub>1</sub> = 15, z<sub>2</sub> = 0, etc.</li>
+            <li>Message codé final : <code>PAWITJDO</code>.</li>
+            </ul>
+            <p><strong>Déchiffrement :</strong> pour déchiffrer un message codé connaissant la clé, on procède exactement de la même façon. On découpe en blocs de m lettres, mais cette fois il faut inverser les relations données par les combinaisons linéaires : si un système donne y<sub>1</sub> et y<sub>2</sub> en fonction de x<sub>1</sub> et x<sub>2</sub>, il faut pouvoir l'inverser et exprimer x<sub>1</sub> et x<sub>2</sub> en fonction de y<sub>1</sub> et y<sub>2</sub>. Ce n'est pas toujours possible, et il existe des critères mathématiques pour tester cela.</p>
+            <img src="images/polygraphiques/001-002-img-1.jpeg" alt="Le chiffre de Hill : principe" />
+            <img src="images/polygraphiques/001-003-img-2.jpeg" alt="Le chiffre de Hill : exemple" />
+
+            <h2 id="hill-avec-maths">Le chiffre de Hill (avec des mathématiques)</h2>
+            <h3>Modélisation</h3>
+                <p>Le chiffre de Hill est à l'intersection de l'arithmétique et de l'algèbre linéaire. En remplaçant les lettres par des nombres (A → 0, ...), on ne traite plus que des entiers compris entre 0 et 25. En outre, un nombre n est identifié avec tous les nombres n + 26k, où k est un entier (en clair, si 1 représente B, 27, 53, -25... aussi !). Quand les calculs faits par les combinaisons linéaires sortent des entiers de 0 à 25, on s'y ramène en prenant le reste dans la division par 26. On dit que l'on travaille dans <strong>ℤ/26ℤ</strong>.</p>
+                <p>Chaque groupe de 2 lettres, représenté par l'identification de 2 nombres x<sub>1</sub>, x<sub>2</sub>, est représenté par un vecteur colonne (x<sub>1</sub>, x<sub>2</sub>). Les relations de dépendance linéaire sont, comme souvent, représentées par une matrice A = (a b ; c d). On a, dans ℤ/26ℤ, la relation :</p>
+                <pre class="cadre">(y1)        (x1)
+                (y2)  = A · (x2)</pre>
+                <p>où (y<sub>1</sub>, y<sub>2</sub>) est le bloc codé, et (x<sub>1</sub>, x<sub>2</sub>) est le bloc clair.</p>
+            <h3>Réversibilité</h3>
+                <p>Toute matrice de chiffrement ne convient pas ! Par exemple, la matrice A = (1 2 ; 2 4) n'est pas une bonne matrice de chiffrement, car elle code deux vecteurs différents de la même façon (par exemple A(0,0) = (0,0) et A(2,25) = (0,0) dans ℤ/26ℤ), rendant le déchiffrement impossible même avec la clé. Concrètement, la condition est que l'entier <strong>ad − bc</strong> (le déterminant) ne soit ni divisible par 2, ni divisible par 13 : la matrice doit être inversible dans ℤ/26ℤ, c'est-à-dire que son déterminant doit être premier avec 26.</p>
+            <img src="images/polygraphiques/001-004-img-3.jpeg" alt="Le chiffre de Hill : matrices" />
+
+            <h2 id="casser-hill">Comment casser le chiffre de Hill</h2>
+            <h3>L'attaque des bigrammes</h3>
+                <p>Même si le chiffre de Hill est un chiffre de substitution polygraphique, il peut être cassé par une analyse des fréquences. Prenons l'exemple d'un chiffre de Hill où l'on chiffre des couples de lettres simultanément (des bigrammes). Ces bigrammes seront toujours chiffrés de la même façon, quelle que soit leur position dans le texte. Et bien sûr, tous les bigrammes n'ont pas la même fréquence dans la langue française. Les plus répandus sont ES, LE, RE, ..., bien plus que WK, YH ou QR ! Ainsi, pour peu que l'on ne chiffre que des petits blocs de lettres (et, pour les usages de Hill, sans ordinateur, il était bien difficile de chiffrer plus que des couples ou des triplets de lettres simultanément), une analyse statistique un peu poussée vient à bout d'un texte assez long.</p>
+            <h3>L'attaque à texte clair connu</h3>
+                <p>Lorsque l'on cherche à déterminer la clé de chiffrement d'un adversaire, on peut se situer à plusieurs niveaux d'information. On peut n'avoir à sa disposition que le message chiffré. Parfois, et cela apporte beaucoup d'informations, on dispose à la fois du message chiffré et de sa traduction en clair, ou au moins d'une partie de celle-ci. Cela n'est pas si saugrenu : bien des messages protocolaires (et dans l'armée, les protocoles...) comportent le même début ou la même fin, et c'est ainsi par exemple que Turing a procédé pour la machine Enigma. C'est ce que l'on appelle l'<strong>attaque à texte clair connu</strong> !</p>
+                <p>Voyons un exemple à partir du chiffrement de Hill (cette méthode s'applique à tout algorithme fonctionnant à partir de combinaisons linéaires). On suppose qu'on a le texte codé suivant : <code>COR ZZETMDW...</code>, qui correspond au début de « MON GENERAL... ». Un espion dans les services allemands nous a indiqué que la longueur de la clé est 2 : on utilise donc une matrice 2×2. Le premier couple « CO » est obtenu en appliquant la matrice A à « MO », et le second couple « RZ » en appliquant A à « NG ». Cela se représente sous la forme B = A × C. Comme la matrice C n'est pas inversible dans ℤ/26ℤ, on utilise les couples suivants : « ZZ » et « ET » pour former D = A × E. Le déterminant de E vaut 145, qui est inversible dans ℤ/26ℤ, ce qui permet de calculer E<sup>−1</sup> puis la matrice A :</p>
+                <pre class="cadre">A = ( 3  5 )
+                    ( 1  2 )</pre>
+                <p>Avec la matrice A, le texte clair peut être facilement retrouvé.</p>
+                <img src="images/polygraphiques/001-005-img-4.jpeg" alt="Casser le chiffre de Hill" />
+
+            <h2 id="playfair">Le chiffre de Playfair</h2>
+            <p>Le chiffre de Playfair est le premier chiffre digraphique qui est apparu (en 1854), c'est-à-dire qu'il chiffre le message par blocs de deux lettres. Il porte bien mal son nom, car il a été inventé par Charles Wheatstone (à qui on doit notamment des travaux en électricité, le nom « pont de Wheatstone » est resté). C'est son ami, le baron Playfair, qui l'a popularisé, en le proposant notamment comme outil cryptographique à l'armée britannique. Ce chiffre vient d'ailleurs d'une demande de cette armée, afin de chiffrer les messages télégraphiques.</p>
+            <img src="images/polygraphiques/001-006-img-5.jpeg" alt="Charles Wheatstone et Lord Playfair" />
+            <p>Le chiffre de Playfair se présente sous la forme d'un tableau 5×5 comprenant toutes les lettres de l'alphabet, écrites dans un ordre désordonné. La première étape consiste à fabriquer ce carré. Wheatstone suggérait de choisir un mot clé, et d'écrire un tableau comme le suivant (les lignes suivantes sont constituées des lettres de l'alphabet non encore utilisées), fabriqué à partir de la clé <strong>GALOIS</strong> :</p>
+            <pre class="cadre">G A L O I S
+            B C D E F H
+            K M N P Q R
+            T U V W X Y
+            Z</pre>
+            <p>On remplit alors le tableau du chiffre de Playfair de gauche à droite en lisant le tableau précédent de bas en haut. On trouve donc :</p>
+            <pre class="cadre">G B K T Z
+            A C M U L
+            D N V O E
+            P W I F Q
+            X S H R Y</pre>
+            <p>(on peut bien sûr fabriquer le carré précédent en choisissant complètement les lettres au hasard, mais il est plus difficile à communiquer qu'en se mettant d'accord sur un mot clé).</p>
+            <p>Le message à chiffrer est alors séparé en couples de deux lettres. Pour chaque couple de deux lettres, on repère la position des lettres dans le carré. Le couple est alors chiffré suivant une des règles suivantes :</p>
+            <ul class="list-disc list-inside space-y-2 mb-4">
+            <li>si les deux lettres sont sur des lignes et des colonnes différentes, alors chaque lettre est remplacée par la lettre située sur la même ligne qu'elle, mais sur la colonne de l'autre lettre. Par exemple, avec le carré précédent, <code>IL</code> est chiffré en <code>QM</code>.</li>
+            <li>si les deux lettres sont sur la même ligne, alors on remplace chaque lettre par la lettre immédiatement à sa droite (éventuellement, on revient à la première lettre de la ligne). Dans notre exemple, <code>NE</code> est chiffré en <code>VD</code>.</li>
+            <li>si les deux lettres sont sur la même colonne, alors on remplace chaque lettre par la lettre immédiatement sous elle (éventuellement, on revient à la première lettre de la colonne). Dans notre exemple, <code>RO</code> est chiffré en <code>TF</code>.</li>
+            <li>si les deux lettres sont identiques, alors aucune des règles précédentes ne peut s'appliquer, et on insère entre les deux lettres une lettre rare, par exemple Q (on parle de <strong>lettre nulle</strong>). Par exemple, si on veut chiffrer COMME ELLE EST BELLE, alors on chiffrera les bigrammes suivants : <code>CO MQ ME LQ LE ES TB EL LE</code>.</li>
+            </ul>
+            <p>Le chiffre de Playfair ne substitue donc plus une lettre par une autre lettre, mais un couple de lettres par un autre couple de lettres. En cela, il est (au moins sans ordinateur !) beaucoup plus difficile à vaincre qu'un simple chiffre de substitution.</p>
+            <img src="images/polygraphiques/001-008-img-7.jpeg" alt="Le chiffre de Playfair : règles de chiffrement" />
+
+            <h2 id="quatre-carres">Le chiffre des 4 carrés</h2>
+            <p>Le <strong>chiffre des quatre carrés</strong> est un chiffre inventé par Félix Delastelle, un cryptographe amateur français, et publié dans son livre <em>Traité élémentaire de cryptographie</em> en 1902. C'est un chiffre de substitution digraphique, au sens où il remplace des bigrammes (groupes de deux lettres) par d'autres bigrammes.</p>
+            <p>Le chiffre de Delastelle se présente sous la forme de 4 tableaux carrés 5×5, que l'on écrit eux-mêmes dans un carré plus grand. Chaque carré contient les 25 lettres de l'alphabet (on identifie le I et le J, ou on oublie le W). Dans les carrés en haut à gauche et en bas à droite, ces 25 lettres sont écrites dans l'ordre alphabétique. Dans les deux autres carrés, elles sont écrites dans un ordre quelconque (et pas forcément le même ordre). On obtient donc un tableau qui ressemble au suivant :</p>
+            <pre class="cadre">A B C D E | Q Y A L S
+            F G H I K | Z C R X E
+            L M N O P | F O M W B
+            Q R S T U | V I T G U
+            V W X Y Z | P D K N H
+            ----------+----------
+            L W D A K | A B C D E
+            B C G N H | F G H I K
+            O I X E M | L M N O P
+            Z U P Q R | Q R S T U
+            S T V Y F | V W X Y Z</pre>
+            <p>Imaginons maintenant que l'on veuille chiffrer le message VITESSE DE LA LUMIERE avec les 4 carrés précédents. On commence par découper le message en bigrammes de la façon suivante :</p>
+            <pre class="cadre">VI TE SS ED EL AL UM IE RE</pre>
+            <p>(quand le message ne comporte pas un nombre pair de lettres, on complète avec une lettre nulle).</p>
+            <p>On cherche d'abord la première lettre du bigramme dans le premier carré (en haut à gauche), et la deuxième lettre du bigramme dans le dernier carré (en bas à droite). Pour le bigramme <code>VI</code> : V est à la ligne 5, colonne 1 du premier carré, et I est à la ligne 2, colonne 4 du dernier carré. On regarde ensuite quelle est la lettre qui est à l'intersection de la ligne de la première lettre et de la colonne de la seconde (dans le carré en haut à droite) : cela donne la première lettre du bigramme chiffré. On cherche ensuite la lettre qui est à l'intersection de la colonne de la première lettre et de la ligne de la seconde (dans le carré en bas à gauche) : cela donne la seconde lettre. Autrement dit, on remplace le bigramme <code>VI</code> par le bigramme <code>NB</code>.</p>
+            <p>On répète l'opération pour chaque bigramme et on trouve : <code>NBUAT PLKQM QOIME AUW</code>.</p>
+            <p>La méthode de chiffrement des quatre carrés permet de faire assez simplement une substitution de groupes de deux lettres, ce qui rend plus difficile le cassage du chiffre par analyse des fréquences, car il faut analyser désormais 26×26 = 676 bigrammes. Il est ainsi relativement sûr lorsque les messages transmis sont assez courts.</p>
+            <img src="images/polygraphiques/001-011-img-10.jpeg" alt="Le chiffre des 4 carrés" />
+            <img src="images/polygraphiques/001-012-img-11.jpeg" alt="Le chiffre des 4 carrés : exemple" />
+          </article>
+
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

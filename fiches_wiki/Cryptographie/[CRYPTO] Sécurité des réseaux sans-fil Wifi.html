@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Enigma - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .sidebar { position: sticky; top: 80px; height: calc(100vh - 80px); overflow-y: auto; }
+    .toc a { display: block; padding: 0.5rem 0.75rem; border-radius: 0.25rem; color: #475569; text-decoration: none; transition: all 0.2s; font-size: 0.9rem; }
+    .toc a:hover { background-color: #f1f5f9; color: #4f46e5; }
+    .toc a.active { background-color: #e0e7ff; color: #4f46e5; font-weight: 500; }
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    .content h1 { font-size: 2rem; font-weight: 800; color: #1e293b; border-bottom: 2px solid #4f46e5; padding-bottom: 0.5rem; margin-top: 1.5rem; margin-bottom: 1rem; }
+    .content h2 { font-size: 1.5rem; font-weight: 700; color: #334155; border-bottom: 1px solid #94a3b8; padding-bottom: 0.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    .content h3 { font-size: 1.25rem; font-weight: 600; color: #475569; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+    .content h4 { font-size: 1.125rem; font-weight: 600; color: #64748b; margin-top: 1rem; margin-bottom: 0.5rem; }
+    .content p { line-height: 1.75; margin-bottom: 1rem; }
+    .content img { max-width: 100%; height: auto; border-radius: 0.5rem; margin: 1.5rem auto; display: block; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+    .sidebar::-webkit-scrollbar { width: 6px; }
+    .sidebar::-webkit-scrollbar-track { background: #f1f5f9; }
+    .sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    .sidebar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    pre.cadre { background: #f1f5f9; border-radius: 0.5rem; padding: 1rem; overflow-x: auto; font-family: monospace; line-height: 1.5; }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#wep" class="toc-level-1">Fonctionnement du WEP</a>
+            <a href="#wpa" class="toc-level-1">Protocoles améliorés : WPA et WPA2</a>
+          </nav>
+        </div>
+      </aside>
+
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <article class="content">
+            <h1 id="securite-des-reseaux-sans-fil-wifi">Sécurité des réseaux sans-fil Wifi</h1>
+
+            <h2 id="introduction">Introduction</h2>
+            <p>Il n'y a rien de plus facile que d'espionner les données échangées à travers un réseau sans fil ! Pour les garder confidentielles, ou pour que votre voisin ne puisse pas utiliser librement votre box internet, il faut sécuriser ces réseaux, notamment en chiffrant les communications. Le premier protocole est proposé par l'IEEE (Institute of Electrical and Electronics Engineering, association à la base de nombreux standards en électronique) en 1997. Il porte le nom de WEP, pour <em>Wired Equivalent Privacy</em>, en français protection équivalente au câble. Le nom de Wifi (pour Wireless Fidelity) vient du consortium créé en 1999 par 6 compagnies de télécommunication pour promouvoir l'utilisation des normes de l'IEEE pour les réseaux sans fil.</p>
+            <p>Le protocole WEP se révéla rapidement obsolète. Il fut remplacé provisoirement en 2004 par le protocole WPA (<em>Wifi Protected Access</em>), qui ne nécessitait pas de changer le matériel, puis par une nouvelle norme, WPA2, incompatible. À partir de 2006, un équipement ne pouvait se revendiquer « compatible wifi » sans supporter cette nouvelle norme.</p>
+            <p>Dans la suite, nous allons décrire de façon succincte et simplifiée ces protocoles, en nous plaçant dans le cas de l'ordinateur qui souhaite échanger des données avec la box. La box est le point d'accès wifi. Elle possède un mot de passe (une clé) fixe qui est par exemple écrite au verso de la box (c'est le cas de la mienne !).</p>
+
+            <h2 id="wep">Fonctionnement du WEP</h2>
+            <p>Le protocole WEP chiffre les données à l'aide d'un algorithme de chiffrement par flots, appelé RC4. On commence par communiquer la clé de la box à l'ordinateur. Cette clé est une suite de 10 chiffres hexadécimaux (c'est-à-dire un chiffre de 0 à 9, ou les lettres A, B, C, D, E, F). Ceci constitue alors une clé de 40 bits. La box et l'ordinateur s'échangent ensuite (en clair) un vecteur d'initialisation.</p>
+            <p>L'algorithme RC4 calcule alors, à partir de cette clé et du vecteur d'initialisation, une suite pseudo-aléatoire de 0 et de 1. Ces nombres sont alors ajoutés, par un ou exclusif, comme dans le chiffre de Vernam, aux lettres du message clair. Ceci constitue le texte chiffré.</p>
+            <img src="images/wifi/001-001-img-0.jpeg" alt="Fonctionnement du WEP" />
+            <p>Ces algorithmes de chiffrement par flot ont un avantage : c'est leur rapidité. Mais ils ont aussi un défaut : il ne faut jamais que la même clé soit utilisée deux fois de suite. Or, ici, la suite pseudo-aléatoire semble construite à partir d'une clé de 64 bits, ce qui est assez correct. Mais en réalité, 40 bits de cette clé sont fixes : c'est la clé de la box. Seuls les 24 bits du vecteur d'initialisation changent, et une clé de 24 bits, cela n'est vraiment pas beaucoup (un peu plus de 16 millions de possibilités). Le paradoxe des anniversaires fait alors que, dès qu'on a envoyé environ 5000 paquets, on a plus d'une chance sur deux d'avoir utilisé la même clé !</p>
+            <p>Très vite, dès 2001, des attaques contre le WEP utilisant cette faille se sont développées, rendant ce protocole obsolète. Remarquons ici que la longueur de la clé ne fait pas la sécurité d'un système de cryptographie. La clé à entrer pourrait être aussi longue que l'on veut, beaucoup plus longue que 40 bits, cela ne renforcerait pas du tout la sécurité du WEP. C'est la taille du vecteur d'initialisation qui est trop petite !</p>
+
+            <h2 id="wpa">Protocoles améliorés : WPA et WPA2</h2>
+            <p>Devant ce constat d'échec, le consortium gérant le Wifi se devait de réagir rapidement. Il commença en proposant une solution intermédiaire en 2004, le WPA. En effet, il y avait une contrainte supplémentaire à respecter. Le nouveau protocole devait être compatible avec le matériel existant, modulo une mise à jour logicielle, car il était impossible de le renouveler entièrement en une fois. C'est pourquoi le nouveau protocole WPA utilisait encore RC4. Mais il dispose en plus du <em>Temporal Key Integrity Protocol</em>, qui lui permet de changer les clés utilisées à chaque paquet. Ainsi, l'attaque décrite précédemment ne pouvait plus avoir lieu.</p>
+            <p>Cela dit, le WPA ne pouvait être qu'une solution temporaire, car certaines faiblesses structurelles du WEP, non décrites ici, n'étaient pas corrigées. Cela donna lieu au déploiement, à partir de 2006, du WPA2. Ce protocole utilise cette fois l'AES au lieu de RC4, et il ajoute aussi un réel contrôle de l'intégrité des données transmises. À la date où cette page est écrite (fin 2012), le WPA2 est toujours considéré comme sûr.</p>
+            <p>Ce n'est pas le cas du WPS, <em>Wifi Protected Setup</em>, un autre standard qui était destiné à simplifier l'usage du WPA2 et les différentes configurations du réseau possibles. Ce protocole fut introduit en 2007, mais une faille majeure a été découverte en 2011, et il est très déconseillé de l'utiliser !. Le protocole WPA3 arrive comme successeur plus fiable.</p>
+          
+          </article>
+
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

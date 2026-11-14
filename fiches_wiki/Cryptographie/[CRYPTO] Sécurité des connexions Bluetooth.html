@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Enigma - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .sidebar { position: sticky; top: 80px; height: calc(100vh - 80px); overflow-y: auto; }
+    .toc a { display: block; padding: 0.5rem 0.75rem; border-radius: 0.25rem; color: #475569; text-decoration: none; transition: all 0.2s; font-size: 0.9rem; }
+    .toc a:hover { background-color: #f1f5f9; color: #4f46e5; }
+    .toc a.active { background-color: #e0e7ff; color: #4f46e5; font-weight: 500; }
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    .content h1 { font-size: 2rem; font-weight: 800; color: #1e293b; border-bottom: 2px solid #4f46e5; padding-bottom: 0.5rem; margin-top: 1.5rem; margin-bottom: 1rem; }
+    .content h2 { font-size: 1.5rem; font-weight: 700; color: #334155; border-bottom: 1px solid #94a3b8; padding-bottom: 0.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    .content h3 { font-size: 1.25rem; font-weight: 600; color: #475569; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+    .content h4 { font-size: 1.125rem; font-weight: 600; color: #64748b; margin-top: 1rem; margin-bottom: 0.5rem; }
+    .content p { line-height: 1.75; margin-bottom: 1rem; }
+    .content img { max-width: 100%; height: auto; border-radius: 0.5rem; margin: 1.5rem auto; display: block; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+    .sidebar::-webkit-scrollbar { width: 6px; }
+    .sidebar::-webkit-scrollbar-track { background: #f1f5f9; }
+    .sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    .sidebar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    pre.cadre { background: #f1f5f9; border-radius: 0.5rem; padding: 1rem; overflow-x: auto; font-family: monospace; line-height: 1.5; }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#appariement" class="toc-level-1">L'appariement de deux périphériques</a>
+            <a href="#authentification" class="toc-level-1">L'authentification</a>
+            <a href="#echangededonnees" class="toc-level-1">L'échange de données</a>
+            <a href="#failles" class="toc-level-1">Des failles dans la sécurité</a>
+          </nav>
+        </div>
+      </aside>
+
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <article class="content">
+            <h1 id="securite-des-connexions-bluetooth">Sécurité des connexions Bluetooth</h1>
+
+            <h2 id="introduction">Introduction</h2>
+            <p>C'est dans les années 1990 qu'est venue l'idée que des périphériques, reliés auparavant par des fils (comme le clavier et la souris d'un ordinateur, le casque d'une chaine hifi, les manettes d'une console de jeu) pourraient désormais communiquer avec leur hôte en utilisant des ondes radio. C'est la société suédoise Ericsson qui développa la première cette technologie baptisée Bluetooth en 1994, rejointe peu après dans un consortium par IBM, Intel, Nokia et Toshiba. La norme 1.0 du Bluetooth est publiée en juillet 1999, et en 2012, le consortium regroupait plus de 16 000 sociétés. Les applications du Bluetooth ont largement dépassé le cadre prévu initialement, désormais on connecte son téléphone mobile à sa voiture par cette technologie.</p>
+            <p>Le nom Bluetooth vient du roi danois Harald Blåtand, que l'on écrit Harold Bluetooth en anglais, qui vécut au X<sup>ième</sup> siècle. Ce roi avait beaucoup œuvré dans sa vie afin d'unifier des parties de ce qui sont maintenant le Danemark, la Norvège et la Suède, exactement comme la technologie Bluetooth a pour but de faire dialoguer des appareils très différents. Le logo de Bluetooth célèbre lui aussi Harald Bluetooth, puisqu'il est constitué en caractères runniques des initiales HB du roi.</p>
+            <p>Les spécifications du Bluetooth sont les suivantes :</p>
+            <ul class="list-disc list-inside space-y-1 mb-4">
+            <li>très faible consommation d'énergie</li>
+            <li>très faible portée (sur un rayon de l'ordre d'une dizaine de mètres)</li>
+            <li>faible débit</li>
+            <li>très bon marché et peu encombrant.</li>
+            </ul>
+            <p>Lorsque deux objets équipés de la technologie Bluetooth veulent communiquer, ils doivent suivre un protocole en trois points :</p>
+            <ul class="list-disc list-inside space-y-2 mb-4">
+            <li><strong>l'appariement</strong> (<em>pairing</em> en anglais) : les deux objets doivent se reconnaitre comme étant équipés de la technologie Bluetooth et ils préparent les communications futures en s'échangeant un certain nombre d'informations. L'appariement ne doit être réalisé qu'une seule fois, et il nécessite dans l'idéal une intervention humaine externe.</li>
+            <li><strong>l'authentification</strong> : à chaque fois que les objets veulent communiquer (par exemple, chaque fois que vous rentrez avec votre mobile dans votre voiture), les deux objets doivent s'identifier l'un à l'autre et vérifier qu'ils ont bien le droit de communiquer (il ne faudrait pas que l'oreillette de votre téléphone portable envoie vos données au téléphone portable du voisin !)</li>
+            <li><strong>l'échange de données</strong>.</li>
+            </ul>
+            <p>Nous détaillons maintenant chaque étape, sans rentrer dans le détail technique des algorithmes utilisés (la spécification complète du Bluetooth comporte plus de 1200 pages !).</p>
+
+            <h2 id="appariement">L'appariement de deux périphériques</h2>
+            <p>C'est le point le plus important dans la sécurité du Bluetooth. D'abord, les deux objets doivent être mis dans un état de recherche de périphériques Bluetooth à proximité. Une fois le dialogue amorcé, les deux s'accordent pour que l'un soit le maitre, et l'autre soit l'esclave, mais le fait d'être maitre ou esclave n'a pas d'importance.</p>
+            <p>Le propriétaire des objets intervient d'abord en rentrant un code d'identification (on dit aussi code PIN), le plus souvent à 4 chiffres, sur chacun des objets. Puis, le maitre choisit au hasard un nombre aléatoire <em>N</em>, et il l'envoie à l'esclave. L'esclave et le maitre calculent <em>K<sub>init</sub> = E22(N, PIN)</em>, où <em>E22</em> est une certaine fonction décrite dans le protocole du Bluetooth. <em>K<sub>init</sub></em> est une clé d'échange provisoire que les deux objets possèdent en commun, et qui sécurise les échanges à venir.</p>
+            <p>Ce faisant, les deux objets n'ont pas encore vérifié qu'ils possédaient le même code PIN. Le maitre et l'esclave choisissent chacun un autre nombre aléatoire, disons <em>A<sub>M</sub></em> pour le maitre et <em>A<sub>E</sub></em> pour l'esclave. Le maitre envoie <em>A<sub>M</sub></em> à l'esclave et l'esclave envoie <em>A<sub>E</sub></em> au maitre. Le maitre et l'esclave calculent tous deux <em>C<sub>M</sub> = A<sub>M</sub> ⊕ K<sub>init</sub></em> et <em>C<sub>E</sub> = A<sub>E</sub> ⊕ K<sub>init</sub></em>. Le maitre envoie à l'esclave <em>C<sub>E</sub></em>. L'esclave compare à la valeur qu'il a lui-même calculée. Si elles coïncident, il sait que le maitre a eu le même code PIN que lui, et donc il peut continuer l'appariement. Réciproquement, l'esclave envoie <em>C<sub>M</sub></em> au maitre. Celui-ci compare avec la valeur qu'il a lui-même calculée. Si elles coïncident, l'esclave a eu le même code PIN, et les deux objets ont le droit de dialoguer.</p>
+            <p>Le processus d'appariement n'est pas fini. Les deux objets calculent à partir de <em>A<sub>E</sub></em>, <em>A<sub>M</sub></em> (qu'ils connaissent tous deux, mais qu'ils se sont échangés de façon sécurisée grâce à <em>K<sub>init</sub></em>) et de leurs adresses physiques (nombre unique créé à leur fabrication) une clé d'authentification commune <em>K<sub>auth</sub></em>. Ils stockent ensuite cette clé dans une petite mémoire. Le processus d'appariement est terminé et n'aura pas besoin d'être renouvelé.</p>
+            <img src="images/bluetooth/001-001-img-0.jpeg" alt="Appariement de deux périphériques Bluetooth" />
+            <p>Dans les versions plus récentes du protocole, l'intervention d'un homme n'est plus nécessaire que pour mettre les deux appareils en état de recherche d'appariement, mais l'utilisation du code PIN n'est plus nécessaire. Les deux objets s'échangent en effet une clé d'initialisation à l'aide d'un protocole proche de celui de <strong>Diffie-Hellman</strong>, où on peut s'échanger une clé sans se la communiquer, et sans qu'un tiers qui écoute tous les échanges puisse la découvrir !</p>
+
+            <h2 id="authentification">L'authentification</h2>
+            <p>On se place désormais dans le cadre où deux appareils possédant la technologie Bluetooth ont déjà été appariés. Ils partagent donc tous les deux la même clé d'authentification <em>K<sub>auth</sub></em>. Après un moment où ils ont été séparés, on les présente à nouveau l'un à l'autre. Comment reprennent-ils leur conversation ?</p>
+            <p>Le point clé est qu'ils doivent s'authentifier l'un à l'autre, c'est-à-dire vérifier qu'on leur a bien donné l'autorisation de dialoguer. Plus concrètement, ils doivent vérifier qu'ils possèdent la même clé <em>K<sub>auth</sub></em>. C'est à nouveau un procédé de <strong>challenge</strong> (ou de question/réponse) à base de nombres aléatoires qui va donner la solution.</p>
+            <p>Le maitre choisit un nombre au hasard, que je vais noter <em>Aut<sub>M</sub></em>. Il l'envoie à l'esclave. Celui-ci calcule une réponse <em>Rep<sub>E</sub></em> qui dépend à la fois de la clé d'authentification <em>K<sub>auth</sub></em> et de <em>Aut<sub>M</sub></em>. Il utilise pour cela un certain algorithme <em>E1</em>, et on a donc <em>Rep<sub>E</sub> = E1(K<sub>auth</sub>, Aut<sub>M</sub>)</em>. Il retourne <em>Rep<sub>E</sub></em> au maitre. Celui-ci a, pendant ce temps-là, calculé également à quoi doit être égal <em>Rep<sub>E</sub></em>. Si la valeur reçue et la valeur calculée sont égales, il a bien authentifié l'esclave.</p>
+            <p>Le procédé se poursuit alors de façon symétrique. Cette fois, c'est l'esclave qui choisit un nombre au hasard, que je note <em>Aut<sub>E</sub></em>. Il l'envoie au maitre qui calcule, avec le même algorithme, <em>Rep<sub>M</sub> = E1(K<sub>auth</sub>, Aut<sub>E</sub>)</em>. Il envoie cette réponse à l'esclave qui a calculé cette valeur entre-temps. Si les deux valeurs coïncident, l'esclave a authentifié le maitre. L'authentification est alors terminée et les deux appareils vont pouvoir passer aux choses sérieuses : l'échange de données.</p>
+            <img src="images/bluetooth/001-002-img-1.jpeg" alt="Authentification Bluetooth" />
+
+            <h2 id="echangededonnees">L'échange de données</h2>
+            <p>L'échange de données est finalement la partie la plus facile de la communication Bluetooth. Une fois qu'ils se sont authentifiés, les deux appareils s'échangent une clé de communication, générée par un algorithme appelé <em>E3</em> à partir de la clé d'authentification <em>K<sub>auth</sub></em> et d'une valeur aléatoire. Les données envoyées sont chiffrées ensuite à l'aide d'un algorithme de chiffrement par flots, l'horloge du maitre jouant le rôle de nonce.</p>
+
+            <h2 id="failles">Des failles dans la sécurité</h2>
+            <p>Comme expliqué ci-dessus, la sécurité du Bluetooth dépend pour beaucoup de la phase d'authentification. Malheureusement, il est souvent impossible de la réaliser dans des conditions idéales. Par exemple, une oreillette n'a pas de clavier pour rentrer un code PIN. Dans ce cas, l'oreillette impose d'utiliser un code PIN fixé en usine, qui est souvent <code>0000</code> ou <code>1234</code> !</p>
+            <p>Parfois même, certains produits bas de gamme imposent une clé d'authentification fixe. Dans ce cas, si on vous emprunte quelques secondes votre oreillette, on pourra découvrir cette clé d'authentification, puis espionner les communications futures de cette oreillette avec n'importe quel autre appareil Bluetooth !</p>
+
+          </article>
+
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

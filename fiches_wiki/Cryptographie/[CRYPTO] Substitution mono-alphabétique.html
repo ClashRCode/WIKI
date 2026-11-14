@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Enigma - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .sidebar { position: sticky; top: 80px; height: calc(100vh - 80px); overflow-y: auto; }
+    .toc a { display: block; padding: 0.5rem 0.75rem; border-radius: 0.25rem; color: #475569; text-decoration: none; transition: all 0.2s; font-size: 0.9rem; }
+    .toc a:hover { background-color: #f1f5f9; color: #4f46e5; }
+    .toc a.active { background-color: #e0e7ff; color: #4f46e5; font-weight: 500; }
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    .content h1 { font-size: 2rem; font-weight: 800; color: #1e293b; border-bottom: 2px solid #4f46e5; padding-bottom: 0.5rem; margin-top: 1.5rem; margin-bottom: 1rem; }
+    .content h2 { font-size: 1.5rem; font-weight: 700; color: #334155; border-bottom: 1px solid #94a3b8; padding-bottom: 0.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    .content h3 { font-size: 1.25rem; font-weight: 600; color: #475569; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+    .content h4 { font-size: 1.125rem; font-weight: 600; color: #64748b; margin-top: 1rem; margin-bottom: 0.5rem; }
+    .content p { line-height: 1.75; margin-bottom: 1rem; }
+    .content img { max-width: 100%; height: auto; border-radius: 0.5rem; margin: 1.5rem auto; display: block; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+    .sidebar::-webkit-scrollbar { width: 6px; }
+    .sidebar::-webkit-scrollbar-track { background: #f1f5f9; }
+    .sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    .sidebar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    pre.cadre { background: #f1f5f9; border-radius: 0.5rem; padding: 1rem; overflow-x: auto; font-family: monospace; line-height: 1.5; }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#substitution" class="toc-level-1">Substitution mono-alphabétique</a>
+            <a href="#cesar" class="toc-level-1">Le chiffre de César</a>
+            <a href="#affine" class="toc-level-1">Le chiffre affine</a>
+            <a href="#faiblesses" class="toc-level-1">Les faiblesses de la substitution mono-alphabétique</a>
+            <a href="#atbash" class="toc-level-1">Le chiffre Atbash</a>
+            <a href="#polybe" class="toc-level-1">Le carré de Polybe et les nihilistes russes</a>
+            <a href="#templiers" class="toc-level-1">Le chiffre des templiers</a>
+            <a href="#pigpen" class="toc-level-1">Le chiffre Pigpen</a>
+            <a href="#delastelle" class="toc-level-1">La substitution économique de Delastelle</a>
+          </nav>
+        </div>
+      </aside>
+
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <article class="content">
+            <h1 id="substitution-mono-alphabetique">Substitution mono-alphabétique</h1>
+
+            <h2 id="substitution">Substitution mono-alphabétique</h2>
+            <p>Le <strong>chiffrement par substitution mono-alphabétique</strong> (on dit aussi les <strong>alphabets désordonnés</strong>) est le plus simple à imaginer. Dans le message clair (que nous convenons toujours écrit en majuscule), on remplace chaque lettre par une lettre différente. Donnons un exemple ; nous opérons la substitution suivante :</p>
+            <pre class="cadre">Texte clair : A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+            Texte codé  : W X E H Y Z T K C P J I U A D G L Q M N R S F V B O</pre>
+            <p>Le texte que nous souhaitons crypter est le suivant :</p>
+            <p><strong>UN PETIT ROSEAU M'A SUFFI POUR FAIRE FREMIR L'HERBE HAUTE ET TOUT LE PRE ET LES DOUX SAULES ET LE RUISSEAU QUI CHANTE AUSSI.</strong></p>
+            <p>Le texte codé est alors :</p>
+            <p><strong>RA GYNCN QDMYWR U'W MRZZCN GDRQ ZWCQY ZQYUCQ I'KYQXY KWRNY YN NDRN IY GQY YN IYM HDRV MWRIYM LRC EKWANYAN WRMMC.</strong></p>
+            <p>Ces méthodes de chiffrement ont plusieurs avantages : la clé (la permutation) offre 26! ≈ 4×10<sup>26</sup> possibilités, ce qui rend impossible la recherche exhaustive, et le chiffrement/déchiffrement est très rapide.</p>
+            <img src="images/monoalphabetique/001-001-img-0.jpeg" alt="Substitution mono-alphabétique : exemple" />
+            <p>Cependant, un des problèmes du code par substitution est de se souvenir de la clé (c'est-à-dire de la permutation) employée. Il n'est en effet pas facile de se souvenir de 26 lettres dans un ordre aléatoire. C'est pourquoi il existe des variantes pour se simplifier la vie :</p>
+            <ul class="list-disc list-inside space-y-1 mb-4">
+            <li>Le <strong>chiffre de César</strong>, fondé sur un simple décalage de lettres.</li>
+            <li>Le <strong>chiffre Atbash</strong>. Il consiste simplement à écrire l'alphabet en sens contraire :</li>
+            </ul>
+            <pre class="cadre">Texte clair : A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+            Texte codé  : Z Y X W V U T S R Q P O N M L K J I H G F E D C B A</pre>
+            <p>Bien sûr, la sûreté d'un tel codage est quasi-nulle, puisqu'il suffit de connaitre l'algorithme de codage pour pouvoir décoder immédiatement (il n'y a pas de clé à choisir). Remarquons toutefois une propriété du code Atbash : il est réversible, c'est-à-dire que c'est le même algorithme qui code et décode le texte.</p>
+            <p>Une autre des façons les plus courantes de définir une substitution est de se mettre d'accord sur un mot-clé facile à retenir, mettons <strong>MATHWEB</strong>, et de compléter ensuite le tableau par ordre alphabétique : on écrit d'abord le mot-clé (sans répétition de lettres), puis les lettres restantes de l'alphabet dans l'ordre.</p>
+            <img src="images/monoalphabetique/001-002-img-1.jpeg" alt="Variantes de la substitution" />
+
+            <h2 id="cesar">Le chiffre de César</h2>
+            <p>Le chiffre de César est la plus ancienne et la plus simple des substitutions mono-alphabétiques : chaque lettre est remplacée par la lettre située k positions plus loin dans l'alphabet (avec un retour à A après Z). César, selon Suétone, utilisait un décalage de 3 dans sa correspondance militaire : A devient D, B devient E, etc.</p>
+            <pre class="cadre">Texte clair : A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+            Texte codé  : D E F G H I J K L M N O P Q R S T U V W X Y Z A B C</pre>
+            <p>La clé se réduit ici à un seul nombre k compris entre 1 et 25 : il n'y a donc que 25 clés possibles. Le déchiffrement se fait par un décalage inverse de k positions. Ce chiffre est trivialement cassable par recherche exhaustive, mais il sert de brique de base à des chiffres plus élaborés comme celui de Vigenère.</p>
+            <img src="images/monoalphabetique/001-003-img-2.jpeg" alt="Le chiffre de César" />
+            <img src="images/monoalphabetique/001-004-img-3.jpeg" alt="Le chiffre de César (suite)" />
+            <img src="images/monoalphabetique/001-005-img-4.jpeg" alt="Le chiffre de César (exemple)" />
+
+            <h2 id="affine">Le chiffre affine</h2>
+            <p>Le chiffre affine généralise le chiffre de César : on remplace la lettre de rang x par la lettre de rang y = ax + b (mod 26), où a et b sont les deux nombres qui constituent la clé. César correspond au cas particulier a = 1.</p>
+            <p>Pour que le chiffrement soit réversible (c'est-à-dire pour que deux lettres différentes ne soient jamais codées par la même lettre), il faut que a soit premier avec 26 : a ne doit être divisible ni par 2, ni par 13. Il y a donc 12 choix possibles pour a et 26 pour b, soit 312 clés. Le déchiffrement s'effectue avec la fonction inverse x = a′(y − b) (mod 26), où a′ est l'inverse de a modulo 26.</p>
+            <img src="images/monoalphabetique/001-006-img-5.jpeg" alt="Le chiffre affine" />
+            <img src="images/monoalphabetique/001-007-img-6.jpeg" alt="Le chiffre affine (suite)" />
+            <img src="images/monoalphabetique/001-008-img-7.jpeg" alt="Le chiffre affine (exemple)" />
+
+            <h2 id="faiblesses">Les faiblesses de la substitution mono-alphabétique</h2>
+            <p>Malgré le nombre gigantesque de clés (26! ≈ 4×10<sup>26</sup>), la substitution mono-alphabétique est facilement vulnérable à l'<strong>analyse fréquentielle</strong> : dans une langue donnée, chaque lettre apparait avec une fréquence caractéristique (en français, E est de loin la lettre la plus fréquente, suivie de A, S, I, T, N...). En comptant les fréquences des lettres du message codé et en les comparant aux fréquences usuelles de la langue, on identifie progressivement les substitutions.</p>
+            <p>Le cryptanalyste affine ensuite sa lecture en exploitant les régularités de la langue : fréquences des bigrammes et trigrammes (ES, LE, ENT, QUE...), mots courts prévisibles (UN, LE, LA, ET...), lettres doubles fréquentes (LL, SS, EE...). Quelques lettres identifiées suffisent généralement à déchiffrer le reste du message par simple déduction. Cette méthode, popularisée par Al-Kindi dès le IX<sup>e</sup> siècle, a sonné le glas des substitutions mono-alphabétiques.</p>
+            <img src="images/monoalphabetique/001-009-img-8.jpeg" alt="Les faiblesses de la substitution mono-alphabétique" />
+            <img src="images/monoalphabetique/001-010-img-9.jpeg" alt="Analyse fréquentielle" />
+            <img src="images/monoalphabetique/001-011-img-10.jpeg" alt="Analyse fréquentielle (suite)" />
+
+            <h2 id="atbash">Le chiffre Atbash</h2>
+            <p>Le chiffre Atbash est une substitution mono-alphabétique très particulière, d'origine hébraïque : on remplace chaque lettre par celle qui occupe la position symétrique dans l'alphabet (A ↔ Z, B ↔ Y, C ↔ X, ...). Il n'y a qu'une seule clé possible, puisqu'il n'y a aucun choix : dès que l'on sait qu'un texte est chiffré en Atbash, il est immédiatement déchiffrable.</p>
+            <p>Sa propriété remarquable est sa réversibilité : chiffrer et déchiffrer se font par exactement la même opération, puisque la substitution est sa propre inverse.</p>
+            <img src="images/monoalphabetique/001-012-img-11.jpeg" alt="Le chiffre Atbash" />
+
+            <h2 id="polybe">Le carré de Polybe et les nihilistes russes</h2>
+            <p>Le carré de Polybe est un procédé de chiffrement attribué à l'historien grec Polybe. On écrit les 25 lettres de l'alphabet (I et J confondus) dans un carré 5×5, et chaque lettre est alors représentée par le couple formé de son numéro de ligne et de son numéro de colonne :</p>
+            <pre class="cadre">    1 2 3 4 5
+            1   A B C D E
+            2   F G H I K
+            3   L M N O P
+            4   Q R S T U
+            5   V W X Y Z</pre>
+            <p>Ainsi, la lettre D se code 14, la lettre O se code 34. Le message est transformé en une suite de nombres à deux chiffres. Ce chiffre convertit les lettres en nombres, ce qui permet des variantes (transmission par signaux, torches, claquements...).</p>
+            <p>Les nihilistes russes l'utilisèrent en prison pour communiquer entre cellules : ils tapaient les couples de chiffres du carré de Polybe contre la cloison. Pour renforcer le chiffre, ils ajoutaient une clé : un mot écrit dans un carré de Polybe, dont on soustrayait (chiffre à chiffre) les coordonnées de chaque lettre du message.</p>
+            <img src="images/monoalphabetique/001-013-img-12.jpeg" alt="Le carré de Polybe et les nihilistes russes" />
+
+            <h2 id="templiers">Le chiffre des templiers</h2>
+            <p>Le chiffre des templiers est une substitution mono-alphabétique symbolique utilisée par l'ordre du Temple entre le XII<sup>e</sup> et le XIII<sup>e</sup> siècle pour protéger certains documents. Chaque lettre de l'alphabet est remplacée par un symbole géométrique construit à partir de la croix templière : le dessin de la croix (déformée en « + » à branches égales) est divisé en zones, et chaque lettre est codée par le segment ou la combinaison de segments correspondant à sa position dans l'alphabet.</p>
+            <p>Ce type de chiffre par symboles n'apporte aucune sécurité réelle face à l'analyse fréquentielle : une fois la table des symboles reconstituée (ce que permettent les répétitions et les fréquences), le texte est déchiffré comme n'importe quelle substitution mono-alphabétique.</p>
+            <img src="images/monoalphabetique/001-014-img-13.jpeg" alt="Le chiffre des templiers" />
+
+            <h2 id="pigpen">Le chiffre Pigpen</h2>
+            <p>Le chiffre Pigpen (aussi appelé « chiffre des francs-maçons » ou « chiffre maçonnique ») remplace chaque lettre par un symbole géométrique dérivé d'une grille. On utilise deux grilles de 9 cases (tic-tac-toe) et deux grilles en X de 4 cases, chacune contenant des lettres ; chaque lettre est représentée par le contour de la case qui la contient, éventuellement agrémenté d'un point pour distinguer les grilles de la deuxième série.</p>
+            <p>Comme pour le chiffre des templiers, il s'agit d'une substitution mono-alphabétique déguisée : la table de correspondance est facilement reconstituable et le chiffre n'offre aucune résistance à l'analyse fréquentielle. Il reste néanmoins célèbre pour sa simplicité et son aspect ludique.</p>
+            <img src="images/monoalphabetique/001-015-img-14.jpeg" alt="Le chiffre Pigpen" />
+
+            <h2 id="delastelle">La substitution économique de Delastelle - Le système monôme/binôme</h2>
+            <p>Félix Delastelle a proposé une variante du carré de Polybe dite « économique » : le système monôme/binôme. L'idée est de réduire la longueur du message chiffré en remplaçant les lettres les plus fréquentes de la langue par un seul chiffre (monôme), et les lettres plus rares par deux chiffres (binôme), le tout à partir d'un carré de Polybe.</p>
+            <p>Par exemple, les lettres les plus fréquentes du français (E, A, S, ...) reçoivent des codes à un seul chiffre, tandis que les autres conservent leur code à deux chiffres du carré de Polybe. Un message chiffré est ainsi nettement plus court qu'avec un carré de Polybe classique, d'où le qualificatif d'« économique ». Le déchiffrement exige de bien délimiter les codes, ce qui se fait sans ambiguïté grâce aux valeurs autorisées pour les monômes.</p>
+            <img src="images/monoalphabetique/001-016-img-15.jpeg" alt="La substitution économique de Delastelle" />
+            <img src="images/monoalphabetique/001-017-img-16.jpeg" alt="Le système monôme/binôme (suite)" />
+
+          </article>
+
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

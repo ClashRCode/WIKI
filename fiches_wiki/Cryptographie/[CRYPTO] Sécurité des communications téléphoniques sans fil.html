@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Enigma - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .sidebar { position: sticky; top: 80px; height: calc(100vh - 80px); overflow-y: auto; }
+    .toc a { display: block; padding: 0.5rem 0.75rem; border-radius: 0.25rem; color: #475569; text-decoration: none; transition: all 0.2s; font-size: 0.9rem; }
+    .toc a:hover { background-color: #f1f5f9; color: #4f46e5; }
+    .toc a.active { background-color: #e0e7ff; color: #4f46e5; font-weight: 500; }
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    .content h1 { font-size: 2rem; font-weight: 800; color: #1e293b; border-bottom: 2px solid #4f46e5; padding-bottom: 0.5rem; margin-top: 1.5rem; margin-bottom: 1rem; }
+    .content h2 { font-size: 1.5rem; font-weight: 700; color: #334155; border-bottom: 1px solid #94a3b8; padding-bottom: 0.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+    .content h3 { font-size: 1.25rem; font-weight: 600; color: #475569; margin-top: 1.25rem; margin-bottom: 0.5rem; }
+    .content h4 { font-size: 1.125rem; font-weight: 600; color: #64748b; margin-top: 1rem; margin-bottom: 0.5rem; }
+    .content p { line-height: 1.75; margin-bottom: 1rem; }
+    .content img { max-width: 100%; height: auto; border-radius: 0.5rem; margin: 1.5rem auto; display: block; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+    .sidebar::-webkit-scrollbar { width: 6px; }
+    .sidebar::-webkit-scrollbar-track { background: #f1f5f9; }
+    .sidebar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    .sidebar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    pre.cadre { background: #f1f5f9; border-radius: 0.5rem; padding: 1rem; overflow-x: auto; font-family: monospace; line-height: 1.5; }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction-gsm" class="toc-level-1">Introduction - Le réseau GSM</a>
+            <a href="#authentification" class="toc-level-2">L'authentification</a>
+            <a href="#anonymat" class="toc-level-2">L'anonymat du mobile</a>
+            <a href="#failles-gsm" class="toc-level-2">Les failles de sécurité</a>
+            <a href="#securite-3g" class="toc-level-1">La sécurité des communications 3G</a>
+          </nav>
+        </div>
+      </aside>
+
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <article class="content">
+            <h1 id="securite-des-communications-telephoniques-sans-fil">Sécurité des communications téléphoniques sans fil</h1>
+
+            <h2 id="introduction-gsm">Introduction - Le réseau GSM</h2>
+            <p>GSM, <strong>G</strong>roupe <strong>S</strong>pécial <strong>M</strong>obile, acronyme d'origine française traduit plus tard en anglais par <strong>G</strong>lobal <strong>S</strong>ystem for <strong>M</strong>obile communication, est un standard développé par l'ETSI (<strong>E</strong>uropean <strong>T</strong>elecommunications <strong>S</strong>tandard <strong>I</strong>nstitute) pour les communications entre téléphone portable et réseaux d'opérateurs. Des contraintes de sécurité ont été incorporées dans ce standard, qui sont :</p>
+            <ul class="list-disc list-inside space-y-1 mb-4">
+            <li><strong>authentification du mobile</strong> auprès du réseau, afin que l'opérateur sache exactement à qui facturer la communication ;</li>
+            <li>préservation de l'<strong>anonymat du mobile</strong> (quelqu'un qui écoute le réseau ne doit pas savoir qui se connecte au réseau, notamment afin d'éviter de localiser un téléphone portable) ;</li>
+            <li>la préservation de la <strong>confidentialité des conversations</strong>, qui doivent être chiffrées pour ne pas être accessibles aux personnes écoutant le réseau.</li>
+            </ul>
+            <p>Une des difficultés de ce protocole est qu'il fait intervenir non pas deux, mais trois partenaires : le téléphone mobile, le réseau, et l'opérateur. Le réseau peut en effet appartenir à quelqu'un d'autre que l'opérateur (par exemple, si on est à l'étranger). Le protocole doit donc être assez souple pour permettre l'interopérabilité entre équipements d'origines différentes.</p>
+
+            <h3 id="authentification">L'authentification</h3>
+            <p>La première phase du protocole est l'authentification, qui se déroule entre le téléphone, et plus précisément sa carte SIM (<strong>S</strong>ubscriber <strong>I</strong>dentity <strong>M</strong>odule), et l'opérateur. Le réseau ne joue ici qu'un rôle d'intermédiaire. Rappelons que la carte SIM est fournie directement par l'opérateur, qui peut y disposer les informations dont il a besoin.</p>
+            <p>Lors de sa première connexion au réseau, le téléphone envoie donc son identifiant au réseau. Ce numéro, unique, révèle notamment à quel opérateur appartient cette carte SIM et identifie la carte SIM parmi toutes celles distribuées par l'opérateur. Le réseau transmet cet identifiant à l'opérateur. L'opérateur peut alors identifier la carte SIM (et donc le client qui a souscrit l'abonnement). En particulier, il est en possession d'une clé secrète <em>K<sub>sec</sub></em> qui a été inscrite dans une partie non accessible en lecture de la carte SIM.</p>
+            <p>Pour vérifier que personne ne cherche à usurper l'identité de la carte SIM, l'opérateur va alors transmettre un challenge à cette carte SIM. Il choisit pour cela un nombre aléatoire <em>N</em>. À l'aide d'un algorithme baptisé <em>A3</em>, il calcule la réponse à ce challenge. Cette réponse dépend de la clé secrète <em>K<sub>sec</sub></em> qui est partagée uniquement entre l'opérateur et la carte SIM. Autrement dit, l'opérateur calcule <em>R = A3(N, K<sub>sec</sub>)</em>. Puisqu'il est aussi hors de question de transmettre <em>K<sub>sec</sub></em> au réseau, l'opérateur, à l'aide d'un autre algorithme baptisé <em>A8</em>, calcule aussi une clé de communication <em>K<sub>c</sub></em> qui dépend là-aussi du challenge <em>N</em> et de la clé secrète <em>K<sub>sec</sub></em>.</p>
+            <p>L'opérateur envoie alors le triplet <em>(N, R, K<sub>c</sub>)</em> au réseau. Celui-ci transmet le challenge <em>N</em> au téléphone. La carte SIM, à l'aide du même algorithme <em>A3</em> et de la clé secrète <em>K<sub>sec</sub></em>, calcule la réponse au challenge <em>R′ = A3(N, K<sub>sec</sub>)</em> et transmet sa réponse au réseau. Le réseau compare alors la valeur attendue <em>R</em> avec la valeur retournée <em>R′</em>. Si elles coïncident, la carte SIM a rempli le challenge et a prouvé qu'elle était bien en possession de la clé secrète associée à l'identifiant.</p>
+            <p>Parallèlement, avec l'algorithme <em>A8</em>, la carte SIM est aussi capable de calculer la clé de communication <em>K<sub>c</sub></em>. Il est important de remarquer, et c'est effectivement très important pour la sécurité, que cette clé ne transite pas par le réseau et ne peut donc pas être interceptée. À ce stade, le réseau et le téléphone sont en possession d'une même clé. Ils peuvent donc commencer à communiquer, en chiffrant les données à partir d'un algorithme baptisé <em>A5</em> initialisé par la clé <em>K<sub>c</sub></em>.</p>
+            <img src="images/gsm/001-001-img-0.jpeg" alt="Protocole d'authentification GSM" />
+            <p>Remarquons que les algorithmes A3 et A8 sont utilisés par l'opérateur et la carte SIM, qui appartient à l'opérateur. Ces algorithmes peuvent donc être spécifiques à l'opérateur. En revanche, A5 doit pouvoir être opéré entre n'importe quel téléphone et n'importe quel réseau : il s'agit donc d'un algorithme standardisé, qui est un chiffrement par flots à partir d'un compteur et de la clé secrète <em>K<sub>sec</sub></em>. Cet algorithme n'a pas été rendu public, mais il a été rétro-ingénieré quelques années après sa première utilisation.</p>
+
+            <h3 id="anonymat">L'anonymat du mobile</h3>
+            <p>Remarquons que le protocole que nous avons décrit ne répond pas à une des contraintes imposées au préalable : la préservation de l'anonymat du portable. En réalité, elle est garantie par une petite modification du procédé. La première authentification du téléphone auprès d'un réseau se déroule exactement comme nous l'avons décrit, à une exception près : au moment où ils sont en possession d'une clé de communication commune, le réseau commence à envoyer au téléphone un <strong>identifiant temporaire</strong>. Cet identifiant temporaire, personne d'autre ne peut y avoir accès puisqu'il est chiffré. Lors d'une authentification ultérieure du téléphone auprès du réseau, le téléphone n'utilisera pas son identifiant, mais l'identifiant temporaire que le réseau lui a envoyé. De plus, pour plus de confidentialité, le réseau lui fournira un nouvel identifiant temporaire. Ainsi, l'identité réelle du téléphone portable n'est transmise qu'à la première authentification. Plus tard, il s'agit d'identifiants temporaires, et à moins d'avoir tracé tous les échanges, il est impossible de savoir de quel téléphone il s'agit.</p>
+
+            <h3 id="failles-gsm">Les failles de sécurité</h3>
+            <p>Pourtant, ce protocole souffre de plusieurs failles de sécurité. La première est due à la façon dont il est utilisé, et particulièrement aux <strong>réseaux paresseux</strong>. En effet, recevant l'identifiant (même temporaire) d'un téléphone déjà authentifié, le réseau n'a plus besoin de demander à l'opérateur un triplet <em>(N, R, K<sub>c</sub>)</em> puisqu'il est déjà en possession de ces informations. Il peut donc réenvoyer le même challenge au téléphone. Mais celui-ci donnera la même réponse… Ainsi, quelqu'un qui essaierait de se faire passer pour le téléphone, s'il a intercepté la réponse au premier challenge, pourra donner une réponse correcte à ce challenge car il s'agit du même ! De plus, la clé de communication utilisée est alors la même, ce qui ne doit jamais être le cas dans le cadre d'un chiffrement par flots. L'autre faille est plus structurelle. Si le téléphone s'identifie au réseau, l'inverse n'est pas le cas : comment un téléphone peut-il être sûr de l'identité prétendue du réseau ?</p>
+
+            <h2 id="securite-3g">La sécurité des communications 3G</h2>
+            <p>Pour pallier ces défauts, le standard UMTS (<strong>U</strong>niversal <strong>M</strong>obile <strong>T</strong>elecommunication <strong>S</strong>ystem), dit de 3<sup>ème</sup> génération, publié par l'ETSI en 2000, a introduit un certain nombre de nouveautés dans le protocole, dont deux sont essentielles :</p>
+            <ul class="list-disc list-inside space-y-2 mb-4">
+            <li><strong>l'authentification du réseau auprès du mobile :</strong> lorsque le réseau envoie l'identifiant du téléphone à l'opérateur, ce dernier lui transmet un numéro d'authentification. Ce numéro ne peut être calculé que par la carte SIM et l'opérateur, ne peut être réutilisé deux fois. Il garantit à la carte SIM que l'opérateur a confiance en ce réseau.</li>
+            <li><strong>la garantie de fraicheur des challenges :</strong> la carte SIM interdit d'utiliser un challenge déjà utilisé.</li>
+            </ul>
+
+          </article>
+
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
