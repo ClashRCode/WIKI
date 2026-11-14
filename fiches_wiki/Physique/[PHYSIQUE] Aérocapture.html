@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aérocapture - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#principe" class="toc-level-1">Principe</a>
+            <a href="#etude-de-cas-martien" class="toc-level-1">Étude de cas martien</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="aerocapture">Aérocapture</h1>
+
+
+
+
+
+
+<h2 id="introduction">Introduction</h2>
+<p>L'aérocapture est, dans le domaine de l'astronautique, une technique théorique qui consiste, pour un vaisseau spatial qui s'approche sur une trajectoire hyperbolique d'un corps céleste, à le placer en orbite autour de celui-ci en utilisant uniquement la traînée générée par la traversée de l'atmosphère de cette planète, sans avoir recours à ses moteurs pour décélérer.</p>
+<p><img alt="Illustration – Introduction" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,220px)"/></p><h2 id="principe">Principe</h2>
+<p>Lorsqu'un vaisseau spatial s'approche d'un corps céleste (planète, lune) sur une trajectoire hyperbolique, comme c'est le cas des sondes spatiales à l'approche de la planète visée, celui-ci doit diminuer sa vitesse au moment où il contourne le corps céleste s'il doit se mettre en orbite autour de lui. Cette manœuvre consomme une quantité de carburant qui peut représenter plus de la moitié de sa masse. Si la vitesse n'est pas réduite, le vaisseau, après avoir contourné la planète ou la lune, repartira sur sa trajectoire hyperbolique en s'éloignant de celle-ci.</p>
+<p>La technique de l'aérocapture consiste à utiliser la traînée aérodynamique (forces de frottement) générée par le passage dans l'atmosphère du corps céleste pour ralentir le vaisseau. Celui-ci doit, au cours d'un seul passage dans les couches basses de l'atmosphère, diminuer suffisamment sa vitesse pour que le vaisseau se place en orbite. La manœuvre est encore plus délicate que celle de l'aérofreinage, qui utilise la traînée uniquement pour modifier l'orbite et qui peut donc procéder graduellement. Pour ralentir suffisamment le vaisseau, celui doit affronter un échauffement important et prolongé. La précision de la manœuvre et donc la connaissance très précise de la densité de l'atmosphère sont nécessaires. Cette technique n'est pas utilisable si la planète ne possède pas d'atmosphère.</p>
+<p>Aucune aérocapture n'a jusqu'à présent (2013) été réalisée par une sonde spatiale ou un vaisseau avec équipage. Cette technique est à l'étude pour la mission habitée vers Mars car elle réduirait considérablement la masse de carburant à emporter.</p>
+<h2 id="etude-de-cas-martien">Étude de cas martien</h2>
+<p>Selon une étude effectuée par l'Onera pour l'Agence spatiale européenne (programme Aerofast), pour qu'un vaisseau puisse se placer en orbite au-dessus de Mars par cette technique, il faut qu'il passe à une altitude de 40 km au-dessus de sa surface. Il peut ainsi ralentir de 2 km/s, ce qui est suffisant pour permettre une aérocapture d'un engin ayant suivi la trajectoire empruntée habituellement par les missions martiennes. Cette étude préconise l'utilisation d'un bouclier thermique ayant une géométrie de type sphérico-biconique. Selon les simulations, l'engin devrait être encapsulé dans un bouclier thermique fermé ; un bouclier ouvert sur l'arrière, plus pratique pour les manœuvres de séparation, ne pourrait être retenu du fait de l'énergie thermique accumulée sur l'arrière. Le gain sur la masse de l'engin spatial obtenu en économisant le carburant nécessaire à la mise en orbite serait compris entre 30 et 50 %</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

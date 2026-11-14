@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bruit de grenaille - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#description" class="toc-level-1">Description</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            
+
+
+
+<h1 id="bruit-de-grenaille">Bruit de grenaille</h1><h1 id="introduction">Introduction</h1>
+<p>Un bruit de grenaille, bruit de Schottky ou bruit quantique (en anglais, shot noise) est un bruit de fond qui peut être modélisé par un processus de Poisson.</p>
+<p>En électronique, il est causé par le fait que le courant électrique n'est pas continu mais constitué de porteurs de charge élémentaires (en général des électrons). Ce bruit existe également en optique pour un flux lumineux (constitué d'un ensemble de photons).</p>
+<h1 id="description">Description</h1>
+<p>Dans le cas du bruit optique, si nous dénombrons le nombre <em>n</em> de photons émis par une source durant un temps T, nous pouvons déterminer la moyenne temporelle 〈 <em>n</em> 〉. En appelant <em>r (rate)</em> le nombre moyen émis par unité de temps, nous avons :</p>
+<p>〈 <em>n</em> 〉 = <em>r</em> T.</p>
+<p>Considérons un instant très court δt tel que l'on a une probabilité faible d'avoir l'émission de plus d'un photon (δt est donc de l'ordre de 1/r). La durée de mesure T comporte N intervalles de durée δt, N = T/δt.</p>
+<p>Si l'on note P(0, δt ) la probabilité de n'émettre aucun photon dans l'intervalle δt, et P(1, δt ) la probabilité qu'un photon soit émis ; on a évidemment</p>
+<p><img alt="Illustration – Description" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,175px)"/></p>
+<p>Si nous supposons que l’émission d’un photon pendant le temps δ<em>t</em> ne dépend pas des émissions précédentes, alors la probabilité de compter <em>n</em> photons dans l’intervalle de temps T est donnée par la distribution binomiale :</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>n</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>P</mi><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>,</mo><mi>δ</mi><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>n</mi></msup><msup><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>−</mo><mi>P</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>,</mo><mi>δ</mi><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="true">)</mo></mrow><mrow><mi>N</mi><mo>−</mo><mi>n</mi></mrow></msup><mfrac><mrow><mi>N</mi><mi>!</mi></mrow><mrow><mi>n</mi><mi>!</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>N</mi><mo>−</mo><mi>n</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>!</mi></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">P(n) = P(1,\delta t)^{n}{(1 - P(1,\delta t))}^{N - n}\frac{N!}{n!(N - n)!}.</annotation></semantics></math></p>
+<p>La limite lorsque N tend vers l'infini de P(<em>n</em> ) est alors la distribution de Poisson :</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>lim</mo><mrow><mi>N</mi><mo>→</mo><mi>∞</mi></mrow></munder><mi>P</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>n</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mfrac><mrow><mo form="prefix" stretchy="false">⟨</mo><mi>n</mi><msup><mo form="postfix" stretchy="false">⟩</mo><mi>n</mi></msup></mrow><mrow><mi>n</mi><mi>!</mi></mrow></mfrac><mo>exp</mo><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mo form="prefix" stretchy="false">⟨</mo><mi>n</mi><mo form="postfix" stretchy="false">⟩</mo><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">\lim_{N \rightarrow \infty}P(n) = \frac{\langle n\rangle^{n}}{n!}\exp( - \langle n\rangle).</annotation></semantics></math></p>
+<p>Dans les cas du bruit électronique, Albert Rose propose de comprendre le bruit de grenaille par le calcul suivant :</p>
+<p>Si on mesure le nombre de porteurs de charge passés durant un intervalle de temps <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\Delta t</annotation></semantics></math> donné, on aura un nombre moyen <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>N</mi><mo accent="true">¯</mo></mover><mo>=</mo><mfrac><mi>I</mi><mi>e</mi></mfrac><mo>×</mo><mi>Δ</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\overline{N} = \frac{I}{e} \times \Delta t</annotation></semantics></math>,</p>
+<p>où I désigne le courant moyen qui parcourt le composant, et e la charge élémentaire de l'électron.</p>
+<p>Le nombre effectif de porteurs mesuré est aléatoire, car les porteurs n'arrivent pas régulièrement mais en ordre dispersé selon une probabilité constante de I/e par unité de temps. Ceci veut dire qu'ils suivent une loi de Poisson et donc Var(N) = N.</p>
+<p>La variance sur I vaut alors :</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mi>a</mi><mi>r</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>I</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>V</mi><mi>a</mi><mi>r</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>N</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>×</mo><mfrac><msup><mi>e</mi><mn>2</mn></msup><mrow><mi>Δ</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mover><mi>N</mi><mo accent="true">¯</mo></mover><mfrac><msup><mi>e</mi><mn>2</mn></msup><mrow><mi>Δ</mi><msup><mi>t</mi><mn>2</mn></msup></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>I</mi><mi>e</mi></mrow><mrow><mi>Δ</mi><mi>t</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">Var(I) = Var(N) \times \frac{e^{2}}{\Delta t^{2}} = \overline{N}\frac{e^{2}}{\Delta t^{2}} = \frac{Ie}{\Delta t}</annotation></semantics></math>.</p>
+<p>Ce bruit est donc modélisé par une source de courant, placée en parallèle du composant idéal non bruyant, et de densité spectrale de puissance <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>I</mi></msub><mo>=</mo><mi>e</mi><mi>I</mi></mrow><annotation encoding="application/x-tex">D_{I} = eI</annotation></semantics></math>. Dans la pratique, pour calculer le bruit de grenaille sur une bande de fréquences <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mi>f</mi><mo>=</mo><mn>1</mn><mi>/</mi><mn>2</mn><mi>Δ</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">\Delta f = 1/2\Delta t</annotation></semantics></math> (le coefficient 2 provenant du fait qu'en électronique on raisonne en fréquences positives uniquement), on utilise la formule :</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">⟨</mo><msubsup><mi>i</mi><mi>n</mi><mn>2</mn></msubsup><mo form="postfix" stretchy="false">⟩</mo><mo>=</mo><mn>2</mn><mi>e</mi><mi>I</mi><mi>Δ</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">\langle i_{n}^{2}\rangle = 2eI\Delta f</annotation></semantics></math>.</p>
+<p>Ce modèle doit cependant être dans certains cas affiné en y introduisant certains phénomènes de second ordre, tels que :</p>
+<ul>
+<li><p>la diffusion thermique : si celle-ci est forte, le bruit se transforme en bruit thermique ; en fait, il y a transition continue entre les deux types de bruit ;</p></li>
+<li><p>le piégeage, le dépiégeage et la recombinaison des porteurs, qui peuvent affaiblir l'intensité du bruit de grenaille et modifier sa distribution spectrale (bruit de génération-recombinaison ou bruit GR) ;</p></li>
+<li><p>la forme temporelle de la contribution électrique de chaque porteur (qui n'est pas forcément une impulsion de type Dirac) ; ce phénomène fait que le bruit n'est pas parfaitement blanc.</p></li>
+</ul>
+<p>En électronique, les principales sources de bruit de grenaille sont les jonctions PN et Schottky que l'on trouve dans les diodes, les transistors bipolaires et au niveau des grilles des transistors JFET.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

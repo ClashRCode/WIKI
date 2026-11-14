@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anomalie Pioneer - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#observations" class="toc-level-1">Observations</a>
+            <a href="#hypotheses-emises" class="toc-level-1">Hypothèses émises</a>
+            <a href="#decouverte-de-l-origine-de-l-effet-pioneer" class="toc-level-1">Découverte de l&#x27;origine de l&#x27;effet Pioneer</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="anomalie-pioneer">Anomalie Pioneer</h1>
+
+
+
+
+
+
+<h2 id="introduction">Introduction</h2>
+<p>L'anomalie Pioneer (ou effet Pioneer) désigne l'anomalie d'accélération affectant les sondes spatiales Pioneer 10 et 11 durant leur transit en marge du système solaire et mesurée entre 1979 et 2002. Jusqu'en 2011, il n'y avait pas d'explication à ce phénomène et de nombreuses théories ont été avancées. En 2011, le mystère est éclairci par une équipe italo-portugaise dont les résultats sont confirmés par d'autres travaux de la communauté scientifique. L'origine de la déviation observée résulte de la pression du rayonnement infrarouge émis par les RTG sur le dos de l'antenne parabolique à grand gain de la sonde spatiale.</p>
+<h2 id="observations">Observations</h2>
+<p>L'anomalie Pioneer est découverte par l'équipe qui prend en charge les sondes spatiales Pioneer après leur dernier survol des planètes externes (1979). La NASA a décidé de prolonger la mission, notamment pour tester les lois de la mécanique céleste dans le système solaire externe. Le contact avec les sondes spatiales sera perdu en 1990 pour Pioneer 11 et 2002 pour Pioneer 10. L'équipe de John Anderson, du centre JPL de la NASA, détecte une anomalie par rapport aux calculs théoriques dans l'accélération subie par les sondes spatiales. La vitesse des sondes spatiales est mesurée via l'effet Doppler subi par les émissions radio de celles-ci (décalage vers le bleu). Cette variation indique que les deux sondes spatiales sont soumises à une force non identifiée, orientée vers le Soleil, de même valeur absolue. La valeur de cette accélération est de l'ordre de a<sub>p</sub> = (8,74 ± 1,33) × 10<sup>−10</sup> m s<sup>−2</sup>. Cette variation se traduit par la réduction de la vitesse des sondes spatiales, qui s'éloignent du système solaire, d'environ 1 km/h tous les 10 ans (Pioneer 10 se déplace à une vitesse d'environ 44 000 km/h). Le constat d'un phénomène physique inexpliqué n'est publié par l'équipe d'ingénieurs qu'en 1998, après que celle-ci ait passé en revue toutes les causes pouvant être à l'origine de cette force.</p>
+<p>Les données provenant de Galileo et d'Ulysses indiquent une anomalie similaire, mais on ne peut pas tirer de conclusions fermes de ces mesures. En effet, ces sondes sont stabilisées grâce à des roues de réaction embarquées, tout comme les sondes Voyager : leur trajectoire est donc affectée périodiquement par leur action destinée à maintenir l'orientation de l'antenne parabolique vers la Terre. En revanche, l'orientation des sondes Pioneer est stabilisée de manière passive par effet gyroscopique, c'est-à-dire que c'est la rotation des sondes autour de leur axe longitudinal qui maintient cette stabilité. Leur vitesse actuelle peut donc être déterminée avec précision, en connaissant uniquement leur vitesse initiale et l'accélération qu'elles ont subie au voisinage des planètes qu'elles ont visitées. C'est pour cette raison que la vitesse des sondes Pioneer est connue avec plus de précision.</p>
+<h2 id="hypotheses-emises">Hypothèses émises</h2>
+<p>Après avoir tenté, en vain, de l'expliquer, le phénomène baptisé « anomalie Pioneer » fait l'objet de nombreuses études et spéculations. Les explications les plus spectaculaires remettent en cause les lois de la mécanique céleste telles qu'elles ont été établies ou avancent un effet de la matière noire :</p>
+<ul>
+<li><p>des forces gravitationnelles, exercées par :</p>
+<ul>
+<li><p>la ceinture de Kuiper, plus massive que prévu,</p></li>
+<li><p>ou une naine brune (voir Némésis),</p></li>
+<li><p>ou encore la matière noire ;</p></li>
+</ul></li>
+<li><p>le vent solaire ou la pression des radiations solaires qui devraient pourtant normalement s'exercer dans le sens inverse, résultant donc en une accélération ;</p></li>
+<li><p>les frottements avec le milieu interplanétaire ;</p></li>
+<li><p>une fuite de gaz des sondes (dont l'hélium provenant de la fission dans les générateurs) qui aurait donc tout autant pu les faire accélérer, ou bien pas décélérer toutes les deux) ;</p></li>
+<li><p>une pression thermique provenant des générateurs ou d'ailleurs, (c'est ce phénomène qui est à l'origine de l'explication finalement retenue) ;</p></li>
+<li><p>des erreurs, soit dans la mesure de la vitesse, soit dans les calculs ;</p></li>
+<li><p>un phénomène physique qui n'avait pas encore été observé :</p>
+<ul>
+<li><p>une modification de la vitesse de la lumière qui induirait une perturbation de l'effet Doppler utilisé pour mesurer la vitesse de la sonde,</p></li>
+<li><p>des corrections à la métrique de Schwarzschild qui régit l'espace-temps engendré par une masse à symétrie sphérique (ici le Soleil),</p></li>
+<li><p>un phénomène équivalent à l'effet Casimir qui relierait la masse inertielle à l'énergie gravitationnelle du vide, celle-ci elle-même affectée par l'absence de rayonnement de Unruh de grandes longueurs d'onde ;</p></li>
+</ul></li>
+<li><p>deux explications sont avancées en 20052, la théorie MOND et le modèle Cosmos à expansion d'échelle (SEC) de C. Johan Masreliez comme les meilleures explications possibles de l'anomalie, où la « SEC » donne une formule exacte.</p></li>
+</ul>
+<p>Toutes les causes matérielles (frottement, milieu interplanétaire) ont été quantifiées et rejetées dès 2006.</p>
+<h2 id="decouverte-de-l-origine-de-l-effet-pioneer">Découverte de l'origine de l'effet Pioneer</h2>
+<p>En mars 2011, une équipe italo-portugaise vérifie et valide une explication relativement prosaïque de l'anomalie Pioneer. La chaleur produite par les générateurs thermoélectriques à radioisotope est émise de façon isotrope (dans toutes les directions), mais une fraction significative de celle-ci est réfléchie par le dos de l'antenne parabolique à grand gain. La pression de rayonnement résultante exerce une poussée dans la direction opposée c'est-à-dire dans la direction du Soleil.</p>
+<p>Cette hypothèse est confirmée pour la décélération linéaire par l'équipe de Slava Turyshev du Jet Propulsion Laboratory et Viktor Toth, mais leurs calculs ne portaient pas sur la décélération angulaire. En juillet 2012, cette équipe a encore affiné son modèle, et estime avoir définitivement réglé la question de l'anomalie Pioneer ; ces travaux ont été confirmés par des équipes indépendantes</p>
+
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

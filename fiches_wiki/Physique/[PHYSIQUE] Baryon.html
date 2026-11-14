@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baryon - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#caracteristiques" class="toc-level-1">Caractéristiques</a>
+            <a href="#familles" class="toc-level-1">Familles</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="baryon">Baryon</h1>
+
+
+
+
+<h1 id="introduction">Introduction</h1>
+<p>Les baryons sont, en physique des particules, une catégorie de particules composites (c’est-à-dire non élémentaires) formées de trois quarks, dont les représentants les plus connus sont le proton et le neutron.</p>
+<h1 id="caracteristiques">Caractéristiques</h1>
+<p>Les baryons appartiennent à la famille des hadrons, ils sont composés de trois quarks. Leur spin demi-entier les classe dans la catégorie des fermions. En tant qu'hadrons, les baryons sont sensibles à l'interaction forte. En tant que fermions ils sont soumis au principe d'exclusion de Pauli et décrits par la statistique de Fermi-Dirac.</p>
+<p><img alt="Illustration – Caractéristiques" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,220px)"/>Les baryons ont chacun leur propre antiparticule, les antibaryons, qui sont constitués de trois antiquarks.</p>
+<h1 id="familles">Familles</h1>
+<p>Parmi les six saveurs de quarks existantes, seules les cinq plus légères (u, d, s, c et b) peuvent faire partie d’un baryon, le dernier quark (t) ayant, d’après le modèle standard, une durée de vie trop courte pour s’hadroniser.</p>
+<p>Les baryons les plus courants sont les nucléons, c'est-à-dire les protons et les neutrons. Mis à part ceux-ci, différentes familles de baryons (Δ, Λ, Σ, Ξ, Ω) ont été observées. Ces familles se différencient par les saveurs de quarks qui les constituent, plus précisément :</p>
+<ul>
+<li><p>le nombre de quarks de 1<sup>re</sup> génération (<em>u</em> et <em>d</em>) et donc le nombre de quarks de génération supérieure (<em>s</em>, <em>c</em> et <em>b</em>), le nombre total de quarks valant toujours trois ;</p></li>
+<li><p>l’isospin I.</p></li>
+</ul>
+<p>On a, par ordre décroissant de nombre de quarks de 1<sup>re</sup> génération et, en cas d’égalité, par ordre croissant d’isospin :</p>
+<ul>
+<li><p>Les nucléons, d’isospin I=1/2, sont composés de trois quarks de 1<sup>re</sup> génération, dont au moins un quark <em>u</em> et un quark <em>d</em>. Le proton est supposé stable (sa durée de vie est supérieure à 10<sup>33</sup> secondes). Le neutron a une durée de vie de 886 s<sup>1</sup>.</p></li>
+<li><p>Les baryons Delta (Δ<sup>++</sup>, Δ<sup>+</sup>, Δ<sup>0</sup>, Δ<sup>−</sup>), d’isospin I=3/2, sont également composés de trois quarks de 1<sup>re</sup> génération et se désintègrent en un pion et un proton ou un neutron.</p></li>
+<li><p>Les baryons Lambda (Λ<sup>0</sup>, Λ<sup>+</sup><sub>c</sub>, Λ<sup>0</sup><sub>b</sub>), d’isospin I=0, sont composés d'un quark <em>u</em>, d'un quark <em>d</em> et d'un quark de génération supérieure. La découverte du Λ<sup>0</sup> fut la première observation expérimentale du quark <em>s</em>.</p></li>
+<li><p>Les baryons Sigma (Σ<sup>+</sup>, Σ<sup>0</sup>, Σ<sup>−</sup>, Σ<sup>++</sup><sub>c</sub>, Σ<sup>+</sup><sub>c</sub>, Σ<sup>0</sup><sub>c</sub>, Σ<sup>+</sup><sub>b</sub>, Σ<sup>0</sup><sub>b</sub>, Σ<sup>−</sup><sub>b</sub>), d’isospin I=1, sont composés de deux quarks de 1<sup>re</sup> génération et d'un quark de génération supérieure.</p></li>
+<li><p>Les baryons Xi (Ξ<sup>0</sup>, Ξ<sup>−</sup>, Ξ<sup>+</sup><sub>c</sub>, Ξ<sup>0</sup><sub>c</sub>, …), d’isospin I=1/2, sont composés d'un quark de 1<sup>re</sup> génération et de deux quarks de génération supérieure. Ξ<sup>0</sup>, composé d'un quark <em>u</em> et de deux quarks <em>s</em>, se désintègre en un Λ<sup>0</sup> et un pion neutre, qui lui-même se désintègre rapidement en un électron et un positron ; ces deux particules s'annihilent immédiatement en produisant des rayons gamma.</p></li>
+<li><p>Les baryons Oméga (Ω<sup>−</sup>, Ω<sup>0</sup><sub>c</sub>, Ω<sup>−</sup><sub>b</sub>, …), d’isospin I=0, sont composés de trois quarks de génération supérieure. Le baryon Ω<sup>−</sup> est composé de trois quarks <em>s</em>, sa découverte fut un succès dans l'étude des quarks, sa masse et ses produits de désintégration ayant été correctement déterminés avant celle-ci.</p></li>
+</ul>
+<p>Les baryons composés d'au moins un quark <em>s</em> sont nommés hypérons.</p>
+<p>Les baryons exotiques sont des particules composées de trois quarks et de particules additionnelles (qui peuvent être également des quarks). Les pentaquarks, qui auraient été observés par certaines expériences récentes en physique des particules, en font partie. Ces pentaquarks sont constitués de 4 quarks et d'un antiquark. Par exemple, le Θ(1540)<sup>+</sup> serait constitué de deux quarks <em>u</em>, de deux quarks <em>d</em> et d'un antiquark s ¯ s. L'existence des pentaquarks est toujours controversée.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
