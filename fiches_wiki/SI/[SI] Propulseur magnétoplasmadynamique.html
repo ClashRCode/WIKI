@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Propulseur magnétoplasmadynamique - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#description" class="toc-level-1">Description</a>
+            <a href="#modes-de-fonctionnement" class="toc-level-2">Modes de fonctionnement</a>
+            <a href="#le-lfa-ou-mpdt-ameliore" class="toc-level-2">Le LFA ou MPDT amélioré</a>
+            <a href="#rendement-et-puissance" class="toc-level-1">Rendement et puissance</a>
+            <a href="#recherches-et-applications" class="toc-level-1">Recherches et applications</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="propulseur-magnetoplasmadynamique">Propulseur magnétoplasmadynamique</h1>
+
+
+
+
+
+
+
+
+<h2 id="introduction">Introduction</h2>
+<p>Un propulseur magnétoplasmadynamique (MPD ou MPDT pour magnetoplasmadynamic thruster), appelé aussi accélérateur à force de Lorentz (LFA pour Lorentz Force Accelerator), est l'une des technologies de propulsion électrique s'inscrivant dans le futur proche de l'exploration spatiale au XXIe siècle[2]. Cette propulsion de nature électromagnétique, conceptualisée dès 1964, utilise la force de Lorentz (force électromagnétique résultant de l'interaction entre un courant électrique et un champ magnétique) pour accélérer un gaz ionisé appelé plasma, qui procure une poussée par réaction. C'est un type d'accélérateur MHD (magnétohydrodynamique) spatial dont le fluide propulsif est un plasma.</p>
+<h2 id="description">Description</h2>
+<p>Le propulseur magnétoplasmadynamique se compose d’une tuyère divergente munie d'électrodes. Au centre de la tuyère se situe la cathode sous forme d'une tige métallique axiale. Sur le pourtour du « coquetier » est placée l’anode circulaire.</p>
+<p>De l'hydrazine, ou plus souvent un gaz rare (généralement de l'argon ou du xénon) est injecté à la base de la tige centrale. Un très fort arc électrique (intensité de plusieurs milliers d'ampères) est émis axialement depuis la cathode, ce qui ionise le gaz (le transformant en plasma). Ce fort courant électrique axial induit autour de lui un puissant champ magnétique azimutal, d'intensité maximale à cet endroit de plus forte densité de courant. Le courant électrique s'épanouit ensuite radialement en corolle vers l'anode en sortie de tuyère ; c'est là que ce courant d'allure radiale interagit avec le champ magnétique azimutal, en produisant des forces de Lorentz propulsives, dirigées selon l'axe du système. Le plasma est accéléré électromagnétiquement à travers la sortie divergente, assurant une poussée par réaction. À l'inverse de la propulsion spatiale classique, la propulsion n'est donc pas issue d'une combustion.</p>
+<h3 id="modes-de-fonctionnement">Modes de fonctionnement</h3>
+<p>L'énergie injectée et la poussée résultante sont le plus souvent appliquées de manière continue. Il existe cependant deux modes de fonctionnement en propulsion MPD :</p>
+<ul>
+<li><p>Le SF-MPDT (Self-Field MagnetoPlasmaDynamic Thruster) : propulseur MPD « à champ induit », où le fort courant électrique émis par la cathode induit le champ magnétique azimutal. Le MPD à champ induit est alors très similaire à un propulseur électrothermique Arcjet, et est parfois à ce titre dénommé « MPD Arcjet ».</p></li>
+<li><p>Le AF-MPDT (Applied-Field MagnetoPlasmaDynamic Thruster) : un solénoïde additionnel entoure le propulseur et procure un champ magnétique additionnel, améliorant le confinement et l'expulsion du plasma.</p></li>
+</ul>
+<p>Au chapitre des inconvénients, on peut noter une érosion importante des électrodes, et un fonctionnement nécessitant des puissances électriques se chiffrant en centaines de kilowatts, loin de ce que peut proposer une source d'énergie embarquée dans un engin spatial habituel.</p>
+<h3 id="le-lfa-ou-mpdt-ameliore">Le LFA ou MPDT amélioré</h3>
+<p>Une amélioration récente des propulseurs MPD est le LFA (Lorentz Force Accelerator). Par rapport à un propulseur MPD « classique », un LFA utilise plusieurs tiges cathodiques à l'intérieur d'un tube isolant. Le propulsif, fluide, circule à l'intérieur du tube, entre les tiges. C'est uniquement à la sortie du tube que le gaz est ionisé, protégeant les cathodes de l'érosion. Il existe divers modèles de LFA, dont deux principaux :</p>
+<ul>
+<li><p>LiLFA (Lithium-Lorentz Force Accelerator) : le propulsif est du lithium, substance à bas potentiel d'ionisation, vaporisé à la sortie du tube. Des propulseurs de ce type ont été testés en Russie durant 500 heures en continu sans érosion notable des électrodes. Un LiLFA « typique » fonctionnant avec une puissance de 200 kWe offre une poussée continue de 12 newtons, une vitesse d'éjection de 45 km/s (impulsion spécifique de 4500 secondes) et un rendement propulsif de 50 %. Ce rendement atteint 30 % dès 30 kWe.</p></li>
+<li><p>ALFA2 (Advanced Lithium-Fed/Applied-field Lorentz Force Accelerator) : version haute puissance des AF-LiLFA (équipée d'un solénoïde) à haut rendement (plus de 60 %) capable d'assurer des poussées de 200 newtons par propulseur dans la classe multi-mégawatts, pour de futurs vaisseaux interplanétaires habités.</p></li>
+</ul>
+<h2 id="rendement-et-puissance">Rendement et puissance</h2>
+<p>Le rendement propulsif MDP croît avec la puissance électrique injectée. Il atteint 30 % dès 30 kWe, et des rendements dépassant 60 % sont classiques.</p>
+<p>Un propulseur LFA de classe « moyenne » (100 à 200 kW) atteint des rendements de 40 à 50 %, des poussées se chiffrant en dizaines de newtons et des Isp de plusieurs milliers de secondes (vitesses d'éjection en dizaines de km/s). Ces puissances électriques correspondent à la moyenne envisagée pour le défunt Projet Prometheus qui visait à produire des générateurs électriques nucléaires alimentant les prochains vaisseaux spatiaux de la NASA.</p>
+<p>Les propulseurs LFA actuels les plus puissants (au-delà de 1 MW) offrent des possibilités records avec des poussées jusqu'à 200 newtons et des vitesses d'éjection importantes. Des propulseurs alimentés par des puissances de 10 à 20 MW sont envisagés pour les vols habités vers les planètes du système solaire.</p>
+<h2 id="recherches-et-applications">Recherches et applications</h2>
+<p>De nombreuses expérimentations ont lieu dans le monde entier sur la propulsion MDP depuis les années 1960, en Allemagne à l'Université de Stuttgart, en Italie au Centrospazio, au Japon à l'ISAS et à l'Université d'Ōsaka, et principalement en Russie au MAI (Moscow Aviation Institute) et au RKK Energia, ainsi qu'aux États-Unis à l'université du Sud de la Californie et surtout à l'EPPDyL (Electric Propulsion and Plasma Dynamics Lab) de l'Université de Princeton, où les recherches en propulsion MPD n'ont jamais cessé depuis 1967 ; et enfin directement à la NASA, au JPL (Jet Propulsion Laboratory) et au Glenn Research Center, qui ont résolu de nombreux problèmes relatifs à la performance, la stabilité et la durée de vie inhérents à ce type de propulseur.</p>
+<p>Des prototypes pulsés quasi stationnaires ont été testés dans l'espace à bord de satellites de démonstration soviétiques, et le premier satellite à propulsion MPD opérationnelle, le SFU (Space Flyer Unit) a été lancé par les japonais en 1996.</p>
+<p>Les technologies MPD et variantes LFA (principalement le ALFA²), en parallèle avec le propulseur électrothermique à contrôle du plasma par induction VASIMR, sont pressenties pour motoriser le futur vaisseau martien habité NEP (Nuclear Electric Propulsion) embarquant 2 réacteurs nucléaires totalisant 10 Mwe à l'horizon 2033.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

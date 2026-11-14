@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qubits d&#x27;antimatière - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#des-amplitudes-quantiques-au-qubit" class="toc-level-1">Des amplitudes quantiques au qubit</a>
+            <a href="#l-antimatiere-cosmologique-et-le-theoreme-cpt" class="toc-level-1">L&#x27;antimatière cosmologique et le théorème CPT</a>
+            <a href="#base-et-l-information-quantique" class="toc-level-1">« Base » et l&#x27;information quantique</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="qubits-d-antimatiere">Qubits d'antimatière</h1>
+
+
+
+
+
+
+<h2 id="introduction">Introduction</h2>
+<p>Il y a un siècle, en juin 1925, sur l'île d'Helgoland, Werner Heisenberg faisait la découverte des premiers éléments de la mécanique quantique sous sa forme dite « matricielle ». Quelques mois plus tard, de son côté, Erwin Schrödinger découvrait l'équation de la forme ondulatoire de la mécanique quantique qu'il publia en janvier 1926. C'est alors la première révolution quantique, celle qui donnera naissance au laser, à l'IRM et à la compréhension des semi-conducteurs et des supraconducteurs.</p>
+<p>Mais les équations de Heisenberg et Schrödinger ne tenaient pas compte de la théorie de la relativité restreinte et c'est Paul Dirac qui va le faire à la fin des années 1920 en découvrant une équation qui impliquait l'existence de l'antimatière et d'un moment cinétique intrinsèque, un spin, pour des particules comme l'électron. La théorie de Dirac prévoit donc que les protons et les électrons doivent posséder des antiparticules que l'on découvrira effectivement au cours des trois décennies suivantes.</p>
+<h2 id="des-amplitudes-quantiques-au-qubit">Des amplitudes quantiques au qubit</h2>
+<p>La théorie quantique contenait également plusieurs effets déroutant, l'interférence d'ondes de probabilité associées à l'état des systèmes physiques dans le monde microscopique, la superposition quantique et l'intrication de ces états.</p>
+<p>Transposés au monde macroscopique, ces phénomènes donneraient des comportements surréalistes et d'ailleurs, on se demande où se trouve en fait la frontière entre le monde quantique et le monde classique.</p>
+<p>Donnons un exemple avec une pièce de monnaie pour un jeu de pile ou face. Imaginons, dans un plan, deux axes : l'un correspond à l'état face et l'autre à l'état pile. Le monde quantique nous dit qu'il doit exister une sorte de flèche de rayon unité (un vecteur mathématique avec deux composantes) pouvant se déplacer arbitrairement sur un quart d'arc de cercle. Les projections de la longueur de cette flèche sur les axes donnent la probabilité d'obtenir un résultat lorsqu'on lance la pièce (rigoureusement parlant, il faut parler d'amplitudes quantiques de probabilité que l'on doit prendre au carré pour avoir une probabilité, voir par exemple à ce sujet le livre de Léonard Susskind).</p>
+<p>Mais, selon la mécanique quantique, il faut en conclure qu'avant de lancer la pièce et de trouver la flèche sur l'axe pile ou l'axe face, on doit accepter que la pièce est dans la superposition de ces deux états. Appliqué au fameux chat de Schrödinger, celui-ci serait à la fois mort et vivant.</p>
+<p>Appliqué au monde microscopique, face et pile pourraient correspondre à un état « 0 » et un état « 1 » en même temps dans le cas d'un système quantique à deux états comme disent les physiciens, c'est-à-dire un analogue quantique des bits d'informations dans un ordinateur classique. On est alors en présence d'un bit quantique, ou qubit, pour les fameux ordinateurs quantiques.</p>
+<p>Un exemple de ces fameux qubits peut justement se construire avec le spin des électrons ou des protons. La théorie de Dirac nous dit qu'on peut approximativement considérer ces particules quantiques comme des petites barres aimantées en rotation. Dans un sens, selon leur axe, elles sont dans un spin « haut » et dans l'autre sens de rotation dans un spin « bas ». Tout comme pour la pièce du jeu de pile ou face quantique, on peut alors mettre le spin quantique de ces particules dans une superposition d'états bas et hauts et donc considérer que ces états sont aussi des superpositions d'un qubit d'information.</p>
+<p>En manipulant la superposition des états de spins d'une population d'électrons et ou de protons, on peut alors faire des calculs quantiques, notamment quand on sait que l'on peut aussi intriquer entres elles ces particules comme on dit. C'est une des bases de la seconde révolution quantique spectaculairement illustrée par le fameux effet EPR et les travaux pionniers de John Bell, Richard Feynman et Alain Aspect.</p>
+<h2 id="l-antimatiere-cosmologique-et-le-theoreme-cpt">L'antimatière cosmologique et le théorème CPT</h2>
+<p>Il se trouve que selon un théorème basé sur la validité de la théorie de la relativité restreinte et des équations de la mécanique quantique (mais sans tenir compte de la gravitation), les théories quantiques relativistes des champs de matière et de force sur lesquelles repose le modèle standard de la physique des particules doivent respecter ce que l'on appelle « l'invariance CPT ».</p>
+<p>En clair, prenez n'importe quelle expérience de physique ou de chimie dans l'univers observable, et refaites-la en remplaçant les particules de matière par de l'antimatière (ou inversement). Puis, prenez son image dans un miroir (ce qui inversera par exemple le sens du courant dans une bobine électrique), et renversez le sens des divers mouvements, comme si l'écoulement du temps se faisait à l'envers. L'invariance CPT stipule que l'expérience doit être réalisable et que, de plus, on ne distinguera aucune différence avec la première.</p>
+<p>Lorsque l'on cherche à appliquer le modèle standard de la physique des particules au Big Bang, celui-ci prédit qu'autant de matière que d'antimatière devraient avoir été créées à ce moment-là. Cela ne semble pas être le cas, car l'Univers observable apparaît comme formé de matière, avec quelques rares traces d'antimatière produites après le Big Bang.</p>
+<p>Une façon de résoudre cette énigme de l'antimatière cosmologique est de postuler l'existence de violation de la symétrie CPT, par exemple en découvrant des différences entre le comportement des protons et des antiprotons. Le Cern s'est lancée dans cette quête depuis des décennies avec plusieurs expériences, y compris celles utilisant des atomes d'antihydrogène que les physiciens de Cern savent produire.</p>
+<p>Une de ces expériences s'appelle Base (Baryon Antibaryon Symmetry Experiment)</p>
+<h2 id="base-et-l-information-quantique">« Base » et l'information quantique</h2>
+<p>Le fonctionnement de Base repose notamment sur le piégeage d'antiprotons individuels avec un piège de Penning. Il s'agissait initialement d'un piège à ions permettant de stocker des particules chargées, grâce à la combinaison d'un champ magnétique uniforme et d'un champ électrique quadripolaire constant. C'est le physicien néerlandais F. M. Penning qui a eu l'idée originale de ce piège en 1936. Le physicien américain et prix Nobel Hans Dehmelt l'a mise en pratique, en créant un dispositif particulièrement bien adapté à la mesure précise des propriétés des ions et des particules subatomiques stables possédant une charge électrique et un moment magnétique.</p>
+<p>Rappelons que ce moment ressemble à celui, en physique classique, d'une sphère chargée en rotation se comportant comme un petit aimant. Cependant, tout comme le spin d'une particule liée justement en théorie au moment cinétique de rotation d'une sphère, il s'agit ici d'un effet foncièrement quantique, et l'analogie avec la sphère ne doit pas être poussée trop loin (pour le spin d'un électron, cela impliquerait qu'un point à la surface de la sphère à l'équateur va plus vite que la lumière !).</p>
+<p>Pour tester le modèle standard via la symétrie CPT avec de l'antimatière, on pouvait se poser la question de savoir ce qui se passerait si l'on pouvait forcer le spin d'un antiproton à osciller entre deux états, haut et bas. On peut le faire dans le cadre de ce que l'on appelle les oscillations de Rabi (du nom du prix Nobel de physique Isidor Isaac Rabi) pour un système quantique à deux états. Il se produit alors une superposition quantique variable et on obtient au passage un qubit d'ordinateur quantique.</p>
+<p>Le Cern est parvenu à produire ces oscillations et à les contrôler de façon cohérente et stable pendant presque une minute.</p>
+<p>C'est la première fois que l'on peut faire cela avec un antiproton individuel. Le fait que l'on parle de cohérence n'est pas anodin. En effet, dans le cadre des travaux sur les ordinateurs quantiques, on est confronté à ce que l'on appelle le « phénomène de décohérence ». Il s'agit de l'effet perturbateur de l'environnement d'un système quantique, qui détruit rapidement une superposition stable ou évoluant de façon ordonnée d'états quantiques.</p>
+<p>Au sujet de la production des oscillations de Rabi pour le spin d'un antiproton, et aussi pour son moment magnétique qui lui est associé, le communiqué du Cern explique : « Par certains aspects, on peut comparer ce processus au fait de pousser un enfant sur une balançoire. Avec la bonne poussée, la balançoire s'élance d'avant en arrière, suivant un arc de cercle, selon un rythme parfait. Imaginons maintenant que la balançoire soit un antiproton piégé unique, oscillant entre les états « haut » et « bas » de son spin, selon un rythme régulier et contrôlé. Pour parvenir à reproduire ce processus, la collaboration Base a utilisé un système avancé de pièges électromagnétiques visant à donner à l'antiproton la bonne « poussée » au bon moment. Étant donné que notre balançoire possède des propriétés quantiques, le spin-qubit d'antimatière peut même pointer dans plusieurs directions à la fois tant qu'il n'est pas observé. »</p>
+<p>Des mesures similaires avaient déjà été obtenues avant, montrant que le moment magnétique du proton et celui de l'antiproton ont la même valeur, à quelques milliardièmes près. Mais, comme le précise le Cern, « cependant, ce résultat avait été obtenu à l'aide d'une technique de spectroscopie incohérente dans laquelle les transitions quantiques étaient perturbées par des fluctuations du champ magnétique et des interférences dans les mesures. Grâce aux importantes améliorations apportées à l'expérience, ces mécanismes de décohérence ont été éliminés, ce qui a permis d'obtenir la première spectroscopie cohérente du spin d'un antiproton ».</p>
+<p>Pour Stefan Ulmer, porte-parole de l'expérience Base : « Il s'agit du premier qubit d'antimatière. On peut désormais envisager d'appliquer l'ensemble des méthodes de spectroscopie cohérente à des systèmes de matière et d'antimatière uniques dans des expériences de précision. Plus encore, cette avancée permettra à la collaboration Base de réaliser des mesures du moment de l'antiproton dans de futures expériences avec une précision de dix à cent fois plus grande ».</p>
+<p>On pourrait sans doute imaginer faire un ordinateur quantique avec des qubits portés par des atomes d'antihydrogène, mais ce ne serait sans doute pas facile et pas réalisable dans un futur immédiat... Mais qui sait... Et puis, les robots positroniques d'Isaac Asimov fonctionnent précisément avec de l'antimatière...</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
