@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARN-polymérase - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { margin-bottom: 0.4rem; line-height: 1.75; }
+    .content li > p, .content blockquote > p { margin-bottom: 0.4rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content strong { font-weight: 600; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#arn-polymerase" class="toc-level-1">ARN-polymérase</a>
+            <a href="#introduction" class="toc-level-2">Introduction</a>
+            <a href="#le-promoteur" class="toc-level-2">Le promoteur</a>
+            <a href="#chez-les-archees" class="toc-level-2">Chez les archées</a>
+            <a href="#chez-les-bacteries" class="toc-level-2">Chez les bactéries</a>
+            <a href="#chez-les-eucaryotes" class="toc-level-2">Chez les eucaryotes</a>
+            <a href="#arn-polymerases-i" class="toc-level-3">ARN-polymérases I</a>
+            <a href="#arn-polymerases-ii" class="toc-level-3">ARN-polymérases II</a>
+            <a href="#arn-polymerases-iii" class="toc-level-3">ARN-polymérases III</a>
+            <a href="#arn-polymerases-iv" class="toc-level-3">ARN-polymérases IV</a>
+            <a href="#chez-les-virus" class="toc-level-2">Chez les virus</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="arn-polymerase">ARN-polymérase</h1>
+
+<h2 id="introduction">Introduction</h2>
+<p>L'ARN-polymérase est un <a href="https://fr.wikipedia.org/wiki/Complexe_enzymatique" target="_blank" rel="noopener">complexe enzymatique</a> responsable de la synthèse de l'<a href="https://fr.wikipedia.org/wiki/Acide_ribonucl%C3%A9ique" target="_blank" rel="noopener">acide ribonucléique</a>, ou ARN, à partir d'une matrice d'<a href="https://fr.wikipedia.org/wiki/Acide_d%C3%A9soxyribonucl%C3%A9ique" target="_blank" rel="noopener">ADN</a>. Ce processus biologique, présent dans toutes les <a href="https://fr.wikipedia.org/wiki/Cellule_(biologie)" target="_blank" rel="noopener">cellules</a>, s'appelle la <a href="https://fr.wikipedia.org/wiki/Transcription_(biologie)" target="_blank" rel="noopener">transcription</a>. Chez les <a href="https://fr.wikipedia.org/wiki/Eucaryote" target="_blank" rel="noopener">eucaryotes</a>, il existe trois ARN-polymérases ubiquitaires — l'<a href="https://fr.wikipedia.org/wiki/ARN-polym%C3%A9rase_I" target="_blank" rel="noopener">ARN-polymérase I</a>, l'<a href="https://fr.wikipedia.org/wiki/ARN-polym%C3%A9rase_II" target="_blank" rel="noopener">ARN-polymérase II</a> et l'<a href="https://fr.wikipedia.org/wiki/ARN-polym%C3%A9rase_III" target="_blank" rel="noopener">ARN-polymérase III</a> et deux autres ARN-polymérases (IV et V) chez les <a href="https://fr.wikipedia.org/wiki/Plante" target="_blank" rel="noopener">végétaux</a> tandis que chez les <a href="https://fr.wikipedia.org/wiki/Procaryotes" target="_blank" rel="noopener">procaryotes</a> il n'existe qu'une seule ARN-polymérase.</p>
+<p>Elle assure, ou plutôt catalyse la synthèse des quatre types d'<a href="https://fr.wikipedia.org/wiki/Acide_ribonucl%C3%A9ique" target="_blank" rel="noopener">ARN</a> : l'<a href="https://fr.wikipedia.org/wiki/Acide_ribonucl%C3%A9ique_ribosomique" target="_blank" rel="noopener">ARN ribosomique</a>, l'<a href="https://fr.wikipedia.org/wiki/Acide_ribonucl%C3%A9ique_messager" target="_blank" rel="noopener">ARN messager</a>, l'<a href="https://fr.wikipedia.org/wiki/Acide_ribonucl%C3%A9ique_de_transfert" target="_blank" rel="noopener">ARN de transfert</a>, et les petits ARN : <a href="https://fr.wikipedia.org/wiki/Micro-ARN" target="_blank" rel="noopener">micro-ARN</a>, <a href="https://fr.wikipedia.org/wiki/Petit_ARN_interf%C3%A9rent" target="_blank" rel="noopener">petits ARN interférents</a>, ARNsn du splicéosome (<a href="https://fr.wikipedia.org/wiki/ARNsn_U1" target="_blank" rel="noopener">ARNsn U1</a>, <a href="https://fr.wikipedia.org/wiki/ARNsn_U2" target="_blank" rel="noopener">ARNsn U2</a>, <a href="https://fr.wikipedia.org/wiki/ARNsn_U4" target="_blank" rel="noopener">ARNsn U4</a>, <a href="https://fr.wikipedia.org/wiki/ARNsn_U5" target="_blank" rel="noopener">ARNsn U5</a>, <a href="https://fr.wikipedia.org/wiki/ARNsn_U6" target="_blank" rel="noopener">ARNsn U6</a>), <a href="https://fr.wikipedia.org/wiki/ARN_de_vo%C3%BBte" target="_blank" rel="noopener">ARN de voûte</a>, etc.</p>
+<p>L'ARN-polymérase transcrit un premier brin d'<a href="https://fr.wikipedia.org/wiki/Acide_ribonucl%C3%A9ique" target="_blank" rel="noopener">ARN</a> que l'on nomme « <a href="https://fr.wikipedia.org/wiki/Brin_transcrit" target="_blank" rel="noopener">transcrit primaire</a> » à partir d'un des deux brin du duplexe d'ADN utilisé comme matrice. Pour cela elle se fixe sur une séquence particulière appelée <a href="https://fr.wikipedia.org/wiki/Promoteur_(biologie)" target="_blank" rel="noopener">promoteur</a> de transcription.</p>
+<h2 id="le-promoteur">Le promoteur</h2>
+<p>Il existe des différences dans les séquences des promoteurs, à la fois selon les <a href="https://fr.wikipedia.org/wiki/G%C3%A8ne" target="_blank" rel="noopener">gènes</a>, en fonction de l'ARN-polymérase concernée, mais aussi d'une <a href="https://fr.wikipedia.org/wiki/Esp%C3%A8ce_menac%C3%A9e" target="_blank" rel="noopener">espèce</a> à l'autre. Pour la synthèse des ARN messagers, le promoteur comporte en général deux régions ou "boites" conservées : une boite située juste en amont du site de démarrage de la transcription, appelée <a href="https://fr.wikipedia.org/wiki/Bo%C3%AEte_de_Pribnow" target="_blank" rel="noopener">boîte de Pribnow</a> chez les bactéries et <a href="https://fr.wikipedia.org/wiki/Bo%C3%AEte_TATA" target="_blank" rel="noopener">boîte TATA</a> chez les eucaryotes. Elle est centrée à 10 nucléotides en amont du gène chez les procaryotes, et à 25 nucléotides en amont chez les eucaryotes. La boîte TATA peut parfois être remplacée par la boîte GC (GGGCGG) située 50 à 60 nucléotides en amont du gène. Il existe également une deuxième région plus en amont : la boîte CAAT située 70 à 80 nucléotides en amont du gène, chez les eucaryotes et la boite "-35" chez les bactéries. Cette seconde boite contribue de réguler l'intensité de transcription du gène et donc la quantité d'ARN synthétisé.</p>
+<p>Lorsqu'elle se fixe sur la boîte TATA (ou GC), l'ARN-polymérase II s'associe avec différentes protéines appelées facteurs de transcription (abrégés TF en anglais, pour transcription factor) pour former une particule d'initiation. Il existe des facteurs de transcription généraux et des facteurs de transcription spécifiques de certains gènes.</p>
+<p>Les ARN-polymérases I et III eucaryotes reconnaissent des promoteurs de nature différente de ceux de l'ARN-polymérase II.</p>
+<p>La liaison entre l'<a href="https://fr.wikipedia.org/wiki/Acide_d%C3%A9soxyribonucl%C3%A9ique" target="_blank" rel="noopener">ADN</a> et l'ARN-polymérase au niveau du promoteur permet d'une part d'ouvrir la <a href="https://fr.wikipedia.org/wiki/Double_h%C3%A9lice" target="_blank" rel="noopener">double hélice</a> sur une quinzaine de paires de bases et donc de rendre disponible un des deux brins d'ADN pour permettre son utilisation comme matrice. Ceci permet de catalyser l'insertion des quelques premiers ribonucléotides triphosphates pour amorcer la synthèse du brin d'ARN. Ensuite l'ARN-polymérase commence sa progression sur l'ADN matrice, en quittant le promoteur. Cette étape peut être contrôlée et les ARN-polymérase peuvent réaliser une pause transcriptionnelle. Une fois cette pause levée, la polymérisation de l'ARN devient alors très <a href="https://fr.wikipedia.org/wiki/Processivit%C3%A9" target="_blank" rel="noopener">processive</a>.</p>
+<h2 id="chez-les-archees">Chez les archées</h2>
+<p>Les <a href="https://fr.wikipedia.org/wiki/Archaea" target="_blank" rel="noopener">archées</a> utilisent une seule ARN-polymérase pour transcrire leurs gènes, tout comme les bactéries, même si leur enzyme montre une forte conservation structurale avec l'ARN-polymérase II des eucaryotes.</p>
+<p>L'histoire de la découverte de l’ARN-polymérase des <a href="https://fr.wikipedia.org/wiki/Arch%C3%A9es" target="_blank" rel="noopener">archées</a> est assez récente. La première analyse chez les archées a été faite en 1971, quand l'ARN-polymérase de Halobacterium cutirubrum, une <a href="https://fr.wikipedia.org/wiki/Halophile" target="_blank" rel="noopener">halophile</a> extrême, a été isolée et purifiée. Les récentes structures radiocristallographiques de l’ARN-polymérase de Sulfolobus solfataricus et de Sulfolobus shibatae révèlent l'image complète de cette enzyme et ont permis l’identification de 13 sous-unités dans l’enzyme archéenne.</p>
+<p>Les ARN-polymérases dans les <a href="https://fr.wikipedia.org/wiki/Domaine_(biologie)" target="_blank" rel="noopener">trois domaines du vivant</a> partagent une architecture et des mécanismes moléculaires communs, ce qui suggère une relation évolutive ancestrale. En outre, les différences entre l’ARN-polymérase archéenne et celle des autres procaryotes sont en accord avec les travaux de <a href="https://fr.wikipedia.org/wiki/Phylog%C3%A9nie_mol%C3%A9culaire" target="_blank" rel="noopener">phylogénie moléculaire</a> de <a href="https://fr.wikipedia.org/wiki/Carl_Woese" target="_blank" rel="noopener">Carl Woese</a>.</p>
+<h2 id="chez-les-bacteries">Chez les bactéries</h2>
+<p>Chez les <a href="https://fr.wikipedia.org/wiki/Bact%C3%A9rie" target="_blank" rel="noopener">bactéries</a>, il n'existe qu'une seule ARN-polymérase, polymère d'un poids moléculaire d'environ 500 kDa, découverte dans les années 1960 chez la bactérie <a href="https://fr.wikipedia.org/wiki/Escherichia_coli" target="_blank" rel="noopener">Escherichia coli</a>, sa composition est la suivante :</p>
+<ul>
+<li><p>le cœur de l’enzyme ARN-polymérase = α2ββ’ω ;</p></li>
+<li><p><a href="https://fr.wikipedia.org/wiki/Holoenzyme" target="_blank" rel="noopener">holoenzyme</a> = α2ββ’ωσ.</p></li>
+</ul>
+<p>Les deux sous-unités α permettent de maintenir le brin non transcrit à l'écart. Constituent la base sur laquelle s'organise le reste de la molécule. Les sous-unités β’ et β contiennent le <a href="https://fr.wikipedia.org/wiki/Site_actif" target="_blank" rel="noopener">site actif</a> et permettent de lier le <a href="https://fr.wikipedia.org/wiki/Substrat_enzymatique" target="_blank" rel="noopener">substrat</a> de l'enzyme. La sous-unité σ se détache au début de la transcription : elle permet de reconnaître le promoteur. La sous-unité ω participe à la liaison de l'enzyme sur la matrice d'ADN : elle permet de maintenir la sous-unité β’ dans sa bonne conformation et de la recruter pour former une enzyme fonctionnelle. La sous-unité σ permet de diminuer d'un facteur 10 000 l'affinité de l'ARN-polymérase pour des séquences quelconques d'ADN, et au contraire augmente l'affinité de cette même enzyme pour le site promoteur.</p>
+<p>L'ARN-polymérase associée au facteur σ (sigma), qui est une sous-unité de l'enzyme, est capable d'initier la transcription car le facteur sigma se fixe à l'<a href="https://fr.wikipedia.org/wiki/ADN" target="_blank" rel="noopener">ADN</a> en reconnaissant de manière spécifique une séquence de ce dernier, le promoteur qui est situé en amont du <a href="https://fr.wikipedia.org/wiki/Site_d%27initiation_de_la_transcription" target="_blank" rel="noopener">site d'initiation de la transcription</a>. Cela permet à l'ARN-polymérase de se fixer sur le premier nucléotide à transcrire.</p>
+<p>Il est à noter que le facteur σ détecte deux séquences : une région à -35 nucléotides et une autre à -10 , on appelle ces deux régions des "boites".</p>
+<p>Une fois que les premiers ribonucléotides ont été synthétisés, le facteur sigma devenu inutile se détache. À partir de ce moment la transcription s'opère à un rythme de 40 nucléotides par seconde environ.</p>
+<p>La fin de la transcription est signalée par des <a href="https://fr.wikipedia.org/wiki/Terminateur_(g%C3%A9n%C3%A9tique)" target="_blank" rel="noopener">terminateurs</a> de transcription. Il en existe deux types :</p>
+<ul>
+<li><p>Une <a href="https://fr.wikipedia.org/wiki/Structure_de_l%27ARN" target="_blank" rel="noopener">structure</a> en <a href="https://fr.wikipedia.org/wiki/Tige-boucle" target="_blank" rel="noopener">tige-boucle</a> sur l'ARN messager, suivie d'une série de résidus d'<a href="https://fr.wikipedia.org/wiki/Uridine" target="_blank" rel="noopener">uridine</a>. C'est le cas le plus fréquent. Elle est appelée terminaison intrinsèque ;</p></li>
+<li><p>Le facteur ρ (Rho) qui est une enzyme à forte activité hélicase ATP-dépendante. C'est une terminaison Rho-dépendante.</p></li>
+</ul>
+<h2 id="chez-les-eucaryotes">Chez les eucaryotes</h2>
+<h3 id="arn-polymerases-i">ARN-polymérases I</h3>
+<p>Les ARN-polymérases I permettent la synthèse des <a href="https://fr.wikipedia.org/wiki/Acide_ribonucl%C3%A9ique_ribosomique" target="_blank" rel="noopener">ARN ribosomiques</a> (tous sauf l'<a href="https://fr.wikipedia.org/wiki/ARN_ribosomique_5S" target="_blank" rel="noopener">ARNr 5S</a>).</p>
+<p>Déroulement de la transcription :</p>
+<p>Elle possède 2 régions promotrices : PC (de -45 à +20) et UCE (Upstream Central Element) (de -170 à -180). Le facteur UBF1 se fixe sur ces régions. Puis c'est SL1 qui se fixe sur UBF1, permettant à l'ARN-polymérase I de se fixer à son tour. SL1 joue le rôle de sigma chez les procaryotes. L'<a href="https://fr.wikipedia.org/wiki/Transcription_(biologie)" target="_blank" rel="noopener">élongation</a> peut alors débuter</p>
+<p>La transcription se fait sous forme de « sapin de noël ». Les ADN correspondant aux ARNr font partie des séquences moyennement répétées en tandem. Le système de transcription fait que la production de transcrit est très efficace. Toutes les 100 pbs, il y a une ARN-polymérase qui vient se fixer. Aux extrémités des « branches » il y a fixation de protéines qui vont permettre la maturation de l’ARN</p>
+<h3 id="arn-polymerases-ii">ARN-polymérases II</h3>
+<p>Cette ARN-polymérase possède 12 sous unités, et conserve le noyau central qui est présent dans l'ARN-polymérase procaryote, comme les trois ARN-polymérases eucaryotes.</p>
+<p>L'ARN-polymérase II catalyse la formation de l'<a href="https://fr.wikipedia.org/wiki/Acide_ribonucl%C3%A9ique_messager" target="_blank" rel="noopener">ARN messager</a> ou, plus souvent, d'un ARN prémessager. Elle catalyse également la biosynthèse des snoARN (small nucleosomal RNA), snARN, microARN (miARN) et siARN. Cette enzyme est située dans le <a href="https://fr.wikipedia.org/wiki/Nucl%C3%A9oplasme" target="_blank" rel="noopener">nucléoplasme</a>. Elle est composée de 12 sous-unités.</p>
+<h3 id="arn-polymerases-iii">ARN-polymérases III</h3>
+<p>Les ARN-polymérases III sont responsables de la synthèse d'ARN courts comme l'<a href="https://fr.wikipedia.org/wiki/Acide_ribonucl%C3%A9ique_de_transfert" target="_blank" rel="noopener">ARN de transfert</a>, quelques snARN (U6) et l'<a href="https://fr.wikipedia.org/wiki/ARN_ribosomique_5S" target="_blank" rel="noopener">ARN ribosomique 5S</a>.</p>
+<h3 id="arn-polymerases-iv">ARN-polymérases IV</h3>
+<p>Les ARN-polymérases IV sont spécifiques des plantes. Elles sont spécialisées dans la transcription des <a href="https://fr.wikipedia.org/wiki/Petit_ARN_interf%C3%A9rent" target="_blank" rel="noopener">petits ARN interférents</a>.</p>
+<h2 id="chez-les-virus">Chez les virus</h2>
+<p>L'ARN-polymérase d'origine virale la plus connue et la plus étudiée est celle du <a href="https://fr.wikipedia.org/wiki/Bact%C3%A9riophage" target="_blank" rel="noopener">bactériophage</a> T7 qui catalyse la transcription de 5' en 3'. C'est un complexe enzymatique de poids moléculaire 99 kDa se liant à un promoteur très spécifique au niveau de l'ADN (TAATACGACTCACTATAG, la transcription commençant au niveau du G en 3'). L'<a href="https://fr.wikipedia.org/w/index.php?title=ARN_polym%C3%A9rase_T7&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener">ARN-polymérase T7</a> est largement utilisée en biologie moléculaire pour transcrire de l'ADN cloné sur des vecteurs en partie car elle transcrit avec un taux d'erreur très faible. Elle n'est pas sensible à la <a href="https://fr.wikipedia.org/wiki/Rifampicine" target="_blank" rel="noopener">rifampicine</a> comme l'ARN-polymérase bactérienne.</p>
+<p>Les orthopoxvirus synthétisent de l'ARN via une ARN-polymérase virale très proche structurellement et fonctionnellement de celles retrouvées chez les bactéries, les archées et les eucaryotes (I-V). La plupart des autres virus possèdent des polymérases non reliées à celles des autres domaines du vivant.</p>
+<p>Il existe des virus utilisant des ARN-polymérases dépendantes de l'ADN comme matrice et d'autres dépendantes de l'ARN (retrouvées chez certains virus à ARN simple ou doubles brins).</p>
+<p>Outre l'ARN-polymérase ADN-dépendante (assurant la transcription d'une matrice d'ADN en ARN), il existe des <a href="https://fr.wikipedia.org/wiki/ARN_polym%C3%A9rase_ARN-d%C3%A9pendante" target="_blank" rel="noopener">ARN-polymérases ARN-dépendantes</a>, fabriquant de l'ARN à partir d'une matrice d'ARN. Ces enzymes participent à la réplication de certains <a href="https://fr.wikipedia.org/wiki/Virus_%C3%A0_ARN" target="_blank" rel="noopener">virus à ARN</a>, dont le <a href="https://fr.wikipedia.org/wiki/G%C3%A9nome" target="_blank" rel="noopener">génome</a> est composé d'ARN ; on appelle ces enzymes des réplicases.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

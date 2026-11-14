@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anecdotes sur le corps humain - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { margin-bottom: 0.4rem; line-height: 1.75; }
+    .content li > p, .content blockquote > p { margin-bottom: 0.4rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content strong { font-weight: 600; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#anecdotes-sur-le-corps-humain" class="toc-level-1">Anecdotes sur le corps humain</a>
+            <a href="#63-cameras-hd" class="toc-level-2">63 CAMÉRAS HD</a>
+            <a href="#48-km" class="toc-level-2">48 km</a>
+            <a href="#0-15-kg" class="toc-level-2">0,15 KG</a>
+            <a href="#25446" class="toc-level-2">25446</a>
+            <a href="#2000" class="toc-level-2">2000</a>
+            <a href="#50" class="toc-level-2">50%</a>
+            <a href="#40-000" class="toc-level-2">40 000</a>
+            <a href="#640" class="toc-level-2">640</a>
+            <a href="#90" class="toc-level-2">90%</a>
+            <a href="#7714" class="toc-level-2">7714</a>
+            <a href="#23-660" class="toc-level-2">23 660</a>
+            <a href="#des-milliers" class="toc-level-2">DES MILLIERS</a>
+            <a href="#360-km-h" class="toc-level-2">360 KM/H</a>
+            <a href="#2" class="toc-level-2">2</a>
+            <a href="#23" class="toc-level-2">23</a>
+            <a href="#estomac" class="toc-level-2">Estomac</a>
+            <a href="#poumon" class="toc-level-2">Poumon</a>
+            <a href="#spermatozoides" class="toc-level-2">Spermatozoïdes</a>
+            <a href="#os" class="toc-level-2">Os</a>
+            <a href="#peau" class="toc-level-2">Peau</a>
+            <a href="#ovules" class="toc-level-2">Ovules</a>
+            <a href="#muscles-oculomoteurs" class="toc-level-2">Muscles oculomoteurs</a>
+            <a href="#chaleur" class="toc-level-2">Chaleur</a>
+            <a href="#vaisseaux-sanguins" class="toc-level-2">Vaisseaux sanguins</a>
+            <a href="#reutilisation-de-la-peau" class="toc-level-2">Réutilisation de la peau</a>
+            <a href="#respiration" class="toc-level-2">Respiration</a>
+            <a href="#salive" class="toc-level-2">Salive</a>
+            <a href="#sueur" class="toc-level-2">Sueur</a>
+            <a href="#odorat" class="toc-level-2">Odorat</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="anecdotes-sur-le-corps-humain">Anecdotes sur le corps humain</h1>
+<h2 id="63-cameras-hd">63 CAMÉRAS HD</h2>
+<p>Il faudrait 63 caméras HD pour faire l'équivalent du travail de notre œil et les 260 millions de cellules réceptrices de la rétine ! Notre vision est si complexe qu'elle occupe 1/3 des capacités de notre cerveau.</p>
+<h2 id="48-km">48 km</h2>
+<p>48 km, c'est la distance à laquelle nous pourrions apercevoir une bougie si la Terre était plate.</p>
+<h2 id="0-15-kg">0,15 KG</h2>
+<p>C'est la différence de poids entre le cerveau des hommes et des femmes. En moyenne le cerveau pèse 1,600 kg chez les hommes et 1,450 kg chez les dames. Notre "moteur" contient entre autres un kilo de fluides (sang et autres) et environ 1000 milliards de neurones.</p>
+<h2 id="25446">25446</h2>
+<p>C'est à peu près l'équivalent en kilomètres de la distance que parcourt un spermatozoïde pour féconder un ovule s’il avait été un humain. 6 fois la traversée de l'Atlantique.</p>
+<h2 id="2000">2000</h2>
+<p>C'est le nombre de cellules qui meurent par seconde dans le corps d'un adulte. Environ 50 à 70 milliards de cellules de notre corps meurent chaque jour. A 80 ans, vous aurez eu pas moins de 14 squelettes différents dans votre vie ! Les milliards de cellules de notre corps sont classées en 200 types différents. Seuls 10% sont immortelles. Les autres font peau neuve sans cesse. </p>
+<h2 id="50">50%</h2>
+<p>C'est la part de notre ADN que nous avons en commun avec la banane. Autre info intéressante : notre corps dispose de seulement 1% de notre propre ADN et les 99% restants proviennent de l'ADN des différentes espèces de bactéries qui nous habitent.</p>
+<h2 id="40-000">40 000</h2>
+<p>C'est la distance en kilomètres que l'on obtient si on met tous les vaisseaux sanguins humains bout à bout. On pourrait ainsi faire le tour de la Terre au niveau de l'équateur. Et si le circuit est impressionnant, la vitesse à laquelle notre sang y circule l'est également. Dans nos veines, il parcourt environ 19 000 km en 24 heures.</p>
+<h2 id="640">640</h2>
+<p>C'est le nombre de muscles qu'il nous faut pour bouger le corps. Ils représentent 35 à 40% de son poids total. On en trouve 170 rien que dans la tête et le cou.</p>
+<h2 id="90">90%</h2>
+<p>C'est la part des cellules qui composent notre corps qui ne sont pas d'origine humaine. On n’aurait pas loin de 100 000 milliards de bactéries dans notre corps contre 10 000 milliards de cellules. Selon des estimations, entre 500 et 100 000 espèces de bactéries vivraient tranquillement dans notre corps soit 90% de cellules qui ne nous appartient pas.</p>
+<p>Pour vous rassurer, sachez que les bactéries ne représentent qu'environ 2kg de notre masse... on en a beaucoup mais ils ne prennent pas beaucoup de place et surtout que la plupart sont localisées dans notre colon.</p>
+<h2 id="7714">7714</h2>
+<p>C'est le nombre de ballons que nous pourrions gonfler par jour avec l'air que nous respirons. Normalement, les poumons aspirent 6 litres d'air par minute et nous respirons 25 920 fois par jour (environ 18 fois par minute). En cas d'effort intense nos poumons peuvent même contenir 200 litres par minute.</p>
+<h2 id="23-660">23 660</h2>
+<p>C'est le nombre de litres de bave que vous produisez dans votre vie.</p>
+<h2 id="des-milliers">DES MILLIERS</h2>
+<p>C'est une approximation du nombre de bactéries qui vivent dans votre nombril. Dans ce petit trou, elles évoluent comme un écosystème complet aussi riche que celui d'une forêt tropicale ! Mais pas d'inquiétude, ne courrez pas vous le laver, ces bactéries sont inoffensives pour la plupart d'entre elles. Certaines jouent même un rôle bénéfique pour vous. Elles en combattent d'autres qui sont beaucoup plus agressives.</p>
+<h2 id="360-km-h">360 KM/H</h2>
+<p>Voilà la vitesse à laquelle un stimulus nerveux se déplace dans le corps.</p>
+<h2 id="2">2</h2>
+<p>Deux mètres carrés : c'est la superficie totale de notre peau. Son épiderme (couche supérieure de la peau) le plus épais (1,5 mm) se trouve au niveau de vos paumes de mains et des plantes de pieds. Sa couche la plus fine est en revanche celle des paupières (0,05 mm). Autre fait intéressant : la peau pèse chez un corps adulte entre 3 et 4kg et nous perdons au total 18 kilos de peau durant notre vie.</p>
+<p>Mais ce n'est rien comparé à l'intestin qui fait entre 300 et 400m2 soit environ 2 terrains de tennis ou le poumon qui fait 80m2.</p>
+<h2 id="23">23</h2>
+<p>Nous passons 23 ans de notre vie à dormir. C'est à dire au total 1/3 de notre existence. Durant ce temps notre corps se repose, mais pas notre cerveau. Lui ne dort jamais et reste actif. Durant ce temps nous pouvons faire à peu près 128 000 rêves.</p>
+<h2 id="estomac">Estomac</h2>
+<p>Notre estomac est rempli de suc gastrique, un acide assez puissant pour dissoudre certains métaux. Notre estomac n'y est cependant pas sensible grâce à une couche de mucus se renouvelant plus rapidement qu'elle ne disparaît.</p>
+<h2 id="poumon">Poumon</h2>
+<p>Les poumons sont constitués de 300 000 millions de capillaires sanguins, les plus petits vaisseaux sanguins existants. Mis bout à bout, ils s'étendraient sur 2400 km.</p>
+<h2 id="spermatozoides">Spermatozoïdes</h2>
+<p>Un homme moyen produit environ 10 millions de spermatozoïdes chaque jour. C'est assez de sperme pour repeupler la Terre en 6 mois.</p>
+<h2 id="os">Os</h2>
+<p>Le fémur est a peu près 4 fois plus solide que le ciment. Un pouce cube (l'équivalent de 16 cm<sup>3</sup>) d'os peut supporter une charge d'un peu plus de 8 tonnes.</p>
+<h2 id="peau">Peau</h2>
+<p>Lors de notre vie, nous perdons en moyenne 18kg de peau.</p>
+<h2 id="ovules">Ovules</h2>
+<p>Les ovaires d'une femme produisent un demi-million d'ovules, mais seuls 400 d'entre eux auront la chance d'être fécondés.</p>
+<h2 id="muscles-oculomoteurs">Muscles oculomoteurs</h2>
+<p>Les muscles oculomoteurs, qui vous permettent de déplacer vos yeux, se contractent environ 100 000 fois par jour. Si vous vouliez faire subir le même entraînement aux muscles de vos jambes, il vous faudrait courir 80 km chaque jour.</p>
+<h2 id="chaleur">Chaleur</h2>
+<p>Le corps humain produit assez de chaleur en une demi-heure pour faire bouillir 2 litres d'eau.</p>
+<h2 id="vaisseaux-sanguins">Vaisseaux sanguins</h2>
+<p>Si tous les vaisseaux sanguins du corps humain étaient mis bout à bout, ils couvriraient un peu plus de 40 000 km. C'est assez pour faire le tour de la Terre au niveau de l’Équateur.</p>
+<h2 id="reutilisation-de-la-peau">Réutilisation de la peau</h2>
+<p>Le prépuce circoncis d'un bébé, pas plus grand qu'un timbre de poste, devient assez grand pour couvrir 3 terrains de basketball en moins d'un mois. La peau est ensuite utilisée pour traiter les patients atteints de brûlures graves.</p>
+<h2 id="respiration">Respiration</h2>
+<p>Les humains sont les seuls mammifères à ne pas pouvoir respirer et avaler en même temps.</p>
+<h2 id="salive">Salive</h2>
+<p>Durant sa vie, une personne normale produit assez de salive pour remplir deux piscines.</p>
+<h2 id="sueur">Sueur</h2>
+<p>Vos pieds possèdent environ 500 000 glandes sudoripares et peuvent produire jusqu'à un litre de sueur chaque jour.</p>
+<h2 id="odorat">Odorat</h2>
+<p>Votre nez à une sacrée mémoire, puisque vous pouvez retenir jusqu'à 50 000 odeurs différentes.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

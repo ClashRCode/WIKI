@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Différenciation cellulaire - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { margin-bottom: 0.4rem; line-height: 1.75; }
+    .content li > p, .content blockquote > p { margin-bottom: 0.4rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content strong { font-weight: 600; }
+    .content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #eaecf0; font-weight: 600; }
+    .content td:empty { min-width: 2rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#differenciation-cellulaire" class="toc-level-1">Différenciation cellulaire</a>
+            <a href="#introduction" class="toc-level-2">Introduction</a>
+            <a href="#la-differenciation-au-cours-du-developpement" class="toc-level-3">La différenciation au cours du développement</a>
+            <a href="#la-differenciation-au-cours-de-la-vie" class="toc-level-3">La différenciation au cours de la vie</a>
+            <a href="#dedifferenciation" class="toc-level-3">Dédifférenciation</a>
+            <a href="#les-types-de-cellules-apres-differenciation" class="toc-level-2">Les types de cellules apres différenciation</a>
+            <a href="#cellule-souche" class="toc-level-2">Cellule souche</a>
+            <a href="#classement-selon-leur-potentiel" class="toc-level-3">Classement selon leur potentiel</a>
+            <a href="#classement-selon-leur-origine" class="toc-level-3">Classement selon leur origine</a>
+            <a href="#embryonnaires" class="toc-level-4">Embryonnaires</a>
+            <a href="#foetales" class="toc-level-4">Fœtales</a>
+            <a href="#adultes" class="toc-level-4">Adultes</a>
+            <a href="#caracteristiques" class="toc-level-3">Caractéristiques</a>
+            <a href="#fonctions" class="toc-level-3">Fonctions</a>
+            <a href="#developpement-embryonnaire" class="toc-level-4">Développement embryonnaire</a>
+            <a href="#organisme-adulte" class="toc-level-4">Organisme adulte</a>
+            <a href="#decouvertes" class="toc-level-3">Découvertes</a>
+            <a href="#techniques-de-production" class="toc-level-3">Techniques de production</a>
+            <a href="#applications-medicales" class="toc-level-3">Applications médicales</a>
+            <a href="#cellule-souche-pluripotente-induite" class="toc-level-2">Cellule souche pluripotente induite</a>
+            <a href="#principe-de-la-pluripotence-induite" class="toc-level-3">Principe de la pluripotence induite</a>
+            <a href="#applications-biomedicales" class="toc-level-3">Applications biomédicales</a>
+            <a href="#de-la-pluripotence-a-la-totipotence" class="toc-level-2">De la pluripotence à la totipotence</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="differenciation-cellulaire">Différenciation cellulaire</h1>
+
+<h2 id="introduction">Introduction</h2>
+<p>La différenciation cellulaire est un concept de biologie du développement décrivant le processus par lequel les cellules se spécialisent en un « type » cellulaire avec une structure et une composition spécifiques permettant d'accomplir une ou plusieurs fonctions particulières. La morphologie d'une cellule peut changer radicalement durant la différenciation, mais le matériel génétique reste le même, à quelques exceptions près.</p>
+<p>Une cellule capable de se différencier en plusieurs types de cellules est appelée pluripotente. Ces cellules sont appelées cellules souches chez les animaux et cellules méristématiques chez les plantes. Une cellule capable de se différencier en tous les types cellulaires d'un organisme est dite totipotente. Chez les mammifères, seuls le zygote et les jeunes cellules embryonnaires sont totipotentes, tandis que chez les plantes, beaucoup de cellules différenciées peuvent devenir totipotentes.</p>
+<p>Chez la plupart des organismes pluricellulaires, toutes les cellules ne sont pas identiques. Elles présentent des différences importantes au niveau de leur morphologie et de leur fonction. Par exemple, les cellules composant la peau chez l'homme sont différentes des cellules composant les organes internes. Cependant, tous les différents types cellulaires sont dérivés d'une seule cellule-œuf fécondée et ce, grâce à la différenciation. La différenciation est un mécanisme par lequel une cellule non-spécialisée se spécialise en un des nombreux types cellulaires composant le corps comme les myocytes (cellules musculaires), les cellules hépatiques (du foie) ou encore les neurones (cellules du système nerveux). La restriction du potentiel de différenciation d'une cellule, c'est-à-dire vers quels types cellulaires elle peut évoluer, commence très tôt pendant le développement. Chez l'homme, comme chez les autres métazoaires triblastiques, les cellules de l'embryon s'organisent en trois zones, appelées feuillets embryonnaires. Chacun des trois feuillets (endoderme, mésoderme, ectoderme) ne peut se différencier que vers des organes spécifiques. Par exemple, toutes les cellules du système nerveux proviennent de l'ectoderme. Pendant la différenciation, certains gènes sont exprimés alors que d'autres sont réprimés. Le processus de la différenciation est intrinsèquement régulé grâce notamment au matériel épigénétique des cellules et notamment des facteurs de transcription spécifiques à un lignage cellulaire donné qui vont engager une cellule encore naïve dans une voie de différenciation (citons MyoD et Myf5 pour les cellules musculaires striées squelettiques1). Ainsi la cellule différenciée va-t-elle exprimer une partie spécifique de son génome et développer des structures précises et acquérir certaines fonctions.</p>
+<p>La différenciation peut entraîner des changements dans nombre d'aspects de la physiologie de la cellule : sa taille, sa forme, sa polarité, son activité métabolique, sa sensibilité à certains signaux et son expression des gènes peuvent toutes être modifiées durant la différenciation. En cytopathologie, le niveau de différenciation cellulaire est utilisé comme mesure de la progression d'un cancer.</p>
+<p>On sépare les cellules des mammifères en trois catégories : les cellules de la lignée germinale, les cellules somatiques et les cellules souches. Chacune des quelque 1014 (cent mille milliards) de cellules du corps humain a sa ou ses propres copies du génome, mise à part certaines cellules ayant perdu leur noyau lors de leur différenciation, comme c'est le cas pour les hématies. La majorité de ces cellules sont diploïdes, c'est-à-dire qu'elles ont deux copies de chaque chromosome. Ces cellules sont appelées cellules somatiques. La plupart des cellules constituant le corps humain sont dans cette catégorie.</p>
+<p>Les cellules de la lignée germinale sont les cellules donnant à terme les gamètes — ovocytes et spermatozoïdes — et sont les seules à transmettre leur matériel génétique aux générations suivantes. Elles subissent la méiose ce qui les rend haploïdes.</p>
+<p>Les cellules souches, quant à elles, ont la capacité de se diviser un très grand nombre de fois et de se transformer en cellules spécialisées tout en se régénérant.</p>
+<h3 id="la-differenciation-au-cours-du-developpement">La différenciation au cours du développement</h3>
+<p>Le développement commence lorsqu'un spermatozoïde féconde un ovule et crée une seule cellule qui peut potentiellement former un organisme entier. Dans les premiers jours qui suit la fécondation, cette cellule-œuf se divise en plusieurs cellules identiques. Chez l'homme, environ quatre jours après la fécondation et après plusieurs cycles cellulaires, ces cellules commencent à se spécialiser et forment une sphère creuse appelée blastocyste. Celui-ci possède une couche de cellules externes (les cellules périphériques ou trophectoderme) et un groupe de cellules internes, appelées cellules de la masse interne. Ce sont ces cellules qui formeront tous les tissus du corps humain. Malgré cela, elles ne peuvent plus individuellement former un organisme entier : elles sont qualifiées de pluripotentes. Ces cellules continuent ensuite à être progressivement déterminées jusqu'à donner des cellules souches qui donneront des cellules de types bien définis. Par exemple, les cellules souches du sang situées dans la moelle osseuse produisent des hématies, des leucocytes et des plaquettes.</p>
+<h3 id="la-differenciation-au-cours-de-la-vie">La différenciation au cours de la vie</h3>
+<p>La différenciation des cellules souches est un mécanisme qui permet à l'être humain de renouveler ses cellules. La partie basale de la peau est constituée de cellules souches, qui se différencient de façon asymétriques : une cellule souche donne une cellule de la peau (kératinocyte) et une cellule souche. La cellule de la peau formée migre progressivement jusqu'à la surface de la peau. Ainsi, notre épiderme se renouvelle en permanence.</p>
+<p>De même, les intestins sont recouverts de petites protrusions, les villosités. Au fond de ses protrusions se trouve une crypte, qui abrite une cellule souche. Les cellules-filles de cette dernière migrent progressivement vers le haut des villi. Dès qu'elles sont à une certaine distance du fond de la crypte, elles ne ressentent plus l'action des protéines Wnt (qui inhibent la différenciation). Elles deviennent donc des cellules endothéliales.</p>
+<h3 id="dedifferenciation">Dédifférenciation</h3>
+<p>On remarquera donc qu'au fur et à mesure que les cellules se différencient, le nombre de types cellulaires qu'elles peuvent produire diminue, d'où le nom de spécialisation. Cependant il existe, dans une certaine mesure, des phénomènes de dédifférenciation par lesquels des cellules relativement spécialisées peuvent redevenir moins spécialisées. Ce type de mécanisme reste limité dans la mesure où, au cours de la différenciation, le matériel épigénétique (notamment) est irréversiblement modifié.</p>
+<p>Chez les animaux, ce phénomène est rare à l'état naturel, mais on peut donner l'exemple de la queue du triton : après avoir été coupée, les cellules du moignon se dédifférencient, de manière à pouvoir reformer tous les tissus de la queue.</p>
+<h2 id="les-types-de-cellules-apres-differenciation">Les types de cellules apres différenciation</h2>
+<p>Après la différenciation cellulaire, les cellules acquièrent des caractéristiques spécifiques et spécialisées, permettant leur intégration dans des tissus et des organes spécifiques. Voici quelques exemples de types de cellules après différenciation :</p>
+<ul>
+<li><p><strong>Cellules épithéliales</strong> : spécialisées pour former des barrières ou des surfaces, comme les cellules de la peau, les cellules intestinales ou les cellules rénales.</p></li>
+<li><p><strong>Cellules musculaires</strong> : capable de contraction, comme les cellules musculaires lisses (par exemple, dans les vaisseaux sanguins) ou striées (par exemple, dans les muscles squelettiques).</p></li>
+<li><p><strong>Cellules nerveuses</strong> : spécialisées pour la transmission et la réception d’informations, comme les neurones ou les gliales.</p></li>
+<li><p><strong>Cellules hépatiques</strong> : responsables de la production de bile et de la dégradation des substances toxiques, comme les cellules hépatocytaires.</p></li>
+<li><p><strong>Cellules sanguines</strong> : spécialisées pour le transport d’oxygène, de nutriments et de déchets, comme les érythrocytes (globules rouges), les thrombocytes (plaquettes) et les leucocytes (globules blancs).</p></li>
+<li><p><strong>Cellules osseuses</strong> : responsables de la formation et de la réparation des os, comme les ostéoblastes et les ostéoclastes.</p></li>
+<li><p><strong>Cellules adipocytes</strong> : spécialisées pour stocker et libérer les lipides, comme les adipocytes (cellules graisseuses).</p></li>
+<li><p><strong>Cellules mucineuses</strong> : produisant des mucines, des protéines qui jouent un rôle dans la protection et la lubrification des surfaces, comme les cellules épithéliales respiratoires ou intestinales.</p></li>
+</ul>
+<h2 id="cellule-souche">Cellule souche</h2>
+<p>En biologie cellulaire, une cellule souche est une cellule indifférenciée capable, à la fois, de générer des cellules spécialisées par différenciation cellulaire et de se maintenir dans l'organisme par division symétrique ou division asymétrique. Les cellules souches sont présentes chez tous les êtres vivants multicellulaires. Elles jouent un rôle central dans le développement des organismes ainsi que dans le maintien de leur intégrité au cours de la vie.</p>
+<p>L'étude des cellules souches animales est un domaine de recherche très actif notamment en raison de leurs applications en médecine. Ce domaine d'étude a récemment connu une rapide expansion avec la mise au point de techniques permettant de générer, en culture, des cellules souches pluripotentes à partir de n'importe quelle cellule du corps, ces cellules souches sont dites induites1. Cependant, les cellules souches sont également présentes chez les autres formes de vie pluricellulaire comme dans les méristèmes des plantes.</p>
+<h3 id="classement-selon-leur-potentiel">Classement selon leur potentiel</h3>
+<p>Les cellules souches peuvent se distinguer en fonction de leur potentiel de différenciation :</p>
+<ul>
+<li><p><strong>les cellules souches totipotentes :</strong> pouvant donner tout type cellulaire, et donc un organisme entier ;</p></li>
+<li><p><strong>les cellules souches pluripotentes :</strong> capables de donner tous les types cellulaires sauf les annexes embryonnaires ;</p></li>
+<li><p><strong>les cellules souches multipotentes :</strong> susceptibles de donner différents types de cellules mais n'appartenant pas à tous les feuillets (par exemple les cellules de crête neurale donnent naissance à des cellules ectodermiques et mésodermiques mais pas endodermiques)</p></li>
+<li><p><strong>les cellules souches unipotentes :</strong> qui ne peuvent donner qu'une seule sorte de cellule (elles peuvent cependant, comme toute cellule souche, s'auto-renouveler, d'où l'importance de les distinguer des précurseurs). On peut citer comme exemple les cellules satellites des muscles striés squelettiques.</p></li>
+</ul>
+<h3 id="classement-selon-leur-origine">Classement selon leur origine</h3>
+<p>Pour les recherches scientifiques ou médicales, les cellules souches humaines (et plus généralement de mammifères) peuvent aussi être classées par rapport à leur origine : embryonnaire, fœtale ou adulte.</p>
+<p>Les équipes de James Alexander Thomson aux États-Unis (sur des blastocystes humains) et de Shinya Yamanaka au Japon (cellules de souris) ont réussi en 2007 à dédifférencier des cellules adultes en cellules souches embryonnaires par transformation génétique. Ceci pourrait marquer une avancée importante, puisqu'elle permettrait la recherche sur les cellules souches embryonnaires sans utiliser d'embryons à cette fin.</p>
+<p>En 2007, le professeur Yamanaka (Université de Kyoto) a réussi à produire des cellules souches à partir de cellules somatiques adultes, par l'introduction de facteurs de transcription dans des cellules somatiques. Un des problèmes, qui était l'utilisation d'un oncogène c-myc, a été levé un an plus tard par la même équipe3. Ces cellules peuvent sous l'action de certains facteurs (également oncogènes) se différencier en divers types de tissus, et on espère dans un futur proche, pouvoir utiliser des cellules souches pour soigner des maladies cérébrales telles que la maladie d'Alzheimer.</p>
+<h4 id="embryonnaires">Embryonnaires</h4>
+<p>Aussi appelées « cellules ES » (de l'anglais embryonic stem, « souches embryonnaires »), ce sont des cellules souches pluripotentes présentes dans l'embryon peu de temps après la fécondation jusqu'au stade de développement dit de blastocyste où elles constituent encore la masse cellulaire interne (les autres cellules du blastocyste sont les cellules du trophectoderme).</p>
+<p>Ces cellules sont à l'origine de tous les tissus de l'organisme adulte et sont ainsi pluripotentes. Elles peuvent être isolées et cultivées in vitro à l'état indifférencié. Dans des conditions de cultures précises (mise en suspension, facteurs de croissance particuliers…), on peut orienter leur différenciation vers un type cellulaire donné :</p>
+<ul>
+<li><p>ectoderme (neurones, peau) ;</p></li>
+<li><p>mésoderme (muscle, sang, os, cartilage) ;</p></li>
+<li><p>endoderme (Poumon, intestin, foie) ;</p></li>
+<li><p>gamètes (Spermatozïdes, ovocytes).</p></li>
+</ul>
+<p>Les cellules souches embryonnaires ont été isolées et cultivées chez la souris à partir du début des années 1980 et ont permis de mettre au point la technique d'invalidation de gène par recombinaison homologue (ou knock-out) qui permet, après réintroduction de ces cellules mutées dans un embryon receveur et des croisements, d'obtenir des souris homozygotes pour une mutation dans un gène donné.</p>
+<p>Elles sont en pratique prélevées à partir des cellules de la masse interne du blastocyste (un embryon faisant moins de 150 cellules), ce qui nécessite la destruction de l'embryon. Elles peuvent être obtenues à partir d'embryons surnuméraires congelés, issus d'une fécondation in vitro, ou par clonage (par transfert du noyau d'une cellule dans un ovule préalablement privé du sien).</p>
+<p>Ces cellules pourraient permettre la mise au point d'une thérapie cellulaire à de nombreuses pathologies dégénératives (par exemple régénération des neurones à dopamine lésés dans la maladie de Parkinson après réintroduction dans le cerveau, réparation du tissu musculaire cardiaque endommagé après un infarctus…).</p>
+<h4 id="foetales">Fœtales</h4>
+<p>Une cellule souche fœtale est un type de cellule souche multipotente d'origine fœtale. Elles peuvent être prélevées sur des fœtus issus d'une interruption volontaire de grossesse. Les cellules souches fœtales ont la particularité d'être déjà orientées vers un type cellulaire particulier.</p>
+<h4 id="adultes">Adultes</h4>
+<p>Les cellules souches adultes sont des cellules indifférenciées que l'on trouve au sein de tissus qui sont composés en majorité de cellules différenciées dans la plupart des tissus et organes adultes. Ce sont généralement des cellules multipotentes. Elles sont capables de donner naissance à différentes lignées cellulaires d'un tissu donné. Elles sont la base du renouvellement naturel d'un tissu et de sa réparation à la suite d'une lésion.</p>
+<p>Elles sont qualifiées de « somatiques », par opposition aux cellules germinales, et peuvent être trouvées non seulement chez les adultes, mais aussi chez les enfants et même dans le cordon ombilical.</p>
+<h3 id="caracteristiques">Caractéristiques</h3>
+<p>Les cellules souches sont souvent capables d'effectuer deux types de division cellulaire : une, classique, elle est dite symétrique (la cellule se divise en 2 cellules souches) et une asymétrique, qui donne d'un côté un progéniteur, cellule plus différenciée, et de l'autre une cellule souche. Ainsi, c'est l'utilisation de la division symétrique qui permet à une population souche de maintenir son nombre plus ou moins constant lors de la production de cellules différenciées.</p>
+<p>Il existe deux étapes dans la création d'une cellule différenciée :</p>
+<ul>
+<li><p>la différenciation, durant laquelle une cellule subit un changement qualitatif de phénotype. Par exemple, l’apparition de nouvelles protéines membranaires, due à l’activation de l’expression d’un gène donné. Une différenciation stricto sensu est donc un événement ponctuel ;</p></li>
+<li><p>la maturation où la cellule subit un changement quantitatif de phénotype. Cela correspond à l’augmentation de la production de certaines protéines, et donc nécessairement plus ou moins long.</p></li>
+</ul>
+<p>On pourra ainsi distinguer trois phases lors de la formation d'un tissu différencié :</p>
+<ol type="1">
+<li><p>Une première dans laquelle les cellules souches se divisent et soit se renouvellent, soit créent des cellules déterminées. Cette phase ne comprend que des divisions mitotiques ;</p></li>
+<li><p>Dans la phase suivante, qualifiée d’intermédiaire, les cellules déterminées sont des cellules de transit, elles subissent à la fois des mitoses et une maturation/différenciation. Elles deviennent donc de plus en plus mûres, tout en continuant à se diviser ;</p></li>
+<li><p>La dernière phase est une phase de maturation : les cellules ne se divisent plus mais ne font plus que se différencier et mûrir, jusqu’à donner des cellules mûres, dotées de tout le matériel nécessaire à leur fonction.</p></li>
+</ol>
+<p>Entre la première phase (prolifération sans différenciations) et la troisième (différenciations sans prolifération), la phase intermédiaire est très flexible, permettant des périodes de maturation plus ou moins longues, différent selon les lignées cellulaires.</p>
+<p>Les cellules souches existent durant toute la vie de l'organisme, mais on peut distinguer, chez les mammifères notamment, les cellules souches embryonnaires et les cellules souches adultes.</p>
+<h3 id="fonctions">Fonctions</h3>
+<h4 id="developpement-embryonnaire">Développement embryonnaire</h4>
+<p>Les cellules souches embryonnaires sont les cellules centrales du développement, puisqu'elles vont générer progressivement toutes les autres cellules de l'organisme, grâce à des étapes de différenciation et de prolifération finement orchestrées pour créer, finalement, un individu pluricellulaire viable.</p>
+<h4 id="organisme-adulte">Organisme adulte</h4>
+<p>Les cellules souches adultes sont beaucoup plus rares, puisqu'une fois le développement terminé, la nécessité de proliférer peut devenir dangereuse. Les cellules souches perdurent donc en des endroits restreints dans chaque tissu ; ces niches ont des mécanismes de maintien complexes et sont régulées pour ne produire que les cellules nécessaires au maintien d'un organisme fonctionnel.</p>
+<p>Ces cellules souches sont moins « pluripotentes » que celles constituant l'embryon : elles ne peuvent produire que des cellules spécifiques de leur tissu. Par exemple, chez les mammifères adultes, les cellules souches hématopoïétiques régénèrent en continu les cellules du sang. Il existe également des cellules souches intestinales ainsi que des cellules souches neurales. Ces dernières ne sont présentes que dans deux régions distinctes du cerveau : l'hippocampe et la zone sous-ventriculaire (zone bordant les ventricules latéraux).</p>
+<p>La présence de cellules souches peut servir différents mécanismes en fonction du tissu :</p>
+<ul>
+<li><p>les cellules souches seraient en partie responsables de la régénération des membres chez certains animaux. Ce phénomène existe ainsi chez certains vertébrés (comme le lézard, le triton ou la salamandre) ;</p></li>
+<li><p>l'organe contenant le tissu doit grandir soit durant la croissance, soit pour pouvoir assurer une fonction, par exemple le cœur des athlètes est plus gros, l'utérus grossit durant la grossesse, etc. ;</p></li>
+<li><p>les cellules vieillissent et meurent (par exemple les globules rouges, cellules sans noyau et privées d'ADN, dont la durée de vie est de 120 jours ou encore les kératinocytes de la surface de la peau) et celles-ci doivent se renouveler ;</p></li>
+<li><p>un traumatisme, une ischémie, ou d'autres phénomènes peuvent créer la mort de cellules qui doivent être régénérées ; cette régénération est parfois imparfaite soit par manque de cellules souches, soit parce que l'architecture du tissu est trop bouleversée (ce qui dépend à la fois du tissu et du dommage qu'il a subi).</p></li>
+</ul>
+<h3 id="decouvertes">Découvertes</h3>
+<p>En 1961, les cellules souches ont été découvertes par le biophysicien James Till et son collègue Ernest McCulloch. En 1981, les cellules souches embryonnaires ont été identifiées chez la souris par Martin Evans, Kaufman et Martin , et en 1998 chez l’homme par les équipes de l'Américain James Alexander Thomson, de Joseph Itskovitz-Eldor et de l'Israélien Benjamin Reubinoff. En 2000, ce dernier transforme des cellules ES en neurones.</p>
+<p>En 2006, les cellules souches pluripotentes induites (CSPi) sont découvertes indépendamment par Shinya Yamanaka et James Alexander Thomson. Ces cellules iPS sont des cellules matures qui permettent ainsi de donner naissance à tous types de cellules de l'organisme. Cette technique passe par ailleurs par la reprogrammation génétique en laboratoire. En outre, la manipulation génétique permet d’obtenir de telles lignées cellulaires sans destruction d’embryons. Cette découverte a été récompensée par le prix Nobel de médecine en 2012 pour Shinya Yamanaka.</p>
+<h3 id="techniques-de-production">Techniques de production</h3>
+<p>Il existe plusieurs types de techniques pour obtenir des cellules souches pluripotentes :</p>
+<ul>
+<li><p>à partir d'embryons (cellules souches embryonnaires) ;</p></li>
+<li><p>à partir d'œufs non fécondés ;</p></li>
+<li><p>à partir de cellules souches embryonnaires modifiées en laboratoire ;</p></li>
+<li><p>à partir d'une cellule mature reprogrammée génétiquement (voir CSPi) ;</p></li>
+<li><p>à partir d'une cellule différenciée et mature puis cultivées en laboratoire.</p></li>
+</ul>
+<h3 id="applications-medicales">Applications médicales</h3>
+<p>En médecine, les cellules souches animales et humaines font l'objet de nombreuses recherches depuis les années 1990, avec l'espoir de régénérer des tissus, voire d'en créer de toutes pièces, et idéalement de reconstruire des organes (thérapie cellulaire) de la même façon que les opozones, inventées par Auguste Lumière. Ces avantages potentiels ont suscité des expérimentations de clonage thérapeutique pour en maîtriser la fabrication en grand nombre.</p>
+<p>Le premier médicament fabriqué à base de cellules souches est approuvé en mai 2012 par les autorités canadiennes. Il s'agit du Prochymal, une préparation obtenue à partir de cellules souches adultes mésenchymateuses.</p>
+<p>L'objectif ultime de la thérapie à base de cellules souches est d'améliorer le mécanisme de réparation de l'organisme par la stimulation, la modulation et la régulation de la population de cellules souches endogènes et/ou la reconstitution du pool de cellules en vue de l'homéostasie et de la régénération des tissus. Depuis que le concept de cellules souches, avec leurs capacités uniques d'auto-renouvellement et de différenciation, a été présenté, elles ont fait l'objet d'innombrables recherches fondamentales et cliniques et sont décrites comme des agents thérapeutiques possibles. L'objectif premier de la médecine régénérative étant la régénération des tissus et le remplacement cellulaire, plusieurs types de cellules souches ont été utilisés pour atteindre ces objectifs, notamment les cellules souches pluripotentes humaines (hPSC), les cellules souches multipotentes et les cellules progénitrices</p>
+<h2 id="cellule-souche-pluripotente-induite">Cellule souche pluripotente induite</h2>
+<p>Les cellules souches pluripotentes induites (CSPi) (en anglais Induced pluripotent stem cells soit iPS ou iPSCs) sont des cellules souches pluripotentes générées en laboratoire à partir de cellules somatiques. Ces cellules souches induites ont le potentiel de se différencier en n'importe quelle cellule du corps humain et ont donc des applications très variées en thérapie et en recherche biomédicale. Elles sont considérées comme l'une des avancées majeures de la biotechnologie puisqu'elles permettent de constituer une alternative à l'utilisation de cellules souches embryonnaires humaines, permettant ainsi de dépasser les problèmes éthiques liés à ces dernières.</p>
+<h3 id="principe-de-la-pluripotence-induite">Principe de la pluripotence induite</h3>
+<p>La pluripotence induite consiste donc à « reprogrammer » une cellule différenciée en cellule souche en réactivant l'expression des gènes associés au stade embryonnaire (stade pluripotent). Pour cela un cocktail 4 facteurs de transcription, appelés facteurs de Yamanaka, présents chez les cellules souches embryonnaires, Oct3/4, Sox2, KLF4, et c-Myc est introduit dans des cellules adultes, ce qui provoque une répression des gènes associés à la spécialisation cellulaire ; on parle alors de « dé-différenciation cellulaire ». La simplicité de ce mécanisme a surpris de nombreuses personnes dans la communauté des biologistes. Des travaux ultérieurs ont montré que plusieurs types de cellules humaines peuvent être reprogrammés en cellules souches pluripotentes parmi lesquelles les cellules de la peau 3 et les cellules sanguines (lymphocytes T et progéniteurs érythroïdes).</p>
+<p>Dans le protocole initial, les facteurs de Yamanaka étaient introduit dans les cellules à reprogrammer via des vecteur viraux rétroviraux intégratifs. Puis des lentivirus intégratifs ont été utilisés par certains. Ces approches avaient l’inconvénient de modifier l’ADN des cellules cibles, un effet potentiellement cancérigène. Depuis, d’autres techniques ont été utilisées pour faire exprimer le cocktail de gènes par les cellules à reprogrammer. Ainsi, il est possible par exemple d'utiliser d'autres vecteurs viraux tels les adénovirus mais aussi des techniques qui ne font pas appel à des virus comme la simple injection d'ARNm codant les facteurs de pluripotence. Ces améliorations évitent l'insertion des gènes de la reprogrammation dans le génome de la cellule ciblée et un meilleur contrôle de la durée de leur expression. En effet, une insertion dans une région oncogénique peut conduire au développement de cellules cancéreuses. Dans les laboratoires de recherche, l’utilisation d’un vecteur viral à ARN (Sendai) qui se détruit à un certain seuil de température est maintenant la technologie la plus utilisée pour la reprogrammation. Pour les applications thérapeutiques, la reprogrammation via des plasmides codant les facteurs de Yamanaka est préférée.</p>
+<h3 id="applications-biomedicales">Applications biomédicales</h3>
+<p>Cette technique permet de fabriquer des cellules souches « à la carte » pour la médecine régénératrice. L’une des premières preuves a été établie avec la maladie de Parkinson. Des chercheurs ont réussi à transplanter des CSPi dans le cerveau d’un modèle animal de la maladie de Parkinson et ont montré que ces cellules se sont différenciées en neurones dopaminergiques, avec une amélioration des symptômes de la maladie chez l'animal. De même, une étude menée sur des modèles murins de lésion de la moelle épinière, montre que la transplantation de CSPi humaines stimule la régénération neuronale et améliore la locomotion. La transplantation de CSPi humaines dans le myocarde de souris ayant subi un infarctus aigu conduit à une amélioration substantielle des fonctions cardiaques chez ces dernières grâce à la différenciation des CSPi en cellules cardiaques.</p>
+<p>Une autre application intéressante des CSPi réside dans le traitement des maladies génétiques. Par exemple, utilisant des souris chez laquelle la drépanocytose avait été induite, des chercheurs ont produit des CSPi chez lesquelles ils ont corrigé l'anomalie génétique. Ces cellules différenciées en cellules souches hématopoïétiques (cellules précurseurs des cellules sanguines) ont été réintroduites dans les souris drépanocytaires, permettant une nette amélioration des symptômes chez ces dernières.</p>
+<p>Les CSPi peuvent aussi être utilisées dans le cadre d'une médecine personnalisée. Par exemple il serait possible de générer des cellules hépatiques ou rénales qui serviront à faire des analyses toxicologiques sur différents médicaments, afin de déterminer celui qui sera le plus tolérable pour chaque patient18, ce qui permettra au médecin de faire le meilleur choix dans l'éventail de médicaments disponibles pour traiter une pathologie donnée. Dans le cadre des anomalies dégénératives et génétiques, les CSPi peuvent être utilisées pour produire des cellules reproduisant la maladie in vitro, ce qui facilitera l’étude de la maladie et la réalisation de tests pharmacologiques afin d’établir le meilleur protocole thérapeutique adapté à chaque patient</p>
+<h2 id="de-la-pluripotence-a-la-totipotence">De la pluripotence à la totipotence</h2>
+<p>Alors qu’il est déjà possible d’obtenir in vitro des cellules pluripotentes (capables de générer tous les tissus d’un organisme) à partir de n’importe quelle cellule, les chercheurs de l’équipe de Maria-Elena Torres Padilla, directrice de recherche Inserm au sein de l’IGBMC (CNRS/Université de Strasbourg/Inserm) à Strasbourg sont parvenus pour la première fois à obtenir des cellules dites totipotentes, ayant les mêmes caractéristiques que celles des tous premiers stades embryonnaires, des cellules aux propriétés encore plus intéressantes. Ces résultats obtenus en collaboration avec Juanma Vaquerizas, du Max Planck Institute (Münster, Allemagne) sont publiés le 3 août dans la revue Nature Structural &amp; Molecular Biology.</p>
+<p>Juste après la fécondation, aux stades 1 ou 2 cellules, les cellules sont dites « totipotentes », c’est-à-dire capables de produire un embryon entier mais également le placenta et le cordon ombilical qui l’accompagnent. Ensuite, au fil des divisions cellulaires et ce jusqu’au stade blastocyste (près d’une trentaine de cellules), les cellules perdent cette plasticité. Devenues « cellules souches embryonnaires », elles sont encore pluripotentes et en mesure de se différencier en n’importe quel tissu. Elles ne peuvent cependant pas à elles seules donner naissance à un fœtus. La totipotence est donc un état beaucoup plus plastique que la pluripotence. Après le stade blastocyste, les cellules se spécialisent et forment les différents tissus de l’organisme, on parle alors des cellules différenciées.</p>
+<p>Depuis quelques années, il est possible de transformer une cellule différenciée en une cellule pluripotente, mais pas en cellule totipotente. Afin de mieux comprendre les raisons pour lesquelles ce « retour » à l’état a totipotent n’était pas accessible, l’équipe de Maria-Elena Torres-Padilla s’est attelée à observer les caractéristiques des cellules totipotentes et à rechercher les facteurs d’induction de cet état.</p>
+<p><img src="data:image/jpeg;base64,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" alt="De la pluripotence à la totipotence – figure 1" loading="lazy" style="width:100%;max-width:605px" /></p>
+<p>In vitro, il arrive que des cellules totipotentes apparaissent parmi les cellules pluripotentes ; elles sont qualifiées de « cellules semblables au stade 2 cellules ». Les chercheurs ont donc comparé ces cellules aux cellules de l’embryon précoce afin de trouver leurs caractéristiques communes, différentes des stades pluripotents. Ils ont notamment montré que leur ADN était moins condensé et que l’expression du complexe protéique CAF1 était diminuée dans ces cellules. CAF1, déjà connu pour son rôle dans l’assemblage de la chromatine (état organisé de l’ADN), serait ainsi responsable du maintien de l’état pluripotent en participant à la condensation de l’ADN.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

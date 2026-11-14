@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phagothérapie - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { margin-bottom: 0.4rem; line-height: 1.75; }
+    .content li > p, .content blockquote > p { margin-bottom: 0.4rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content strong { font-weight: 600; }
+    .content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #eaecf0; font-weight: 600; }
+    .content td:empty { min-width: 2rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#phagotherapie" class="toc-level-1">Phagothérapie</a>
+            <a href="#introduction" class="toc-level-2">Introduction</a>
+            <a href="#portes-aux-nues-puis-abandonnes" class="toc-level-2">Portés aux nues, puis abandonnés</a>
+            <a href="#un-regain-d-interet-face-a-la-montee-de-l-antibioresistance" class="toc-level-2">Un regain d&#x27;intérêt face à la montée de l&#x27;antibiorésistance</a>
+            <a href="#des-predateurs-naturels-des-bacteries" class="toc-level-2">Des prédateurs naturels des bactéries</a>
+            <a href="#des-limites-a-prendre-en-compte" class="toc-level-2">Des limites à prendre en compte</a>
+            <a href="#en-attente-d-essais-cliniques-menes-selon-les-criteres-actuels" class="toc-level-2">En attente d&#x27;essais cliniques menés selon les critères actuels</a>
+            <a href="#la-mobilisation-de-plusieurs-acteurs" class="toc-level-2">La mobilisation de plusieurs acteurs</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="phagotherapie">Phagothérapie</h1>
+
+<h2 id="introduction">Introduction</h2>
+<p>Découverts il y a une centaine d'années par un chercheur franco-canadien travaillant à l'Institut Pasteur, Félix D'Hérelle, les bactériophages (plus simplement appelés phages) sont des virus "mangeurs" ou plutôt tueurs de bactéries. Ces armes anti-infectieuses naturelles, présentes en abondance dans tous les écosystèmes de la planète, y compris dans le corps humain, sont apparues comme un traitement miracle et ont connu leur heure de gloire dans les années 1920-1930.</p>
+<h2 id="portes-aux-nues-puis-abandonnes">Portés aux nues, puis abandonnés</h2>
+<p>Après la mondialisation de leur utilisation thérapeutique, ces virus très particuliers sont cependant tombés dans l'oubli, détrônés par un tout nouveau traitement à l'époque : la pénicilline.</p>
+<p>Les collections de bactériophages de l'Institut Pasteur, à Paris et à Lyon, ont été détruites et les laboratoires investis dans la phagothérapie ont progressivement arrêté la production de phages.</p>
+<p>Seul l'empire soviétique, isolé derrière le rideau de fer, avec quasiment aucun accès aux antibiotiques, a continué à recourir à cette thérapie antibactérienne. Et même après l'éclatement de bloc de l'Est, certains centres comme, le plus connu, celui de Tbilissi en Géorgie (Phage Therapy Center, fondé par un élève de Félix D'Hérelle, George Eliava) et également celui de Wroclaw en Pologne (Institut d'immunologie et de thérapie expérimentale) sont toujours spécialisés en phagothérapie.</p>
+<h2 id="un-regain-d-interet-face-a-la-montee-de-l-antibioresistance">Un regain d'intérêt face à la montée de l'antibiorésistance</h2>
+<p>Aujourd'hui, la recrudescence des bactéries résistantes, voire multirésistantes, l'inflation des infections nosocomiales et le manque de nouveaux traitements poussent à envisager le retour de la phagothérapie dans la lutte contre les infections.</p>
+<p>En attestent le regain de publications sur le sujet depuis une dizaine d'années et les expérimentations menées dans plusieurs centres hospitaliers.</p>
+<p>L'administration de la phagothérapie est le plus souvent locale (cutanée, inhalée, etc.) ou intraveineuse alors que la voie orale se heurte à l'acidité gastrique qui détruit les bactériophages.</p>
+<h2 id="des-predateurs-naturels-des-bacteries">Des prédateurs naturels des bactéries</h2>
+<p>Les bactériophages ont en effet de nombreux atouts. Ils agissent vite, en moins d'une demi-heure. Plus il y a de bactéries, plus ils se multiplient et sont efficaces. Habituellement, chaque bactériophage est spécifique d'une bactérie et parfois d'une seule souche.</p>
+<p>Des résistances bactériennes peuvent rarement survenir, mais elles sont le plus souvent labiles, les bactériophages étant capables de muter pour retrouver leur efficacité.</p>
+<p>Leur action n'est nullement enrayée par l'emploi concomitant d'antibiotiques qui peuvent agir en synergie, ni par les biofilms, et ils respectent le microbiote. Leurs effets secondaires sont quasi inexistants. Plus récemment, il a été possible de manipuler leur génome pour les rendre encore plus efficaces.</p>
+<p>Il y a toutefois un revers de la médaille. Ce traitement, qui a été développé au début du XXe siècle, n'a pas fait l'objet d'études effectuées selon les standards actuels et nombre de publications, y compris récentes, sont des rapports de cas cliniques.</p>
+<p>Une première étude multicentrique randomisée (Phagoburn), menée chez des patients ayant des infections bactériennes sur brûlure, dans des services français, belges et suisses, n'a pas réussi à montrer de bénéfices. Cependant, du fait de contraintes logistiques, les doses de bactériophages étaient trop faibles. D'autres expérimentations cliniques se sont en revanche révélées positives.</p>
+<h2 id="des-limites-a-prendre-en-compte">Des limites à prendre en compte</h2>
+<p>La détermination de l'efficacité des bactériophages en tant qu'agents antibactériens se heurte en effet à de multiples difficultés. Ainsi, la préparation du "matériel bactériophagique" demande une certaine expertise. Il faut, par exemple, que seuls soient présents les bactériophages lytiques et en aucun cas l'autre variété des bactériophages, dits tempérés, qui eux introduisent leur génome dans le chromosome de la bactérie, vecteur de gènes potentiellement dangereux pour le patient.</p>
+<p>Autre écueil, se procurer des bactériophages n'est pas aisé, car peu de laboratoires produisent aujourd'hui ce type de virus. Il est en théorie possible de se procurer des bactériophages dans les centres d'Europe de l'Est, mais, en pratique, leur faire franchir les frontières n'est pas facile, en raison des lois sur le bioterrorisme.</p>
+<h2 id="en-attente-d-essais-cliniques-menes-selon-les-criteres-actuels">En attente d'essais cliniques menés selon les critères actuels</h2>
+<p>La nécessité de mettre en place des essais cliniques de qualité est aussi criante, mais elle se heurte au fait que les bactériophages ont une activité très ciblée qui en font un traitement personnalisé : cela rend donc difficile la tentative de généralisation réclamée par les tutelles.</p>
+<p>Un autre problème est que les bactériophages ne sont ni des médicaments, ni des organes, ni des vaccins, ni des dispositifs médicaux. Ils sont habituellement considérés comme des préparations magistrales, ce qui rend difficile leur emploi dans un cadre réglementaire.</p>
+<p>EDIT du 3 juin 2020. En France, Pherecydes Pharma est une structure considérée par l'ANSM comme en capacité de mettre à disposition des bactériophages produits industriellement. Il existe également une autre société française spécialisée dans la santé animale, Vetophage, qui dispose d'une banque de phages. /FIN EDIT</p>
+<p>Plusieurs équipes médicales ont aussi recours aux bactériophages produits par l'hôpital militaire de la Reine Astrid à Bruxelles. Mais, dans le monde, d'autres laboratoires, structures académiques et institutions militaires se sont lancés dans le développement de cette option thérapeutique.</p>
+<h2 id="la-mobilisation-de-plusieurs-acteurs">La mobilisation de plusieurs acteurs</h2>
+<p>Quoi qu'il en soit, plusieurs équipes, notamment françaises ont déjà commencé à tester les bactériophages, en particulier en cas d'impasse thérapeutique ou à titre compassionnel.</p>
+<p>Mais la phagothérapie pourrait être utile dans de nombreuses indications, aiguës ou surtout chroniques. L'Inserm, via sa revue Médecine Science, a d'ailleurs publié en 2017 une synthèse sur le sujet et un article en octobre 2019.</p>
+<p>L'ANSM a quant à elle réuni plusieurs experts sur le sujet en 2016 puis, récemment, en 2019, pour faire un état des lieux des différences expériences cliniques françaises et des actions susceptibles de promouvoir l'utilisation des bactériophages, avec notamment la proposition de mettre en place une plateforme nationale d'orientation et de validation du recours aux phages.</p>
+<p>Plusieurs associations de patients confrontés aux résistances bactériennes plaident pour pouvoir disposer de ce type de traitement en France. En effet, faute de pouvoir y avoir accès, certaines personnes finissent par se déplacer jusqu'en Géorgie à leurs frais, pour pouvoir bénéficier de l'expertise du centre de Tbilissi.</p>
+<p>Pour conclure, la phagothérapie apparaît être une piste antibactérienne très intéressante, mais qui nécessite d'être réexaminée de façon plus scientifique qu'il n'y a un siècle. Les travaux sont en cours et, sous la menace de résistances bactériennes incontrôlables, les acteurs de la santé se mobilisent pour réactiver les potentialités de cette « vieille » stratégie thérapeutique.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

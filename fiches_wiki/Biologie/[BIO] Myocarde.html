@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Myocarde - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { margin-bottom: 0.4rem; line-height: 1.75; }
+    .content li > p, .content blockquote > p { margin-bottom: 0.4rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content strong { font-weight: 600; }
+    .content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #eaecf0; font-weight: 600; }
+    .content td:empty { min-width: 2rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#myocarde" class="toc-level-1">Myocarde</a>
+            <a href="#introduction" class="toc-level-2">Introduction</a>
+            <a href="#description-du-tissu-myocardique" class="toc-level-2">Description du tissu myocardique</a>
+            <a href="#diversite-des-cellules-myocardiques" class="toc-level-2">Diversité des cellules myocardiques</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="myocarde">Myocarde</h1>
+<h2 id="introduction">Introduction</h2>
+<p><img src="data:image/jpeg;base64,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" alt="Introduction – figure 1" loading="lazy" style="width:100%;max-width:200px" /></p>
+<p>Le myocarde est le tissu musculaire (myo-, muscle) du cœur (-carde). C'est un muscle épais et creux à contraction rythmique contrôlée par le système nerveux végétatif (involontaire/autonome).</p>
+<p>Les tissus annexes du myocarde sont l'endocarde (plus à l'intérieur, un endothélium spécialisé) et le péricarde (couche de tissu conjonctif entourant le cœur).</p>
+<p>Le myocarde est composé de cellules musculaires cardiaques spécialisées, les cardiomyocytes, qui ne ressemblent à aucun autre tissu musculaire du corps. En particulier, ces cellules sont intétanisables, ce qui signifie qu'elles sont incapables de contraction prolongée. De plus ces cellules sont excitables (reçoivent l'influence du système nerveux autonome), douées d'automatisme et indépendantes, conductrices (elles transmettent l'excitation) et contractiles.</p>
+<p>Ce sont les artères coronaires qui se chargent de l'apport sanguin du myocarde.</p>
+<h2 id="description-du-tissu-myocardique">Description du tissu myocardique</h2>
+<p>Les cellules myocardiques sont associées en fibres parallèles anastomosées, séparées par de courtes travées d'endomysium, tissu conjonctif riche en vaisseaux sanguins (capillaires coronaires) du fait de la forte demande énergétique. Chaque fibre est composée de plusieurs cellules grossièrement cylindriques, avec des extrémités ramifiées. Le noyau ovoïde est en position centrale (avec quelquefois des nucléoles bien visibles). Le cytoplasme (appelé sarcoplasme dans les cellules musculaires) présente une striation identique à la fibre musculaire squelettique avec alternance de bandes A et de bandes I. Les myofibrilles sont disposées selon le grand axe de la cellule, la strie Z se liant à la membrane.</p>
+<p>Une caractéristique histologique de ce tissu est la présence de stries dites scalariformes, stries séparant la cellule sur toute sa largeur, très marquées, en forme de marches d'escalier. Par le biais de ces stries scalariformes, il existe un contact étroit entre les extrémités distales des cellules pour permettre une diffusion rapide de la contraction à travers tout le myocarde. En conséquence, physiologiquement, le tissu myocardique se comporte comme un syncitium bien que ses cellules soient isolées (contrairement aux muscles squelettiques), la diffusion de la contraction étant très rapide grâce aux stries scalariformes.</p>
+<p>En effet, au niveau des segments transverses des stries scalariformes se trouvent des jonctions adhérentes (fascia adherens et desmosomes) où s’insèrent des sarcomères (on trouve donc à ce niveau de nombreuses protéines de liaison). Ceci assure la cohésion mécanique entre les cardiomyocytes.</p>
+<p>D'autre part, au niveau des segments longitudinaux des stries scalariformes se trouvent des jonctions communicantes (ou gap junction, ou jonctions à interstice). Elles permettent la communication chimique entre les cardiomyocytes: les flux ioniques assurés par les connexons (composé de 6 molécules de connexines) permettent d’entraîner la contraction des cellules de manière coordonnée.</p>
+<h2 id="diversite-des-cellules-myocardiques">Diversité des cellules myocardiques</h2>
+<ul>
+<li><p>Les cellules atriales: ce sont des cardiomyocytes classiques, présents au niveau des atriums. Elles sont un peu moins développées que les cardiomyocytes ventriculaires.</p></li>
+<li><p>Les cellules myoendocrines: ces cellules sont présentes au niveau des atriums. Ce sont des cellules musculaires particulières, qui ont un rôle endocrine: elles synthétisent et libèrent une hormone, le facteur natriurétique atrial.</p></li>
+<li><p>Les cardiomyocytes ventriculaires: ils jouent un rôle essentiel au sein du cœur en assurant la contraction des ventricules à chaque cycle cardiaque, en consommant de l'énergie. Ils contiennent une forme spécifique de myosine, la myosine cardique, une myosine lente. Il s'agit de cellules musculaires lentes, résistantes à la fatigue. Enfin, ils ont un métabolisme oxydatif prédominant, sont riches en mitochondries, et sont très sensibles à l'hypoxie.</p></li>
+</ul>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

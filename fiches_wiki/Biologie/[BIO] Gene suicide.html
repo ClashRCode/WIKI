@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gene suicide - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { margin-bottom: 0.4rem; line-height: 1.75; }
+    .content li > p, .content blockquote > p { margin-bottom: 0.4rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content strong { font-weight: 600; }
+    .content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #eaecf0; font-weight: 600; }
+    .content td:empty { min-width: 2rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#gene-suicide" class="toc-level-1">Gene suicide</a>
+            <a href="#introduction" class="toc-level-2">Introduction</a>
+            <a href="#apoptose" class="toc-level-2">Apoptose</a>
+            <a href="#applications-cancer-suicide-gene-therapy" class="toc-level-2">Applications - Cancer suicide gene therapy</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="gene-suicide">Gene suicide</h1>
+
+<h2 id="introduction">Introduction</h2>
+<p>Dans le domaine de la génétique, un gène suicide est un gène qui provoque la mort d'une cellule par le processus d'apoptose (mort cellulaire programmée). L'activation d'un gène du suicide peut entraîner la mort par diverses voies, mais un « interrupteur » cellulaire important pour induire l'apoptose est la protéine p53. La stimulation ou l'introduction (par thérapie génique) des gènes suicidaires est une méthode potentielle pour traiter le cancer ou d'autres maladies prolifératrices.</p>
+<p>Les gènes du suicide constituent la base d'une stratégie visant à rendre les cellules cancéreuses plus vulnérables ou sensibles à la chimiothérapie. L'approche a consisté à rattacher des parties de gènes exprimés dans les cellules cancéreuses à d'autres gènes pour des enzymes non présentes chez les mammifères, capables de transformer une substance inoffensive en une substance toxique pour la tumeur. La plupart des gènes suicidaires médiatisent cette sensibilité en codant pour des enzymes virales ou bactériennes qui transforment un médicament inactif en antimétabolites toxiques inhibant la synthèse de l'acide nucléique. Les gènes suicidaires doivent être introduits dans les cellules de manière à garantir leur captation et leur expression par le plus grand nombre possible de cellules cancéreuses, tout en limitant leur expression par les cellules normales. La thérapie génique du suicide pour le cancer exige que le vecteur soit capable de distinguer entre les cellules cibles et non cibles, entre les cellules cancéreuses et les cellules normales.</p>
+<h2 id="apoptose">Apoptose</h2>
+<p>L'apoptose  (ou mort cellulaire programmée) est le processus par lequel des <a href="https://fr.wikipedia.org/wiki/Cellule_(biologie)" target="_blank" rel="noopener">cellules</a> déclenchent leur autodestruction en réponse à un signal. C'est l'une des voies possibles de la <a href="https://fr.wikipedia.org/wiki/Mort_cellulaire" target="_blank" rel="noopener">mort cellulaire</a>, qui est <a href="https://fr.wikipedia.org/wiki/Physiologie" target="_blank" rel="noopener">physiologique</a>, <a href="https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9tique" target="_blank" rel="noopener">génétiquement</a> programmée, nécessaire au développement et à la survie des <a href="https://fr.wikipedia.org/wiki/Organisme_multicellulaire" target="_blank" rel="noopener">organismes multicellulaires</a>. Son équilibre avec la <a href="https://fr.wikipedia.org/wiki/Prolif%C3%A9ration_cellulaire" target="_blank" rel="noopener">prolifération cellulaire</a> permet l'homéostasie tissulaire. Contrairement à la <a href="https://fr.wikipedia.org/wiki/N%C3%A9crose" target="_blank" rel="noopener">nécrose</a>, elle ne provoque pas de réaction du <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_immunitaire" target="_blank" rel="noopener">système immunitaire</a> : les <a href="https://fr.wikipedia.org/wiki/Membrane_plasmique" target="_blank" rel="noopener">membranes plasmiques</a> ne sont pas détruites, du moins dans un premier temps, et la cellule émet des signaux (en particulier, elle expose sur le feuillet externe de sa membrane plasmique de la <a href="https://fr.wikipedia.org/wiki/Phosphatidyls%C3%A9rine" target="_blank" rel="noopener">phosphatidylsérine</a>, un <a href="https://fr.wikipedia.org/wiki/Phospholipide" target="_blank" rel="noopener">phospholipide</a> normalement constitutif de son feuillet interne) qui permettront sa <a href="https://fr.wikipedia.org/wiki/Phagocytose" target="_blank" rel="noopener">phagocytose</a> par les cellules macrophagiques et particulièrement les <a href="https://fr.wikipedia.org/wiki/Macrophage" target="_blank" rel="noopener">macrophages</a>.</p>
+<h2 id="applications-cancer-suicide-gene-therapy">Applications - Cancer suicide gene therapy</h2>
+<p>L'objectif ultime de la thérapie contre le cancer est l'élimination complète de toutes les cellules cancéreuses, tout en laissant toutes les cellules saines intactes. L'une des stratégies thérapeutiques les plus prometteuses à cet égard est la thérapie génique contre le suicide du cancer (CSGT), qui progresse rapidement vers de nouvelles frontières. Le succès thérapeutique, dans le CSGT, dépend principalement de la précision dans la délivrance des transgènes thérapeutiques uniquement aux cellules cancéreuses. Cela est traité en découvrant et en ciblant des biomarqueurs uniques ou/ou surexprimés affichés sur les cellules cancéreuses et les cellules souches cancéreuses. La spécificité des effets thérapeutiques contre le cancer est encore renforcée par la conception des constructions d'ADN, qui placent les gènes thérapeutiques sous le contrôle des promoteurs spécifiques aux cellules cancéreuses. La délivrance des gènes suicidaires aux cellules cancéreuses implique des vecteurs viraux ainsi que des vecteurs synthétiques, guidés par des anticorps et ligands spécifiques au cancer. Les options d'administration incluent également des cellules souches modifiées avec des tropismes vers les cancers. Les principaux mécanismes induisant la mort des cellules cancéreuses incluent : l'expression transgénique de thymidines kinases, cytosine, anticorps intracellulaires, télomérases, caspases, DNases. Des précautions sont prises pour éliminer les risques associés à la transgenèse. Les progrès en génomique et protéomique devraient nous aider à identifier les biomarqueurs spécifiques au cancer et les voies métaboliques pour développer de nouvelles stratégies visant à des essais cliniques de thérapies géniques ciblées et personnalisées du cancer. En introduisant le gène dans une tumeur maligne, la tumeur réduirait de taille et disparaitrait peut-être complètement, à condition que toutes les cellules individuelles aient reçu une copie du gène.</p>
+<p>Lorsque l'échantillon d'ADN du virus est prélevé sur les cellules saines du patient, le virus n'a pas besoin de pouvoir différencier les cellules cancéreuses des cellules saines. De plus, l'avantage est qu'il peut aussi prévenir les métastases à la mort d'une tumeur.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

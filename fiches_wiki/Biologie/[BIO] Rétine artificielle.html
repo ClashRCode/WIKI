@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rétine artificielle - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { margin-bottom: 0.4rem; line-height: 1.75; }
+    .content li > p, .content blockquote > p { margin-bottom: 0.4rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content strong { font-weight: 600; }
+    .content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #eaecf0; font-weight: 600; }
+    .content td:empty { min-width: 2rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#retine-artificielle" class="toc-level-1">Rétine artificielle</a>
+            <a href="#introduction" class="toc-level-2">Introduction</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="retine-artificielle">Rétine artificielle</h1>
+
+<h2 id="introduction">Introduction</h2>
+<p>Depuis plusieurs années, la perspective de restaurer la vision des patients souffrant de dégénérescence maculaire liée à l’âge (DMLA) ou de rétinopathies pigmentaire devient de plus en plus tangible. De nombreux chercheurs ont ainsi tenté de développer une rétine artificielle permettant de lutter contre la cécité. Dans une nouvelle étude, une équipe de l’Institut de la vision (Inserm-CNRS- Sorbonne Université) menée par le chercheur Inserm Serge Picaud a montré, dans des modèles animaux, qu’un dispositif fabriqué par la société Pixium Vision permettrait d’induire une perception visuelle de haute résolution. Leurs résultats, publiés dans Nature Biomedical Engineering, ont ouvert la voie à des essais cliniques chez l’Homme.</p>
+<p>Maladie du vieillissement particulièrement invalidante, la dégénérescence maculaire liée à l’âge (DMLA) se caractérise par une dégradation de la rétine pouvant mener à une perte de la vision centrale. Jusqu’à 30 % des personnes âgées de plus de 75 ans seraient concernées. Depuis des années, plusieurs groupes de chercheurs œuvrent pour développer une rétine artificielle qui pourrait redonner la vue à ces patients, ainsi qu’aux individus atteints de rétinopathie pigmentaire.</p>
+<p>La rétine est composée de cellules sensibles à la lumière appelées photorécepteurs, dont le but est de transformer les signaux lumineux reçus par l’œil en signaux électriques acheminés vers le cerveau. Ce sont ces cellules qui sont détruites au cours de ces pathologies, ce qui peut mener à la cécité. Le principe d’une rétine artificielle est simple : elle est développée pour se substituer à ces photorécepteurs. Le dispositif est en fait constitué d’implants fixés sous la rétine et composés d’électrodes qui viennent stimuler les neurones rétiniens pour porter les messages au cerveau. </p>
+<p>Deux dispositifs de ce type, l’Argus II (Second sight, Etats-Unis) et le Retina Implant (AG, Allemagne), ont déjà largement été implantés. « Néanmoins, ces deux entreprises se désengagent petit à petit du marché, notamment parce que le rendu pour les patients n’était pas suffisant pour cibler les patients atteints de DMLA. Les patients parvenaient à voir des signaux lumineux, mais ceux qui arrivaient à distinguer des lettres étaient très minoritaires », souligne Serge Picaud.</p>
+<p>Réinventer le dispositif pour le rendre plus performant : telle a été l’ambition de ce chercheur Inserm et de ses collègues. Portée par l’entreprise Pixium Vision, leur rétine artificielle, inventée par le Pr Palanker à l’Université de Stanford (USA), est un dispositif sans fil, moins complexe, contrairement aux dispositifs précédents. De plus, cet implant introduit un retour local du courant induisant ainsi une meilleure résolution des images perçues par l’œil. Enfin, l’image est projetée sur l’implant par une stimulation infrarouge qui active des photodiodes reliées aux électrodes, permettant une stimulation plus directe des neurones rétiniens.</p>
+<p>Dans leur étude publiée dans Nature Biomedical Engineering, Serge Picaud et ses collègues ont testé ce dispositif chez des primates non-humains, montrant qu’il permet de restaurer une acuité visuelle significative. Des tests in vitro ont d’abord montré que chaque pixel active des cellules différentes dans la rétine. Cette sélectivité se traduit par une très haute résolution, de sorte que des animaux implantés peuvent percevoir l’activation d’un seul pixel de l’implant dans un test de comportement.</p>
+<p>La haute résolution de ces implants a permis d’ouvrir la voie à l’implantation du dispositif chez cinq patients français atteints de DMLA dans le service de José-Alain Sahel à la Fondation ophtalmologique A. de Rothschild. Les premiers résultats indiquent que ceux-ci retrouvent peu à peu une vision centrale. Ils sont en mesure de percevoir des signaux lumineux, et certains peuvent même identifier des séquences de lettres, de plus en plus rapidement au cours du temps.</p>
+<p>« L’objectif est maintenant de faire un essai de phase 3 chez un groupe plus conséquent de patients atteints de DMLA. Si la rétine artificielle fonctionne chez eux, nous pensons qu’il n’y a pas de raison pour qu’elle ne fonctionne pas chez des patients souffrant de rétinopathie pigmentaire, maladie également liée à la dégénérescence des photorécepteurs », conclut Serge Picaud.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

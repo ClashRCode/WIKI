@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Microglie - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { margin-bottom: 0.4rem; line-height: 1.75; }
+    .content li > p, .content blockquote > p { margin-bottom: 0.4rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content strong { font-weight: 600; }
+    .content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #eaecf0; font-weight: 600; }
+    .content td:empty { min-width: 2rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#microglie" class="toc-level-1">Microglie</a>
+            <a href="#introduction" class="toc-level-2">Introduction</a>
+            <a href="#microgliogenese" class="toc-level-2">Microgliogénèse</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="microglie">Microglie</h1>
+
+<h2 id="introduction">Introduction</h2>
+<p>La microglie (microgliocytes ou cellules de Hortega)[1] est une population de cellules gliales — des macrophages que l'on retrouve dans le système nerveux central (cerveau, moelle épinière et rétine) — et qui en forme la principale défense immu Elles représentent de 5 à 25 % de toutes les cellules du système nerveux central (SNC). Elles sont différentes des cellules macrogliales, que ce soit en ce qui a trait à leur morphologie, à leur fonction ou à leur origine. Ces petites cellules, généralement à petit noyau dense et de forme étoilée, sont mobiles. Elles appartiennent à la lignée des macrophages, cellules capables de phagocytose qui peuplent les différents tissus de l'organisme et sont issues de la moelle hématopoïétique. Leur cytoplasme peut être visualisé par des colorants argentiques.</p>
+<p>Les cellules microgliales peuvent proliférer lorsque des lésions surviennent dans le SNC. Elles deviennent des cellules présentatrices d'antigènes. Quand elles sont actives, elles expriment à leur surface les CMHI et CMHII. Elles sécrètent en outre des cytokines, des protéines et des radicaux libres (par exemple des anions superoxyde) qui peuvent aggraver les lésions.</p>
+<p>Toutefois, n'étant pas des présentatrices d'antigènes spécialisées, leur activité régulatrice permettant d'éviter l'inflammation n'est pas considérée comme remettant en cause le privilège immun.</p>
+<p>Leurs fonctions s'étendent au-delà de la défense immunitaire du parenchyme neural, de nombreuses fonctions leur ont été attribuées dans la régulation du développement et du fonctionnement du système nerveux. nitaire active grâce à ses capacités phagocytaires.</p>
+<p>Elles sont issues du sac vitellin et prolifèrent activement in situ au cours du développement. Les autres cellules de la névroglie centrale dérivent quant à elles du neuroectoderme (épiblaste primitif). De plus, les microglies appartiennent au système des phagocytes mononucléés. Les avancées technologiques récentes ont permis le rejet définitif du système phagocytaire mononucléaire affirmant que les macrophages résidents dérivés des et la reconnaissance des macrophages résidant dans les tissus en tant que populations uniques indépendantes de la différenciation monocytaire</p>
+<h2 id="microgliogenese">Microgliogénèse</h2>
+<p>Pendant l'hématopoïèse primitive chez les souris, c'est-à-dire pendant les stades embryonnaires et fœtaux, à partir du jour 6,5 post-coïtum (pc), émergent, dans le sac vitellin, des cellules souches hématopoïétiques (CSH) qui donneront naissance à des cellules progénitrices de différentes lignées. Entre les jours 7,5 et 8,0 pc, apparaissent des cellules progénitrices érythromyéloïdes (KIT+, Ter119+ et RUNX1+). Au cours du jour 9,0 pc, ces cellules expriment le CD45, mais pas les marqueurs myéloïdes (stade A1), exprimant ensuite des marqueurs myéloïdes tels que les récepteurs de chimiokines CX3C1 (CX3CR1) et du facteur stimulant de colonies 1 (CSF1R), ainsi que la glycoprotéine F4/80 (stade A2). De plus, elles expriment des métalloprotéinases (MMP-8 et MMP-9), suggérant qu'à partir de ce moment, elles commencent à migrer vers le mésenchyme neuronal. Pendant ce temps, elles continuent de mûrir et, vers le jour 14,0 pc, les cellules acquièrent une morphologie ramifiée. D'autre part, pendant l'hématopoïèse définitive, c'est-à-dire une fois que l'aorte-gonades-mésonephros (AGM) et le foie fœtal deviennent les principaux organes hématopoïétiques (pendant les jours 10,5 et 12,5 pc, respectivement), des phagocytes mononucléaires se forment et migrent vers le cerveau. Cependant, ceux-ci sont des macrophages distincts de la microglie et résident périvasculairement, dans le plexus choroïdes et les méninges.</p>
+<p>Post-natalement, les monocytes formés dans la moelle osseuse des os longs, à partir de précurseurs leucocytaires, migrent vasculairement et colonisent les tissus.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

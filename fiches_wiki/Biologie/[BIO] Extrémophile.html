@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extrémophile - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { margin-bottom: 0.4rem; line-height: 1.75; }
+    .content li > p, .content blockquote > p { margin-bottom: 0.4rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content strong { font-weight: 600; }
+    .content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #eaecf0; font-weight: 600; }
+    .content td:empty { min-width: 2rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#extremophile" class="toc-level-1">Extrémophile</a>
+            <a href="#introduction" class="toc-level-2">Introduction</a>
+            <a href="#differents-types-dextremophiles" class="toc-level-2">Différents types d’extrémophiles</a>
+            <a href="#interet-de-l-etude-des-extremophiles" class="toc-level-2">Intérêt de l&#x27;étude des extrémophiles</a>
+            <a href="#organismes-polyextremophiles" class="toc-level-2">Organismes polyextrémophiles</a>
+            <a href="#exemples-d-organismes-extremophiles" class="toc-level-2">Exemples d&#x27;organismes extrémophiles</a>
+            <a href="#archees" class="toc-level-3">Archées</a>
+            <a href="#bacteries" class="toc-level-3">Bactéries</a>
+            <a href="#animaux-invertebres" class="toc-level-3">Animaux invertébrés</a>
+            <a href="#vertebres" class="toc-level-3">Vertébrés</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="extremophile">Extrémophile</h1>
+
+<h2 id="introduction">Introduction</h2>
+<p>Un organisme est dit extrémophile[2], ou extrêmophile, lorsque ses conditions de vie normales sont mortelles pour la plupart des autres organismes : températures proches ou supérieures à 100 °C (hyperthermophiles) ou inférieures à 0 °C (psychrophiles), pressions exceptionnelles (barophiles des grands fonds marins), milieux très chargés en sel (halophiles), milieux très acides (acidophiles) ou hyper-alcalins (alcalophiles), milieux radioactifs ou anoxique (sans dioxygène) ou non éclairé comme les endolithes.</p>
+<p>Beaucoup d’extrémophiles appartiennent au taxon des Archaea ou des Bactéries et bien qu'il existe aussi des extrémophiles eucaryotes unicellulaires et métazoaires, (insectes, crustacés, poissons…), on réserve toutefois l'usage de ce terme pour les organismes unicellulaires.</p>
+<p>Des organismes extrémophiles peuvent par exemple être isolés de sources chaudes sulfureuses, de cheminées hydrothermales sous-marines, de sédiments, dans les glaces de l'Antarctique ou de l'Arctique, dans des eaux saturées en sel (lac ou Mer Morte), dans des gisements pétroliers…</p>
+<p>Quelques êtres vivants, appelés polyextrémophiles, cumulent même plusieurs de ces résistances (exemple de Deinococcus radiodurans, Kineococcus radiotolerans, ou de Sulfolobus acidocaldarius).</p>
+<p>Parfaitement adaptés à ces conditions très spéciales, les extrémophiles sont rares dans les conditions plus ordinaires. En effet, même lorsqu'ils sont capables de supporter ces conditions (car dans bien des cas leur métabolisme spécial nécessite les conditions extrêmes), ils supportent mal la concurrence d'organismes banals. Il arrive que l'on distingue extrémophile et extrémotolérant, selon que l'organisme a besoin des conditions exceptionnelles, ou bien qu'il les supporte mais qu'on le trouve dans des conditions plus ordinaires.</p>
+<p>Il faut bien distinguer le cas des extrémophiles-vrais (qui vivent normalement ou exclusivement en conditions extrêmes), des cas relativement banals d'organismes capables de provisoirement prendre une forme résistante aux conditions défavorables (en suspendant leurs fonctions vitales, en se protégeant par la formation d'un kyste ou d'une spore). Certaines bactéries comme Deinococcus radiodurans sont capables de s'autoréparer en conditions extrêmes, mais ne les exigent pas pour vivre.</p>
+<h2 id="differents-types-dextremophiles">Différents types d’extrémophiles</h2>
+<ul>
+<li><p>Acidophile : organisme vivant dans des environnements acides (pH optimum de croissance proche de 3).</p></li>
+<li><p>Alcalophile : organisme vivant dans des environnements basiques (pH optimum de croissance proche de 9 et plus).</p></li>
+<li><p>Halophile : organisme vivant dans des milieux très salés (forte concentration en NaCl), un cas particulier d'halotolérance (résistance au sel).</p></li>
+<li><p>Métalotolérant : organisme tolérant de hautes concentrations en métal (cuivre, cadmium, arsenic, zinc).</p></li>
+<li><p>Psychrophile ou psychrotolérant : organisme vivant dans des environnements froids (abysses, glaciers, voire réfrigérateur où ils peuvent affecter l'hygiène alimentaire en rendant moins efficace la chaine du froid).</p></li>
+<li><p>Piézophile ou barophile : organisme vivant dans des environnements soumis à des pressions élevées (fonds océaniques profonds jusqu'à −11 000 mètres ; fosse des Mariannes)</p></li>
+<li><p>Radiorésistant : organisme pouvant survivre à des radiations ionisantes élevées.</p></li>
+<li><p>Thermophile : organisme vivant dans des environnements chauds avec des optimums de croissance proche de 60 °C.</p></li>
+<li><p>Hyperthermophile : organisme vivant dans des environnements très chauds avec des optimums de croissance proche de 90 °C à plus de 100 °C ; mais ils ne peuvent pas vivre dans un milieu d'eau portée à ébullition (dans les fonds marins la pression est élevée et l'eau reste liquide jusqu'à 400 °C)</p></li>
+<li><p>Xérophile : organisme capable de résister à la dessiccation (ayant besoin de peu d'eau pour survivre).</p></li>
+</ul>
+<h2 id="interet-de-l-etude-des-extremophiles">Intérêt de l'étude des extrémophiles</h2>
+<p>Les extrémophiles sont un sujet d'étonnement et d'étude à plusieurs titres :</p>
+<ul>
+<li><p>Leurs particularités offrent des perspectives technologiques variées (protéines thermostables, enzymes de lessives à l'eau froide, par exemple) et un vaste champ d'études biologiques. Les protéines et enzymes extrêmes constituent un marché en plein essor (biotechnologie et industrie chimique). L'exemple le plus spectaculaire est la Taq polymérase provenant de Thermus aquaticus qui est largement employé pour les réactions de PCR.</p></li>
+<li><p>L'apparition de la vie a peut-être eu lieu dans un environnement extrême. L'atmosphère primitive de l'époque, sans oxygène et sans ozone, laissait passer les UV du soleil qui pouvait entraîner la formation de radicaux libres toxiques pour les cellules. Le chimiste Günter Wächtershäuser pense que la vie est apparue dans un milieu chaud sulfuro-ferreux en absence d'oxygène. Ce milieu est proche de celui des cheminées hydrothermales où vivent de nombreux micro-organismes hyperthermophiles. Cependant, les preuves fossiles de l'existence d'une forme de vie au niveau de site hydrothermaux fossilisés ne sont pas encore confirmées.</p></li>
+<li><p>Ils illustrent les capacités étonnantes d'adaptation de la vie aux milieux les plus divers et les plus hostiles, ce qui crédibilise l'idée que des formes de vie semblables se trouvent sur des planètes en apparence non viables.</p></li>
+</ul>
+<h2 id="organismes-polyextremophiles">Organismes polyextrémophiles</h2>
+<p>L'appellation polyextrémophile regroupe l'ensemble des micro-organismes extrémophiles capables de résister à différents types d'agents agressifs ou de survivre dans des conditions extrêmes très variées. Quelques polyextrémophiles connus sont :</p>
+<ul>
+<li><p>La bactérie Deinococcus radiodurans, l'une des premières à avoir été identifiée est probablement la plus célèbre ; remarquablement radiorésistante, elle survit également aux rayons ultraviolets, à la dessiccation – xérophile –, au manque de nutriments, au froid – psychrophile –, à l'acide – acidophile –, etc.</p></li>
+<li><p>Kineococcus radiotolerans, découvert en 1996, est un micro-organisme encore plus résistant que D. radiodurans ; en plus de sa radiorésistance, il est capable de survivre en présence de substances chimiques très toxiques.</p></li>
+<li><p>Bacillus infernus – le bacille infernal – fut identifié en tant que premier membre anaérobie du genre Bacillus en 1995. On le retrouve à des profondeurs de 3 200 m sous la terre et 11 000 m sous la surface de la mer. Il est donc piézophile (résistant à la pression hydrostatique), thermophile (60 °C) (résistant à la chaleur), halophile (résistant à des concentrations en NaCl très élevées correspondant à une activité de l'eau inférieure à 0.6 ; un des principaux facteurs limitant l'activité microbienne) et également légèrement alcalophile.</p></li>
+</ul>
+<h2 id="exemples-d-organismes-extremophiles">Exemples d'organismes extrémophiles</h2>
+<h3 id="archees">Archées</h3>
+<ul>
+<li><p>Pyrolobus fumarii, isolée dans des cheminées hydrothermales sous-marine, se multiplie encore à 113 °C.</p></li>
+<li><p>Une souche surnommée Strain 121, proche des Archaea des genres Pyrodictium et Pyrobaculum, a été isolée sur des échantillons hydrothermaux et serait capable de survivre à 121 °C.</p></li>
+<li><p>Sulfolobus acidocaldarius isolé de sources chaudes acides, est à la fois acidophile (croissance à un pH de 2-3) et hyperthermophile (optimum de croissance vers 80 °C).</p></li>
+<li><p>Thermococcus gammatolerans, radiotolérante (son organisme, lorsqu'il est exposé à un rayonnement ionisant se répare en permanence, et efficacement) trouvée à grande profondeur dans certaines sources chaudes[1]</p></li>
+<li><p>Ferroplasma, Ferroplasma acidarmanus peut croître à un pH proche de 0.</p></li>
+<li><p>Methanopyrus, a son optimum de croissance à 98 °C</p></li>
+<li><p>Haloarcula marismortui isolée de la Mer Morte, est très halophile et se développe dans une eau à 300 g/l de NaCl (10 fois la salinité de l'océan).</p></li>
+</ul>
+<h3 id="bacteries">Bactéries</h3>
+<ul>
+<li><p>Deinococcus radiodurans, radiorésistant de 1 500 à 3 000 fois la tolérance humaine. Les grands fonds marins, certains lieux radioactifs ou certains déserts (exposés aux UV, parfois sursalés abritent aussi des extrémophiles radiorésistantes dont deinococcus.</p></li>
+<li><p>Bacillus infernus a été isolée à 2 700 m sous la surface du sol.</p></li>
+<li><p>Desulforudis audaxviator a été trouvé à −1 500 m puis −2 800 m de profondeur, dans le sol d'une mine d'or (Bassin du Witwatersand, Afrique du Sud), à une température de 60 °C et un pH de 9,3</p></li>
+<li><p>GFAJ-1, bacille halophile tolérant à l'arsenic.</p></li>
+<li><p>Les snottites (notamment Acidithiobacillus) tirent leur énergie de chimiosynthèse de composés de soufre d'origine volcanique, leur pH se rapproche de 0, avec des propriétés similaires à l'acide de batterie.</p></li>
+<li><p>Atribacterota : embranchement de bactéries thermophiles décrit en 2021.</p></li>
+</ul>
+<h3 id="animaux-invertebres">Animaux invertébrés</h3>
+<ul>
+<li><p>Halicephalobus mephisto découvert dans de l'eau de puits d'une mine d'or entre 0,9 et 3,6 km de profondeur.</p></li>
+<li><p>Alvinella pompejana, dit ver de Pompéi vit sur certaines cheminées hydrothermales sous-marines. Des capacités de thermorésistance exceptionnelles pour un eucaryote pluricellulaire (tolère une température de 20 à plus de 80 °C chez l’adulte).</p></li>
+</ul>
+<h3 id="vertebres">Vertébrés</h3>
+<ul>
+<li><p>Les poissons de la famille des Nototheniidae, vivent dans l'Océan Austral et sécrètent des protéines « antigel » dans leur sang.</p></li>
+</ul>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
