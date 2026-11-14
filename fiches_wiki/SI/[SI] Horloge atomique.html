@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Horloge atomique - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#les-types-d-horloges-atomiques" class="toc-level-1">Les types d&#x27;horloges atomiques</a>
+            <a href="#principe-de-fonctionnement" class="toc-level-1">Principe de fonctionnement</a>
+            <a href="#performances" class="toc-level-3">Performances</a>
+            <a href="#horloge-atomique-aux-frequences-optiques" class="toc-level-1">Horloge atomique aux fréquences optiques</a>
+            <a href="#processus-energetiques-atomiques" class="toc-level-1">Processus énergétiques atomiques</a>
+            <a href="#notion-de-structure-fine-et-hyperfine" class="toc-level-1">Notion de structure fine et hyperfine</a>
+            <a href="#applications" class="toc-level-1">Applications</a>
+            <a href="#temps-atomique-international" class="toc-level-2">Temps atomique international</a>
+            <a href="#gps" class="toc-level-2">GPS</a>
+            <a href="#telecommunications" class="toc-level-2">Télécommunications</a>
+            <a href="#mesure-du-champ-gravitationnel" class="toc-level-2">Mesure du champ gravitationnel</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="horloge-atomique">Horloge atomique</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="introduction">Introduction</h2>
+<p>Une horloge atomique est une horloge qui utilise la pérennité et l'immuabilité de la fréquence du rayonnement électromagnétique émis par un électron lors du passage d'un niveau d'énergie à un autre pour assurer l'exactitude et la stabilité du signal oscillant qu'elle produit. Un de ses principaux usages est le maintien du temps atomique international (TAI) et la distribution du temps universel coordonné (UTC) qui sont les échelles de temps de référence.</p>
+<h2 id="les-types-d-horloges-atomiques">Les types d'horloges atomiques</h2>
+<p>Les horloges atomiques se déclinent en différents types, mais leur principe de fonctionnement reste fondamentalement le même. La différence réside surtout dans le choix de l'élément utilisé et dans les méthodes employées pour détecter les variations de niveau d'énergie.</p>
+<p>Les horloges atomiques les plus courantes sont les horloges atomiques au césium, à l'hydrogène et au rubidium.</p>
+<p>Les horloges atomiques au césium fonctionnent en faisant passer un faisceau d'atomes de césium à travers un champ magnétique qui sépare les atomes selon leurs niveaux d'énergie.</p>
+<p>Les horloges atomiques à hydrogène maintiennent les atomes d'hydrogène à un niveau d'énergie constant à l'aide d'un récipient spécial en vue d'éviter toute perte trop rapide de leur état d'énergie supérieur.</p>
+<p>Les horloges atomiques au rubidium sont les plus simples et compactes de toutes, elles utilisent une cellule en verre de rubidium gazeux qui change son absorption de la lumière à la fréquence optique du rubidium lorsque la fréquence des micro-ondes environnantes est adéquate.</p>
+<p>Les horloges atomiques les plus précises actuellement disponibles utilisent l'atome de césium avec des champs magnétiques et des détecteurs standards. Par ailleurs, l'utilisation de faisceaux laser permet de limiter les variations de fréquence dues à l'effet Doppler, en empêchant les atomes de césium de se déplacer dans tous les sens.</p>
+<p><img alt="Illustration – Les types d'horloges atomiques" loading="lazy" src="data:image/jpeg;base64,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" style="width:min(100%,220px)"/></p><h2 id="principe-de-fonctionnement">Principe de fonctionnement</h2>
+<p>Le principe général est de synchroniser en permanence, par une boucle d'asservissement, un oscillateur à quartz avec un jet permanent d'atomes de cesium 133, refroidis pour permettre leur mesure. L'asservissement se fait en maximisant le nombre d'atomes dans un état excité, qui possèdent une certaine énergie E2. Cette maximisation, mesurée dans une cavité micro-ondes, témoigne que l'oscillateur est le plus proche possible de la fréquence de la transition hyperfine de l'état fondamental de l'atome de césium 133 non perturbé, égale à 9 192 631 770 Hertz, qui est la définition officielle de la seconde. En effet, les électrons des atomes ne changent de niveau d'énergie que si l'énergie a une valeur très précise, directement liée à la fréquence5.</p>
+<p>Un système physique, ici une enceinte chauffée contenant du césium, permet de créer un jet d'atomes.</p>
+<p>Dans ce jet, seuls les atomes correspondant à l'état d'énergie initiale désiré, ici E1, sont conservés (la sélection se faisant par déflexion grâce à un champ magnétique).</p>
+<p>Un oscillateur à quartz (produisant un signal à 10 MHz) est multiplié afin de piloter un générateur micro-ondes à une fréquence ν′ (voisine de ν). Ce signal est ensuite injecté dans une cavité résonante dite de Ramsey.</p>
+<p>Le jet d'atomes dans l'état E1 passe dans la cavité de Ramsey : plus la fréquence ν′ sera proche de ν, plus grand sera le nombre d'atomes qui, par absorption de l'onde, subiront la transition vers l'état E2.</p>
+<p>À la sortie, le jet atomique subit une seconde déflexion magnétique qui sépare les atomes dans l'état E2 de ceux dans l'état E1.</p>
+<p>Un détecteur, placé dans la trajectoire des atomes dans l'état E2, produit un signal proportionnel au nombre de ces atomes. Plus ν′ est proche de ν, plus le nombre d'atomes E2 compté en sortie est grand.</p>
+<p>Un système d'asservissement ajuste en permanence la fréquence de l'oscillateur à quartz pour maximiser le nombre d'atomes dans l'état E2, et donc conserver la fréquence de l'oscillateur proche de la fréquence optimale. La fréquence de l'oscillateur est ainsi asservie à la fréquence de la transition atomique.</p>
+<p>Dans le cas du césium, la fréquence ν est de 9 192 631 770 Hz. Cette valeur est exacte puisque c'est celle utilisée pour définir tout à la fois la seconde et son inverse le hertz.</p>
+<p>Le comptage du temps est ensuite assuré par une division des oscillations de l'oscillateur à quartz, associé à un circuit électronique affichant par exemple l'heure comme dans une montre à quartz.</p>
+<p>Les oscillations peuvent aussi être utilisées directement pour piloter des dispositifs ou équipements nécessitant une fréquence de fonctionnement stable.</p>
+<h4 id="performances">Performances</h4>
+<p>Pour un type d'atome donné, la précision de l'horloge dépend du temps passé par les atomes dans la cavité micro-onde. Le temps est d'autant plus grand que les atomes sont refroidis (un atome à température ambiante a une vitesse de 300 m/s) et de la grandeur de la cavité. La précision peut être aussi améliorée en prenant un type d'atome ayant une fréquence de résonance plus élevée, ce qui est le cas pour des horloges au mercure ou strontium</p>
+<p>Les meilleures horloges au césium (en 2013) parviennent à une stabilité de l'ordre de 1 × 10−14 s.s−1, et atteignent 2 × 10−16 s.s−1 après plusieurs jours de fonctionnement7.</p>
+<p>Ceci signifie que l'horloge dérive de 2 × 10−16 seconde en une seconde, ce qui est souvent vulgarisé en donnant le nombre d'années nécessaire pour qu'une horloge dérive d'une seconde complète, dans ce cas une seconde en 160 millions d'années.</p>
+<h2 id="horloge-atomique-aux-frequences-optiques">Horloge atomique aux fréquences optiques</h2>
+<p>Les recherches récentes pour améliorer la précision des horloges atomiques se sont portées sur d'autres atomes (calcium, ytterbium, strontium, mercure, aluminium) piégés dans des treillis optiques dont les transitions énergétiques s'effectuent à des fréquences optiques (d'un ordre de grandeur 100 000 fois supérieur à celle de la transition de l'atome de césium; le BIPM a fixé la transition du strontium à 429 228 004 229 873.2 Hz en octobre 2015). En 2018, le JILA a construit des horloges manipulant les atomes avec des lasers dépassant la précision des meilleures horloges au césium : une précision de 2,5 × 10−19 s s−1 a été atteinte par une horloge utilisant un treillis tridimensionnel d'atomes de strontium, soit une seconde sur la durée de l'âge de l'univers : 13 milliards d'années.</p>
+<h2 id="processus-energetiques-atomiques">Processus énergétiques atomiques</h2>
+<p>La stabilité des raies spectrales atomiques avait déjà été remarquée par Lord Kelvin en 1879.</p>
+<p>Un atome passe d'un état excité d'énergie E2 à un état plus stable d'énergie inférieure E1 par l'émission spontanée d'un photon de fréquence :</p>
+<p><img alt="Illustration – Processus énergétiques atomiques" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,141px)"/></p>
+<p>où ℎ est la constante de Planck.</p>
+<p>À l'inverse, un atome dans un état plus stable d'énergie E1 passera à un état excité d'énergie supérieure E2 par l'absorption d'un photon de fréquence 𝜈 dont la valeur est donnée par la même équation que ci-dessus.</p>
+<p>On connaît aussi le principe d'émission stimulée consistant pour un atome à passer d'un état d'énergie excité vers un état plus stable après la rencontre d'un autre photon. L'énergie de l'atome sera alors dissipée par l'émission d'un autre photon qui possédera les mêmes caractéristiques que le photon initiateur.</p>
+<p>Il existe également une probabilité non nulle pour qu'un atome se trouvant dans un état excité redescende dans un état plus stable et plus faible par un processus de désexcitation non radiative, c'est-à-dire sans émettre de photon. Le système devant alors satisfaire à la relation de conservation de l'énergie, il en résultera soit un échauffement de l'atome, soit un transfert de quantité de mouvement.</p>
+<p>Ces processus atomiques élémentaires, dont la théorie a été développée en grande partie par Albert Einstein, vont être à la base de toute l'interaction permettant d'élaborer un étalon atomique de mesure du temps.</p>
+
+<h2 id="notion-de-structure-fine-et-hyperfine">Notion de structure fine et hyperfine</h2>
+<p>L'observation à haute résolution des raies lumineuses d'un spectre d'émission ou d'absorption met en évidence la présence d'une superposition de plusieurs composantes au sein d'une même raie.</p>
+<p>Une raie principale est donnée par le nombre quantique principal n caractérisant les états propres des fonctions d'onde de ses orbitales électroniques. Dans un même niveau quantique principal, la théorie va donner une série de sous-niveaux quantiques correspondant à des états quantiques dégénérés qui vont être créés par les diverses interactions physiques au sein de l'atome (interaction spin–orbite, effets de volume, effets relativistes, etc.). Ces sous-niveaux sont en fait la cause de la structure composée de la raie principale observée dans le spectre. On parle alors de structure fine : cette observation nécessite en effet une spectroscopie de plus grande précision, les écarts en énergie étant de l'ordre de 1000 fois plus faibles que les écarts entre niveaux principaux.</p>
+<p>Enfin, d'autres effets peuvent intervenir encore plus faiblement : interaction du spin du noyau et de l'électron, effets d'électrodynamique quantique... Une mesure encore plus poussée révèle alors l'existence d'une structure hyperfine des niveaux d'énergie.</p>
+<h2 id="applications">Applications</h2>
+<h3 id="temps-atomique-international">Temps atomique international</h3>
+<p>Le temps atomique international est la référence mondiale fondée sur la définition de la seconde atomique, calculée au Bureau international des poids et mesures à Sèvres, en faisant la moyenne d'environ 500 horloges atomiques (en 2016) réparties dans plus de 70 laboratoires dans le monde. Ces horloges de référence sont majoritairement du type atomique au césium, d'autres fonctionnant au rubidium ou avec un maser à hydrogène.</p>
+<p>En France, le temps légal est généré par le Laboratoire national de métrologie et d'essais - Système de références temps–espace (LNE-SYRTE) situé à l'Observatoire de Paris. Il repose sur les lectures d'une centaine d'instruments dont en particulier six horloges au césium et quatre masers actifs à hydrogène</p>
+<h3 id="gps">GPS</h3>
+<p>Les horloges atomiques sont également employées dans les systèmes de positionnement par satellites. Ainsi, les satellites des constellations du GPS, du système GLONASS ou ceux du programme Galileo embarquent chacun plusieurs horloges atomiques, jusqu'à quatre pour les satellites GPS.</p>
+<p>Les deux satellites GIOVE de test du système Galileo, lancés en 2005 et 2008, emportaient l'un une horloge au rubidium, l'autre un maser à hydrogène supplémentaire, en faisant la référence temporelle la plus stable jamais envoyée en orbite et le satellite de navigation le plus performant du monde.</p>
+<h3 id="telecommunications">Télécommunications</h3>
+<p>Les horloges atomiques sont aussi utilisées dans les réseaux de télécommunications pour fournir un signal de référence aux oscillateurs internes des équipements, afin d'assurer une qualité de transmission des services en accord avec les normes internationales. On utilise soit les signaux directement produits par des horloges atomiques soit les signaux élaborés à partir des émissions des satellites de la constellation GPS qui ont la stabilité des horloges atomiques embarquées.</p>
+<h3 id="mesure-du-champ-gravitationnel">Mesure du champ gravitationnel</h3>
+<p>La précision des horloges atomiques au rubidium ou au mercure devient telle que les effets sur le temps de la gravitation terrestre devient mesurable avec ces horloges, même pour de petites variations. Il devient ainsi possible de mesurer la gravitation à l'aide d'horloges</p>
+<p>Notamment, la forme du géoïde terrestre, qui est la surface équipotentielle de référence du champ de pesanteur terrestre, peut être précisée. Ce géoïde est d'une importance cruciale pour nombre d'applications, et notamment la prévision et le contrôle de la trajectoire des fusées ou celles des satellites.</p>
+<p>Elles peuvent aussi devenir un instrument scientifique pour mesurer le champ gravitationnel des autres planètes, et donc leur composition interne.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

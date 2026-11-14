@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le Starlite - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#le-starlite" class="toc-level-1">Le Starlite</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="le-starlite">Le Starlite</h1><p>À l'aube des années 1990, des reportages ont commencé à apparaître dans les médias du monde entier sur la création d'un nouveau matériau plastique capable de résister à des températures incroyables - jusqu'à celles qui se développent lors d'un incendie ou sur la coque d'un engin spatial lors de son passage dans l’atmosphère. De telles déclarations étaient très embarrassantes pour les scientifiques également parce que l'auteur de la découverte était un homme sans diplôme ni aucune éducation formelle - le coiffeur britannique Maurice Ward.</p>
+<p>Starlite - ce nom a été inventé par la petite-fille de Maurice Ward - a été testé à plusieurs reprises par la NASA en tant qu'isolant thermique possible, les militaires et les grandes entreprises l'ont examiné de près. L'auteur n'a pas refusé de fournir des échantillons pour la recherche, mais il a gardé la recette secrète, ne la partageant avec personne - jusqu'en 2011, date de la mort de Maurice, emportant ce secret avec lui.</p>
+<p>Le destin n'a souri qu'en 1993, lorsqu'un message sur Starlite a été publié dans l'International Defence Review qui fait autorité. Il a fait référence aux "résultats étonnants" de certains des experts indépendants qui ont testé Starlite. Selon certains rapports, le matériau n'a pas brûlé à des températures allant jusqu'à 10 000 ° C et n'a pas été fourni même par un laser à haute puissance.</p>
+<p>De plus, dans le même 1993, les incroyables propriétés d'isolation thermique de Starlite ont été démontrées au public. Lors de l'émission Tomorrow's World de la BBC, un œuf de poule recouvert d'une fine couche de ce matériau a été aspergé de la chaleur d'un brûleur à gaz pendant plusieurs minutes, après quoi il a été montré qu'il restait cru à l'intérieur. Il semblerait que l'acte soit fait: il reste à savoir lequel des géants industriels sera intéressé par l'invention et auprès de qui Ward pourra obtenir légitimement des millions, voire des milliards de dollars pour une recette miracle. Les perspectives de son utilisation dans l'ingénierie et la construction ont été discutées. En 1994, le matériau a été testé chez Boeing comme alternative aux céramiques d'isolation thermique des navettes spatiales.</p>
+<p>Il faut dire que Maurice Ward a toujours fait preuve d'une certaine paranoïa quant à la sécurité de son invention. Pour autant que l'on sache, il a refusé tous les projets dans lesquels il ne pourrait pas maintenir un contrôle de 51 pour cent. L'inventeur a personnellement surveillé tous les échantillons soumis aux tests, s'assurant que personne n'avait la possibilité de reconstituer la composition de Starlite. Ward n'a pas non plus déposé de brevet, afin de ne pas révéler la formule secrète et a annoncé plus d'une fois des tentatives de vol.D'une part, Ward est compréhensible. Si les affirmations de l'auteur sont exactes, la découverte pourrait valoir des milliards, qu'aucune entreprise n'aime autant partager.</p>
+<p>D'un autre côté, Starlite pourrait bien changer le monde moderne et sauver de nombreuses vies, et peut-être que cela n'était pas entièrement éthique. Encore une fois, si toutes les déclarations sur les propriétés de ce matériau sont vraies. Et c'est son principal mystère.Mais il y a beaucoup d'hypothèses et de spéculations sur la composition de Starlite. Ils trouvent tous les principaux indices dans la même publication de Pamela Pauline-Brown, où ce qui suit a été dit. "Il se compose d'un ensemble de polymères et de copolymères organiques avec des additifs organiques et inorganiques, y compris des borates, de petites quantités de céramiques et d'autres ingrédients de barrière pour un total de 21. Peut-être de manière unique, ce matériau thermiquement et antidéflagrant contient jusqu'à 90 pour cent de matières organiques matière." …</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

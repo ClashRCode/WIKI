@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Microscope à effet tunnel - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#principe-de-fonctionnement" class="toc-level-1">Principe de fonctionnement</a>
+            <a href="#details-techniques" class="toc-level-1">Détails techniques</a>
+            <a href="#proprietes-mecaniques" class="toc-level-2">Propriétés mécaniques</a>
+            <a href="#systeme-de-positionnement" class="toc-level-2">Système de positionnement</a>
+            <a href="#electronique" class="toc-level-2">Électronique</a>
+            <a href="#pointe" class="toc-level-2">Pointe</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="microscope-a-effet-tunnel">Microscope à effet tunnel</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Le microscope à effet tunnel (en anglais, scanning tunneling microscope, STM) est inventé en 1981 par des chercheurs d'IBM, Gerd Binnig et Heinrich Rohrer, qui reçurent le prix Nobel de physique pour cette invention en 1986. C'est un microscope en champ proche qui utilise un phénomène quantique, l'effet tunnel, pour déterminer la morphologie et la densité d'états électroniques de surfaces conductrices ou semi-conductrices avec une résolution spatiale pouvant être égale ou inférieure à la taille des atomes.</p>
+<p><img alt="Illustration – Introduction" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,279px)"/></p><h2 id="principe-de-fonctionnement">Principe de fonctionnement</h2>
+<p>Il s'agit, pour simplifier, d'un palpeur (une pointe ou sonde) qui suit la surface de l'objet. La sonde balaie (scanne) la surface à représenter. Un ordinateur ajuste (via un système d'asservissement) en temps réel la hauteur de la pointe pour maintenir un courant constant (courant tunnel) et enregistre cette hauteur qui permet de reconstituer la surface.</p>
+<p>Pour cela, à l'aide d'un système de positionnement de grande précision (utilisant des transducteurs piézoélectriques), on place une pointe conductrice en face de la surface à étudier et l'on mesure le courant résultant du passage d'électrons entre la pointe et la surface par effet tunnel (les électrons libres du métal sortent un peu de la surface et, si l'on se met très près sans pour autant la toucher, on peut enregistrer un courant électrique). Dans la plupart des cas, ce courant décroît très rapidement (exponentiellement) en fonction de la distance séparant la pointe de la surface, avec une distance caractéristique de quelques dixièmes de nanomètres. Ainsi, on fait bouger la pointe au-dessus de l'échantillon avec un mouvement de balayage et on ajuste la hauteur de celle-ci de manière à conserver une intensité du courant tunnel constante, au moyen d'une boucle de rétroaction. On peut alors déterminer le profil de la surface avec une précision inférieure aux distances interatomiques.</p>
+<h2 id="details-techniques">Détails techniques</h2>
+<h3 id="proprietes-mecaniques">Propriétés mécaniques</h3>
+<p>Pour obtenir une bonne résolution, il est nécessaire que les perturbations extérieures ne puissent modifier la distance pointe-surface (celle-ci ne doit pas varier de plus de quelques dixièmes d'Ångströms). Pour cette raison, les microscopes sont petits (quelques centimètres) et construits dans des matériaux très rigides. De plus, il est indispensable, dans la plupart des cas, d'utiliser un système d'amortissement pour l'isoler des vibrations extérieures.</p>
+<h3 id="systeme-de-positionnement">Système de positionnement</h3>
+<p>Le seul moyen d'atteindre la précision suffisante pour le positionnement est d'utiliser des céramiques piézoélectriques. En fait, c'est ce point qui a retardé l'invention de l'appareil car l'idée existait depuis les années 1960, mais aucun système de positionnement adapté n'existait alors.</p>
+<p>Le positionnement se fait par application de différence(s) de potentiel(s) sur les céramiques piézoélectriques qui ont la propriété de se déformer de façon contrôlée sous l'effet d'un champ électrique.</p>
+<h3 id="electronique">Électronique</h3>
+<p>Les courants à mesurer étant de très faible intensité (quelques nA, voire quelques pA), un système électronique d'amplification est indispensable.</p>
+<p><img alt="Illustration – Électronique" loading="lazy" src="data:image/jpeg;base64,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" style="width:min(100%,220px)"/></p><h3 id="pointe">Pointe</h3>
+<p>Les propriétés de la pointe sont critiques pour les performances de l'instrument. De ce fait, différents types de pointes sont utilisés selon la nature de la surface étudiée et l'information recherchée.</p>
+<p>Tant que la surface est approximativement plane à l'échelle atomique, la variation très rapide du courant tunnel avec la distance pointe-surface fait que seul l'atome de la pointe le plus proche de la surface importe. Dans ce cas, la forme de la pointe n'a pas d'influence sur la résolution. En revanche, si la surface est accidentée, la forme de la pointe va limiter la résolution et il est alors indispensable d'utiliser une pointe très fine et donc d'utiliser un matériau dur comme le tungstène (W) ou le platine iridié (Pt/Ir).</p>
+<p>Une autre difficulté provient du fait que la plupart des surfaces se recouvrent très rapidement d'une couche oxydée de quelques dizaines d'ångströms d'épaisseur, invisible dans la vie courante mais qui empêche le passage du courant tunnel. Il existe deux moyens de contourner ce problème :</p>
+<ul>
+<li><p>utiliser un métal noble qui ne s'oxyde pas, comme l'or ou le platine iridié,</p></li>
+<li><p>faire fonctionner le microscope sous vide ou dans une atmosphère inerte (diazote, hélium...) et préparer la pointe in situ, c'est-à-dire dans la même enceinte.</p></li>
+</ul>
+<p>Par ailleurs, en utilisant des pointes particulières, il est possible d'accéder à des informations telles que la nature chimique ou les propriétés magnétiques de la surface.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

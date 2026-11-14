@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nano voiture - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#historique" class="toc-level-1">Historique</a>
+            <a href="#competition" class="toc-level-1">Compétition</a>
+            <a href="#piste" class="toc-level-2">Piste</a>
+            <a href="#nanocars" class="toc-level-2">Nanocars</a>
+            <a href="#resultats" class="toc-level-1">Résultats</a>
+            <a href="#interet-scientifique" class="toc-level-1">Intérêt scientifique</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="nano-voiture">Nano voiture </h1>
+<h2 id="introduction">Introduction</h2>
+<p>La NanoCar Race est une compétition scientifique, sous forme d'une course de molécules se déroulant sur une piste de 100 nanomètres. Elle a été organisée pour la première fois à Toulouse les 28 et 29 avril 2017, puis une deuxième fois les 24 et 25 mars 2022.</p>
+<p><img alt="Illustration – Introduction" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,285px)"/></p><h2 id="historique">Historique</h2>
+<p>L'idée de la course est formulée en janvier 2013 dans la revue ACS Nano par les organisateurs toulousains du CEMES-CNRS en lançant ainsi un appel à candidature pour laisser aux équipes le temps de se préparer. La course est annoncée officiellement par le Centre national de la recherche scientifique en novembre 2015 à Toulouse au cours de Futurapolis. À cette occasion, cinq équipes présentent leurs projets de prototypes le 27 novembre 2015.</p>
+<p>La première course au monde de ce type, entre quatre véhicules, a lieu durant 36 heures les 28 et 29 avril 2017 dans les locaux du CEMES-CNRS à Toulouse. Les organisateurs toulousains acceptent également à concourir deux autres véhicules qui seront alors contrôlés à distance par internet depuis la salle de course du CEMES-CNRS sur le microscope de leur laboratoire. Il s'agit des véhicules de l'Ohio et de Graz-Rice.</p>
+<p>Pour la Nanocar race II, la certification, équipe par équipe, des 10 équipes officiellement inscrites a débuté fin 2019. Stoppée par la pandémie de Covid-19 début mars 2020, elle reprend à la mi-juin 2021 toujours avec le soutien du projet européen H2020 : MEMO (2017-2021)6. La compétition a lieu les 23 et 24 mars 2022, de nouveau au Centre d'élaboration de matériaux et d'études structurales de Toulouse7.</p>
+<h2 id="competition">Compétition</h2>
+<h3 id="piste">Piste</h3>
+<p>La piste de la première compétition est une surface en or, équipée de sillons afin de délimiter des couloirs de course pour éviter de perdre les véhicules trop souvent. Elle fait environ 100 nanomètres de long, et comprend deux virages. Elle se trouve dans une petite enceinte refroidie à −269 °C sous un vide primaire de 10−10 mbar et est observée simultanément par quatre microscopes à effet tunnel miniaturisés pour l'occasion et opérant sur la même surface. Chaque microscope se charge de la conduite d'un seul véhicule (d'une seule molécule-voiture).</p>
+<p>Lors de cette compétition, les nanocars devaient aller le plus loin possible sur cette piste en 36 heures. Des vitesses de 5 nanomètres par heure étaient attendues.</p>
+<h3 id="nanocars">Nanocars</h3>
+<p>Les nanocars, nanovoitures (dont des nanoautos) sont des molécule-véhicules mesurant de un à trois nanomètres. Ce sont des molécules essentiellement constituées de quelques dizaines ou centaines d'atomes d'hydrogène et de carbone équipées d'un châssis, de roues ou de pales moléculaires et d'un moteur moléculaire apparent ou quantique.</p>
+<p>Une nanocar est propulsée pas à pas par des impulsions électriques envoyées par l'opérateur grâce à la pointe de son microscope. Le courant tunnel ainsi produit traverse la nanocar entre la pointe du microscope et la piste métallique commune. Il n'y a pas de contact mécanique direct avec la pointe5. Pendant la course, la nanocar n'est donc ni poussée ni déformée par la pointe du microscope. Une partie des électrons qui traversent la nanocar libère de l'énergie sous forme de petites vibrations intramoléculaires qui permettent d'activer le moteur de la nanocar.</p>
+
+<h2 id="resultats">Résultats</h2>
+<p>La course sur la surface d'or a été remportée par l'équipe suisse qui a franchi en premier la ligne d'arrivée après avoir parcouru 133 nanomètres.</p>
+<p>Sur la piste en argent, le véhicule de l'équipe américano-autrichienne des Universités de Rice et Graz a établi le premier record de vitesse avec une pointe à 95 nanomètres par heure, et a été classée ex-æquo avec l'équipe suisse. Ce véhicule était contrôlé à distance depuis la salle de course de Toulouse sur le microscope de l'Université de Graz.</p>
+<p>Le véhicule de l'équipe américaine de l'Université de l'Ohio a fait demi-tour sans raison apparente au bout de 20 nanomètres, l'équipe allemande a cassé 2 véhicules sans pouvoir repartir, et l'équipe japonaise a fini par abandonner. L'équipe française a perdu de vue son véhicule sur sa portion de surface, et a aussi été contrainte à l'abandon, en se consolant avec le prix symbolique de « voiture la plus élégante de la compétition ».</p>
+<p>Lors de la NanoCar Race II, huit équipes prennent le départ et deux équipes arrivent ex aequo avec environ un millier de nanomètres en 24 heures : l'équipe hispano-suédoise NANOHISPA et l'équipe japonaise NIMS-MANA.</p>
+<h2 id="interet-scientifique">Intérêt scientifique</h2>
+<p>Pour que ce genre de course soit possible il a fallu au préalable résoudre un grand nombre de problèmes comme le choix du type de piste et sa préparation, l'amélioration des dispositifs de suivi et de contrôle en particulier de la sensibilité des mesures de courant et l'évaporation d'un grand nombre de molécules très différentes sur une même surface, la validation au microscope.</p>
+<p>Parmi les retombées, le CNRS cite le développement des molécule-machines à calculer, des molécule-moteurs et de l'Atome-Tech qui permettra à l'avenir de construire atome par atome et à la surface d'un isolant des circuits électroniques quantiques dont les parties calculant mesureront moins de 1 nm de côté. On peut également citer la construction de molécule-machines capables, atome par atome, de dépolluer les déchets industriels, les ordures ménagères comme décrites dans des romans de science-fiction des années 1960 sous le terme de « digesteurs ». Une nouvelle science des surfaces, dite membranaire est également envisageable où des machines moléculaires contrôlées une par une (ou en une exploration aléatoire) inspecteraient les canaux transmembranaires et élimineraient les tentatives d'intrusion des virus dès leur approche de la surface de la membrane.</p>
+
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
