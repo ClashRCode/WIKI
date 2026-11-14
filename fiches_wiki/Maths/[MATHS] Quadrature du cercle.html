@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quadrature du cercle - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#quadrature-du-cercle" class="toc-level-1">Quadrature du cercle</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="quadrature-du-cercle">Quadrature du cercle</h1><p>La quadrature du cercle est un problème classique de mathématiques apparaissant en géométrie. Il fait partie des trois grands problèmes de l'Antiquité, avec la trisection de l'angle et la duplication du cube.</p>
+<p>Le problème consiste à construire un carré de même aire qu'un disque donné à l'aide d'une règle et d'un compas.</p>
+<p>La quadrature du cercle nécessiterait la construction à la règle et au compas de la racine carrée du nombre π, ce qui est impossible en raison de la transcendance de π. Ne sont constructibles que certains nombres algébriques.</p>
+<p>Ce problème impossible à résoudre a donné naissance à l'expression « chercher la quadrature du cercle », qui signifie tenter de résoudre un problème insoluble.</p>
+<p>De plus, ce problème mathématique est celui qui a résisté le plus longtemps aux mathématiciens. Ils ont mis plus de trois millénaires à étudier le problème, reconnu comme insoluble par Ferdinand von Lindemann en 1882.</p>
+<p><img alt="Illustration – Quadrature du cercle" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,220px)"/></p>
+<p>Le carré de côté √π a la même aire que le cercle de rayon 1.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
