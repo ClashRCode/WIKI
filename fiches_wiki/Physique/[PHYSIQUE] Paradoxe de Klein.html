@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paradoxe de Klein - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  
+    /* Complément : listes, tableaux, citations (le reset Tailwind les neutralise) */
+    .content ul { list-style: disc; margin: 0 0 1rem 1.5rem; }
+    .content ol { list-style: decimal; margin: 0 0 1rem 1.5rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content blockquote { border-left: 4px solid #c7d2fe; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+    .content table { border-collapse: collapse; margin: 1rem 0; max-width: 100%; display: block; overflow-x: auto; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; }
+    .content th { background-color: #f1f5f9; font-weight: 600; }
+    .content a { color: #4f46e5; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content strong { font-weight: 700; }
+    .content em { font-style: italic; }
+    .content u { text-decoration: underline; }
+  </style>
+  <script>window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] } };</script>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#physics-overview" class="toc-level-1">Physics overview</a>
+            <a href="#dirac-equation-mysteries" class="toc-level-1">Dirac equation mysteries</a>
+            <a href="#positron-electron-creation" class="toc-level-1">Positron-electron creation</a>
+            <a href="#massless-particles" class="toc-level-1">Massless particles</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="titre-fiche">Paradoxe de Klein</h1>
+<h2 id="introduction">Introduction</h2>
+<p>En mécanique quantique relativiste, le paradoxe de Klein (également connu sous le nom d'effet tunnel de Klein) est un phénomène quantique lié aux particules rencontrant des barrières de potentiel à haute énergie. Il tire son nom du physicien Oskar Klein qui l'a découvert en 1929. À l'origine, Klein a obtenu un résultat paradoxal en appliquant l'équation de Dirac au problème familier de la diffusion des électrons à partir d'une barrière de potentiel. En mécanique quantique non relativiste, on observe un effet tunnel des électrons dans une barrière, avec un amortissement exponentiel. Cependant, les résultats de Klein ont montré que si le potentiel est au moins de l'ordre de la masse de l'électron Ve≈mc^2 (où V est le potentiel électrique, e est la charge élémentaire, m est la masse de l'électron et c est la vitesse de la lumière), la barrière est presque transparente. De plus, lorsque le potentiel tend vers l'infini, la réflexion diminue et l'électron est toujours transmis.</p>
+<p>L'application immédiate de ce paradoxe a été le modèle proton-électron de Rutherford pour les particules neutres à l'intérieur du noyau, avant la découverte du neutron. Le paradoxe présentait une objection quantique à la notion d'un électron confiné à l'intérieur d'un noyau. Ce paradoxe clair et précis suggérait qu'un électron ne pouvait être confiné à l'intérieur d'un noyau par aucun puits de potentiel. La signification de ce paradoxe a fait l'objet d'un débat intense entre Niels Bohr et d'autres à l'époque.</p>
+<h2 id="physics-overview">Physics overview</h2>
+<p>Le paradoxe de Klein est une conséquence inattendue de la relativité sur l'interaction des particules quantiques avec les potentiels électrostatiques. Le problème quantique des particules libres heurtant un potentiel électrostatique à gradins a deux solutions lorsque la relativité est ignorée. Une solution s'applique lorsque les particules approchant la barrière ont moins d'énergie cinétique que le gradin : les particules sont réfléchies. Si les particules ont plus d'énergie que le gradin, certaines sont transmises au-delà du gradin, tandis que d'autres sont réfléchies. Le rapport entre la réflexion et la transmission dépend de la différence d'énergie. La relativité ajoute une troisième solution : des potentiels très raides semblent créer des particules et des antiparticules qui modifient alors le rapport calculé entre la transmission et la réflexion. Les outils théoriques appelés mécanique quantique ne peuvent pas traiter la création de particules, ce qui rend toute analyse du cas relativiste suspecte. Avant la découverte des antiparticules et le développement de la théorie quantique des champs, cette troisième solution n'était pas comprise. Ce casse-tête a été baptisé « paradoxe de Klein ».</p>
+<p>Pour les particules massives, l'intensité du champ électrique nécessaire pour observer l'effet est énorme. Le changement d'énergie potentielle électrique similaire à l'énergie de repos de la particule entrante, mc^2, devrait se produire sur la longueur d'onde de Compton de la particule, ℏm/c, ce qui correspond à 1016 V/cm pour les électrons. Pour les électrons, de tels champs extrêmes ne pourraient être pertinents que dans des noyaux Z&gt;170 ou lors de l'évaporation à l'horizon des événements des trous noirs, mais pour les quasi-particules 2D aux jonctions p-n du graphène, l'effet peut être étudié expérimentalement.</p>
+<h2 id="dirac-equation-mysteries">Dirac equation mysteries</h2>
+<p>Le modèle atomique de Bohr publié en 1913 supposait que les électrons tournaient autour d'un noyau positif compact. Un électron atomique obéissant à la mécanique classique en présence d'un noyau chargé positivement subit une force de Lorentz : il devrait émettre de l'énergie et accélérer vers le noyau atomique. Le succès du modèle de Bohr dans la prédiction des spectres atomiques suggérait que la mécanique classique ne pouvait pas être correcte.</p>
+<p>En 1926, Erwin Schrödinger développa une nouvelle mécanique pour l'électron, une mécanique quantique qui reproduisait les résultats de Bohr. Schrödinger et d'autres physiciens savaient que cette mécanique était incomplète : elle ne tenait pas compte des effets de la relativité restreinte ni de l'interaction entre la matière et le rayonnement.</p>
+<p>Paul Dirac résolut le premier problème en 1928 avec sa théorie quantique relativiste de l'électron. Cette combinaison était plus précise et prédisait également le spin de l'électron. Cependant, elle comprenait également deux fois plus d'états que prévu, tous avec une énergie inférieure à ceux impliqués dans la physique atomique.</p>
+<p>Klein a découvert que ces états supplémentaires donnaient des résultats absurdes à partir de modèles d'électrons subissant un changement important et brusque du potentiel électrostatique : un courant négatif apparaissait au-delà de la barrière. Il est important de noter que la théorie de Dirac ne prédisait que des états à particule unique. La création ou l'annihilation de particules ne pouvait pas être analysée correctement dans la théorie à particule unique.</p>
+<p>Le résultat de Klein a fait l'objet de nombreuses discussions dès sa publication. Niels Bohr pensait que ce résultat était lié à l'étape abrupte et Arnold Sommerfeld a donc demandé à Fritz Sauter d'étudier les étapes inclinées. Sauter a pu confirmer la conjecture de Bohr : le résultat paradoxal n'apparaissait que pour un pas de ΔV&gt;2mc^2 sur une distance similaire à la longueur d'onde de Compton des électrons, λ=h/mc, environ 2 x 10−12m.</p>
+<p>Tout au long des années 1929 et 1930, une série d'articles rédigés par différents physiciens ont tenté de comprendre les états supplémentaires de Dirac. Hermann Weyl a suggéré qu'ils correspondaient aux protons récemment découverts, la seule particule élémentaire autre que l'électron connue à l'époque. Dirac a souligné que les électrons négatifs de Klein ne pouvaient pas se convertir en protons positifs et a suggéré que les états supplémentaires étaient déjà tous remplis d'électrons. Un proton équivaudrait alors à un électron manquant dans ces états inférieurs. Robert Oppenheimer et, séparément, Igor Tamm ont montré que cela rendrait les atomes instables. Finalement, en 1931, Dirac a conclu que ces états devaient correspondre à une nouvelle particule « anti-électron ». En 1932, Carl Anderson a observé expérimentalement ces particules, rebaptisées positons.</p>
+<h2 id="positron-electron-creation">Positron-electron creation</h2>
+<p>La résolution de ce paradoxe nécessitait la théorie quantique des champs, qui s'est développée parallèlement à la mécanique quantique, mais à un rythme plus lent en raison de ses nombreuses complexités. Ce concept remonte à la démonstration de Max Planck selon laquelle l'électrodynamique classique de Maxwell, si efficace dans de nombreuses applications, ne permettait pas de prédire le spectre du corps noir. Planck a montré que les oscillateurs du corps noir devaient être limités aux transitions quantiques. En 1927, Dirac a publié son premier ouvrage sur l'électrodynamique quantique en utilisant la théorie quantique des champs. Sur cette base, Heisenberg, Jordan et Pauli ont intégré l'invariance relativiste dans les équations quantifiées de Maxwell en 1928 et 1929.</p>
+<p>Cependant, il fallut encore dix ans avant que la théorie puisse être appliquée au problème du paradoxe de Klein. En 1941, Friedrich Hund démontra que, dans les conditions du paradoxe, deux courants de charge opposée sont spontanément générés au niveau du seuil. En terminologie moderne, des paires d'électrons et de positons sont spontanément créées au niveau du potentiel de seuil. Ces résultats furent confirmés en 1981 par Hansen et Ravndal à l'aide d'un traitement plus général.</p>
+<h2 id="massless-particles">Massless particles</h2>
+<p>Considérons une particule relativiste sans masse s'approchant d'un seuil potentiel de hauteur <span class="math inline"><em>V</em><sub>0</sub></span> avec une énergie <span class="math inline"><em>E</em><sub>0</sub> &lt; <em>V</em><sub>0</sub><em>e</em></span> et une impulsion <span class="math inline"><em>p</em></span>.</p>
+<p><img alt="Paradoxe de Klein" loading="lazy" src="data:image/jpeg;base64,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" style="width:605px;max-width:100%;height:auto"/></p>
+<p>La fonction d'onde de la particule, <span class="math inline"><em>ψ</em></span>, suit l'équation <a href="https://en.wikipedia.org/wiki/Dirac_equation">de Dirac indépendante du temps</a> :</p>
+<p><span class="math display">$$\left( \sigma_{x}p + V \right)\psi = E_{0}\psi,V = \left\{ \begin{matrix}
+0, &amp; x &lt; 0 \\
+V_{0}, &amp; x &gt; 0
+\end{matrix} \right.\ $$</span></p>
+<p>Et <span class="math inline"><em>σ</em><sub><em>x</em></sub></span> est la <a href="https://en.wikipedia.org/wiki/Pauli_matrix">matrice de Pauli</a>:</p>
+<p><span class="math display">$$\sigma_{x} = \begin{pmatrix}
+0 &amp; 1 \\
+1 &amp; 0
+\end{pmatrix}$$</span></p>
+<p><img alt="Paradoxe de Klein" loading="lazy" src="data:image/jpeg;base64,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" style="width:400px;max-width:100%;height:auto"/></p>
+<p>Représentation de la relation de dispersion, l' axe <em>des x</em> représente la quantité de mouvement tandis que l' <em>axe des y</em> représente l'énergie.</p>
+<p>En supposant que la particule se propage depuis la gauche, on obtient deux solutions — une avant l'étape, dans la région (1), et une sous le potentiel, dans la région (2) :</p>
+<p><span class="math display">$$\psi_{1} = Ae^{ipx}\left( \begin{array}{r}
+1 \\
+1
+\end{array} \right) + A^{'}e^{- ipx}\left( \begin{array}{r}
+ - 1 \\
+1
+\end{array} \right),p = E_{0}$$</span></p>
+<p><span class="math display">$$\psi_{2} = Be^{ikx}\left( \begin{array}{r}
+1 \\
+1
+\end{array} \right),|k| = V_{0} - E_{0}$$</span></p>
+<p>où les coefficients <em>A</em>, <em>A′</em> et <em>B</em> sont des nombres complexes. Les fonctions d'onde entrante et transmise sont toutes deux associées à une vitesse de groupe positive (lignes bleues dans la Fig.1), tandis que la fonction d'onde réfléchie est associée à une vitesse de groupe négative. (Lignes vertes dans la Fig.1)</p>
+<p>Nous voulons maintenant calculer les coefficients de transmission et de réflexion. Ils sont dérivés des <span class="math inline"><em>T</em>, <em>R</em>.</span> <a href="https://en.wikipedia.org/wiki/Probability_amplitude">courants d'amplitude de probabilité</a>.</p>
+<p>La définition du courant de probabilité associé à l'équation de Dirac est la suivante :</p>
+<p><span class="math inline"><em>J</em><sub><em>i</em></sub> = <em>ψ</em><sub><em>i</em></sub><sup>†</sup><em>σ</em><sub><em>x</em></sub><em>ψ</em><sub><em>i</em></sub>,   = 1,2</span></p>
+<p>Dans ce cas:</p>
+<p><span class="math display"><em>J</em><sub>1</sub> = 2[|<em>A</em>|<sup>2</sup>−|<em>A</em><sup>′</sup>|<sup>2</sup>], <em>J</em><sub>2</sub> = 2|<em>B</em>|<sup>2</sup></span></p>
+<p>Les coefficients de transmission et de réflexion sont:</p>
+<p><span class="math display">$$R = \frac{\left| A^{'} \right|^{2}}{|A|^{2}},T = \frac{|B|^{2}}{|A|^{2}}$$</span></p>
+<p>La continuité de la fonction d'onde en , donne<span class="math inline"><em>x</em> = 0</span>:</p>
+<p><span class="math display">|<em>A</em>|<sup>2</sup> = |<em>B</em>|<sup>2</sup></span></p>
+<p><span class="math display">|<em>A</em><sup>′</sup>|<sup>2</sup> = 0</span></p>
+<p>Ainsi, le coefficient de transmission est de 1 et il n'y a pas de réflexion.</p>
+<p>Une interprétation du paradoxe est qu'un pas potentiel ne peut pas inverser la direction de la vitesse de groupe d'une particule relativiste sans masse. Cette explication convient le mieux à la solution à particule unique citée ci-dessus. D'autres interprétations, plus complexes, sont suggérées dans la littérature, dans le contexte de <a href="https://en.wikipedia.org/wiki/Quantum_field_theory">la théorie quantique des</a> champs, où le tunnellage non contraint est montré comme se produisant en raison de l'existence de <a href="https://en.wikipedia.org/wiki/Pair_creation">paires particule-antiparticule</a> au potentiel.</p>
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 15/11/2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

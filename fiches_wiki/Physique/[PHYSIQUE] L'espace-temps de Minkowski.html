@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L&#x27;espace-temps de Minkowski - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#le-concept-d-espace-temps" class="toc-level-1">Le concept d&#x27;espace-temps</a>
+            <a href="#la-geometrie-de-l-espace-temps" class="toc-level-1">La géométrie de l&#x27;espace-temps</a>
+            <a href="#le-diagramme-d-espace-temps" class="toc-level-1">Le diagramme d&#x27;espace-temps</a>
+            <a href="#la-metrique" class="toc-level-2">La métrique</a>
+            <a href="#le-cone-de-lumiere" class="toc-level-2">Le cône de lumière</a>
+            <a href="#la-structure-causale" class="toc-level-2">La structure causale</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            
+
+
+
+
+
+
+
+
+<h1 id="l-espace-temps-de-minkowski">L'espace-temps de Minkowski</h1><h1 id="introduction">Introduction</h1>
+<p>Il existe de profondes relations entre les concepts de la relativité restreinte et ceux de la théorie électromagnétique de Maxwell-Lorentz. Historiquement l'une a d'ailleurs été à l'origine de l'autre. On définit un champ électrique comme la donnée de l'intensité de ce champ en tout point de l'espace. Pourquoi ?</p>
+<p>Donnons-nous une petite boule chargée au bout d'un ressort en un point de l'espace. Si le ressort s'étire (ou se compresse) on dira qu'une force électrique était présente. Par extension si l'on pouvait imaginer une série d'appareils du même genre partout dans l'espace, on aurait une infinité de valeurs de forces pouvant s'exercer sur des charges test au bout de ressorts.</p>
+<p>Si les forces changent dans le temps on pourra donc décrire la dynamique de l'ensemble de celles-ci par la dynamique d'un champ de forces, le champ étant cette distribution de force en tout point de l'espace.</p>
+<p>La théorie électromagnétique est donc, par certains côtés, la théorie mécanique déguisée d'un ensemble infini et continu de points élémentaires chargés représentant l'état du champ électromagnétique en tout point de l'espace.</p>
+<h1 id="le-concept-d-espace-temps">Le concept d'espace-temps</h1>
+<p>Ce qu'Einstein a vu est que cette mécanique déguisée, liée à la possibilité de propagation d'une onde lumineuse, était en contradiction avec la mécanique usuelle de Newton.</p>
+<p>Afin de résoudre cette contradiction, il fut amené à remettre en question les concepts de temps et d'espace de la physique classique. Pour cela on doit considérer une infinité d'observateurs en chaque point de l'espace et possédant, au lieu de l'appareil décrit précédemment, une règle et une horloge et effectuant des mesures de temps et d'espace pour chaque événement physique.</p>
+<p>L'ensemble de ces événements, comme une explosion ou l'arrivée d'un train en gare, auxquels on coordonne des valeurs de temps et d'espace est justement ce qu'on appelle l'espace-temps.</p>
+<p>De cette manière, et en modifiant la validité universelle de l'écoulement du temps et des valeurs spatiales attribuées aux événements, on peut résoudre les contradictions entre la mécanique de Newton et l'électromagnétisme de Maxwell. C'était par exemple le cas avec l'invariance de la vitesse de la lumière pour tous les observateurs, mise en évidence par l'expérience de Michelson-Morley.</p>
+<p>Cette invariance est à la source des fameuses transformations de Lorentz, lesquelles découlent directement de l'exigence suivante : une sphère de lumière doit en rester une en passant d'un référentiel en mouvement rectiligne uniforme à un autre.</p>
+<h1 id="la-geometrie-de-l-espace-temps">La géométrie de l'espace-temps</h1>
+<p>La théorie ainsi obtenue conduisit Minkowski à introduire une géométrie nouvelle pour les événements du monde, la géométrie de l'espace-temps. Tous les effets de la relativité restreinte d'Einstein peuvent être vus comme dérivant de cette géométrie.</p>
+<p>En effet ces transformations forment ce qu'on appelle un groupe et l'on sait depuis Félix Klein qu'à un groupe de transformations données doit correspondre une géométrie donnée. Selon le fameux programme d'Erlangen de Klein on peut donc étudier en profondeur une géométrie si l'on connaît son groupe fondamental de transformations. Inversement, si l'on connaît des équations invariantes selon un groupe donné, on peut traduire géométriquement de façon déterminée le contenu de celles-ci.</p>
+<p>La théorie générale liant groupes et géométries vers la fin du XIXe siècle est ce qu'on appelle la théorie des invariants. Il était donc naturel pour Minkowski d'utiliser systématiquement son espace pour discuter des conséquences des découvertes d'Einstein sur l'ensemble des lois régissant les phénomènes dans l'espace et le temps. On ne surprendra pas le lecteur un peu initié en faisant remarquer que la théorie des invariants utilise de façon centrale la notion de tenseurs, dont les vecteurs sont des cas particuliers. Bien qu'introduite par Minkowski lui-même, on en parlera peu ici.</p>
+<p>Il est cependant important de bien voir, déjà, qu'on peut faire intervenir des quadrivecteurs dans cette géométrie quadridimensionnelle qui sont la généralisation naturelle des trivecteurs de l'espace.</p>
+<h1 id="le-diagramme-d-espace-temps">Le diagramme d'espace-temps</h1>
+<p>Un moyen très puissant de faire de la relativité est ainsi d'introduire le concept de diagramme d'espace-temps.</p>
+<p>Liés à cela sont les trois concepts fondamentaux suivants :</p>
+<h2 id="la-metrique">La métrique</h2>
+<p>Celle-ci définit la valeur du carré de la norme du quadrivecteur entre deux points de l'espace-temps. On parle d'intervalle entre deux événements en chacun de ces points et il s'exprime dans un référentiel donné par :</p>
+<p><img alt="Illustration – La métrique" loading="lazy" src="data:image/jpeg;base64,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" style="width:min(100%,164px)"/></p>
+<p>Depuis Einstein, on adopte la convention suivante pour de telles expressions. La présence d'indices répétés en haut et en bas indique en fait une sommation sur l'indice avec toutes les valeurs,0,1,2,3 pour t,x,y,z.</p>
+<p>En changeant de référentiel, pour passer dans celui en translation rectiligne uniforme à la vitesse v par rapport au second, on donne de nouvelles valeurs aux coordonnées des événements précédents. Toutefois l'intervalle déterminé par la métrique ne change pas, c'est précisément un invariant sous les transformations de Lorentz.</p>
+<h2 id="le-cone-de-lumiere">Le cône de lumière</h2>
+<p>Si l'on veut représenter un flash de lumière émis en un point de l'espace-temps, et correspondant à une sphère de lumière en expansion, il est commode de supprimer une dimension d'espace. On peut alors le représenter par un cône comme dans le diagramme d'espace-temps ci-dessous.</p>
+<p>Au fur et à mesure que le temps passe, la sphère de lumière grandit et cela correspondra bien à l'augmentation de la taille d'une section de ce cône.</p>
+<p><img alt="Illustration – Le cône de lumière" loading="lazy" src="data:image/jpeg;base64,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" style="width:min(100%,257px)"/></p>
+<p>Comme dit précédemment, on peut introduire un calcul avec des vecteurs généralisant celui dans l'espace de la physique prérelativiste. On parlera alors de quadrivecteurs, le plus simple exemple étant bien sûr celui reliant deux événements dans l'espace-temps et donc deux points dans l'espace de Minkowski.</p>
+<p>Si l'on prend le carré de la norme d'un tel vecteur, on retombe sur l'intervalle d'espace-temps. Prenons comme origine la position de l'observateur du schéma ci-dessus.</p>
+<p>Selon que l'autre point est à l'intérieur ou non du cône de lumière, on aura les distinctions suivantes :</p>
+<ul>
+<li><p>à l'intérieur l'intervalle est négatif, il est dit de genre temps et correspond à la possibilité pour l'observateur d'influencer d'une façon ou d'une autre ce qui se passera dans le futur en ce point ;</p></li>
+<li><p>sur le cône de lumière, l'intervalle est dit nul et correspond à la possibilité d'influencer le futur pour l'observateur en envoyant un signal à la vitesse de la lumière vers le point considéré ;</p></li>
+<li><p>hors du cône de lumière, l'intervalle est alors positif et est dit du genre espace. Il ne peut y avoir aucune relation de cause à effet entre l'observateur et le point considéré car cela impliquerait de dépasser la vitesse de la lumière lors de l'envoi d'un signal.</p></li>
+</ul>
+<p>De manière générale, tous les quadrivecteurs ont un carré de norme possédant une valeur tombant dans les trois classes décrites précédemment. Ils seront respectivement dit de genre temps, nul (ou lumière), espace.</p>
+<p>Enfin les deux cônes définissent respectivement les régions passées et futures pouvant être en relations causales avec l'observateur.</p>
+<p><img alt="Illustration – Le cône de lumière" loading="lazy" src="data:image/jpeg;base64,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" style="width:min(100%,499px)"/></p>
+<h2 id="la-structure-causale">La structure causale</h2>
+<p>C'est un concept de la plus haute importance pour toute la suite du dossier, on peut même dire qu'il précède la notion de métrique lorsque l'on veut construire la géométrie des événements spatiotemporels. On introduit pour cela un véritable champ de cônes de lumière en chaque point de l'espace-temps de Minkowski.</p>
+<p>Au passage, on rappelle qu'en physique un champ est l'association d'une quantité mathématique, comme un nombre ou un vecteur, en chaque point de l'espace. Des exemples bien connus sont la température, la pression ou la vitesse du vent. Dans le cas présent la métrique permet de construire en chaque point de l'espace-temps un cône</p>
+<p>On peut ensuite introduire les horloges, les règles et des ensembles de courbes dans l'espace-temps, c'est-à-dire les trajectoires spatiotemporelles des objets dans celui-ci. On parle de congruences pour un tel ensemble de courbes lorsque celles-ci sont plus ou moins parallèles, retenez bien ce terme.</p>
+<p>La lumière étant une horloge (pulsation) et une règle naturelle (longueur d'onde) dont les propriétés sont faciles à mesurer précisément, des trajectoires de rayons lumineux seront très importantes pour exhiber les particularités de l'espace-temps. Elles joueront un rôle similaire aux lignes de courant en hydrodynamique pour interpréter les phénomènes de la mécanique des fluides.</p>
+<p>On parlera de congruence de courbes aussi bien pour les lignes de courant que pour des trajectoires de photons dans l'espace-temps. La structure des événements dans l'espace-temps, ainsi que sa dynamique - car comme nous l'apprend la relativité générale, celui-ci est courbe et susceptible de changement - est traduite par la donnée de ces règles-horloges et d'un véritable champ de cône en chaque point de l'espace-temps.</p>
+<p>Quand l'espace-temps est plat et statique, les cônes sont tous « rigidement » fixés (cf le schéma ci-dessus). Ce ne sera plus le cas lorsque l'espace-temps sera courbe et dépendant du temps.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

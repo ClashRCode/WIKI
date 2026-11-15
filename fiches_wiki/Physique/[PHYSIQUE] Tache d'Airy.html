@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tache d&#x27;Airy - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  
+    /* Complément : listes, tableaux, citations (le reset Tailwind les neutralise) */
+    .content ul { list-style: disc; margin: 0 0 1rem 1.5rem; }
+    .content ol { list-style: decimal; margin: 0 0 1rem 1.5rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content blockquote { border-left: 4px solid #c7d2fe; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+    .content table { border-collapse: collapse; margin: 1rem 0; max-width: 100%; display: block; overflow-x: auto; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; }
+    .content th { background-color: #f1f5f9; font-weight: 600; }
+    .content a { color: #4f46e5; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content strong { font-weight: 700; }
+    .content em { font-style: italic; }
+    .content u { text-decoration: underline; }
+  </style>
+  <script>window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] } };</script>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#expression-de-l-eclairement" class="toc-level-1">Expression de l&#x27;éclairement</a>
+            <a href="#pouvoir-de-resolution" class="toc-level-1">Pouvoir de résolution</a>
+            <a href="#limitation-des-performances-d-un-systeme-optique" class="toc-level-1">Limitation des performances d&#x27;un système optique</a>
+            <a href="#cas-particulier-des-systemes-photographiques" class="toc-level-1">Cas particulier des systèmes photographiques</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="titre-fiche">Tache d&#x27;Airy</h1>
+<h2 id="introduction">Introduction</h2><p><img alt="Tache d'Airy" loading="lazy" src="data:image/jpeg;base64,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" style="width:154px;max-width:100%;height:auto"/></p>
+<p>La tache d'Airy est la figure de <a href="https://fr.wikipedia.org/wiki/Diffraction">diffraction</a> résultant de la traversée d'un trou circulaire par la lumière. On parle de tache d'Airy dans le cas des <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_optique">systèmes optiques</a> pour qualifier la meilleure image possible d'un point source par ce système. Un système dont la <a href="https://fr.wikipedia.org/wiki/R%C3%A9ponse_impulsionnelle">réponse impulsionnelle</a> donne une tache d'Airy est dit limité par la diffraction.</p>
+<h2 id="expression-de-l-eclairement">Expression de l'éclairement</h2>
+<p>Lorsque la figure est observée loin du trou diffractant, l'<a href="https://fr.wikipedia.org/wiki/%C3%89clairement">éclairement</a> varie en fonction de l'angle <em>θ</em> entre le point considéré et le centre de la figure:</p>
+<p><span class="math inline">$E(x) = E_{0}{(\frac{2J_{1}(\pi x)}{\pi x})}^{2} = E_{0}jinc(\pi x)^{2}$</span>,</p>
+<p>où</p>
+<ul>
+<li><p><span class="math inline">$x = \frac{d\sin\theta}{\lambda}$</span>,</p></li>
+<li><p><span class="math inline"><em>E</em><sub>0</sub></span> est l'éclairement au centre de la figure ;</p></li>
+<li><p><span class="math inline"><em>J</em><sub>1</sub></span> est la <a href="https://fr.wikipedia.org/wiki/Fonction_de_Bessel">fonction de Bessel</a> du premier ordre, la fonction jinc, définie sur <span class="math inline"><em>J</em><sub>1</sub></span>, est la <a href="https://fr.wikipedia.org/wiki/Fonction_sombrero">fonction sombrero</a> ;</p></li>
+<li><p><span class="math inline"><em>d</em></span> est le diamètre de l'ouverture ;</p></li>
+<li><p><span class="math inline"><em>θ</em></span> est l'angle, ayant son sommet au centre du trou, entre l'axe de révolution et la direction considérée ;</p></li>
+<li><p><span class="math inline"><em>λ</em></span> est la <a href="https://fr.wikipedia.org/wiki/Longueur_d%27onde">longueur d'onde</a> de la lumière.</p></li>
+</ul>
+<p>Cette expression est obtenue par la théorie de la <a href="https://fr.wikipedia.org/wiki/Diffraction_de_Fraunhofer">diffraction de Fraunhofer</a>. Elle correspond au carré du <a href="https://fr.wikipedia.org/wiki/Module_d%27un_nombre_complexe">module</a> de la <a href="https://fr.wikipedia.org/wiki/Transform%C3%A9e_de_Fourier">transformée de Fourier</a> de la <a href="https://fr.wikipedia.org/wiki/Fonction_caract%C3%A9ristique_(th%C3%A9orie_des_ensembles)">fonction caractéristique</a> du disque représentant l'ouverture.</p>
+<p>La première annulation de cette fonction se produit lorsque <span class="math inline"><em>x</em> ≃ 1, 22</span> ce qui correspond à un angle</p>
+<p><span class="math inline">$\theta \simeq 1,22\frac{\lambda}{d}$</span>.</p>
+<p>La figure de diffraction peut aussi être observée à plus courte distance en se plaçant dans le plan focal d'un objectif. C'est notamment le cas lorsqu'on considère la diffraction provoquée par l'ouverture de ce même objectif. On a alors la même expression de <span class="math inline"><em>E</em>(<em>x</em>)</span>, où l'on peut écrire :</p>
+<p><span class="math inline">$x = \frac{d}{\lambda}\sin\theta = \frac{d}{\lambda}\frac{r}{f} = \frac{r}{N\lambda}$</span>,</p>
+<p>où</p>
+<ul>
+<li><p><span class="math inline"><em>r</em></span> est la distance entre le point considéré sur l'image et le centre de la figure ;</p></li>
+<li><p><span class="math inline"><em>f</em></span> est la <a href="https://fr.wikipedia.org/wiki/Focale">focale</a> de l'objectif ;</p></li>
+<li><p><span class="math inline"><em>N</em></span> est son <a href="https://fr.wikipedia.org/wiki/Nombre_d%27ouverture">nombre d'ouverture</a>.</p></li>
+</ul>
+<p>Le rayon du premier disque noir constitue le rayon de la tache d'Airy et vaut :</p>
+<p><span class="math inline"><em>r</em> ≃ 1, 22<em>λ</em><em>N</em></span>.</p>
+<h2 id="pouvoir-de-resolution">Pouvoir de résolution</h2>
+<p>Un effet important de cette tache, est la dégradation de la <a href="https://fr.wikipedia.org/wiki/R%C3%A9solution_spatiale_des_images_matricielles">résolution</a> des images dans les appareils optiques (<a href="https://fr.wikipedia.org/wiki/Appareil_photographique">appareil photographique</a>, <a href="https://fr.wikipedia.org/wiki/T%C3%A9lescope">télescope</a>…). On peut calculer le <a href="https://fr.wikipedia.org/wiki/Pouvoir_de_r%C3%A9solution">critère de Rayleigh</a> avec ce profil de la tache d'Airy, donnant une formule de la limite de séparation entre deux objets. Des techniques numériques de traitement d'image, comme la <a href="https://fr.wikipedia.org/wiki/D%C3%A9convolution">déconvolution</a>, permettent de compenser en partie ce phénomène d'étalement du signal.</p>
+<h2 id="limitation-des-performances-d-un-systeme-optique">Limitation des performances d'un système optique</h2>
+<p>La tache d'Airy intervient aussi lors de la lecture d'un espace de stockage optique (<a href="https://fr.wikipedia.org/wiki/CD">CD</a>, <a href="https://fr.wikipedia.org/wiki/DVD">DVD</a>, <a href="https://fr.wikipedia.org/wiki/Blu-ray">blu-ray</a>...). En effet, la capacité de stockage de ces supports optiques est entièrement dépendante de la largeur de cette tache : la tache ne doit couvrir qu'une seule piste du disque, ainsi, plus la tache est large, plus l'espace entre deux pistes est grand, et moins la capacité de stockage est grande.</p>
+<h2 id="cas-particulier-des-systemes-photographiques">Cas particulier des systèmes photographiques</h2>
+<p>Pour des systèmes photographiques, les performances des <a href="https://fr.wikipedia.org/wiki/Objectif_photographique">objectifs</a> sont limitées principalement par deux facteurs que sont la <a href="https://fr.wikipedia.org/wiki/Conception_optique">conception optique</a> du système et la <a href="https://fr.wikipedia.org/wiki/Diffraction">diffraction</a>. Même si la limitation principale du système optique dépend de l'<a href="https://fr.wikipedia.org/wiki/Ouverture_(photographie)">ouverture</a>, elle est toujours comparée à la dimension de la tache d'Airy qui est la meilleure réponse possible.</p>
+<p>Les optiques sont généralement limitées par leur conception optique jusqu'à f/8 et sont limités par la diffraction au-delà de f/16.</p>
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 15/11/2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

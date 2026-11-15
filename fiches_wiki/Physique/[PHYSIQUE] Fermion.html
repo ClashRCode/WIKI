@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fermion - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#fermions-elementaires" class="toc-level-1">Fermions élémentaires</a>
+            <a href="#les-leptons" class="toc-level-1">Les leptons</a>
+            <a href="#les-quarks" class="toc-level-1">Les quarks</a>
+            <a href="#fermions-composes" class="toc-level-1">Fermions composés</a>
+            <a href="#proprietes" class="toc-level-1">Propriétés</a>
+            <a href="#skyrmions" class="toc-level-1">Skyrmions</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            
+
+
+
+
+
+
+
+<h1 id="fermion">Fermion</h1><h1 id="introduction">Introduction</h1>
+<p>En physique des particules, un fermion (nom attribué par Paul Dirac1 d'après Enrico Fermi) est une particule de spin demi-entier (c'est-à-dire 1/2, 3/2, 5/2...). Elle obéit à la statistique de Fermi-Dirac. Un fermion peut être une particule élémentaire, tel l'électron, ou une particule composite, tel le proton, ou toutes leurs antiparticules. Toutes les particules élémentaires observées sont soit des fermions, soit des bosons (l'hypothétique matière noire, encore non observée en 2022, n'est actuellement pas catégorisée). Selon le principe d'exclusion de Pauli, deux fermions identiques ne peuvent se trouver au même endroit dans le même état quantique. Ainsi dans l'atome, tous les électrons ont des nombres quantiques différents ; c'est également le cas dans tous les autres systèmes de fermions.</p>
+<h1 id="fermions-elementaires">Fermions élémentaires</h1>
+<p>Le modèle standard reconnaît deux types de fermions élémentaires : les quarks et les leptons ; en tout il en décrit 24 différents. Il y a six quarks (up, down, strange, charm, bottom, et top), six leptons (électron, neutrino électronique, muon, neutrino muonique, tau et neutrino tauique), ainsi que les douze antiparticules correspondantes.</p>
+<p>Tous les fermions avec une hélicité à gauche subissent l'interaction faible, tandis que tous les fermions droitiers connus n'y sont pas soumis. Autrement dit, seuls les fermions gauchers et les anti-fermions droitiers interagissent avec le boson W.</p>
+<h1 id="les-leptons">Les leptons</h1>
+<p>Dans la famille des leptons, on connaît :</p>
+<ul>
+<li><p>l'électron : cette particule stable est de masse 1836 fois moindre que celle du proton, et de charge négative -e ;</p></li>
+<li><p>le muon : cette particule instable a la même charge que l'électron et est 210 fois plus massive que ce dernier. Laissé à lui-même, le muon se désintègre en 2,197×10<sup>-6</sup> s par le biais de l'interaction faible, laissant à sa place un électron, un neutrino μ et un antineutrino ;</p></li>
+<li><p>le tauon : cette particule très instable est de même charge que l'électron, tandis que sa masse lui est de 3500 fois supérieure. Il se désintègre en 2,8×10<sup>-13</sup> s, laissant à sa place un neutrino τ et un antineutrino ;</p></li>
+<li><p>le neutrino : le plus léger des fermions, il en existe un correspondant à chaque saveur ci-dessus (électronique ν<sub>e</sub> , muonique ν<sub>μ</sub> et tauique ν<sub>τ</sub>), et n'a pas de charge électrique contrairement à celles-ci. Il n'a presque aucune interaction avec la matière. En raison de leur faible masse (les neutrinos μ et τ ont une masse bien inférieure à celle de l'électron), ces trois types de neutrinos sont stables. Les neutrinos sont probablement les particules les plus abondantes de l'Univers.</p></li>
+</ul>
+<p>Chaque saveur ci-dessus possède son antiparticule, ce qui donne un total de 12 leptons.</p>
+<h1 id="les-quarks">Les quarks</h1>
+<p>On compte six représentants de la famille des quarks : le quark down (d), le quark up (u), le quark strange (s), le quark charm (c), le quark bottom (b) et le quark top (t), ainsi qu'autant d'antiquark. Leur masse varie, mais est dans tous les cas bien supérieurs à celle de l'électron. Ils possèdent une charge de couleur qui les soumet à l'interaction forte, la plus importante des interactions à courte distance.</p>
+<p>Les quarks s'assemblent pour former les hadrons : baryons (notamment les protons et les neutrons), qui sont des fermions composés de trois quarks, et mésons, qui sont des bosons composés d'un quark et d'un antiquark.</p>
+<h1 id="fermions-composes">Fermions composés</h1>
+<p>Les particules composées (comme des hadrons, des noyaux et des atomes) peuvent être des bosons ou des fermions selon leurs constituants. Plus précisément, à cause de la relation entre le spin et la statistique, une particule contenant un nombre impair de fermions aura un spin demi-entier.</p>
+<ul>
+<li><p>Un baryon, comme le proton ou le neutron, contient trois quarks fermioniques et est donc un fermion.</p></li>
+<li><p>Le noyau d'un atome de carbone 13 (<sup>13</sup>C) contient 6 protons et 7 neutrons et est donc un fermion.</p></li>
+<li><p>L'atome d'hélium 3 (<sup>3</sup>He) est fait de 2 protons, un neutron et 2 électrons et est donc un fermion.</p></li>
+</ul>
+<p>Le nombre de bosons dans une particule composée de particules simples liées par un potentiel n'a aucun effet sur le fait que ce soit un boson ou un fermion.</p>
+<p>Le comportement bosonique ou fermionique d'une particule composée se voit seulement à grande distance (par rapport à la taille du système). À proximité, où la structure spatiale commence à être importante, une particule composée se comporte selon son coloris constitutif.</p>
+<p>Les fermions peuvent montrer un comportement bosonique quand ils sont faiblement liés par paires de manière. Ceci est l'origine de la supraconductivité et la superfluidité de l'hélium 3 : dans la matière supraconductrice, les électrons interagissent par échange de phonons, formant des paires de Cooper, tandis que dans l'hélium 3, les paires de Cooper se constituent via des fluctuations du spin.</p>
+<p>Les quasi-particules de l’effet Hall quantique fractionnaire sont des fermions composés, qui sont des électrons avec un nombre pair de tourbillons quantiques liés à eux.</p>
+<h1 id="proprietes">Propriétés</h1>
+<p>À l'échelle quantique, les fermions présentent une nature duale, c'est-à-dire qu'ils peuvent se comporter comme des particules mais aussi comme des ondes. Par contre, à l'échelle macroscopique, ils apparaissent tous comme des particules.</p>
+<p>L'électron a une charge électrique et les quarks ont à la fois une charge électrique et une charge de couleur.</p>
+<p>Enfin, si les bosons peuvent être vecteurs d'interactions, ce n'est jamais le cas pour les fermions.</p>
+<p>Tableau récapitulatif :</p>
+<div class="table-wrap"><table>
+
+<thead>
+<tr class="header">
+<th rowspan="2"></th>
+<th colspan="4"><strong>Fermions élémentaires</strong></th>
+<th colspan="5"><strong>Fermions composés</strong></th>
+</tr>
+<tr class="odd">
+<th colspan="2"><strong>Quarks</strong></th>
+<th colspan="2"><strong>Leptons</strong></th>
+<th colspan="2"><strong>Nucléons</strong></th>
+<th colspan="3"><strong>Hypérons</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Charge</strong></td>
+<td><strong>- 1/3</strong></td>
+<td><strong>+ 2/3</strong></td>
+<td><strong>- 1</strong></td>
+<td><strong>0</strong></td>
+<td><strong>+ 1</strong></td>
+<td><strong>0</strong></td>
+<td><strong>- 1</strong></td>
+<td><strong>0</strong></td>
+<td><strong>+ 1</strong></td>
+</tr>
+<tr class="even">
+<td>stable</td>
+<td>down</td>
+<td>up</td>
+<td>électron</td>
+<td>neutrino électronique</td>
+<td>proton</td>
+<td>neutron</td>
+<td colspan="3"></td>
+</tr>
+<tr class="odd">
+<td>instable</td>
+<td>strange<br/>
+bottom</td>
+<td>charm<br/>
+top</td>
+<td>muon<br/>
+tauon</td>
+<td>neutrino muonique<br/>
+neutrino taunique</td>
+<td></td>
+<td></td>
+<td>Sigma -<br/>
+Ksi -<br/>
+Oméga -</td>
+<td>Sigma 0<br/>
+Ksi 0<br/>
+Lambda 0</td>
+<td rowspan="2">Sigma +<br/>
+<br/>
+Lambda +</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Par définition, les fermions sont les particules qui obéissent à la loi statistique Fermi-Dirac : quand on échange deux fermions, la fonction d'onde change de signe.</p>
+<h1 id="skyrmions">Skyrmions</h1>
+<p>La théorie quantique des champs permet de construire des configurations des champs de bosons topologiquement courbes (« gauchies »). Celles-ci sont des états cohérents (ou solitons) qui se comportent comme des particules, et elles peuvent être fermioniques même si toutes les particules constitutives sont des bosons. Tony Skyrme a découvert ceci au début des années 1960, c'est pourquoi les fermions faits de bosons sont nommés skyrmions.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

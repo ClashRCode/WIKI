@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Métasurfaces et matériaux accordables - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  
+    /* Complément : listes, tableaux, citations (le reset Tailwind les neutralise) */
+    .content ul { list-style: disc; margin: 0 0 1rem 1.5rem; }
+    .content ol { list-style: decimal; margin: 0 0 1rem 1.5rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content blockquote { border-left: 4px solid #c7d2fe; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+    .content table { border-collapse: collapse; margin: 1rem 0; max-width: 100%; display: block; overflow-x: auto; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; }
+    .content th { background-color: #f1f5f9; font-weight: 600; }
+    .content a { color: #4f46e5; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content strong { font-weight: 700; }
+    .content em { font-style: italic; }
+    .content u { text-decoration: underline; }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#metasurfaces-a-base-de-materiaux-a-changement-de-phase" class="toc-level-1">Métasurfaces à base de Matériaux à Changement de Phase</a>
+            <a href="#oxydes-transparents-conducteurs-accordables" class="toc-level-1">Oxydes transparents conducteurs accordables</a>
+            <a href="#metamateriaux-hyperboliques" class="toc-level-1">Métamatériaux Hyperboliques</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="titre-fiche">Métasurfaces et matériaux accordables</h1>
+<h2 id="introduction">Introduction</h2>
+<p>La nanophotonique a permis le développement de nouveaux moyens de contrôle de l’interaction lumière-matière à l’échelle nanométrique. Notamment, les progrès récents dans les domaines de la plasmonique et des métamatériaux diélectriques ont rendu possible la conception et la fabrication de dispositifs optiques plats dont les performances pourraient surpasser celles des composants optiques classiques. Cependant, moduler dynamiquement les propriétés physiques des dispositifs à l’échelle nanométrique reste un challenge à l’heure actuelle. De nombreuses méthodes plus ou moins efficaces existent pour moduler la réponse d’un système photonique. Une liste non exhaustive comprendrait les systèmes électromécaniques, les cristaux liquides, les modulations thermiques, l’optique non linéaire et les effets piézoélectriques… Dans ce groupe, nous explorons des méthodes émergentes pour créer des dispositifs nanophotoniques accordables et activement modulables.</p>
+<h2 id="metasurfaces-a-base-de-materiaux-a-changement-de-phase">Métasurfaces à base de Matériaux à Changement de Phase</h2>
+<p>Les matériaux à changement de phase constituent une classe de matériaux aux propriétés physiques uniques: leur agencement structurel peut être modifié rapidement et de manière réversible par un signal externe (thermique, électrique ou optique). Mais ce qui les rend uniques est la modification importante de leur indice de réfraction (Δn ≥ 1) résultant de ce réarrangement cristallographique. Une modulation d’indice de réfraction aussi large et rapide permet de contrôler activement les propriétés optiques des dispositifs à l’échelle nanométrique. Entre autres projets, nous étudions actuellement: (i) les métasurfaces à base de VO2 pour le contrôle dynamique de l’interaction lumière-matière; (ii) des réseaux de pixels à base de GeSbTe pour le beam-steering et la mise en forme de faisceau; (iii) les matériaux à changement de phase émergents à faible pertes optiques (Sb2S3, GSST,…).</p>
+<h2 id="oxydes-transparents-conducteurs-accordables">Oxydes transparents conducteurs accordables</h2>
+<p>Les oxydes conducteurs transparents tels que l’ITO présentent une fréquence plasma dans la gamme infrarouge. L’injection de porteurs libres dans ce type de matériau permet de modifier la fréquence plasma et donc la dispersion optique. En d’autres termes, leurs propriétés optiques peuvent être modulées électriquement. Nous étudions ici le potentiel des couches minces d’oxydes dopés à des concentrations variables, et donc présentant une fréquence plasma modulable, pour des applications plasmoniques accordables. Cela pourrait ouvrir des perspectives intéressantes pour les capteurs plasmoniques large bande dans la gamme du moyen infrarouge.</p>
+<h2 id="metamateriaux-hyperboliques">Métamatériaux Hyperboliques</h2>
+<p>Les métamatériaux hyperboliques (HMM) sont des structures multicouches uniaxialement anisotropes dont les permittivités diélectriques sont de signes opposés. Dans ce sujet, grâce à une forte collaboration avec le groupe Hétéroépitaxie et nanostructure, nous étudions le potentiel des oxydes fonctionnels fabriqués par croissance épitaxiale dans des structures multicouches. Le contrôle à l’échelle nanométrique du dopage et des épaisseurs des différentes couches minces permet un contrôle ultime du comportement hyperbolique résultant. De tels dispositifs présentent des opportunités intéressantes pour les applications telles que les lentilles plates ou le contrôle de l’émission spontanée.</p>
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 15/11/2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

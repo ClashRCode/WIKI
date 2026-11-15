@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Super-Kamiokande - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  
+    /* Complément : listes, tableaux, citations (le reset Tailwind les neutralise) */
+    .content ul { list-style: disc; margin: 0 0 1rem 1.5rem; }
+    .content ol { list-style: decimal; margin: 0 0 1rem 1.5rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content blockquote { border-left: 4px solid #c7d2fe; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+    .content table { border-collapse: collapse; margin: 1rem 0; max-width: 100%; display: block; overflow-x: auto; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; }
+    .content th { background-color: #f1f5f9; font-weight: 600; }
+    .content a { color: #4f46e5; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content strong { font-weight: 700; }
+    .content em { font-style: italic; }
+    .content u { text-decoration: underline; }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#principe" class="toc-level-1">Principe</a>
+            <a href="#tubes-photomultiplicateurs" class="toc-level-1">Tubes photomultiplicateurs</a>
+            <a href="#evolution-hyper-kamiokande" class="toc-level-1">Évolution - Hyper-Kamiokande</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="titre-fiche">Super-Kamiokande</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Le Super-Kamiokande (Super-K ou SK) est un détecteur de neutrinos construit sous le mont Ikeno au Japon, près de la ville de Hida (préfecture de Gifu). Il est situé à une profondeur de 1000 mètres dans la mine de zinc active de Mozumi, près du village de Kamioka. Le Super-Kamiokande est une installation de l'observatoire de Kamioka géré par l'Institut de recherche sur les Rayons cosmiques (神岡宇宙素粒子研究施設, <em>Kamioka Uchū Soryūshi Kenkyū Shisetsu</em>) de l'université de Tokyo. L'observatoire est géré grâce à une collaboration scientifique internationale rassemblant 180 chercheurs issus de 40 instituts du Japon, des Etats-Unis, de Corée du Sud, de Chine, de Pologne, d'Espagne, du Canada, du Royaume-Uni, d'Italie et de France.</p>
+<p>Depuis sa mise en opération en 1996, le Super-Kamiokande est le plus grand détecteur Tcherenkov (de particules) à eau du monde. Il a été conçu par une équipe dirigée par Masatoshi Koshiba, pionnier de la détection des neutrinos, récompensé en 2002 par le Prix Nobel de physique. Les observations réalisées au Super-Kamiokande ont permis à Takaaki Kajita et Arthur McDonald de détecter en juin 1998 les oscillations des neutrinos atmosphériques, ce qui a conduit à établir que les neutrinos ont une masse très faible mais non nulle. Kajita et McDonald ont reçu en 2015 le Prix Nobel de physique pour cette découverte</p>
+<h2 id="principe">Principe</h2>
+<p>Le but de l'observatoire est d'étudier des <a href="https://fr.wikipedia.org/wiki/Particule_%C3%A9l%C3%A9mentaire">particules élémentaires</a> appelées <a href="https://fr.wikipedia.org/wiki/Neutrino">neutrinos</a> et les oscillations qui les gouvernent. Son emplacement dans une mine, en dessous d'une montagne, fournit une bonne protection au bruit de fond que constituent les <a href="https://fr.wikipedia.org/wiki/Rayon_cosmique">rayons cosmiques</a> (en majorité des <a href="https://fr.wikipedia.org/wiki/Muon">muons</a> au niveau du sol) qui sont arrêtés par cette grande quantité de matière.</p>
+<p>Les neutrinos ont la particularité de très peu interagir avec la matière. C'est pourquoi une grande quantité de matière est nécessaire pour permettre de les détecter efficacement. La cible de ce détecteur est constituée par 50 000 tonnes d'eau ultra purifiée contenue dans un réservoir cylindrique en acier. Le neutrino interagit avec un <a href="https://fr.wikipedia.org/wiki/Nucl%C3%A9on">nucléon</a> du <a href="https://fr.wikipedia.org/wiki/Noyau_atomique">noyau</a> d'<a href="https://fr.wikipedia.org/wiki/Oxyg%C3%A8ne">oxygène</a>. Un nucléon et un <a href="https://fr.wikipedia.org/wiki/Lepton">lepton</a> sont produits selon une <a href="https://fr.wikipedia.org/wiki/D%C3%A9sint%C3%A9gration_%CE%B2">désintégration β</a>. Ce dernier correspond au type de neutrino incident. S'agissant d'une particule chargée allant plus vite que la lumière dans l'eau, le lepton ainsi généré produit un cône de lumière <a href="https://fr.wikipedia.org/wiki/Effet_Vavilov-Tcherenkov">Tchérenkov</a> qui donne des informations sur l'énergie, le type et la direction du neutrino incident. Ce flash de lumière est recueillie par des <a href="https://fr.wikipedia.org/wiki/Tube_photomultiplicateur">tubes photomultiplicateurs</a> qui amplifient le signal lumineux et le transforment en signal électrique.</p>
+<h2 id="tubes-photomultiplicateurs">Tubes photomultiplicateurs</h2>
+<p>Les parois internes de la cuve sont tapissées par 11 129 <a href="https://fr.wikipedia.org/wiki/Tube_photomultiplicateur">tubes photomultiplicateurs</a> (PMT) alignés avec un intervalle de 70 cm. Leur surface photosensible (50 cm de diamètre) est la plus importante au monde pour ce type de détecteur. Le système opto-électronique a été fourni par la société japonaise Hamamatsu Photonics. Leur sensibilité est accrue par l'utilisation de verre mince soufflé artisanalement. La surface cumulée de détection représente 40% de la surface totale des parois internes de la cuve. La cuve doit être privée de toute source lumineuse artificielle pendant les mesures. Toutes les prises de vues montrant l'intérieur de la cuve ont été réalisées pendant des périodes d'entretien et de travaux durant lesquelles un éclairage par des <a href="https://fr.wikipedia.org/wiki/Lampe_%C3%A0_vapeur_de_sodium">lampes à vapeur de sodium</a> est utilisé afin de ne pas endommager les tubes photomultiplicateurs.</p>
+<p>En 2019, du sulfate de <a href="https://fr.wikipedia.org/wiki/Gadolinium">gadolinium</a> soluble a été ajouté à l'eau ultra purifiée du Super-Kamiokande afin de pouvoir détecter les <a href="https://fr.wikipedia.org/wiki/Neutron">neutrons</a> produits par les collisions entre des <a href="https://fr.wikipedia.org/wiki/Antineutrino">antineutrinos</a> émis par des <a href="https://fr.wikipedia.org/wiki/Supernova">supernovas</a> et des <a href="https://fr.wikipedia.org/wiki/Proton">protons</a> présents dans les molécules d'eau. Ce projet devrait permettre de détecter quelques neutrinos de supernovas tous les mois</p>
+<h2 id="evolution-hyper-kamiokande">Évolution - Hyper-Kamiokande</h2>
+<p>Depuis les années 2010 existe un projet appelé <a href="https://fr.wikipedia.org/wiki/Hyper-Kamiokande">Hyper-Kamiokande</a>. Ce projet est classé parmi les 28 grands projets prioritaires de l'État japonais. Treize États, de trois continents, participent à ce programme.</p>
+<p>Outre les équipes « permanentes » de grandes réunions de coordination, voire d'inauguration ont lieu. À l'occasion de l'inauguration de 2017, le début de la construction est annoncé pour l'année 2018, avec mise en service vers le milieu des années 2020.</p>
+<p>Le site officiel hyperk.org donne des explications (et des schémas) sur ce programme. La taille de la cuve était passée de 3 millions de litres d'eau « très » pure<a href="https://fr.wikipedia.org/wiki/Super-Kamiokande#cite_note-5">5</a>, dans le premier laboratoire Kamiokande, à 50 millions de litres pour Super-Kamiokande. <a href="https://fr.wikipedia.org/wiki/Hyper-Kamiokande">Hyper-Kamiokande</a> utilisera un double cylindre de 2 x 250 mètres de long (toujours de 40 m x 40 m, et toujours à 600 m de profondeur) pour réduire l'impact « parasite » des rayonnements cosmiques. Sa capacité serait accrue, après un facteur 10 initial, de 20 fois, soit 100 millions de litres de cette eau de grande pureté, cette capacité s'accompagnant de la croissance proportionnelle du nombre de capteurs</p>
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 15/11/2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

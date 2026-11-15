@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rayonnement spatial - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  
+    /* Complément : listes, tableaux, citations (le reset Tailwind les neutralise) */
+    .content ul { list-style: disc; margin: 0 0 1rem 1.5rem; }
+    .content ol { list-style: decimal; margin: 0 0 1rem 1.5rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content blockquote { border-left: 4px solid #c7d2fe; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+    .content table { border-collapse: collapse; margin: 1rem 0; max-width: 100%; display: block; overflow-x: auto; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; }
+    .content th { background-color: #f1f5f9; font-weight: 600; }
+    .content a { color: #4f46e5; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content strong { font-weight: 700; }
+    .content em { font-style: italic; }
+    .content u { text-decoration: underline; }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#rayon-cosmique" class="toc-level-1">Rayon cosmique</a>
+            <a href="#rayon-gamma" class="toc-level-1">Rayon gamma</a>
+            <a href="#electron-tueur" class="toc-level-1">Electron tueur</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="titre-fiche">Rayonnement spatial</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Lorsque l'on parle de rayonnement spatial, on parle assez spécifiquement des rayonnements, qu'ils soient sous forme de particules de matière ou de photons, auxquels les humains sont susceptibles d'être exposés lors de missions spatiales. Ce rayonnement est particulièrement préoccupant lorsque l'on se propose de voyager dans le Système solaire, car l'atmosphère et le champ magnétique de la Terre ne protègent alors plus les astronautes qui effectueraient par exemple des missions à destination de la Lune, d'astéroïdes et surtout de Mars.</p>
+<p>On distingue trois types de rayonnements spatiaux :</p>
+<ul>
+<li><p>les rayons cosmiques galactiques provenant de l'extérieur du Système solaire (noyaux lourds, rayons gamma) ;</p></li>
+<li><p>les particules solaires éjectées lors d'éruptions solaires, par exemple des protons ou des rayons X ;</p></li>
+<li><p>les rayons piégés par le champ magnétique terrestre, comme les électrons tueurs.</p></li>
+</ul>
+<p>Tous ces rayonnements doivent être pris en compte en médecine spatiale, car ils ont suffisamment d'énergie pour modifier ou briser les molécules d'ADN. Ce qui peut endommager ou tuer les cellules et conduire à la mort. Si les risques les plus importants sont à l'occasion des éruptions solaires, il ne faut pas oublier que même en période de calme, ils augmentent avec la durée d'exposition des astronautes en dehors de la Terre. Parmi ces effets à long terme, on compte les cataractes, les risques accrus de cancer, la stérilité ou des mutations transmissibles à la descendance.</p>
+<h2 id="rayon-cosmique">Rayon cosmique</h2>
+<p>Particule chargée très rapide en provenance du milieu interstellaire. Ces particules sont surtout des protons (85%), des noyaux d'Hélium (14%), des électrons (1%) et d'autres noyaux atomiques. Leur énergie est typiquement de 1 GeV (l'énergie qu'aurait un électron accéléré par une tension électrique de un milliard de Volts), mais elle monte parfois jusqu'a 10 puissance 11 GeV. Ces particules pourraient avoir été accélérées lors d'explosions de Supernova. Le Soleil émet aussi des particules de haute énergie, mais généralement très inférieure au GeV.</p>
+<p>Les rayons cosmiques de haute énergie provenant de l'espace qui frappent l'atmosphère terrestre représentent une véritable énigme. Ces rayons se désintègrent en créant de spectaculaires gerbes de particules qui peuvent être détectées au sol. De tels rayons à très haute énergie, supérieure à 7x10<sup>19</sup>eV, sont très rares : seulement quelques événements par kilomètre carré et par siècle, et quelques dizaines d'observations dans le monde depuis 1962. Pourtant, leur simple existence est un défi pour le physicien théoricien. En effet ces rayons cosmiques sont supposés être des protons. Mais cette supposition, la plus naturelle, se heurte à une difficulté. Les protons de très haute énergie parcourant de grandes distances dans l'espace sont en quelque sorte freinés par le gaz de photons très diffus qui forme le fameux rayonnement de fond cosmologique à 3 K, témoin fossile du "big bang". Cet effet, appelé coupure de Greisen-Zatsepin-Kuz'min (GZK) devrait supprimer complètement les rayons cosmiques de très haute énergie, ou du moins ceux émis par des sources lointaines, réparties sur des distances dites "cosmologiques" (celles qui se mesurent en centaines de millions d'années-lumière). Or, les quelques observations dont on dispose ne montrent pas du tout une telle coupure, mais bien au contraire une certaine remontée relative de ces événements de très haute énergie.</p>
+<h2 id="rayon-gamma">Rayon gamma</h2>
+<p>Le rayonnement gamma est constitué de photons, comme la lumière visible ou le rayonnement X, mais il est beaucoup plus énergétique. La lumière visible a une énergie de l'ordre de un électron-volt (1 eV), une unité utilisée par les physiciens. Les rayons X ont une énergie de mille à un million d'eV.</p>
+<p>H.E.S.S. détecte des rayons gamma de très haute énergie, atteignant un million de million d'eV (Tera-électron-volt). Ces rayons gamma de très haute énergie sont peu nombreux : même pour une source astrophysique relativement intense, le flux de photons gamma pénétrant dans l'atmosphère est d'environ un par mois et par mètre carré.</p>
+<h2 id="electron-tueur">Electron tueur</h2>
+<p>Les électrons tueurs sont des électrons hautement relativistes, et donc très énergétiques, que l'on retrouve sporadiquement en grande quantité dans la ceinture de Van Allen.Des ondes électromagnétiques se propageant dans la magnétosphère terrestre en liaison avec l'activité solaire seraient à l'origine des mécanismes capables d'accélérer des électrons presque à la vitesse de la lumière et de les rendre ainsi mortels pour les satellites et les astronautes en orbite.</p>
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 15/11/2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

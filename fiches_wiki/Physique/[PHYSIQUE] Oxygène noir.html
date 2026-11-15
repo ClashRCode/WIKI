@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oxygène noir - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  
+    /* Complément : listes, tableaux, citations (le reset Tailwind les neutralise) */
+    .content ul { list-style: disc; margin: 0 0 1rem 1.5rem; }
+    .content ol { list-style: decimal; margin: 0 0 1rem 1.5rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content blockquote { border-left: 4px solid #c7d2fe; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+    .content table { border-collapse: collapse; margin: 1rem 0; max-width: 100%; display: block; overflow-x: auto; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; }
+    .content th { background-color: #f1f5f9; font-weight: 600; }
+    .content a { color: #4f46e5; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content strong { font-weight: 700; }
+    .content em { font-style: italic; }
+    .content u { text-decoration: underline; }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#qu-est-ce-que-l-oxygene-noir" class="toc-level-1">Qu’est-ce que “l’oxygène noir” ?</a>
+            <a href="#un-phenomene-d-electrolyse-en-jeu" class="toc-level-1">Un phénomène d’électrolyse en jeu ?</a>
+            <a href="#l-apparition-de-vie-sur-terre-remise-en-question-grace-a-l-oxygene-noir" class="toc-level-1">L’apparition de vie sur Terre remise en question grâce à l’oxygène noir</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="titre-fiche">Oxygène noir</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Si l’on pensait que l’oxygène était produit uniquement grâce à la photosynthèse, cette découverte vient remettre en question l’origine même de la vie sur Terre.</p>
+<p>Le 22 juillet 2024, une étude surprenante a été publiée dans la revue <a href="https://www.nature.com/articles/s41561-024-01480-8"><em>Nature geoscience</em></a>. Cette dernière, menée par Andrew K. Sweetman de la <em>Scottish Association for Marine Science</em> (SAMS), met en évidence une découverte tout à fait surprenante. En effet, de “l’oxygène noir” serait produit dans les profondeurs abyssales de l’Océan Pacifique. </p>
+<p>Cette découverte avérée remet donc en question beaucoup de choses que l’on croyait connaître sur l’apparition de la vie sur Terre. Une étude qui vient un peu plus confirmer l'adage selon lequel "<em>nous connaîtrions mieux ce qu'il y a dans l'espace que ce qu'il y a au fond des océans.</em>" </p>
+<h2 id="qu-est-ce-que-l-oxygene-noir">Qu’est-ce que “l’oxygène noir” ?</h2>
+<p>Commençons d’abord par le plus logique, qui est de se poser la question : “Comment se produit l’oxygène ?”. </p>
+<p>La réponse à cette question tient en un seul mot : photosynthèse. Il s’agit, grossièrement, d’un processus au cours duquel les plantes, terrestres ou marines, vont, grâce à l’énergie lumineuse provenant du Soleil, absorber le gaz carbonique de l’air ou de l’eau et rejeter l’oxygène dans l’air ou dans l’eau. C’est notamment pour cela que l’on surnomme la Forêt Amazonienne, le poumon de la planète. </p>
+<p>Mais grâce à l’étude du professeur Andrew K. Sweetman, la réponse à la question de la production d’oxygène devient plus complexe. En effet, d’après les résultats de ses travaux, la photosynthèse ne serait pas obligatoire dans ce processus puisque l’équipe de la SAMS a mis en évidence une production d’oxygène à plusieurs kilomètres de profondeur sous l’eau. Autrement dit, là où il n’y a pas de lumière, là où il fait noir. D’où le nom tout trouvé de “l’oxygène noir”. </p>
+<h2 id="un-phenomene-d-electrolyse-en-jeu">Un phénomène d’électrolyse en jeu ?</h2>
+<p>Forcément, une telle découverte remettant en question une connaissance acquise depuis de nombreuses années par la communauté scientifique a de quoi surprendre. Mais une fois la surprise et l’étonnement passés, reste à savoir comment pourrait se produire de “l’oxygène noir” à plus de 4 kilomètres de profondeur sous l’eau. </p>
+<p>Et pour les chercheurs, cet “oxygène noir” pourrait être le résultat d’un processus assez connu à la surface : l’électrolyse. Ce dernier, dans Le Robert, se définit comme “la décomposition chimique de substances en fusion ou en solution obtenue par le passage d’un courant électrique.” Autrement dit, dans le cadre de la production d’oxygène sous l’eau, l’électrolyse va séparer la molécule d’eau (H2O) en deux pour donner une molécule de dihydrogène d’un côté (H2) et une molécule de dioxygène de l’autre côté (O2). </p>
+<p>Oui, mais quel courant électrique traverse l’Océan Pacifique à près de 5 kilomètres de profondeur pour produire de “l’oxygène noir” ? </p>
+<p>Il faut donc maintenant s’atteler à regarder au-dessus de quoi cet oxygène est produit. Et tout de suite, cela devient plus clair. La découverte de “l’oxygène noir” a été faite au-dessus d’une plaine particulière. En effet, elle se situe près de la fracture Clarion-Clipperton, une zone particulièrement connue, d’après FranceInfo, pour son exploitation minière. </p>
+<p>On y trouverait notamment des minéraux riches en métaux qui seraient extraits puis utilisés pour la fabrication de batteries que l’on retrouve dans nos appareils électroniques. Pour les chercheurs, le voltage minimum d’1,5 volt nécessaire pour que l’électrolyse ait lieu, se produirait lorsque les différents minéraux, les nodules polymétalliques, sont regroupés ou qu’ils sont soumis à de la friction. Ainsi, “l’oxygène noir” serait simplement le résultat d’un courant électrique naturel qui se produit à près de 5 km de profondeur. </p>
+<h2 id="l-apparition-de-vie-sur-terre-remise-en-question-grace-a-l-oxygene-noir">L’apparition de vie sur Terre remise en question grâce à l’oxygène noir</h2>
+<p>Depuis que nous sommes en âge d’aller à l’école, nous apprenons que tout ce qui vit sur Terre, plus ou moins, a besoin d’oxygène et que ce dernier est apparu il y a près de 3 milliards d’années grâce à la photosynthèse. </p>
+<p>Depuis le 22 juillet 2024, ce fait connu de tous est donc remis en question. La vie venant des océans est-elle due uniquement à l’oxygène produit de la photosynthèse ou le développement des organismes, qui ont fini par sortir de l’eau, s’est fait grâce à de l’oxygène réalisé grâce à une pile primitive ? Telle est la question. </p>
+<p>Pour la BBC, Andrew K. Sweetman, admet même qu’il a renié, peut-être involontairement, cela pendant plus de dix ans : “J’ai vu cela pour la première fois en 2013 : une énorme quantité d’oxygène produite au fond de la mer dans l’obscurité totale. J’ai ignoré ce phénomène, car on m’avait appris que l’oxygène n’était produit que par la photosynthèse. J’ai fini par réaliser que j’avais ignoré pendant des années cette découverte potentiellement énorme.”</p>
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 15/11/2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

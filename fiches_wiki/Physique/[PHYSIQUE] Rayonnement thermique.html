@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rayonnement thermique - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  
+    /* Complément : listes, tableaux, citations (le reset Tailwind les neutralise) */
+    .content ul { list-style: disc; margin: 0 0 1rem 1.5rem; }
+    .content ol { list-style: decimal; margin: 0 0 1rem 1.5rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content blockquote { border-left: 4px solid #c7d2fe; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+    .content table { border-collapse: collapse; margin: 1rem 0; max-width: 100%; display: block; overflow-x: auto; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; }
+    .content th { background-color: #f1f5f9; font-weight: 600; }
+    .content a { color: #4f46e5; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content strong { font-weight: 700; }
+    .content em { font-style: italic; }
+    .content u { text-decoration: underline; }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#les-gaz-neutres" class="toc-level-1">Les gaz neutres</a>
+            <a href="#gaz-ionises-plasmas-non-magnetises" class="toc-level-1">Gaz ionisés, plasmas non magnétisés</a>
+            <a href="#solides" class="toc-level-1">Solides</a>
+            <a href="#liquides-et-verres" class="toc-level-1">Liquides et verres</a>
+            <a href="#exemples" class="toc-level-1">Exemples</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="titre-fiche">Rayonnement thermique</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Le rayonnement thermique est un rayonnement électromagnétique généré par l'agitation thermique de particules dans la matière quel que soit l'état de celle-ci : solide, liquide ou gaz. Le spectre de ce rayonnement s'étend du domaine micro-ondes à l'ultra-violet. L'expression est également utilisée pour des phénomènes beaucoup plus énergétiques tels que rencontrés dans les plasmas, qui sont la source de rayonnement X.</p>
+<p>Ce phénomène conduit au rayonnement du corps noir lorsque l'interaction matière - rayonnement est réversible et importante. Ce résultat est indépendant de la nature de la source, qu'elle soit surfacique ou volumique. Dans ce cas, la luminance est isotrope et décrite par la loi de Planck. La loi du déplacement de Wien détermine la longueur d'onde de la valeur maximale du spectre émis. La loi de Stefan-Boltzmann donne l'exitance (densité de flux énergétique) émise par une surface limitant un corps noir opaque.</p>
+<p>Le rayonnement thermique est un des mécanismes principaux de transfert de chaleur avec la conduction thermique et la convection.</p>
+<p>Les photons émis, constituant le rayonnement thermique, ont une nature duale : ils peuvent être considérés comme des ondes électromagnétiques obéissant aux équations de Maxwell ou des paquets de photons décrits par la physique statistique (transfert radiatif). On utilise l'approche particulaire dans les gaz où les interactions avec la matière sont ponctuels et eux-mêmes décrits par la physique quantique, et l'électromagnétisme dans les solides où les interactions sont globales1.</p>
+<p>L'équilibre thermodynamique, lorsqu'il est atteint, ne dépend que d'un seul paramètre : la température thermodynamique. Cet état n'est pas présent en général dans les gaz à haute température mais on peut le plus souvent associer une température à chaque degrés de liberté pour les molécules, atomes ou ions : translation, niveaux d'énergie électronique, rotation et vibration (s'il y a lieu)2.</p>
+<p>Ce problème ne se présente pas pour un solide, qui n'existe qu'à basse température. L'émission et l'absorption par une surface font intervenir les notions d'émissivité et d'absorptivité. La loi du rayonnement de Kirchhoff est une loi de réciprocité qui montre que ces deux valeurs sont égales pour une longueur d'onde et un angle par rapport à la surface donnée.</p>
+<p>D'une façon générale, la quantité d'énergie globale émise par un milieu croît avec la température, mais ceci n'est pas vrai pour une région donnée du spectre électromagnétique à cause de l'apparition ou de la disparition des phénomènes relatifs à cette partie : les espèces chimiques présentes dans un gaz, par exemple.</p>
+<h2 id="les-gaz-neutres">Les gaz neutres</h2><p><img alt="Rayonnement thermique" loading="lazy" src="data:image/jpeg;base64,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" style="width:220px;max-width:100%;height:auto"/></p>
+<p>L'émission spontanée et l'absorption de photon dans les gaz correspondent à des transitions quantifiées de l'énergie interne électronique et des divers degrés de liberté des molécules en rotation ou vibration.</p>
+<p>La gamme de longueurs d'onde pour ce phénomène s'étend du domaine micro-ondes (bandes de rotation - vibration) jusqu'à l'ultraviolet lointain (bandes liées aux transitions électroniques)3. Le nombre de raies se compte en centaines de milliers pour une seule espèce gazeuse. Les données sont réunies dans des bases de données comme HITRAN.</p>
+<h2 id="gaz-ionises-plasmas-non-magnetises">Gaz ionisés, plasmas non magnétisés</h2>
+<p>La présence d'ions atomiques ou moléculaires et d'électrons libres dans le milieu supposé dépourvu de champ magnétique autorise, outre les phénomènes ci-dessus, la création d'un spectre continu par des interactions de deux types faisant intervenir l'électron:</p>
+<ul>
+<li><p>transition lié-libre (électron lié à un noyau → électron libre) / libre - lié : photo-ionisation / recombinaison radiative, photo-détachement / photo-attachement ;</p></li>
+<li><p>transition libre-libre ou bremẞtralung / bremẞtralung inverse par échange d'énergie de translation entre un ion et un électron (l'échange d'énergie électron-électron étant impossible, le système e−- e− ayant un moment dipolaire nul).</p></li>
+</ul>
+<p>Il s'agit de phénomènes à seuil d'énergie (et donc de longueur d'onde) : énergie d'ionisation pour la photo-ionisation, affinité électronique pour le photo-attachement et fréquence plasma pour le bremẞtralung.</p>
+<h2 id="solides">Solides</h2>
+<p>De manière générale, l'agitation thermique des charges présentes dans un solide (électrons, ions, atomes d’un solide portant une charge partielle) provoque une accélération des particules chargées qui génère un rayonnement électromagnétique ayant le spectre du corps noir, représentatif du rayonnement thermique</p>
+<h2 id="liquides-et-verres">Liquides et verres</h2><p><img alt="Rayonnement thermique" loading="lazy" src="data:image/jpeg;base64,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" style="width:220px;max-width:100%;height:auto"/></p>
+<p>Les liquides et les verres n'ont pas de structure ordonnée et donc pas d'électrons libres. Ils sont en cela proches des gaz. Par exemple, l'absorption du rayonnement électromagnétique par l'eau est liée aux transitions électroniques dans l'ultraviolet (UV) et aux transitions rotation-vibration dans l'infrarouge (IR). Certains matériaux moléculaires comme les résines ont des propriétés analogues. Le graphite possède également cette propriété puisqu'en plus de sa structure cristalline plane il possède des liaisons faibles entre plans.</p>
+<p>Le libre parcours moyen élevé des photons n'interdit pas l'obtention de l'équilibre thermodynamique pour les milieux de grande dimension, par exemple l'océan à une profondeur supérieure à la centaine de mètres. Ceci est d'autant plus vrai que, compte tenu de la température, le spectre est centré dans l'IR qui est plus particulièrement absorbé par l'eau.</p>
+<h2 id="exemples">Exemples</h2>
+<p><img alt="Rayonnement thermique" loading="lazy" src="data:image/jpeg;base64,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" style="width:220px;max-width:100%;height:auto"/>Tous les matériaux à toutes températures émettent un rayonnement. Cependant, peu de cas sont proches du corps noir. C'est par exemple le fond diffus cosmologique à 2,7 K, l'eau des océans à 300 K environ (voir ci-dessus), le Soleil à 5 800 K ou les plasmas à plusieurs millions de degrés. Mais autant les deux premiers exemples et celui du plasma sont précisément vérifiés, autant celui du soleil est approximatif. On peut le constater sur le spectre émis (voir graphe) mais aussi sur l'anisotropie de l'émission, à l'origine de l'assombrissement centre-bord.</p>
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 15/11/2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

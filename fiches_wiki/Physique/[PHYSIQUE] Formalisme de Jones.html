@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formalisme de Jones - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#definition" class="toc-level-1">Définition</a>
+            <a href="#exemples-de-vecteurs-de-jones-normes" class="toc-level-1">Exemples de vecteurs de Jones normés</a>
+            <a href="#analogies-avec-un-systeme-quantique-a-deux-niveaux" class="toc-level-1">Analogies avec un système quantique à deux niveaux</a>
+            <a href="#exemples-de-matrices-de-jones" class="toc-level-1">Exemples de matrices de Jones</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            
+
+
+
+
+
+
+<h1 id="formalisme-de-jones">Formalisme de Jones</h1><h1 id="introduction">Introduction</h1>
+<p>Le formalisme de Jones est un formalisme matriciel permettant de décrire l'état de polarisation de la lumière, ou de manière générale d'une onde électromagnétique, et son évolution à travers un système optique. Ce formalisme doit son nom à son inventeur Robert C. Jones qui le définit en 1941. Dans ce formalisme, on représente la lumière polarisée par un vecteur de Jones et les éléments optiques linéaires sont représentés par des matrices de Jones. Le vecteur de Jones de la lumière en sortie du système est donné par le produit de la matrice de Jones du système par le vecteur de Jones de la lumière d'entrée.</p>
+<p>Ce formalisme n'est utile que pour la lumière totalement polarisée. Pour décrire la lumière incohérente et partiellement polarisée, on utilise les vecteurs de Stokes et les matrices de Mueller.</p>
+<h1 id="definition">Définition</h1>
+<p>Dans sa publication originale, Jones considère le cas d'une onde électromagnétique plane et monochromatique complètement polarisée et définit l'état de la lumière en un point à partir du vecteur complexe</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>E</mi><mi>x</mi></msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>E</mi><mi>y</mi></msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="right" style="text-align: right"><msubsup><mi>E</mi><mi>x</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow></msubsup><mo>exp</mo><mo form="prefix" stretchy="false">[</mo><mi>i</mi><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mi>ω</mi><mi>t</mi><mo>+</mo><msub><mi>ϕ</mi><mi>x</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="false">]</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msubsup><mi>E</mi><mi>y</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow></msubsup><mo>exp</mo><mo form="prefix" stretchy="false">[</mo><mi>i</mi><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mi>ω</mi><mi>t</mi><mo>+</mo><msub><mi>ϕ</mi><mi>y</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="false">]</mo></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex">(\begin{array}{r}
+E_{x}(t) \\
+E_{y}(t)
+\end{array}) = (\begin{array}{r}
+E_{x}^{(0)}\exp\lbrack i( - \omega t + \phi_{x})\rbrack \\
+E_{y}^{(0)}\exp\lbrack i( - \omega t + \phi_{y})\rbrack
+\end{array}),</annotation></semantics></math></p>
+<p>où <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>x</mi></msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">E_{x}(t)</annotation></semantics></math> et <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>y</mi></msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">E_{y}(t)</annotation></semantics></math> sont les composantes du champ électrique de l'onde selon les axes x et y. Cependant, les paramètres les plus utiles pour décrire l'état de polarisation sont les différences de phase <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mi>y</mi></msub><mo>−</mo><msub><mi>ϕ</mi><mi>x</mi></msub></mrow><annotation encoding="application/x-tex">\phi_{y} - \phi_{x}</annotation></semantics></math> et le rapport <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>E</mi><mi>x</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow></msubsup><mi>/</mi><msubsup><mi>E</mi><mi>y</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow></msubsup></mrow><annotation encoding="application/x-tex">E_{x}^{(0)}/E_{y}^{(0)}</annotation></semantics></math>. Habituellement, on choisit donc un point qui sert de référence d'intensité et de phase et on note</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>E</mi><mi>x</mi></msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>E</mi><mi>y</mi></msub><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo form="postfix" stretchy="true">)</mo></mrow></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><msup><mi>E</mi><mrow><mo form="prefix" stretchy="true">(</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow></msup><mo>exp</mo><mo form="prefix" stretchy="false">[</mo><mi>i</mi><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mi>ω</mi><mi>t</mi><mo>+</mo><msub><mi>ϕ</mi><mi>x</mi></msub><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="false">]</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>V</mi><mi>x</mi></msub></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>V</mi><mi>y</mi></msub></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex">(\begin{array}{r}
+E_{x}(t) \\
+E_{y}(t)
+\end{array}) = E^{(0)}\exp\lbrack i( - \omega t + \phi_{x})\rbrack(\begin{array}{r}
+V_{x} \\
+V_{y}
+\end{array}),</annotation></semantics></math></p>
+<p>où le vecteur de Jones est défini par</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>V</mi><mi>x</mi></msub></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><msub><mi>V</mi><mi>y</mi></msub></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex">V = (\begin{array}{r}
+V_{x} \\
+V_{y}
+\end{array}),</annotation></semantics></math></p>
+<p>en convenant que <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>V</mi><mi>x</mi></msub><annotation encoding="application/x-tex">V_{x}</annotation></semantics></math> est réel et que le vecteur <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math> est de norme 1 au point de référence. Le point de référence est généralement implicitement pris à l'entrée du système, mais est surtout important lorsqu'il y a absorption de l'onde ou interférence entre plusieurs ondes.</p>
+<h1 id="exemples-de-vecteurs-de-jones-normes">Exemples de vecteurs de Jones normés</h1>
+<div class="table-wrap"><table>
+
+<thead>
+<tr class="header">
+<th><strong>Polarisation</strong></th>
+<th><strong>Vecteur de Jones correspondant</strong></th>
+<th><strong>Notation sous forme d'un </strong>ket</th>
+<th><strong>Représentation</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rectiligne selon l'axe x</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="right" style="text-align: right"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mn>0</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(\begin{array}{r}
+1 \\
+0
+\end{array})</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>H</mi><mo form="postfix" stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|H\rangle</annotation></semantics></math></td>
+<td><img alt="Illustration – Exemples de vecteurs de Jones normés" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,100px)"/></td>
+</tr>
+<tr class="even">
+<td>Rectiligne selon l'axe y</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="right" style="text-align: right"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mn>1</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(\begin{array}{r}
+0 \\
+1
+\end{array})</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>V</mi><mo form="postfix" stretchy="false">⟩</mo></mrow><annotation encoding="application/x-tex">|V\rangle</annotation></semantics></math></td>
+<td><img alt="Illustration – Exemples de vecteurs de Jones normés" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,100px)"/></td>
+</tr>
+<tr class="odd">
+<td>Rectiligne selon un axe à 45° par rapport à l'axe x</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="right" style="text-align: right"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mn>1</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\frac{1}{\sqrt{2}}(\begin{array}{r}
+1 \\
+1
+\end{array})</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>D</mi><mo form="postfix" stretchy="false">⟩</mo><mo>=</mo><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">|</mo><mi>H</mi><mo form="postfix" stretchy="false">⟩</mo><mo>+</mo><mo form="postfix" stretchy="true">|</mo></mrow><mi>V</mi><mo form="postfix" stretchy="false">⟩</mo><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">|D\rangle = \frac{1}{\sqrt{2}}(|H\rangle + |V\rangle)</annotation></semantics></math></td>
+<td><img alt="Illustration – Exemples de vecteurs de Jones normés" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,100px)"/></td>
+</tr>
+<tr class="even">
+<td>Circulaire droite</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="right" style="text-align: right"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mo>−</mo><mi>i</mi></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\frac{1}{\sqrt{2}}(\begin{array}{r}
+1 \\
+ - i
+\end{array})</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>R</mi><mo form="postfix" stretchy="false">⟩</mo><mo>=</mo><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">|</mo><mi>H</mi><mo form="postfix" stretchy="false">⟩</mo><mo>−</mo><mi>i</mi><mo form="postfix" stretchy="true">|</mo></mrow><mi>V</mi><mo form="postfix" stretchy="false">⟩</mo><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">|R\rangle = \frac{1}{\sqrt{2}}(|H\rangle - i|V\rangle)</annotation></semantics></math></td>
+<td><img alt="Illustration – Exemples de vecteurs de Jones normés" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,100px)"/></td>
+</tr>
+<tr class="odd">
+<td>Circulaire gauche</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="right" style="text-align: right"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"><mi>i</mi></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\frac{1}{\sqrt{2}}(\begin{array}{r}
+1 \\
+i
+\end{array})</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">|</mo><mi>L</mi><mo form="postfix" stretchy="false">⟩</mo><mo>=</mo><mfrac><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mrow><mo form="prefix" stretchy="true">|</mo><mi>H</mi><mo form="postfix" stretchy="false">⟩</mo><mo>+</mo><mi>i</mi><mo form="postfix" stretchy="true">|</mo></mrow><mi>V</mi><mo form="postfix" stretchy="false">⟩</mo><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">|L\rangle = \frac{1}{\sqrt{2}}(|H\rangle + i|V\rangle)</annotation></semantics></math></td>
+<td><img alt="Illustration – Exemples de vecteurs de Jones normés" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,100px)"/></td>
+</tr>
+</tbody>
+</table></div>
+<h1 id="analogies-avec-un-systeme-quantique-a-deux-niveaux">Analogies avec un système quantique à deux niveaux</h1>
+<p>Formellement, le vecteur de Jones est un vecteur de ℂ2, identique au vecteur d'état utilisé pour la description d'un système à deux niveaux en mécanique quantique. Cette analogie vient du fait que le photon peut avoir deux états d'hélicité, et représente donc un système à deux niveaux une fois que son vecteur d'onde est choisi. On peut ainsi tisser des liens entre les deux formalismes, ce qui justifie l'utilisation de la notation bra-ket couramment faite en optique quantique pour représenter l'état de polarisation de la lumière. Le tableau ci-dessous détaille les correspondances entre les deux formalismes</p>
+<div class="table-wrap"><table>
+
+<thead>
+<tr class="header">
+<th><strong>Formalisme de Jones</strong></th>
+<th><strong>Mécanique quantique</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Vecteur de Jones</td>
+<td>Vecteur d'état, ket</td>
+</tr>
+<tr class="even">
+<td>Matrice de Jones</td>
+<td>Opérateur d'évolution</td>
+</tr>
+<tr class="odd">
+<td>Sphère de Poincaré</td>
+<td>Sphère de Bloch</td>
+</tr>
+<tr class="even">
+<td>Paramètres de Stokes<br/>
+(lumière partiellement polarisée)</td>
+<td>Matrice densité<br/>
+(mélange statistique d'états purs)</td>
+</tr>
+</tbody>
+</table></div>
+<h1 id="exemples-de-matrices-de-jones">Exemples de matrices de Jones</h1>
+<div class="table-wrap"><table>
+
+<thead>
+<tr class="header">
+<th><strong>Système optique</strong></th>
+<th><strong>Matrice de Jones correspondante</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Polariseur avec axe horizontal</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(\begin{matrix}
+1 &amp; 0 \\
+0 &amp; 0
+\end{matrix})</annotation></semantics></math></td>
+</tr>
+<tr class="even">
+<td>Polariseur avec axe vertical</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(\begin{matrix}
+0 &amp; 0 \\
+0 &amp; 1
+\end{matrix})</annotation></semantics></math></td>
+</tr>
+<tr class="odd">
+<td>Polariseur avec axe incliné à <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>±</mo><annotation encoding="application/x-tex">\pm</annotation></semantics></math>45°</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mo>±</mo><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo>±</mo><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\frac{1}{2}(\begin{matrix}
+1 &amp; \pm 1 \\
+ \pm 1 &amp; 1
+\end{matrix})</annotation></semantics></math></td>
+</tr>
+<tr class="even">
+<td>Polariseur incliné d'un angle <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>φ</mi><annotation encoding="application/x-tex">\varphi</annotation></semantics></math></td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msup><mo>cos</mo><mn>2</mn></msup><mi>φ</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>cos</mo><mi>φ</mi><mo>sin</mo><mi>φ</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo>sin</mo><mi>φ</mi><mo>cos</mo><mi>φ</mi></mtd><mtd columnalign="center" style="text-align: center"><msup><mo>sin</mo><mn>2</mn></msup><mi>φ</mi></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(\begin{matrix}
+\cos^{2}\varphi &amp; \cos\varphi\sin\varphi \\
+\sin\varphi\cos\varphi &amp; \sin^{2}\varphi
+\end{matrix})</annotation></semantics></math></td>
+</tr>
+<tr class="odd">
+<td>Polariseur circulaire droite</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>i</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo>−</mo><mi>i</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\frac{1}{2}(\begin{matrix}
+1 &amp; i \\
+ - i &amp; 1
+\end{matrix})</annotation></semantics></math></td>
+</tr>
+<tr class="even">
+<td>Polariseur circulaire gauche</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><mi>i</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>i</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\frac{1}{2}(\begin{matrix}
+1 &amp; - i \\
+i &amp; 1
+\end{matrix})</annotation></semantics></math></td>
+</tr>
+<tr class="odd">
+<td>Lame demi-onde avec l'axe rapide horizontal</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mo>−</mo><mi>i</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>i</mi></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(\begin{matrix}
+ - i &amp; 0 \\
+0 &amp; i
+\end{matrix})</annotation></semantics></math></td>
+</tr>
+<tr class="even">
+<td>Lame quart d'onde avec axe rapide horizontal</td>
+<td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mrow><mo>−</mo><mi>i</mi><mi>π</mi><mi>/</mi><mn>4</mn></mrow></msup><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>i</mi></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">e^{- i\pi/4}(\begin{matrix}
+1 &amp; 0 \\
+0 &amp; i
+\end{matrix})</annotation></semantics></math></td>
+</tr>
+</tbody>
+</table></div>
+<p>Si un système optique est tourné autour de l'axe optique d'un angle <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>θ</mi><annotation encoding="application/x-tex">\theta</annotation></semantics></math>, la matrice de Jones pour le système tourné <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>θ</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">M(\theta)</annotation></semantics></math> est obtenue à partir de la matrice du système non tourné par la transformation :</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>θ</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mi>R</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>θ</mi><mo form="postfix" stretchy="true">)</mo></mrow><mi>M</mi><mi>R</mi><mrow><mo form="prefix" stretchy="true">(</mo><mo>−</mo><mi>θ</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">M(\theta) = R(\theta)MR( - \theta)</annotation></semantics></math> ,</p>
+<p>où <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>θ</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mo>cos</mo><mi>θ</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><mo>sin</mo><mi>θ</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo>sin</mo><mi>θ</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>cos</mo><mi>θ</mi></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">R(\theta) = (\begin{matrix}
+\cos\theta &amp; - \sin\theta \\
+\sin\theta &amp; \cos\theta
+\end{matrix})</annotation></semantics></math> .</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

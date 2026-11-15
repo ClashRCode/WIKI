@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nucléosynthèse - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  
+    /* Complément : listes, tableaux, citations (le reset Tailwind les neutralise) */
+    .content ul { list-style: disc; margin: 0 0 1rem 1.5rem; }
+    .content ol { list-style: decimal; margin: 0 0 1rem 1.5rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content blockquote { border-left: 4px solid #c7d2fe; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+    .content table { border-collapse: collapse; margin: 1rem 0; max-width: 100%; display: block; overflow-x: auto; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; }
+    .content th { background-color: #f1f5f9; font-weight: 600; }
+    .content a { color: #4f46e5; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content strong { font-weight: 700; }
+    .content em { font-style: italic; }
+    .content u { text-decoration: underline; }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#les-grands-processus-de-la-nucleosynthese" class="toc-level-2">Les grands processus de la nucléosynthèse</a>
+            <a href="#nucleosynthese-stellaire-et-evolution-des-elements" class="toc-level-2">Nucléosynthèse stellaire et évolution des éléments</a>
+            <a href="#nucleosynthese-et-evolution-cosmique" class="toc-level-2">Nucléosynthèse et évolution cosmique</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="titre-fiche">Nucléosynthèse</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Création de nouveaux éléments par réactions nucléaires. Un exemple est donné par la conversion thermonucléaire de l'hydrogène en hélium au coeur des étoiles de la séquence principale. Il existe deux processus principaux appelés « chaîne proton-proton » et « <a href="https://www.futura-sciences.com/planete/definitions/terre-cycle-carbone-20785/">cycle du carbone</a> » (en réalité carbone/<a href="https://www.futura-sciences.com/sciences/definitions/tableau-periodique-elements-azote-13578/">azote</a>).</p>
+<h3 id="les-grands-processus-de-la-nucleosynthese">Les grands processus de la nucléosynthèse</h3>
+<p>La nucléosynthèse désigne l'ensemble des réactions nucléaires responsables de la formation des <a href="https://www.futura-sciences.com/sciences/definitions/chimie-element-chimique-15852/">éléments chimiques</a>, depuis les plus légers jusqu'aux plus lourds, dans différents environnements <a href="https://www.futura-sciences.com/sciences/definitions/univers-astrophysique-393/">astrophysiques</a>. Elle se manifeste dans des conditions extrêmes de température et de <a href="https://www.futura-sciences.com/sciences/definitions/physique-pression-17466/">pression</a>, principalement au sein des étoiles, mais aussi lors d'événements cosmiques majeurs tels que les <a href="https://www.futura-sciences.com/sciences/definitions/univers-supernova-60/">supernovas</a>. On distingue généralement plusieurs types de nucléosynthèse : la nucléosynthèse primordiale, qui s'est déroulée quelques minutes après le <a href="https://www.futura-sciences.com/sciences/definitions/univers-big-bang-858/">Big Bang</a> ; la nucléosynthèse stellaire, réglant l'évolution et la composition chimique des étoiles ; et la nucléosynthèse explosive, qui apparaît dans des phénomènes cataclysmiques comme les supernovas et la collision d'<a href="https://www.futura-sciences.com/sciences/definitions/etoile-astre-851/">astres</a> compacts.</p>
+<p>Dès les premiers instants de l'<a href="https://www.futura-sciences.com/sciences/definitions/astronomie-univers-15239/">Univers</a>, la nucléosynthèse primordiale a permis la formation des premiers noyaux, principalement l'hydrogène, l'hélium, ainsi qu'une infime quantité de <a href="https://www.futura-sciences.com/sciences/definitions/chimie-lithium-12336/">lithium</a> et <a href="https://www.futura-sciences.com/sciences/definitions/chimie-beryllium-14500/">béryllium</a>. Ces éléments ont constitué le socle sur lequel la complexité chimique de l'Univers s'est bâtie, car les réactions dans les cœurs stellaires ont ensuite pris le relais. Dans les étoiles, les processus de <a href="https://www.futura-sciences.com/sciences/definitions/physique-fusion-nucleaire-2463/">fusion nucléaire</a>, tels que la chaîne proton-proton et le <a href="https://www.futura-sciences.com/sciences/definitions/physique-cycle-cno-5016/">cycle carbone-azote-oxygène</a> (CNO), transforment l'hydrogène en hélium et, dans des conditions d'<a href="https://www.futura-sciences.com/sciences/definitions/energie-energie-15884/">énergie</a> accrues, poussent la synthèse vers des éléments chimiques plus lourds comme le carbone, l'oxygène ou le <a href="https://www.futura-sciences.com/sciences/definitions/chimie-neon-14510/">néon</a>.</p>
+<p>Lorsqu'une étoile massive atteint les derniers stades de son existence, des réactions de fusion successives donnent naissance à des éléments jusqu'au <a href="https://www.futura-sciences.com/sciences/definitions/chimie-fer-721/">fer</a>. Cependant, pour la création d'éléments plus lourds que le fer, l'énergie nécessaire à la fusion dépasse ce que l'étoile peut fournir. Il faut alors des mécanismes spécifiques, comme la capture rapide de <a href="https://www.futura-sciences.com/sciences/definitions/physique-neutron-3498/">neutrons</a> (processus r) et la capture lente (processus s), qui se déroulent principalement lors de l'explosion de supernovas ou dans certaines étoiles en fin de vie. Ces réactions contribuent à enrichir le milieu interstellaire de nouveaux éléments, participant ainsi à l'évolution chimique des <a href="https://www.futura-sciences.com/sciences/definitions/univers-galaxie-36/">galaxies</a>.</p>
+<h3 id="nucleosynthese-stellaire-et-evolution-des-elements">Nucléosynthèse stellaire et évolution des éléments</h3>
+<p>Les étoiles jouent un rôle central dans la production et la dispersion des éléments chimiques. Au sein de la séquence principale, le mécanisme dominant est la fusion de l'hydrogène en hélium. Cette réaction, qui libère une quantité colossale d'énergie, se traduit essentiellement par deux voies : la chaîne proton-proton, prédominante dans les étoiles de faible <a href="https://www.futura-sciences.com/sciences/definitions/physique-masse-15213/">masse</a> comme le <a href="https://www.futura-sciences.com/sciences/definitions/univers-soleil-3727/">Soleil</a>, et le cycle du carbone-azote-oxygène, plus efficace pour les étoiles plus massives. Chacun de ces processus implique une succession d'étapes transformant quatre noyaux d'hydrogène en un noyau d'hélium, générant également de la <a href="https://www.futura-sciences.com/sciences/definitions/physique-lumiere-326/">lumière</a> et des <a href="https://www.futura-sciences.com/sciences/definitions/physique-neutrino-2903/">neutrinos</a>.</p>
+<p>Lorsque l'hydrogène vient à manquer, l'étoile évolue vers d'autres cycles de fusion, selon sa masse. Dans les étoiles plus massives, l'hélium est converti en carbone puis en oxygène par le biais du processus triple-alpha et d'autres réactions impliquant la fusion de noyaux d'<a href="https://www.futura-sciences.com/sciences/definitions/atome-atome-1990/">atomes</a> lourds. À mesure que le cœur stellaire se contracte et que la température augmente, de nouvelles réactions apparaissent, permettant la formation d'éléments toujours plus lourds, notamment le néon, le <a href="https://www.futura-sciences.com/sciences/definitions/chimie-magnesium-775/">magnésium</a> et le <a href="https://www.futura-sciences.com/sciences/definitions/chimie-silicium-14517/">silicium</a>. Ce processus se poursuit jusqu'à l'obtention du fer, élément pour lequel la fusion ne permet plus de produire de l'énergie, marquant une étape cruciale dans la destinée de l'étoile.</p>
+<p>À la fin du cycle de vie des étoiles massives, l'implosion du cœur déclenche une supernova, un événement qui disperse dans la galaxie une profusion de nouveaux noyaux, issus à la fois de la fusion dans le cœur de l'étoile et de réactions ayant lieu pendant l'explosion elle-même. Au cours de ce processus, les flux intenses de neutrons permettent la synthèse d'éléments plus lourds que le fer, notamment l'or, l'<a href="https://www.futura-sciences.com/sciences/definitions/chimie-argent-14862/">argent</a>, le <a href="https://www.futura-sciences.com/sciences/definitions/chimie-platine-4684/">platine</a> et l'<a href="https://www.futura-sciences.com/sciences/definitions/tableau-periodique-elements-uranium-4212/">uranium</a>. Ces phénomènes contribuent de manière essentielle à la richesse chimique de l'Univers observable, façonnant ainsi la diversité des éléments présents dans le milieu interstellaire, le <a href="https://www.futura-sciences.com/sciences/definitions/univers-systeme-solaire-3728/">système solaire</a> et sur Terre.</p>
+<h3 id="nucleosynthese-et-evolution-cosmique">Nucléosynthèse et évolution cosmique</h3>
+<p>La nucléosynthèse ne façonne pas seulement la <a href="https://www.futura-sciences.com/sciences/definitions/chimie-chimie-15837/">chimie</a> des étoiles, elle influence également la structure et l'évolution des galaxies ainsi que l'apparition de la vie. Les noyaux formés dans les générations successives d'étoiles sont relâchés dans le milieu interstellaire par divers mécanismes : <a href="https://www.futura-sciences.com/planete/definitions/climatologie-vent-14560/">vents</a> stellaires des <a href="https://www.futura-sciences.com/sciences/definitions/univers-etoile-geante-26/">étoiles géantes</a>, éjections de <a href="https://www.futura-sciences.com/sciences/definitions/univers-nebuleuse-planetaire-51/">nébuleuses planétaires</a> ou explosions de supernovas. Cet enrichissement progressif du <a href="https://www.futura-sciences.com/sciences/definitions/physique-gaz-15336/">gaz</a> interstellaire en éléments lourds, un processus appelé métallisation, conditionne la formation de nouvelles étoiles, de planètes et, à terme, l'<a href="https://www.futura-sciences.com/planete/definitions/zoologie-emergence-8743/">émergence</a> de la chimie organique indispensable à la vie telle que nous la connaissons.</p>
+<p>L'étude de la composition isotopique des <a href="https://www.futura-sciences.com/sciences/definitions/univers-meteorite-872/">météorites</a>, des étoiles et du gaz interstellaire permet de retracer l'histoire de la nucléosynthèse et de mieux comprendre les conditions qui ont prévalu au cours de l'évolution galactique. Les abondances d'éléments rencontrées dans les différentes régions de la <a href="https://www.futura-sciences.com/sciences/definitions/univers-voie-lactee-3729/">Voie lactée</a> témoignent des nombreuses générations d'étoiles ayant contribué à la synthèse et à la dissémination des atomes lourds. Par ailleurs, la présence de certains éléments radioactifs, d'origine récente, offre des informations précieuses sur les processus de nucléosynthèse en cours et le rythme de formation des étoiles dans la galaxie.</p>
+<p>Les avancées en astrophysique nucléaire et l'exploitation des grandes installations d'observation, terrestres ou spatiales, permettent aujourd'hui d'étudier en détail la nucléosynthèse dans des environnements variés. Des supernovas à la collision d'<a href="https://www.futura-sciences.com/sciences/definitions/univers-etoile-neutrons-32/">étoiles à neutrons</a>, chaque événement céleste apporte des éléments nouveaux relatifs aux mécanismes de formation des atomes. La compréhension de la nucléosynthèse, à la croisée de la <a href="https://www.futura-sciences.com/sciences/definitions/physique-physique-15839/">physique</a> nucléaire, de l'astrophysique et de la chimie, reste une clé de voûte pour appréhender l'évolution de la <a href="https://www.futura-sciences.com/sciences/definitions/matiere-matiere-15841/">matière</a>, la formation des planètes et l'apparition de la vie dans l'Univers.</p>
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 15/11/2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

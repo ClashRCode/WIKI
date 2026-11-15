@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trou de ver - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  
+    /* Complément : listes, tableaux, citations (le reset Tailwind les neutralise) */
+    .content ul { list-style: disc; margin: 0 0 1rem 1.5rem; }
+    .content ol { list-style: decimal; margin: 0 0 1rem 1.5rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content blockquote { border-left: 4px solid #c7d2fe; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+    .content table { border-collapse: collapse; margin: 1rem 0; max-width: 100%; display: block; overflow-x: auto; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; }
+    .content th { background-color: #f1f5f9; font-weight: 600; }
+    .content a { color: #4f46e5; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content strong { font-weight: 700; }
+    .content em { font-style: italic; }
+    .content u { text-decoration: underline; }
+  </style>
+  <script>window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] } };</script>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#historique" class="toc-level-1">Historique</a>
+            <a href="#presentation-generale" class="toc-level-1">Présentation générale</a>
+            <a href="#exemple-le-trou-de-ver-de-morris-thorne" class="toc-level-1">Exemple : le trou de ver de Morris-Thorne</a>
+            <a href="#modele-bimetrique-et-symetrie-pt" class="toc-level-1">Modèle bimétrique et symétrie PT</a>
+            <a href="#implications-et-perspectives" class="toc-level-1">Implications et perspectives</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="titre-fiche">Trou de ver</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Exemple de trou de ver dans une <a href="https://fr.wikipedia.org/wiki/M%C3%A9trique_de_Schwarzschild">métrique de Schwarzschild</a>, tel qu'il serait vu par un observateur ayant franchi l'horizon du <a href="https://fr.wikipedia.org/wiki/Trou_noir">trou noir</a>. La région d'où vient l'observateur est située à droite de l'image. Mise à part la région située près de l'ombre du trou noir, les effets de <a href="https://fr.wikipedia.org/wiki/D%C3%A9calage_vers_le_rouge">décalage vers le rouge</a> gravitationnel rendent le fond du ciel très sombre. Celui-ci est en revanche très lumineux dans la seconde région, visible une fois l'horizon passé. Cette région ne sera cependant pas accessible, quelle que soit la trajectoire de l'observateur, car celui-ci est condamné à finir sur la <a href="https://fr.wikipedia.org/wiki/Singularit%C3%A9_gravitationnelle">singularité gravitationnelle</a> en un temps relativement bref.</p>
+<p>Un trou de ver (en <a href="https://fr.wikipedia.org/wiki/Anglais">anglais</a> : wormhole, ou parfois pont d’Einstein-Rosen) est, en <a href="https://fr.wikipedia.org/wiki/Astrophysique">astrophysique</a>, un objet hypothétique qui relierait deux feuillets distincts ou deux régions distinctes de l'<a href="https://fr.wikipedia.org/wiki/Espace-temps">espace-temps</a> et se manifesterait, d'un côté, comme un <a href="https://fr.wikipedia.org/wiki/Trou_noir">trou noir</a> et, de l'autre côté, comme un <a href="https://fr.wikipedia.org/wiki/Trou_blanc">trou blanc</a></p>
+<p>Un trou de ver formerait un raccourci à travers l'espace-temps. Pour le représenter plus simplement, on peut figurer l'espace-temps non en quatre dimensions mais en deux, à la manière d'un tapis ou d'une feuille de papier, dont la surface serait pliée sur elle-même dans un espace à trois dimensions. L'utilisation du raccourci « trou de ver » permettrait un voyage du point A directement au point B en un temps considérablement réduit par rapport au temps qu'il faudrait pour parcourir la distance séparant ces deux points de manière linéaire, à la surface de la feuille. Visuellement, il faut s'imaginer voyager non pas à la surface de la feuille de papier, mais à travers le trou de ver ; la feuille, étant repliée sur elle-même, permet au point A de toucher directement le point B, la rencontre des deux points correspondant au trou de ver.</p>
+<p>L'utilisation d'un trou de ver permettrait théoriquement le voyage d'un point de l'espace à un autre (déplacement dans l'espace), le voyage d'un point à l'autre du temps (<a href="https://fr.wikipedia.org/wiki/Voyage_dans_le_temps">déplacement dans le temps</a>), et le voyage d'un point de l'espace-temps à un autre (déplacement à travers l'espace et, simultanément, à travers le temps).</p>
+<p>Les trous de ver sont des concepts purement théoriques : l'existence et la formation physique de tels objets dans l'<a href="https://fr.wikipedia.org/wiki/Univers">Univers</a> n'ont pas été vérifiées. Ils ne doivent pas être confondus avec les <a href="https://fr.wikipedia.org/wiki/Trou_noir">trous noirs</a>, dont l'existence a été vérifiée en 2019 et dont le <a href="https://fr.wikipedia.org/wiki/Champ_gravitationnel">champ gravitationnel</a> est si intense qu’il empêche toute forme de <a href="https://fr.wikipedia.org/wiki/Mati%C3%A8re">matière</a> de s'en échapper.</p>
+<h2 id="historique">Historique</h2>
+<p>Le physicien <a href="https://fr.wikipedia.org/wiki/Autriche">autrichien</a> <a href="https://fr.wikipedia.org/wiki/Ludwig_Flamm">Ludwig Flamm</a> (<a href="https://fr.wikipedia.org/wiki/1885_en_science">1885</a>-<a href="https://fr.wikipedia.org/wiki/1964_en_science">1964</a>) est parfois présenté comme étant le premier à avoir suggéré, dès <a href="https://fr.wikipedia.org/wiki/1916_en_science">1916</a>, l'existence des trous de ver. Mais la <a href="https://fr.wikipedia.org/wiki/Communaut%C3%A9_scientifique">communauté scientifique</a> s'accorde pour considérer que leur existence n'a été suggérée qu'en <a href="https://fr.wikipedia.org/wiki/1935_en_science">1935</a>, par <a href="https://fr.wikipedia.org/wiki/Albert_Einstein">Albert Einstein</a> et <a href="https://fr.wikipedia.org/wiki/Nathan_Rosen">Nathan Rosen</a> ; c’est leur modèle qui est plus précisément décrit sous le nom de pont d’Einstein-Rosen.</p>
+<p>Les trous de ver (wormholes) doivent leur nom à <a href="https://fr.wikipedia.org/wiki/Charles_W._Misner">Charles W. Misner</a> et <a href="https://fr.wikipedia.org/wiki/John_Wheeler">John A. Wheeler</a> qui désignèrent ainsi en <a href="https://fr.wikipedia.org/wiki/1957_en_science">1957</a> les propriétés de connexions des différents points de l'espace. Le nom vient de l'analogie de l'<a href="https://fr.wikipedia.org/wiki/Asticot">asticot</a> et de la <a href="https://fr.wikipedia.org/wiki/Pomme">pomme</a>, symbole de la gravité depuis <a href="https://fr.wikipedia.org/wiki/Isaac_Newton">Isaac Newton</a> : comme le ver, en rongeant la pomme, peut se rendre directement à un point diamétralement opposé, un vaisseau spatial pourrait utiliser le trou de ver, à la façon d'un raccourci, pour ressortir ailleurs dans l'espace et dans le temps.</p>
+<p>Quelques années plus tard à l’<a href="https://fr.wikipedia.org/wiki/Universit%C3%A9_Harvard">université Harvard</a>, <a href="https://fr.wikipedia.org/wiki/Stephen_Hawking">Stephen Hawking</a> et <a href="https://fr.wikipedia.org/w/index.php?title=Richard_Coleman&amp;action=edit&amp;redlink=1">Richard Coleman</a> reprirent le concept de Wheeler et suggérèrent que l'espace-temps pouvait être soumis à l'<a href="https://fr.wikipedia.org/wiki/Effet_tunnel">effet tunnel</a> précité, reprenant l'idée avancée par <a href="https://fr.wikipedia.org/wiki/Hugh_Everett">Hugh Everett</a>. À l'instar des <a href="https://fr.wikipedia.org/wiki/%C3%89lectron">électrons</a> qui peuvent sauter d'un point à l'autre de l'espace, l'Univers ferait de même. L'effet tunnel créerait des ouvertures dans l'espace-temps qui conduiraient à d'autres univers, des univers cul-de-sac ou tout aussi vastes que le nôtre.</p>
+<p>En <a href="https://fr.wikipedia.org/wiki/2013_en_science">2013</a>, <a href="https://fr.wikipedia.org/wiki/Juan_Mart%C3%ADn_Maldacena">Juan Maldacena</a> et <a href="https://fr.wikipedia.org/wiki/Leonard_Susskind">Leonard Susskind</a> ont proposé une <a href="https://fr.wikipedia.org/wiki/Conjecture">conjecture</a> qui établit un lien entre l'<a href="https://fr.wikipedia.org/wiki/Intrication_quantique">intrication quantique</a> et le trou de ver : la conjecture ER=EPR.</p>
+<h2 id="presentation-generale">Présentation générale</h2>
+<p>À l'heure actuelle, différents types de trous de ver ont été décrits de façon théorique :</p>
+<ul>
+<li><p>le trou de ver de Schwarzschild, infranchissable ;</p></li>
+<li><p>le trou de ver de Reissner-Nordstrøm ou de <a href="https://fr.wikipedia.org/wiki/Trou_noir_de_Kerr-Newman">Kerr-Newman</a>, franchissable mais dans un seul sens, pouvant contenir un trou de ver de Schwarzschild ;</p></li>
+<li><p>le trou de ver de <a href="https://fr.wikipedia.org/wiki/Hendrik_Antoon_Lorentz">Lorentz</a> à <a href="https://fr.wikipedia.org/wiki/Masse_n%C3%A9gative">masse négative</a>, franchissable dans les deux sens.</p></li>
+</ul>
+<p>Tous sont des solutions mathématiques plutôt que des objets concrets.</p>
+<p>Ont également été distingués des trous de ver à <a href="https://fr.wikipedia.org/wiki/Sym%C3%A9trie">symétrie</a> <a href="https://fr.wikipedia.org/wiki/Sph%C3%A8re">sphérique</a>, tels ceux de Schwarzschild et de Reissner-Nordstrøm, qui ne sont pas en rotation, et des trous de ver tels ceux de Kerr-Newmann qui tournent sur eux-mêmes.</p>
+<p>Si on essaie de fabriquer un trou de ver à partir de <a href="https://fr.wikipedia.org/wiki/Mati%C3%A8re">matière</a> à masse positive, il explose et se désintègre. Si une matière à masse négative existe (<a href="https://fr.wikipedia.org/wiki/Mati%C3%A8re_exotique">matière exotique</a>), on peut en principe élaborer un trou de ver statique en accumulant des <a href="https://fr.wikipedia.org/wiki/Masse">masses</a> négatives.</p>
+<p>La théorie d'<a href="https://fr.wikipedia.org/wiki/Albert_Einstein">Einstein</a> précise qu'on peut fabriquer n'importe quel type de <a href="https://fr.wikipedia.org/wiki/G%C3%A9om%C3%A9trie">géométrie</a> spatio-temporelle, statique ou dynamique. Toutefois, une fois la géométrie définie, ce sont les <a href="https://fr.wikipedia.org/wiki/%C3%89quation_d%27Einstein">équations d'Einstein</a> qui diront quel devra être le <a href="https://fr.wikipedia.org/wiki/Tenseur_%C3%A9nergie-impulsion">tenseur énergie-impulsion</a> de la matière pour obtenir cette géométrie spatiale. En général, les solutions de trous de ver statiques requièrent une masse négative.</p>
+<p>Einstein et Rosen ont sérieusement suggéré que les singularités pouvaient mener à d'autres endroits de l'<a href="https://fr.wikipedia.org/wiki/Univers">Univers</a>, d'autres régions de l'<a href="https://fr.wikipedia.org/wiki/Espace_(cosmologie)">espace</a> et du <a href="https://fr.wikipedia.org/wiki/Temps">temps</a>. Ces connexions spatio-temporelles sont connues sous le nom de « ponts d'Einstein-Rosen ». Mais ni l'un ni l'autre n'entrevoyaient une possibilité d'entretenir ces connexions en raison du caractère instable des <a href="https://fr.wikipedia.org/wiki/Fluctuation_quantique">fluctuations quantiques</a>. Selon la formule de John L. Friedman de l'<a href="https://fr.wikipedia.org/wiki/Universit%C3%A9_de_Californie_%C3%A0_Santa_Barbara">université de Californie à Santa Barbara</a>, il s'agit d'une « <a href="https://fr.wikipedia.org/wiki/Censure">censure</a> <a href="https://fr.wikipedia.org/wiki/Topologie">topologique</a> ».</p>
+<p>Ces trous de vers dits de Lorentz requièrent de la <a href="https://fr.wikipedia.org/wiki/Mati%C3%A8re_exotique">matière exotique</a> pour rester ouverts car celle-ci demande moins d'énergie que le <a href="https://fr.wikipedia.org/wiki/Vide_quantique">vide quantique</a>, qui subit des fluctuations d'amplitude variables. Il peut s'agir d'<a href="https://fr.wikipedia.org/wiki/%C3%89nergie_n%C3%A9gative">énergie négative</a> qui maintiendrait l'ouverture du trou de ver loin de l'<a href="https://fr.wikipedia.org/wiki/Horizon_(trou_noir)">horizon</a>. L'ouverture elle-même présente une pression de surface positive qui la maintient ouverte durant les transferts et évite qu'elle ne s'effondre. Seulement, on ne sait comment stocker autant d'antimatière et suffisamment longtemps au même endroit pour entretenir ce tunnel dans l'<a href="https://fr.wikipedia.org/wiki/Espace-temps">espace-temps</a>.</p>
+<p>Pour approfondir les conséquences de la <a href="https://fr.wikipedia.org/wiki/Relativit%C3%A9_g%C3%A9n%C3%A9rale">relativité générale</a>, <a href="https://fr.wikipedia.org/wiki/Kip_Thorne">Kip Thorne</a> et <a href="https://fr.wikipedia.org/wiki/Richard_Morris">Richard Morris</a> du <a href="https://fr.wikipedia.org/wiki/Caltech">Caltech</a> ont tenté de découvrir par le biais de la <a href="https://fr.wikipedia.org/wiki/Physique_quantique">physique quantique</a> de nouvelles <a href="https://fr.wikipedia.org/wiki/Particule_%C3%A9l%C3%A9mentaire">particules</a> capables d'entretenir les trous de ver de <a href="https://fr.wikipedia.org/wiki/John_Wheeler">Wheeler</a>. Celles-ci ont fait apparaître d'hypothétiques « sas de liaisons » parcourus par des « voyageurs de Langevin ». La littérature de science-fiction s'en est grandement inspirée.</p>
+<p>Selon <a href="https://fr.wikipedia.org/wiki/John_Wheeler">John Wheeler</a>, deux <a href="https://fr.wikipedia.org/wiki/Singularit%C3%A9_gravitationnelle">singularités</a> pourraient être reliées par un trou de ver, sorte de sas entre deux régions éloignées de l’univers. Entretenir un tel passage et lui donner une taille macroscopique reste un défi théorique. En effet ce « pont » est à l’<a href="https://fr.wikipedia.org/wiki/Longueur_de_Planck">échelle de Planck</a> : il mesure 10−33 cm et est instable ; il se referme sur lui-même en l’espace de 10<sup>−43</sup> s. Si on essaye de l’agrandir, il s'autodétruit. Le trou de ver appartient à la <a href="https://fr.wikipedia.org/wiki/Mousse_quantique">mousse quantique</a> et obéit aux lois <a href="https://fr.wikipedia.org/wiki/Probabilit%C3%A9">probabilistes</a>.</p>
+<p>Au contraire d’une singularité, un trou de ver est « nu », il demeure visible et, plus extraordinaire encore, il permet de voyager dans le temps en fonction du sens emprunté.</p>
+<h2 id="exemple-le-trou-de-ver-de-morris-thorne">Exemple : le trou de ver de Morris-Thorne</h2>
+<p>Le trou de ver de Morris-Thorne est un trou de ver traversable, décrit par la <a href="https://fr.wikipedia.org/wiki/M%C3%A9trique_(physique)">métrique</a> du même nom.</p>
+<p>Ses <a href="https://fr.wikipedia.org/wiki/%C3%89ponymie">éponymes</a> sont Michael S. Morris et <a href="https://fr.wikipedia.org/wiki/Kip_Thorne">Kip S. Thorne</a>, qui ont publié leur solution en 1988 dans l'<a href="https://fr.wikipedia.org/wiki/American_Journal_of_Physics">American Journal of Physics</a>. Elle consiste en une adaptation du sujet de l'examen final d'un cours d'introduction à la relativité générale, donné au <a href="https://fr.wikipedia.org/wiki/California_Institute_of_Technology">California Institute of Technology</a> en 1985.</p>
+<p>La métrique de Morris-Thorne s'écrit :</p>
+<p><span class="math inline"><em>d</em><em>s</em><sup>2</sup> =  − <em>c</em><sup>2</sup><em>d</em><em>t</em><sup>2</sup> + <em>d</em><em>l</em><sup>2</sup> + (<em>b</em><sub>0</sub><sup>2</sup>+<em>l</em><sup>2</sup>)(<em>d</em><em>θ</em><sup>2</sup>+sin<sup>2</sup><em>θ</em><em>d</em><em>ϕ</em><sup>2</sup>)</span>,</p>
+<p>où :</p>
+<ul>
+<li><p><span class="math inline">(<em>x</em><sup><em>μ</em></sup>) = (<em>c</em><em>t</em>,<em>l</em>,<em>θ</em>,<em>ϕ</em>)</span> sont les <a href="https://fr.wikipedia.org/wiki/Coordonn%C3%A9es_d%27espace-temps">coordonnées d'espace-temps</a> :</p>
+<ul>
+<li><p><span class="math inline"><em>t</em></span> est la coordonnée temporelle,</p></li>
+<li><p><span class="math inline"><em>l</em></span> est la coordonnée radiale,</p></li>
+<li><p><span class="math inline"><em>θ</em></span> est la <a href="https://fr.wikipedia.org/wiki/Colatitude">colatitude</a>,</p></li>
+<li><p><span class="math inline"><em>ϕ</em></span> est la <a href="https://fr.wikipedia.org/wiki/Longitude">longitude</a>,</p></li>
+</ul></li>
+<li><p><span class="math inline"><em>b</em><sub>0</sub><sup>2</sup></span> est une constante,</p></li>
+<li><p><span class="math inline"><em>c</em></span> est la <a href="https://fr.wikipedia.org/wiki/Vitesse_de_la_lumi%C3%A8re">vitesse de la lumière dans le vide</a>.</p></li>
+</ul>
+<p>En <a href="https://fr.wikipedia.org/wiki/M%C3%A9trique_de_Schwarzschild#Coordonn%C3%A9es_de_Schwarzschild">coordonnées de Schwarzschild</a>, elle s'écrit:</p>
+<p><span class="math inline">$ds^{2} = - c^{2}dt^{2} + \frac{dr^{2}}{1 - \frac{b_{0}^{2}}{r^{2}}} + r^{2}(d\theta^{2} + \sin^{2}\theta d\phi^{2})$</span>,</p>
+<p>avec <span class="math inline"><em>r</em><sup>2</sup> = <em>b</em><sub>0</sub><sup>2</sup> + <em>l</em><sup>2</sup></span>.</p>
+<p>La « bouche » du trou de ver est une <a href="https://fr.wikipedia.org/wiki/Hypersurface">hypersurface</a> ayant la topologie d'une <a href="https://fr.wikipedia.org/wiki/Sph%C3%A8re">sphère</a> d'aire <span class="math inline"><em>A</em> = 4<em>π</em>(<em>b</em><sub>0</sub><sup>2</sup>+<em>l</em><sup>2</sup>)</span>.</p>
+<p>La « gorge » du trou de ver est localisée en <span class="math inline"><em>l</em> = 0</span>.</p>
+<h2 id="modele-bimetrique-et-symetrie-pt">Modèle bimétrique et symétrie PT</h2>
+<p>Ce modèle repose sur une structure topologique à deux feuillets reliés par un pont unidirectionnel, où chaque feuillet de l’espace-temps est décrit par une métrique distincte reliée par une transformation de symétrie PT. Cette approche permet de contourner certaines limitations des <a href="https://fr.wikipedia.org/wiki/Trou_de_ver#Exemple_:_le_trou_de_ver_de_Morris-Thorne">trous de ver de Morris-Thorne</a>, notamment en réduisant la nécessité de recourir à de la matière exotique.</p>
+<p>Dans cette formulation :</p>
+<ul>
+<li><p>une particule traversant la gorge du trou de ver voit son temps propre s'écouler normalement, mais sa flèche du temps s’inverse sur le second feuillet ;</p></li>
+<li><p>l’échange de matière entre les deux feuillets peut induire une inversion de l’énergie et de la masse selon la symétrie PT, ce qui fournit une interprétation alternative au concept d’effet frontière ;</p></li>
+<li><p>le modèle reste lorentzien à l’infini, ce qui le distingue du pont d'Einstein-Rosen classique, qui présente des singularités de coordonnées limitant son interprétation physique.</p></li>
+</ul>
+<h2 id="implications-et-perspectives">Implications et perspectives</h2>
+<p>L’application de la symétrie PT aux trous de ver présente plusieurs avantages :</p>
+<ul>
+<li><p>préservation de la causalité : l'inversion de la flèche du temps entre les feuillets évite les paradoxes temporels associés aux trous de ver traversables ;</p></li>
+<li><p>évitement des conditions d’énergie exotiques : contrairement aux modèles classiques de trous de ver traversables, ce modèle ne nécessite pas nécessairement de matière à densité d’énergie négative ;</p></li>
+<li><p>lien avec les théories bimétriques de la gravité : cette approche ouvre des perspectives en cosmologie et en physique des particules en suggérant une structure à double métrique de l’espace-temps.</p></li>
+</ul>
+<p>Cependant, plusieurs défis restent à relever :</p>
+<ul>
+<li><p>la stabilité de ces solutions sous l'effet des perturbations gravitationnelles et quantiques doit être étudiée ;</p></li>
+<li><p>la possibilité de signatures astrophysiques mesurables permettant d’identifier un trou de ver PT-symétrique demeure une question ouverte ;</p></li>
+<li><p>l’intégration de ce modèle dans un cadre plus large, comme la <a href="https://fr.wikipedia.org/wiki/Gravit%C3%A9_quantique_%C3%A0_boucles">gravité quantique à boucles</a> ou la <a href="https://fr.wikipedia.org/wiki/Th%C3%A9orie_des_cordes">théorie des cordes</a>, nécessite des études supplémentaires.</p></li>
+</ul>
+<p>Ce modèle représente une avancée théorique dans l’étude des structures spatio-temporelles exotiques et pourrait avoir des implications en physique théorique et en cosmologie.</p>
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 15/11/2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

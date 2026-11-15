@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tomographie à contraste de phase hiérarchique HiP-CT - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  
+    /* Complément : listes, tableaux, citations (le reset Tailwind les neutralise) */
+    .content ul { list-style: disc; margin: 0 0 1rem 1.5rem; }
+    .content ol { list-style: decimal; margin: 0 0 1rem 1.5rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content blockquote { border-left: 4px solid #c7d2fe; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+    .content table { border-collapse: collapse; margin: 1rem 0; max-width: 100%; display: block; overflow-x: auto; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; }
+    .content th { background-color: #f1f5f9; font-weight: 600; }
+    .content a { color: #4f46e5; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content strong { font-weight: 700; }
+    .content em { font-style: italic; }
+    .content u { text-decoration: underline; }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#synchrotron" class="toc-level-1">Synchrotron</a>
+            <a href="#un-atlas-des-organes-humains" class="toc-level-1">Un Atlas des organes humains</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="titre-fiche">Tomographie à contraste de phase hiérarchique HiP-CT</h1>
+<h2 id="introduction">Introduction</h2>
+<p>En 1896, la découverte des rayons X révolutionnait l'imagerie médicale en permettant pour la première fois de visualiser l'intérieur du corps humain. Cent vingt-cinq ans plus tard, c'est une nouvelle technique de rayons X inédite qui est présentée par des scientifiques du Collège universitaire de Londres (UCL) et de l'Installation européenne de rayonnement synchrotron (ESRF), un accélérateur de particules basé à Grenoble en France. Appelée tomographie à contraste de phase hiérarchique (HiP-CT), celle-ci permet de voir des organes entiers jusqu'à une résolution d'un micromètre, soit 100 fois la résolution d'une tomodensitométrie conventionnelle.</p>
+<h2 id="synchrotron">Synchrotron</h2>
+<p>L'ESRF (European Synchrotron Radiation Facility ou  Installation européenne de rayonnement synchrotron en français), est l'un des plus importants synchrotrons actuellement en fonctionnement dans le monde. D'une circonférence de 844 mètres et basé à Grenoble, on y accélère dans un anneau des électrons presque à la vitesse de la lumière, qui se mettent alors à émettre un rayonnement très focalisé quand ils sont déviés par un champ magnétique, rayonnement appelé tout naturellement un rayonnement synchrotron.</p>
+<p>Fondé en 1988, l'ESRF met à disposition des scientifiques des 22 pays qui le financent une source de rayons X très énergétiques 100 milliards de fois plus brillante que les rayons X utilisés à l'hôpital. Chaque année, ce n'est ainsi pas loin de 7.000 chercheurs qui s'en servent pour sonder les propriétés et les caractéristiques d'objets à l'échelle des atomes et des molécules.</p>
+<p>Le long de l'accélérateur, il existe 43 lignes de lumière comme disent les chercheurs dans leur jargon, c'est-à-dire des lieux de prises de données pour des expériences avec le rayonnement synchrotron, toutes spécialisées et équipées d'instruments d'excellence. Ces rayons X permettent de caractériser des matériaux et d'avoir l'équivalent d'une sorte microscope géant, pouvant même “filmer” la position et le mouvement des atomes.</p>
+<p>Cette luminosité exceptionnelle permet de visualiser des vaisseaux sanguins de cinq micromètres de diamètre, soit un dixième du diamètre d'un cheveu. « La capacité de visualiser les organes à une telle échelle est une révolution dans l'imagerie médicale, atteste Claire Walsh, chercheuse à l'UCL. Cela permet de voir de minuscules structures d'organes en 3D dans leur contexte spatial, comme ici les vaisseaux sanguins ». Une prouesse, car les organes humains ont un faible contraste et sont donc difficiles à observer avec les techniques d'imagerie classiques comme les IRM.</p>
+<h2 id="un-atlas-des-organes-humains">Un Atlas des organes humains</h2>
+<p>« L'imagerie clinique fournit des données 3D sur le corps et les organes, mais est limitée à une grande échelle. De l'autre côté, l'histologie produit des images détaillées des tissus, mais uniquement sur des petites biopsies de tissus. Le HiP-CT relie les deux échelles et comble ainsi une lacune essentielle en matière d'imagerie humaine », confirme Willi Wagner, radiologue au CHU de Heidelberg. Le HiP-CT est aussi beaucoup plus rapide : il faut plus de 100 heures à une IRM à haute résolution pour cartographier un cerveau humain, et cela avec un moindre niveau de détail. La tomographie à rayons X ne s'applique toutefois pas à des personnes vivantes, car l'échantillon doit auparavant être partiellement déshydraté et stabilisé.</p>
+<p>L'équipe compte à présent utiliser le synchrotron pour créer un véritable Atlas des organes humains, qui sera disponible en ligne et gratuitement pour les chirurgiens et le public intéressé. Le projet comprend déjà des images du cerveau, des poumons, du cœur, de deux reins et d'une rate. Cet Atlas comprendra également une bibliothèque de maladies, ce qui permettra aux médecins de diagnostiquer et traiter un éventail de pathologies, comme les cancers ou la maladie d’Alzheimer</p>
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 15/11/2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

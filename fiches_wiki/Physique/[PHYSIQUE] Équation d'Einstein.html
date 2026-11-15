@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Équation d&#x27;Einstein - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#forme-mathematique-de-l-equation-de-champ-d-einstein" class="toc-level-1">Forme mathématique de l&#x27;équation de champ d&#x27;Einstein</a>
+            <a href="#forme-alternative" class="toc-level-2">Forme alternative</a>
+            <a href="#vide" class="toc-level-2">Vide</a>
+            <a href="#analyse-dimensionnelle" class="toc-level-2">Analyse dimensionnelle</a>
+            <a href="#determination-de-la-constante" class="toc-level-2">Détermination de la constante κ</a>
+            <a href="#proprietes-de-l-equation-d-einstein" class="toc-level-1">Propriétés de l&#x27;équation d&#x27;Einstein</a>
+            <a href="#unicite-de-l-equation" class="toc-level-2">Unicité de l&#x27;équation</a>
+            <a href="#conservation-de-l-energie-et-du-moment" class="toc-level-2">Conservation de l&#x27;énergie et du moment</a>
+            <a href="#non-linearite-des-equations-de-champ" class="toc-level-2">Non-linéarité des équations de champ</a>
+            <a href="#principe-de-correspondance" class="toc-level-2">Principe de correspondance</a>
+            <a href="#la-constante-cosmologique" class="toc-level-1">La constante cosmologique</a>
+            <a href="#solutions-de-l-equation-dans-le-vide" class="toc-level-2">Solutions de l&#x27;équation dans le vide</a>
+            <a href="#espace-plat" class="toc-level-2">Espace plat</a>
+            <a href="#espace-autour-d-une-masse-spherique" class="toc-level-2">Espace autour d&#x27;une masse sphérique</a>
+            <a href="#espace-autour-d-un-corps-en-rotation" class="toc-level-2">Espace autour d&#x27;un corps en rotation</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 id="equation-d-einstein">Équation d'Einstein</h1><h1 id="introduction">Introduction</h1>
+<p>L’équation d'Einstein ou équation de champ d'Einstein, publiée par Albert Einstein, pour la première fois le 25 novembre 1915, est la principale équation aux dérivées partielles de la relativité générale. C'est une équation dynamique qui décrit comment la matière et l'énergie modifient la géométrie de l'espace-temps. Cette courbure de la géométrie autour d'une source de matière est alors interprétée comme le champ gravitationnel de cette source. Le mouvement des objets dans ce champ est décrit très précisément par l'équation de sa géodésique.</p>
+<h1 id="forme-mathematique-de-l-equation-de-champ-d-einstein">Forme mathématique de l'équation de champ d'Einstein</h1>
+<p>En notation symbolique et avec conventions classiques de signes MTW, l'équation d'Einstein s'écrit :</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐆</mi><mo>+</mo><mi>Λ</mi><mi>𝐠</mi><mo>=</mo><mi>κ</mi><mi>𝐓</mi></mrow><annotation encoding="application/x-tex">\mathbf{G} + \Lambda\mathbf{g} = \kappa\mathbf{T}</annotation></semantics></math>,</p>
+<p>avec:</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>𝐆</mi><mo>=</mo><mi>𝐑</mi><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>R</mi><mi>𝐠</mi></mrow><annotation encoding="application/x-tex">\mathbf{G} = \mathbf{R} - \frac{1}{2}R\mathbf{g}</annotation></semantics></math>.</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math> est le tenseur métrique. <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math> est le tenseur d'Einstein. <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math> est le tenseur énergie-impulsion ; il représente l'énergie et le moment de tous les champs autres que le champ métrique lui-même.</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Λ</mi><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math> et <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>κ</mi><annotation encoding="application/x-tex">\kappa</annotation></semantics></math> sont deux constantes. <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Λ</mi><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math> est la constante cosmologique ; elle représente la densité d'énergie de l'espace-temps en l'absence de champs non-gravitationnels. <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>κ</mi><annotation encoding="application/x-tex">\kappa</annotation></semantics></math> représente le couplage du champ gravitationnel avec les systèmes non-gravitationnels.</p>
+<p>L'équation de champ d'Einstein est généralement écrite de la manière suivante:</p>
+<p><img alt="Illustration – Forme mathématique de l'équation de champ d'Einstein" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,248px)"/></p>
+<p>où :</p>
+<ul>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><annotation encoding="application/x-tex">R_{\mu\nu}</annotation></semantics></math> est le tenseur de Ricci (dimension L−2) ;</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math> est la courbure scalaire (dimension L−2) ;</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>g</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><annotation encoding="application/x-tex">g_{\mu\nu}</annotation></semantics></math> est le tenseur métrique de signature (-,+,+,+) (sans dimension) ;</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Λ</mi><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math> est la constante cosmologique (dimension L−2) ;</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><annotation encoding="application/x-tex">T_{\mu\nu}</annotation></semantics></math> est le tenseur énergie-impulsion (dimension énergie/volume) ;</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>κ</mi><annotation encoding="application/x-tex">\kappa</annotation></semantics></math> est une constante de couplage dimensionnée , dite constante gravitationnelle de couplage d'Einstein ou, plus simplement, constante gravitationnelle d'Einstein voire constante d'Einstein : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi><mo>=</mo><mfrac><mrow><mn>8</mn><mi>π</mi><mi>G</mi></mrow><msup><mi>c</mi><mn>4</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\kappa = \frac{8\pi G}{c^{4}}</annotation></semantics></math> (elle vaut ≈ 2,0766 10−43 m J−1 (ou N−1), dans le Système international d'unités SI),</p></li>
+</ul>
+<p>avec :</p>
+<ul>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math>, le nombre pi ;</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math>, la constante gravitationnelle (environ 6,674 2 × 10−11 m3 kg−1 s−2) ;</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>, la constante de célérité, égale à la vitesse de la lumière dans le vide (exactement 299 792 458 m s−1).</p></li>
+</ul>
+<h2 id="forme-alternative">Forme alternative</h2>
+<p>L'équation d'Einstein peut se réécrire comme suit :</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo>=</mo><mi>κ</mi><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>T</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo>−</mo><mfrac><mn>1</mn><mrow><mi>n</mi><mo>−</mo><mn>2</mn></mrow></mfrac><mi>T</mi><msub><mi>g</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mfrac><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>2</mn></mrow></mfrac><mi>Λ</mi><msub><mi>g</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub></mrow><annotation encoding="application/x-tex">R_{\mu\nu} = \kappa(T_{\mu\nu} - \frac{1}{n - 2}Tg_{\mu\nu}) + \frac{2}{n - 2}\Lambda g_{\mu\nu}</annotation></semantics></math>,</p>
+<p>où :</p>
+<ul>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">n \geq 3</annotation></semantics></math> est le nombre de dimensions de l'espace-temps ;</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math> est la trace du tenseur énergie-impulsion.</p></li>
+</ul>
+<p>Ainsi, pour <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">n = 4</annotation></semantics></math>, l'équation d'Einstein peut ainsi s'écrire :</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo>=</mo><mi>κ</mi><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>T</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>T</mi><msub><mi>g</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo form="postfix" stretchy="true">)</mo></mrow><mo>+</mo><mi>Λ</mi><msub><mi>g</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub></mrow><annotation encoding="application/x-tex">R_{\mu\nu} = \kappa(T_{\mu\nu} - \frac{1}{2}Tg_{\mu\nu}) + \Lambda g_{\mu\nu}</annotation></semantics></math>.</p>
+<p>Cette équation équivalente peut être plus pratique dans certains cas, par exemple lorsqu'on s'intéresse à la limite de champ gravitationnel faible et qu'on peut remplacer g par la Métrique de Minkowski sans perte significative de précision.</p>
+<h2 id="vide">Vide</h2>
+<p>Dans le vide <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>T</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo>=</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(T_{\mu\nu} = 0)</annotation></semantics></math>, l'équation d'Einstein s'écrit :</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo>=</mo><mfrac><mn>2</mn><mrow><mi>n</mi><mo>−</mo><mn>2</mn></mrow></mfrac><mi>Λ</mi><msub><mi>g</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub></mrow><annotation encoding="application/x-tex">R_{\mu\nu} = \frac{2}{n - 2}\Lambda g_{\mu\nu}</annotation></semantics></math>,</p>
+<p>avec <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>≥</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">n \geq 3</annotation></semantics></math>.</p>
+<p>Dans le vide et l'absence de constante cosmologique <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="true">(</mo><mi>Λ</mi><mo>=</mo><mn>0</mn><mo form="postfix" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">(\Lambda = 0)</annotation></semantics></math>, elle s'écrit :</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">G_{\mu\nu} = 0</annotation></semantics></math> ou <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R_{\mu\nu} = 0</annotation></semantics></math>.</p>
+<h2 id="analyse-dimensionnelle">Analyse dimensionnelle</h2>
+<p>La dimension des composantes des tenseurs n'est pas prédéfinie. Considérons que les coordonnées <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mi>μ</mi></msup><annotation encoding="application/x-tex">x^{\mu}</annotation></semantics></math> sont homogènes à une longueur : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><msup><mi>x</mi><mi>μ</mi></msup><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mi>𝖫</mi></mrow><annotation encoding="application/x-tex">\lbrack x^{\mu}\rbrack = \mathsf{L}</annotation></semantics></math>. Alors les composantes <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>g</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><annotation encoding="application/x-tex">g_{\mu\nu}</annotation></semantics></math> du tenseur métrique sont sans dimension : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><msub><mi>g</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\lbrack g_{\mu\nu}\rbrack = 1</annotation></semantics></math> ; et les composantes de la connexion de Levi-Civita sont homogènes à l'inverse d'une longueur : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>𝖫</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">\mathsf{L}^{- 1}</annotation></semantics></math>. Il en résulte que les composantes <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>R</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><annotation encoding="application/x-tex">R_{\mu\nu}</annotation></semantics></math> du tenseur de Ricci et que la courbure scalaire <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math> sont homogènes à l'inverse du carré d'une longueur : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><msub><mi>R</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mo form="prefix" stretchy="false">[</mo><mi>R</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><msup><mi>𝖫</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\lbrack R_{\mu\nu}\rbrack = \lbrack R\rbrack = \mathsf{L}^{- 2}</annotation></semantics></math> ; que les composantes <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>G</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><annotation encoding="application/x-tex">G_{\mu\nu}</annotation></semantics></math> du tenseur d'Einstein ont la même dimension : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><msub><mi>G</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo form="postfix" stretchy="false">]</mo><mo>=</mo><msup><mi>𝖫</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\lbrack G_{\mu\nu}\rbrack = \mathsf{L}^{- 2}</annotation></semantics></math> ; que celles <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><annotation encoding="application/x-tex">T_{\mu\nu}</annotation></semantics></math> du tenseur énergie-impulsion sont homogènes à une énergie volumique : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><msub><mi>T</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo form="postfix" stretchy="false">]</mo><mo>=</mo><msup><mi>𝖫</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi>𝖬</mi><msup><mi>𝖳</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\lbrack T_{\mu\nu}\rbrack = \mathsf{L}^{- 1}\mathsf{M}\mathsf{T}^{- 2}</annotation></semantics></math> ; et que la constante <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>κ</mi><annotation encoding="application/x-tex">\kappa</annotation></semantics></math> est homogène à l'inverse d'une force : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo form="prefix" stretchy="false">[</mo><mi>κ</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><msup><mi>𝖫</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msup><mi>𝖬</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msup><mi>𝖳</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\lbrack\kappa\rbrack = \mathsf{L}^{- 1}\mathsf{M}^{- 1}\mathsf{T}^{2}</annotation></semantics></math>.</p>
+<h2 id="determination-de-la-constante">Détermination de la constante κ</h2>
+<p>La constante <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>κ</mi><annotation encoding="application/x-tex">\kappa</annotation></semantics></math> peut être déterminée en précisant que l'équation d'Einstein se réduise, à la limite newtonienne, à l'équation de Poisson.</p>
+<p>En considérant que la constante <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>κ</mi><annotation encoding="application/x-tex">\kappa</annotation></semantics></math> est homogène à l'inverse d'une force, on obtient :</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi><mo>=</mo><mn>8</mn><mi>π</mi><mfrac><mi>G</mi><msup><mi>c</mi><mn>4</mn></msup></mfrac></mrow><annotation encoding="application/x-tex">\kappa = 8\pi\frac{G}{c^{4}}</annotation></semantics></math>, où <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math> est la constante gravitationnelle et <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math> est la vitesse de la lumière dans le vide.</p>
+<p>Il existe, dans la littérature, plusieurs conventions :</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>κ</mi><mo>=</mo><mo form="prefix" stretchy="false">{</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mrow><mn>8</mn><mi>π</mi><mi>G</mi></mrow><msup><mi>c</mi><mn>4</mn></msup></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mrow><mtext mathvariant="normal">si </mtext><mspace width="0.333em"></mspace></mrow><mo form="prefix" stretchy="false">[</mo><mi>κ</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><msup><mi>𝖬</mi><mrow><mo mathvariant="sans-serif">−</mo><mn>𝟣</mn></mrow></msup><msup><mi>𝖫</mi><mrow><mo mathvariant="sans-serif">−</mo><mn>𝟣</mn></mrow></msup><msup><mi>𝖳</mi><mn>𝟤</mn></msup><mo>=</mo><msup><mi>𝖤</mi><mrow><mo mathvariant="sans-serif">−</mo><mn>𝟣</mn></mrow></msup><mi>𝖫</mi><mo>⇐</mo><mrow><mtext mathvariant="normal">si </mtext><mspace width="0.333em"></mspace></mrow><mo form="prefix" stretchy="false">[</mo><mi>g</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><msup><mi>𝖫</mi><mn>𝟤</mn></msup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> et </mtext><mspace width="0.333em"></mspace></mrow><mo form="prefix" stretchy="false">[</mo><mi>T</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mrow><mi>𝖤</mi><mi>𝖳</mi></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mrow><mn>8</mn><mi>π</mi><mi>G</mi></mrow><msup><mi>c</mi><mn>2</mn></msup></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mrow><mtext mathvariant="normal">si </mtext><mspace width="0.333em"></mspace></mrow><mo form="prefix" stretchy="false">[</mo><mi>κ</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><msup><mi>𝖬</mi><mrow><mo mathvariant="sans-serif">−</mo><mn>𝟣</mn></mrow></msup><mrow><mi>𝖫</mi><mo mathvariant="sans-serif">=</mo></mrow><msup><mi>𝖤</mi><mrow><mo mathvariant="sans-serif">−</mo><mn>𝟣</mn></mrow></msup><msup><mi>𝖫</mi><mn>𝟥</mn></msup><msup><mi>𝖳</mi><mrow><mo mathvariant="sans-serif">−</mo><mn>𝟤</mn></mrow></msup><mo>⇐</mo><mrow><mtext mathvariant="normal">si </mtext><mspace width="0.333em"></mspace></mrow><mo form="prefix" stretchy="false">[</mo><mi>g</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><msup><mi>𝖫</mi><mn>𝟤</mn></msup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> et </mtext><mspace width="0.333em"></mspace></mrow><mo form="prefix" stretchy="false">[</mo><mi>T</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mrow><mi>𝖬</mi><mi>𝖳</mi></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> ou si </mtext><mspace width="0.333em"></mspace></mrow><mo form="prefix" stretchy="false">[</mo><mi>g</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><msup><mi>𝖳</mi><mn>𝟤</mn></msup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> et </mtext><mspace width="0.333em"></mspace></mrow><mo form="prefix" stretchy="false">[</mo><mi>T</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mrow><mi>𝖤</mi><mi>𝖳</mi></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>8</mn><mi>π</mi><mi>G</mi></mtd><mtd columnalign="center" style="text-align: center"><mrow><mtext mathvariant="normal">si </mtext><mspace width="0.333em"></mspace></mrow><mo form="prefix" stretchy="false">[</mo><mi>κ</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><msup><mi>𝖬</mi><mrow><mo mathvariant="sans-serif">−</mo><mn>𝟣</mn></mrow></msup><msup><mi>𝖫</mi><mn>𝟥</mn></msup><msup><mi>𝖳</mi><mrow><mo mathvariant="sans-serif">−</mo><mn>𝟤</mn></mrow></msup><mo>=</mo><msup><mi>𝖤</mi><mrow><mo mathvariant="sans-serif">−</mo><mn>𝟣</mn></mrow></msup><msup><mi>𝖫</mi><mn>𝟧</mn></msup><msup><mi>𝖳</mi><mrow><mo mathvariant="sans-serif">−</mo><mn>𝟦</mn></mrow></msup><mo>⇐</mo><mrow><mtext mathvariant="normal">si </mtext><mspace width="0.333em"></mspace></mrow><mo form="prefix" stretchy="false">[</mo><mi>g</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><msup><mi>𝖳</mi><mn>𝟤</mn></msup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> et </mtext><mspace width="0.333em"></mspace></mrow><mo form="prefix" stretchy="false">[</mo><mi>T</mi><mo form="postfix" stretchy="false">]</mo><mo>=</mo><mrow><mi>𝖬</mi><mi>𝖳</mi></mrow><mi>.</mi></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\kappa = \{\begin{matrix}
+\frac{8\pi G}{c^{4}} &amp; \text{si }\lbrack\kappa\rbrack = \mathsf{M}^{\mathsf{- 1}}\mathsf{L}^{\mathsf{- 1}}\mathsf{T}^{\mathsf{2}} = \mathsf{E}^{\mathsf{- 1}}\mathsf{L} \Leftarrow \text{si }\lbrack g\rbrack = \mathsf{L}^{\mathsf{2}}\text{ et }\lbrack T\rbrack = \mathsf{ET} \\
+\frac{8\pi G}{c^{2}} &amp; \text{si }\lbrack\kappa\rbrack = \mathsf{M}^{\mathsf{- 1}}\mathsf{L =}\mathsf{E}^{\mathsf{- 1}}\mathsf{L}^{\mathsf{3}}\mathsf{T}^{\mathsf{- 2}} \Leftarrow \text{si }\lbrack g\rbrack = \mathsf{L}^{\mathsf{2}}\text{ et }\lbrack T\rbrack = \mathsf{MT}\text{ ou si }\lbrack g\rbrack = \mathsf{T}^{\mathsf{2}}\text{ et }\lbrack T\rbrack = \mathsf{ET} \\
+8\pi G &amp; \text{si }\lbrack\kappa\rbrack = \mathsf{M}^{\mathsf{- 1}}\mathsf{L}^{\mathsf{3}}\mathsf{T}^{\mathsf{- 2}} = \mathsf{E}^{\mathsf{- 1}}\mathsf{L}^{\mathsf{5}}\mathsf{T}^{\mathsf{- 4}} \Leftarrow \text{si }\lbrack g\rbrack = \mathsf{T}^{\mathsf{2}}\text{ et }\lbrack T\rbrack = \mathsf{MT}.
+\end{matrix}</annotation></semantics></math></p>
+<p>Nombre d'équations scalaires indépendantes</p>
+<p>Le nombre <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math> des équations scalaires indépendantes — que l'équation tensorielle d'Einstein représente — est égal à celui des composantes indépendantes du tenseur d'Einstein. Il est donné par : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>n</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mo form="prefix" stretchy="false">[</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>n</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo form="postfix" stretchy="true">)</mo></mrow><mo form="postfix" stretchy="false">]</mo><mo>−</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">N = \frac{1}{2}n(n - 1) = \lbrack\frac{1}{2}n(n + 1)\rbrack - n</annotation></semantics></math>, où <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> est le nombre de dimensions de l'espace-temps. En quatre dimensions, l'équation tensorielle d'Einstein ne représente que six équations indépendantes.</p>
+<p>L'équation d'Einstein est une équation dans l'espace des tenseurs (covariants) symétriques de degré 2 sur une variété de dimension 4. Elle peut donc s'exprimer à l'aide de (4*5)/2 = 10 équations scalaires une fois qu'un système de coordonnées locales a été choisi. Par ailleurs, la première identité de Bianchi, qui est une équation dans l'espace des formes à valeurs vectorielles, peut s'exprimer à l'aide de 4 équations scalaires dans ce même système. L'équation d'Einstein comporte donc 10 - 4 = 6 équations indépendantes.</p>
+<p>L'équation de champ d'Einstein est comprise comme une équation permettant de connaître le tenseur métrique <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>g</mi><mrow><mi>a</mi><mi>b</mi></mrow></msub><annotation encoding="application/x-tex">g_{ab}</annotation></semantics></math>, étant donné une distribution de matière et d'énergie exprimée sous la forme d'un tenseur énergie-impulsion. Malgré son aspect simple, elle est en réalité relativement complexe, notamment du fait que le tenseur de Ricci et la courbure scalaire dépendent de la métrique.</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Λ</mi><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math>, la constante cosmologique, a été introduite par Einstein pour permettre des solutions statiques au modèle cosmologique issu de son équation initiale. Par la suite, il a qualifié cette introduction de « plus grande erreur de sa vie ».</p>
+<p>En définissant le tenseur d'Einstein</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo>=</mo><msub><mi>R</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>R</mi><msub><mi>g</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub></mrow><annotation encoding="application/x-tex">G_{\mu\nu} = R_{\mu\nu} - \frac{1}{2}Rg_{\mu\nu}</annotation></semantics></math></p>
+<p>qui est un tenseur symétrique de rang 2 dépendant de la métrique et si l'on considère que <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Λ</mi><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math> = 0 (ce qu'Einstein a fini par admettre, mais qui est controversé aujourd'hui), il est possible d'écrire cette relation de manière plus compacte</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo>=</mo><mfrac><mrow><mn>8</mn><mi>π</mi><mi>G</mi></mrow><msup><mi>c</mi><mn>4</mn></msup></mfrac><msub><mi>T</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mi>.</mi></mrow><annotation encoding="application/x-tex">G_{\mu\nu} = \frac{8\pi G}{c^{4}}T_{\mu\nu}.</annotation></semantics></math></p>
+<p>En travaillant dans le système d'unités géométriques, où G = c = 1, on a :</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>G</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo>=</mo><mn>8</mn><mi>π</mi><msub><mi>T</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub></mrow><annotation encoding="application/x-tex">G_{\mu\nu} = 8\pi T_{\mu\nu}</annotation></semantics></math></p>
+<p>La partie de gauche représente la courbure de l'espace-temps telle qu'elle est déterminée par la métrique et l'expression de droite représente le contenu masse/énergie de l'espace-temps. Cette équation peut alors être interprétée comme un ensemble d'équations décrivant comment la courbure de l'espace-temps est reliée au contenu masse/énergie de l'univers.</p>
+<p>Ces équations, ainsi que l'équation de la géodésique, forment le cœur de la formulation mathématique de la relativité générale.</p>
+<h1 id="proprietes-de-l-equation-d-einstein">Propriétés de l'équation d'Einstein</h1>
+<h2 id="unicite-de-l-equation">Unicité de l'équation</h2>
+<p>Le théorème de Lovelock, dû à David Lovelock, établit que l'équation d'Einstein est l'unique équation du champ qui :</p>
+<ul>
+<li><p>est construite à partir du tenseur métrique ;</p></li>
+<li><p>n'est pas supérieure au deuxième ordre dans les dérivées ;</p></li>
+<li><p>est locale ;</p></li>
+<li><p>est dérivée d'une action.</p></li>
+</ul>
+<p>L'équation d'Einstein est aussi l'unique équation non-linéaire du mouvement pour particule sans masse de spin 2.</p>
+<h2 id="conservation-de-l-energie-et-du-moment">Conservation de l'énergie et du moment</h2>
+<p>Une importante conséquence de l'équation d'Einstein est la conservation locale de l'énergie et du moment. Ce résultat apparaît en utilisant l'identité différentielle de Bianchi pour obtenir :</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∇</mi><mi>ν</mi></msub><msup><mi>G</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msup><mo>=</mo><msup><mi>G</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msup><msub><mrow></mrow><mrow><mo>;</mo><mi>ν</mi></mrow></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\nabla_{\nu}G^{\mu\nu} = G^{\mu\nu}{}_{;\nu} = 0</annotation></semantics></math></p>
+<p>ce qui, en utilisant l'équation d'Einstein, donne :</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>∇</mi><mi>ν</mi></msub><msup><mi>T</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msup><mo>=</mo><msup><mi>T</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msup><msub><mrow></mrow><mrow><mo>;</mo><mi>ν</mi></mrow></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\nabla_{\nu}T^{\mu\nu} = T^{\mu\nu}{}_{;\nu} = 0</annotation></semantics></math></p>
+<p>qui exprime la conservation locale du tenseur énergie-impulsion.</p>
+<h2 id="non-linearite-des-equations-de-champ">Non-linéarité des équations de champ</h2>
+<p>L'équation d'Einstein donne lieu à 10 équations aux dérivées partielles non linéaires pour les composants métriques. Cette caractéristique de non-linéarité distingue la relativité générale de l'ensemble des autres théories physiques. Par exemple, les équations de Maxwell de l'électromagnétisme sont linéaires par rapport aux champs électriques et magnétiques (c'est-à-dire que la somme de deux solutions est aussi une solution). Un autre exemple est celui de l'équation de Schrödinger en mécanique quantique où l'équation est linéaire par rapport à la fonction d'onde.</p>
+<h2 id="principe-de-correspondance">Principe de correspondance</h2>
+<p>L'approximation des champs faibles et des mouvements lents permet de retrouver l'équation de Poisson de la gravitation de Newton :</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>∇</mi><msup><mrow></mrow><mn>2</mn></msup><mi>Φ</mi><mo>=</mo><mn>4</mn><mi>π</mi><mi>G</mi><mi>ρ</mi></mrow><annotation encoding="application/x-tex">\nabla{}^{2}\Phi = 4\pi G\rho</annotation></semantics></math>,</p>
+<p>où :</p>
+<ul>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Φ</mi><annotation encoding="application/x-tex">\Phi</annotation></semantics></math> est le potentiel gravitationnel ;</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>π</mi><annotation encoding="application/x-tex">\pi</annotation></semantics></math> est le nombre pi ;</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>G</mi><annotation encoding="application/x-tex">G</annotation></semantics></math> est la constante gravitationnelle ;</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math> est la masse volumique.</p></li>
+</ul>
+<h1 id="la-constante-cosmologique">La constante cosmologique</h1>
+<p>Il est possible de modifier l'équation des champs d'Einstein en introduisant un terme proportionnel à la métrique :</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>R</mi><msub><mi>g</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo>+</mo><mi>Λ</mi><msub><mi>g</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo>=</mo><mn>8</mn><mi>π</mi><msub><mi>T</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub></mrow><annotation encoding="application/x-tex">R_{\mu\nu} - \frac{1}{2}Rg_{\mu\nu} + \Lambda g_{\mu\nu} = 8\pi T_{\mu\nu}</annotation></semantics></math></p>
+<p>(on précisera que cette équation est vraie dans un système d'unités géométriques tel que G = c = 1, sinon on doit lire : (8πG/c4)Tμν. La constante <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Λ</mi><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math> est appelée la constante cosmologique.</p>
+<p>Cette constante cosmologique était à l'origine introduite par Einstein pour obtenir de son équation un univers statique (c'est-à-dire un univers qui ne soit pas en expansion ou en contraction). Cet effort fut un échec pour deux raisons : l'univers statique décrit par cette théorie était instable, et les observations des galaxies distantes par Hubble une décennie plus tard confirmèrent que notre univers n'est en fait pas statique mais en expansion. <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Λ</mi><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math> fut donc par la suite abandonné, et Einstein la qualifia de « la plus grande erreur de sa vie ».</p>
+<p>Bien que la motivation d'Einstein pour l'introduction de cette constante ait été erronée, sa présence dans l’équation n'est pas inconsistante. En effet, récemment les techniques astronomiques améliorées ont permis d'affirmer qu'une valeur non nulle de <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Λ</mi><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math> est nécessaire pour expliquer certaines observations. L'existence d'une constante cosmologique est alors équivalente à l'existence d'une énergie du vide non nulle.</p>
+<h2 id="solutions-de-l-equation-dans-le-vide">Solutions de l'équation dans le vide</h2>
+<p>Les solutions de l'équation d'Einstein sont les tenseurs métriques de l'espace-temps. Elles sont souvent appelées « métriques ». Elles décrivent la structure de l'espace-temps en incluant le mouvement inertiel des objets. En raison du caractère hautement non linéaire des équations, il n'existe pas de solution analytique générale pour une distribution quelconque de matière. Il n'existe que des solutions particulières pour des espaces-temps dotés de symétries ou des champs gravitationnels faibles. Il n'existe pas de solution complète connue pour un espace-temps constitué de deux corps massifs (correspondant au modèle théorique d'un système binaire de deux étoiles par exemple). Cependant, des approximations sont généralement faites dans ces cas.</p>
+<p>L'étude des solutions exactes des équations de champs d'Einstein est l'une des activités de la cosmologie. Elle a mené à la prédiction de l'existence de trous noirs et aux divers modèles de l'évolution de l'univers.</p>
+<p>En relativité générale, le vide est une région de l'espace-temps dans laquelle le tenseur énergie-impulsion <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>T</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><annotation encoding="application/x-tex">T_{\mu\nu}</annotation></semantics></math> est nul : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">T_{\mu\nu} = 0</annotation></semantics></math>. Dans le vide et en l'absence de constante cosmologique[71], l'équation d'Einstein s'écrit <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>R</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">R_{\mu\nu} = 0</annotation></semantics></math>.</p>
+<h2 id="espace-plat">Espace plat</h2>
+<p>Loin de toute source gravitationnelle, l'espace plat est une solution de cette équation, et la métrique de Minkowski s'applique. Cette dernière est la forme classique qu'on trouve dans le cadre de la relativité restreinte et les distances se mesurent à l'aide de la métrique : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msup><mi>s</mi><mn>2</mn></msup><mo>=</mo><msup><mi>c</mi><mn>2</mn></msup><mi>d</mi><msup><mi>t</mi><mn>2</mn></msup><mo>−</mo><mi>d</mi><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mi>d</mi><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><mi>d</mi><msup><mi>z</mi><mn>2</mn></msup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">ds^{2} = c^{2}dt^{2} - dx^{2} - dy^{2} - dz^{2}\text{ }\text{	}\text{	}\text{	}\text{	}\text{	}.</annotation></semantics></math></p>
+<p>On voit alors qu'on a :</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>g</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><mn>1</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">]</mo></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow></mrow><annotation encoding="application/x-tex">\left( g_{\mu\nu} \right) = \begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; - 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; - 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; - 1
+\end{bmatrix}\text{ }\text{	}\text{	}\text{	}\text{	}\text{	}</annotation></semantics></math></p>
+<h2 id="espace-autour-d-une-masse-spherique">Espace autour d'une masse sphérique</h2>
+<p>La métrique de Schwarzschild permet de décrire la déformation de l'espace-temps dans le vide autour d'une masse sphérique unique (par exemple une étoile). On a alors, pour <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo form="prefix" stretchy="true">(</mo><msup><mi>x</mi><mn>0</mn></msup><mo>,</mo><msup><mi>x</mi><mn>1</mn></msup><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><msup><mi>x</mi><mn>3</mn></msup><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>c</mi><mi>t</mi><mo>,</mo><mi>r</mi><mo>,</mo><mi>θ</mi><mo>,</mo><mi>ϕ</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">(x^{0},x^{1},x^{2},x^{3}) = (ct,r,\theta,\phi)</annotation></semantics></math> :</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>g</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mo form="prefix" stretchy="false">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn><mo>−</mo><mfrac><mrow><mn>2</mn><mi>G</mi><mi>M</mi></mrow><mrow><mi>r</mi><msup><mi>c</mi><mn>2</mn></msup></mrow></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><mfrac><mn>1</mn><mrow><mn>1</mn><mo>−</mo><mfrac><mrow><mn>2</mn><mi>G</mi><mi>M</mi></mrow><mrow><mi>r</mi><msup><mi>c</mi><mn>2</mn></msup></mrow></mfrac></mrow></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><msup><mi>r</mi><mn>2</mn></msup></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><msup><mi>r</mi><mn>2</mn></msup><msup><mo>sin</mo><mn>2</mn></msup><mi>θ</mi></mtd></mtr></mtable><mo form="postfix" stretchy="false">]</mo><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow></mrow><annotation encoding="application/x-tex">(g_{\mu\nu}) = \lbrack\begin{matrix}
+1 - \frac{2GM}{rc^{2}} &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; - \frac{1}{1 - \frac{2GM}{rc^{2}}} &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; - r^{2} &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; - r^{2}\sin^{2}\theta
+\end{matrix}\rbrack\text{ }\text{	}\text{	}\text{	}\text{	}\text{	}</annotation></semantics></math></p>
+<h2 id="espace-autour-d-un-corps-en-rotation">Espace autour d'un corps en rotation</h2>
+<p>La métrique de Kerr, pour sa part, décrit la déformation de l'espace-temps dans le vide autour d'un trou noir en rotation (en l'absence de champs électromagnétiques). Elle est l'œuvre en 1963 de Roy Kerr, mathématicien néo-zélandais. Contrairement à la métrique de Schwarzschild qui peut s'appliquer autour de tout corps sphérique et statique, la métrique de Kerr est spécifique aux trous noirs seulement et ne peut s'appliquer à d'autres corps en rotation. En prenant à nouveau un référentiel sphérique de l'espace-temps <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo form="prefix" stretchy="true">(</mo><msup><mi>x</mi><mn>0</mn></msup><mo>,</mo><msup><mi>x</mi><mn>1</mn></msup><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><msup><mi>x</mi><mn>3</mn></msup><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mi>t</mi><mo>,</mo><mi>r</mi><mo>,</mo><mi>θ</mi><mo>,</mo><mi>ϕ</mi><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">(x^{0},x^{1},x^{2},x^{3}) = (t,r,\theta,\phi)</annotation></semantics></math> (en prenant c=1) on a :</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo form="prefix" stretchy="true">(</mo><msub><mi>g</mi><mrow><mi>μ</mi><mi>ν</mi></mrow></msub><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><mo form="prefix" stretchy="false">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mrow><mo form="prefix" stretchy="true">(</mo><mn>1</mn><mo>−</mo><mfrac><mrow><mn>2</mn><mi>M</mi><mi>r</mi></mrow><mi>Σ</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mfrac><mrow><mn>4</mn><mi>a</mi><mi>M</mi><mi>r</mi><msup><mo>sin</mo><mn>2</mn></msup><mi>θ</mi></mrow><mi>Σ</mi></mfrac><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><mfrac><mi>Σ</mi><mi>Δ</mi></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><mi>Σ</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mfrac><mrow><mn>4</mn><mi>a</mi><mi>M</mi><mi>r</mi><msup><mo>sin</mo><mn>2</mn></msup><mi>θ</mi></mrow><mi>Σ</mi></mfrac></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><mrow><mo form="prefix" stretchy="true">(</mo><msup><mi>r</mi><mn>2</mn></msup><mo>+</mo><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><mfrac><mrow><mn>2</mn><msup><mi>a</mi><mn>2</mn></msup><mi>M</mi><mi>r</mi><msup><mo>sin</mo><mn>2</mn></msup><mi>θ</mi></mrow><mi>Σ</mi></mfrac><mo form="postfix" stretchy="true">)</mo></mrow><msup><mo>sin</mo><mn>2</mn></msup><mi>θ</mi></mtd></mtr></mtable><mo form="postfix" stretchy="false">]</mo><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow></mrow><annotation encoding="application/x-tex">(g_{\mu\nu}) = \lbrack\begin{matrix}
+(1 - \frac{2Mr}{\Sigma}) &amp; 0 &amp; 0 &amp; \frac{4aMr\sin^{2}\theta}{\Sigma}\text{ }\text{	}\text{	}\text{	}\text{	}\text{	}\text{	}\text{	}\text{	} \\
+0 &amp; - \frac{\Sigma}{\Delta} &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; - \Sigma &amp; 0 \\
+\frac{4aMr\sin^{2}\theta}{\Sigma} &amp; 0 &amp; 0 &amp; - (r^{2} + a^{2} + \frac{2a^{2}Mr\sin^{2}\theta}{\Sigma})\sin^{2}\theta
+\end{matrix}\rbrack\text{ }\text{	}\text{	}\text{	}\text{	}\text{	}</annotation></semantics></math></p>
+<p>avec :</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Σ</mi><mo>=</mo><msup><mi>r</mi><mn>2</mn></msup><mo>+</mo><msup><mi>a</mi><mn>2</mn></msup><msup><mo>cos</mo><mn>2</mn></msup><mi>θ</mi><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow></mrow><annotation encoding="application/x-tex">\Sigma = r^{2} + a^{2}\cos^{2}\theta\text{ }</annotation></semantics></math>,</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mo>=</mo><msup><mi>r</mi><mn>2</mn></msup><mo>−</mo><mn>2</mn><mi>M</mi><mi>r</mi><mo>+</mo><msup><mi>a</mi><mn>2</mn></msup><mrow><mspace width="0.333em"></mspace><mtext mathvariant="normal"> </mtext><mspace width="0.333em"></mspace></mrow></mrow><annotation encoding="application/x-tex">\Delta = r^{2} - 2Mr + a^{2}\text{ }</annotation></semantics></math>.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

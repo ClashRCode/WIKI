@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trou blanc - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  
+    /* Complément : listes, tableaux, citations (le reset Tailwind les neutralise) */
+    .content ul { list-style: disc; margin: 0 0 1rem 1.5rem; }
+    .content ol { list-style: decimal; margin: 0 0 1rem 1.5rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content blockquote { border-left: 4px solid #c7d2fe; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+    .content table { border-collapse: collapse; margin: 1rem 0; max-width: 100%; display: block; overflow-x: auto; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; }
+    .content th { background-color: #f1f5f9; font-weight: 600; }
+    .content a { color: #4f46e5; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content strong { font-weight: 700; }
+    .content em { font-style: italic; }
+    .content u { text-decoration: underline; }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#presentation-du-probleme" class="toc-level-1">Présentation du problème</a>
+            <a href="#proprietes" class="toc-level-1">Propriétés</a>
+            <a href="#pertinence-physique" class="toc-level-1">Pertinence physique</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="titre-fiche">Trou blanc</h1>
+<h2 id="introduction">Introduction</h2><p><img alt="Trou blanc" loading="lazy" src="data:image/jpeg;base64,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" style="width:280px;max-width:100%;height:auto"/></p>
+<p>Un trou blanc, aussi appelé fontaine blanche, est un objet théorique susceptible d'exister au sens où il peut être décrit par les lois de la <a href="https://fr.wikipedia.org/wiki/Relativit%C3%A9_g%C3%A9n%C3%A9rale">relativité générale</a>, mais dont l'existence dans l'<a href="https://fr.wikipedia.org/wiki/Univers">Univers</a> est considérée comme hautement spéculative. Il est décrit par certaines solutions <a href="https://fr.wikipedia.org/wiki/Math%C3%A9matiques">mathématiques</a> de type <a href="https://fr.wikipedia.org/wiki/Trou_noir">trou noir</a> dans lequel des <a href="https://fr.wikipedia.org/wiki/G%C3%A9od%C3%A9sique">géodésiques</a> sont issues d'une <a href="https://fr.wikipedia.org/wiki/Singularit%C3%A9_gravitationnelle">singularité gravitationnelle</a> ou d'un <a href="https://fr.wikipedia.org/wiki/Horizon_(trou_noir)">horizon</a>. Il formerait ainsi le symétrique par rapport au temps d'un <a href="https://fr.wikipedia.org/wiki/Trou_noir">trou noir</a>, puisque dans un cas rien ne peut s'échapper d'un trou noir, et dans l'autre rien ne peut pénétrer dans une fontaine blanche. Techniquement, cela s'exprime par le fait que la singularité gravitationnelle qui existe au sein de ces objets est dans le futur de l'horizon qui l'enveloppe (trou noir), ou dans son passé (trou blanc).</p>
+<p>La <a href="https://fr.wikipedia.org/wiki/Communaut%C3%A9_scientifique">communauté scientifique</a> s'accorde pour considérer que le concept de trou blanc a été introduit en physique par le <a href="https://fr.wikipedia.org/wiki/Cosmologie">cosmologiste</a> <a href="https://fr.wikipedia.org/wiki/Union_des_r%C3%A9publiques_socialistes_sovi%C3%A9tiques">soviétique</a> <a href="https://fr.wikipedia.org/wiki/Igor_Novikov">Igor D. Novikov</a> en <a href="https://fr.wikipedia.org/wiki/1964_en_science">1964</a>.</p>
+<p>En cosmologie, le <a href="https://fr.wikipedia.org/wiki/Big_Bang">Big Bang</a> est parfois considéré comme un trou blanc</p>
+<h2 id="presentation-du-probleme">Présentation du problème</h2>
+<p>D'ordinaire, un <a href="https://fr.wikipedia.org/wiki/Trou_noir">trou noir</a> est caractérisé par une région de l'<a href="https://fr.wikipedia.org/wiki/Espace-temps">espace-temps</a> que toute <a href="https://fr.wikipedia.org/wiki/G%C3%A9od%C3%A9sique">géodésique</a> pénètre sans pouvoir en sortir. La frontière de cette région est appelée l'<a href="https://fr.wikipedia.org/wiki/Horizon_(trou_noir)">horizon</a> des événements. Mathématiquement, un trou noir correspond à un certain type de solution aux équations de la <a href="https://fr.wikipedia.org/wiki/Relativit%C3%A9_g%C3%A9n%C3%A9rale">relativité générale</a> (les <a href="https://fr.wikipedia.org/wiki/%C3%89quation_d%27Einstein">équations d'Einstein</a>). La solution la plus simple de ces équations représente un trou noir éternel : cette solution, dite <a href="https://fr.wikipedia.org/wiki/Trou_noir_de_Schwarzschild">trou noir de Schwarzschild</a> car trouvée par le <a href="https://fr.wikipedia.org/wiki/Physicien">physicien</a> <a href="https://fr.wikipedia.org/wiki/Allemagne">allemand</a> <a href="https://fr.wikipedia.org/wiki/Karl_Schwarzschild">Karl Schwarzschild</a> en <a href="https://fr.wikipedia.org/wiki/1916">1916</a>, décrit donc un trou noir éternel et statique.</p>
+<p>Cependant, s'il existe des trajectoires décrivant un objet pénétrant dans un trou noir, les équations d'Einstein impliquent, par renversement de la variable temps, l'existence de trajectoires semblables inverses : de telles trajectoires correspondraient à une configuration où toute trajectoire issue d'une région enveloppée par un horizon sort obligatoirement de celui-ci. Un trou noir de Schwarzschild comprend ainsi deux types d'horizon : un horizon « futur » englobant une singularité gravitationnelle et décrivant par là un trou noir (c'est-à-dire une région que l'on ne peut quitter une fois que l'on y a pénétré), et un horizon « passé », délimitant une région dans laquelle il est impossible de rester et dont on ne peut que sortir. Cette région est appelée trou blanc.</p>
+<p>Un trou blanc ne doit pas être confondu avec une autre solution de Schwarzschild : une solution possédant une <a href="https://fr.wikipedia.org/wiki/Masse">masse</a> négative. Cette autre solution, qui est très probablement physiquement irréaliste, décrit une <a href="https://fr.wikipedia.org/wiki/Singularit%C3%A9_nue">singularité nue</a> (de <a href="https://fr.wikipedia.org/wiki/Masse_n%C3%A9gative">masse négative</a>) et ne possède pas d'horizon qui délimiterait différentes régions de l'espace-temps.</p>
+<h2 id="proprietes">Propriétés</h2>
+<p>Selon le type de solution de type trou noir considéré, il existe plusieurs types de trous blancs. Dans le cas du trou noir de Schwarzschild évoqué ci-dessus, une géodésique sortant d'un trou blanc est issue de la « singularité gravitationnelle » qu'il contient. Dans le cas d'un trou noir possédant une <a href="https://fr.wikipedia.org/wiki/Charge_%C3%A9lectrique">charge électrique</a> ψ ** Ώ ** ώ (<a href="https://fr.wikipedia.org/wiki/Trou_noir_de_Reissner-Nordstr%C3%B6m">trou noir de Reissner-Nordström</a>) ou un <a href="https://fr.wikipedia.org/wiki/Moment_cin%C3%A9tique_(m%C3%A9canique_classique)">moment cinétique</a>, alors le trou blanc se trouve être la « porte de sortie » d'un trou noir existant dans un autre univers. Une telle configuration trou noir - trou blanc est appelée <a href="https://fr.wikipedia.org/wiki/Trou_de_ver">trou de ver</a>. Dans les deux cas, cependant, il n'est pas possible d'atteindre la région située « dans » le trou blanc, aussi le comportement de celui-ci — et, en particulier, ce qui peut en sortir — est totalement impossible à prévoir. En ce sens, un trou blanc est une configuration selon laquelle l'évolution de l'univers ne peut être prédite, car elle n'est pas déterministe. Une « singularité nue » est un autre exemple de configuration non déterministe, mais n'a cependant pas le statut de trou blanc, car il n'existe pas de région inaccessible depuis une région donnée. Dans sa conception basique, le <a href="https://fr.wikipedia.org/wiki/Big_Bang">Big Bang</a> peut être vu comme une singularité nue dans l'espace intersidéral, mais ne correspond pas à un trou blanc.</p>
+<h2 id="pertinence-physique">Pertinence physique</h2>
+<p>Dans son mode de formation, un trou noir est issu d'un résidu d'<a href="https://fr.wikipedia.org/wiki/%C3%89toile">étoile</a> massive dont le cœur se contracte jusqu'à se transformer en trou noir. Une telle configuration n'est pas statique : on part d'un corps massif et étendu qui se contracte pour donner un trou noir. Le trou noir n'existe donc pas de toute éternité, et il n'y a pas de trou blanc correspondant.</p>
+<p>Pour être en mesure d'exister, un trou blanc doit soit être issu d'un processus physique menant à sa formation, soit être présent dès la création de l'<a href="https://fr.wikipedia.org/wiki/Univers">univers</a>. Aucune de ces solutions n'apparaît satisfaisante : il n'existe aucun processus <a href="https://fr.wikipedia.org/wiki/Astrophysique">astrophysique</a> connu pouvant mener à la formation d'une telle configuration, et l'imposer dès la création de l'univers revient à supposer un jeu de conditions initiales très spécifique qui ne possède pas de motivation concrète. Aussi l'existence des trous blancs semble-t-elle difficile à envisager.</p>
+<p>Au vu des quantités énormes rayonnées par les <a href="https://fr.wikipedia.org/wiki/Quasar">quasars</a>, dont la luminosité rend possible l'observation depuis plusieurs milliards d'<a href="https://fr.wikipedia.org/wiki/Ann%C3%A9e-lumi%C3%A8re">années-lumière</a> de distance, il avait été supposé qu'ils soient le siège de phénomènes physiques exotiques comme un trou blanc, ou un phénomène de création continue de matière (voir l'article portant sur la <a href="https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_l%27%C3%A9tat_stationnaire">théorie de l'état stationnaire</a>). Ces idées sont aujourd'hui abandonnées, les propriétés observées des quasars étant très bien expliquées par celles d'un <a href="https://fr.wikipedia.org/wiki/Disque_d%27accr%C3%A9tion">disque d'accrétion</a> au centre duquel se trouve un <a href="https://fr.wikipedia.org/wiki/Trou_noir_supermassif">trou noir supermassif</a>.</p>
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 15/11/2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paradoxe de l&#x27;information - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  
+    /* Complément : listes, tableaux, citations (le reset Tailwind les neutralise) */
+    .content ul { list-style: disc; margin: 0 0 1rem 1.5rem; }
+    .content ol { list-style: decimal; margin: 0 0 1rem 1.5rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content blockquote { border-left: 4px solid #c7d2fe; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+    .content table { border-collapse: collapse; margin: 1rem 0; max-width: 100%; display: block; overflow-x: auto; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; }
+    .content th { background-color: #f1f5f9; font-weight: 600; }
+    .content a { color: #4f46e5; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content strong { font-weight: 700; }
+    .content em { font-style: italic; }
+    .content u { text-decoration: underline; }
+  </style>
+  <script>window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] } };</script>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#le-paradoxe" class="toc-level-1">Le paradoxe</a>
+            <a href="#le-principe-d-equivalence" class="toc-level-1">Le principe d&#x27;équivalence</a>
+            <a href="#principe-d-equivalence-faible" class="toc-level-2">Principe d&#x27;équivalence faible</a>
+            <a href="#principe-d-equivalence-fort" class="toc-level-2">Principe d&#x27;équivalence fort</a>
+            <a href="#impossibilite-du-clonage-quantique" class="toc-level-1">Impossibilité du clonage quantique</a>
+            <a href="#enonce-et-demonstration" class="toc-level-2">Énoncé et démonstration</a>
+            <a href="#consequences" class="toc-level-2">Conséquences</a>
+            <a href="#le-principe-de-conservation-de-l-information" class="toc-level-1">Le principe de conservation de l&#x27;information</a>
+            <a href="#en-mecanique-classique" class="toc-level-2">En mécanique classique</a>
+            <a href="#en-mecanique-quantique" class="toc-level-2">En mécanique quantique</a>
+            <a href="#theoreme-de-liouville" class="toc-level-2">Théorème de Liouville</a>
+            <a href="#solutions-envisagees" class="toc-level-1">Solutions envisagées</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="titre-fiche">Paradoxe de l&#x27;information</h1>
+<h2 id="introduction">Introduction</h2>
+<p>En <a href="https://fr.wikipedia.org/wiki/Astrophysique">astrophysique</a>, le paradoxe de l'information est un <a href="https://fr.wikipedia.org/wiki/Paradoxe">paradoxe</a> mis en évidence par <a href="https://fr.wikipedia.org/wiki/Stephen_Hawking">Stephen Hawking</a> en 1976 opposant les lois de la <a href="https://fr.wikipedia.org/wiki/M%C3%A9canique_quantique">mécanique quantique</a> à celles de la <a href="https://fr.wikipedia.org/wiki/Relativit%C3%A9_g%C3%A9n%C3%A9rale">relativité générale</a>. En effet, la relativité générale implique qu'une <a href="https://fr.wikipedia.org/wiki/Information">information</a> pourrait fondamentalement disparaître dans un <a href="https://fr.wikipedia.org/wiki/Trou_noir">trou noir</a>, à la suite de l'<a href="https://fr.wikipedia.org/wiki/%C3%89vaporation_des_trous_noirs">évaporation</a> de celui-ci. Cette perte d'information implique une non-réversibilité (un même état peut être issu de plusieurs états différents), et une évolution non <a href="https://fr.wikipedia.org/wiki/Unitarit%C3%A9">unitaire</a> des états quantiques, en contradiction fondamentale avec les <a href="https://fr.wikipedia.org/wiki/Postulats_de_la_m%C3%A9canique_quantique">postulats de la mécanique quantique</a>.</p>
+<p>Ces postulats impliquent que tout <a href="https://fr.wikipedia.org/wiki/%C3%89tat_de_la_mati%C3%A8re">état physique</a> est représenté par une <a href="https://fr.wikipedia.org/wiki/Fonction_d%27onde">fonction d'onde</a>, dont l'évolution dans le temps est gouvernée par l'<a href="https://fr.wikipedia.org/wiki/%C3%89quation_de_Schr%C3%B6dinger">équation de Schrödinger</a>. Cette équation est <a href="https://fr.wikipedia.org/wiki/D%C3%A9terminisme">déterministe</a> et réversible dans le temps, et permet donc de toujours déterminer de manière univoque les états précédant un état donné. Ceci implique que l'information doit toujours être préservée, quelles que soient la complexité ou la violence des événements physiques transformant un système, même si l'information se trouve diluée et mélangée de manière indétectable.</p>
+<p>Or, la relativité générale stipule que l'<a href="https://fr.wikipedia.org/wiki/Horizon_(trou_noir)">horizon d'un trou noir</a> est un point de non-retour absolu, et que toute matière, énergie et donc information absorbée par un trou noir ne pourra jamais en sortir. Cela ne posait pas de problème fondamental jusqu'à ce que Stephen Hawking mette en évidence, en 1975, que les trous noirs s'<a href="https://fr.wikipedia.org/wiki/%C3%89vaporation_des_trous_noirs">évaporent</a> et peuvent disparaître complètement, emportant ainsi irrémédiablement l'information dans leur disparition.</p>
+<p>Ce problème est considéré comme fondamental et pouvant remettre en question les théories physiques actuelles, de la même manière que la <a href="https://fr.wikipedia.org/wiki/Catastrophe_ultraviolette">catastrophe ultraviolette</a> a en son temps remis en question la <a href="https://fr.wikipedia.org/wiki/Physique_classique">physique classique</a>. Ce problème étant au carrefour de la relativité générale et de la mécanique quantique, il ne peut être correctement résolu que dans le cadre d'une théorie de la <a href="https://fr.wikipedia.org/wiki/Gravit%C3%A9_quantique">gravité quantique</a> comme la <a href="https://fr.wikipedia.org/wiki/Th%C3%A9orie_des_cordes">théorie des cordes</a>. Celle-ci offre, par le modèle de <a href="https://fr.wikipedia.org/wiki/Principe_holographique">principe holographique</a>, concrétisé par la <a href="https://fr.wikipedia.org/wiki/Correspondance_AdS/CFT">correspondance AdS/CFT</a> de <a href="https://fr.wikipedia.org/wiki/Juan_Mart%C3%ADn_Maldacena">Juan Maldacena</a>, une solution à ce paradoxe qui montre que les lois de la mécanique quantique restent valables, et que l'information ne disparait donc pas à la suite de l'évaporation d'un trou noir. Cette solution emporte l'adhésion de beaucoup de physiciens, mais le sujet reste controversé dans la mesure où aucune théorie de gravité quantique ne fait l'unanimité et n'est considérée comme pleinement satisfaisante de nos jours, et que le principe holographique reste spéculatif.</p>
+<h2 id="le-paradoxe">Le paradoxe</h2>
+<p>Selon Hawking, la perte d'information est justifiée par les propriétés des trous noirs. Une première propriété est le <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_calvitie">théorème de calvitie</a> qui stipule qu'un trou noir est <em>entièrement caractérisé</em> par trois paramètres :</p>
+<ul>
+<li><p>la <a href="https://fr.wikipedia.org/wiki/Masse">masse</a> (M) ;</p></li>
+<li><p>la <a href="https://fr.wikipedia.org/wiki/Charge_%C3%A9lectrique">charge électrique</a> ;</p></li>
+<li><p>le <a href="https://fr.wikipedia.org/wiki/Moment_angulaire">moment angulaire</a>,</p></li>
+</ul>
+<p>et que le trou noir ne possède absolument aucun détail, aucun « poil », aucune structure fine supplémentaire visible de l'extérieur. Ce théorème a des conséquences importantes pour le paradoxe de l'information.</p>
+<p>Premièrement, lors de la formation d'un trou noir, il y a transformation d'une <a href="https://fr.wikipedia.org/wiki/%C3%89toile">étoile</a>, présentant un nombre incalculable de détails et de caractéristiques, en un objet caractérisé uniquement par trois nombres. La transformation émet un certain nombre de <a href="https://fr.wikipedia.org/wiki/Photon">photons</a> et d'<a href="https://fr.wikipedia.org/wiki/Onde_gravitationnelle">ondes gravitationnelles</a>, mais l'information véhiculée par ces émissions est — de très loin — insuffisante pour savoir quelles étaient les caractéristiques originelles de l'étoile. Une énorme quantité d'information sur les caractéristiques originelles de l'étoile doit donc rester à l'intérieur de, ou sur, l'horizon des événements du trou noir.</p>
+<p>De même, quand de la matière est absorbée par le trou noir, celui-ci « perd ses poils » en émettant des ondes gravitationnelles, mais la quantité d'information émise par celles-ci est très insuffisante pour retrouver les caractéristiques initiales de la matière absorbée.</p>
+<p>Avant la découverte, en 1975, de l'<a href="https://fr.wikipedia.org/wiki/%C3%89vaporation_des_trous_noirs">évaporation des trous noirs</a> par Stephen Hawking, cela ne posait aucun problème : les trous noirs étaient des objets éternels qui ne pouvaient que croître, étant donné que rien ne peut sortir des trous noirs. L'information était donc a priori préservée ad vitam aeternam, en accord avec les lois fondamentales de la physique.</p>
+<p>Mais il s'avère que les trous noirs doivent s'évaporer, dès que leur température devient supérieure à la température ambiante du <a href="https://fr.wikipedia.org/wiki/Fond_diffus_cosmologique">fond diffus cosmologique</a>, pour - a priori - disparaître complètement. Or, ce même théorème de calvitie implique que le <a href="https://fr.wikipedia.org/wiki/%C3%89vaporation_des_trous_noirs">rayonnement de Hawking</a> dégagé par le trou noir lors de son évaporation doit être thermique. C'est-à-dire que les particules qui composent ce rayonnement véhiculent une <a href="https://fr.wikipedia.org/wiki/%C3%89nergie_thermique">énergie thermique</a> complètement aléatoire et désordonnée, et qui ne peut donc porter aucune information. En effet, l'état de ce rayonnement est uniquement déterminé par la géométrie du trou noir au-delà de son horizon, et cette géométrie étant parfaitement lisse, elle ne peut a priori coder d'information dans le rayonnement.</p>
+<p>La conclusion semble donc être que l'importante quantité d'information contenue dans le trou noir n'est jamais restituée et disparait donc complètement. Mais ce serait en contradiction avec des lois fondamentales de la physique. Les physiciens se trouvent donc dans l'obligation soit de trouver une solution de ce paradoxe qui préserve les lois connues de la physique, ce qui s'avère difficile et controversé, soit de remettre en cause une ou plusieurs lois fermement établies de la physique.</p>
+<h2 id="le-principe-d-equivalence">Le principe d'équivalence</h2>
+<p>Le principe d'équivalence est un des principes de base de la <a href="https://fr.wikipedia.org/wiki/Relativit%C3%A9_g%C3%A9n%C3%A9rale">relativité générale</a>, et donc des lois de la <a href="https://fr.wikipedia.org/wiki/Gravitation">gravitation</a>. Ce principe rend compte de la relativité de l'<a href="https://fr.wikipedia.org/wiki/Acc%C3%A9l%C3%A9ration">accélération</a> : comme il n'existe aucun <a href="https://fr.wikipedia.org/wiki/R%C3%A9f%C3%A9rentiel_(physique)">repère</a> préférentiel dans lequel une accélération pourrait être définie de manière absolue, l'accélération donnée par la gravité n'a pas non plus d'existence absolue, et la gravitation ne peut donc pas être considérée comme une véritable <a href="https://fr.wikipedia.org/wiki/Force_(physique)">force</a>. Relativement au repère accéléré d'un ascenseur en <a href="https://fr.wikipedia.org/wiki/Chute_libre_(physique)">chute libre</a>, les forces de gravitation s'annulent totalement et aucune expérience de physique, même la plus précise ou la plus subtile, ne permet de savoir si l’ascenseur est en chute libre dans un champ de gravitation ou complètement immobile. L'accélération, mettant en jeu la <a href="https://fr.wikipedia.org/wiki/Masse">masse inerte</a> est donc considérée comme équivalente à la gravitation, mettant en jeu la <a href="https://fr.wikipedia.org/wiki/Masse_pesante">masse pesante</a>.</p>
+<p>Donc, selon le principe d'équivalence, une information en chute libre ne doit rien « ressentir » en franchissant l'horizon du trou noir, qui est d'ailleurs une frontière purement immatérielle et mathématique. L'espace-temps est continu et régulier au niveau de l'horizon, et l'information doit continuer à suivre sa trajectoire jusqu'à la <a href="https://fr.wikipedia.org/wiki/Singularit%C3%A9_gravitationnelle">singularité</a>, il est vrai sans pouvoir franchir cet horizon dans l'autre sens d'après la relativité générale. En particulier, l'information ne peut donc être réfléchie, ou stockée, à cet endroit, ce qui est d'une grande importance pour comprendre le paradoxe.</p>
+<p>Le principe suivant rend également impossible la copie de l'information à l'horizon du trou noir, ou ailleurs.</p>
+<h3 id="principe-d-equivalence-faible">Principe d'équivalence faible</h3>
+<p>Le <a href="https://fr.wikipedia.org/wiki/Principe_physique">principe</a> d'équivalence faible est un constat expérimental, jamais démenti et aux conséquences théoriques aussi bien que pratiques, élevé au rang de principe car inexpliqué (par un principe plus simple ou plus naturel). Le principe d'équivalence faible dit que la masse inertielle et la masse gravitationnelle sont égales quel que soit le corps (en fait il s'agit de leur proportionnalité, mais de cela on déduit qu'avec un bon choix d'unités de mesure, on obtient leur égalité).</p>
+<p>La conséquence de ce principe est que tous les corps soumis à un même champ de <a href="https://fr.wikipedia.org/wiki/Gravitation">gravitation</a> (et sans aucune autre influence extérieure, donc dans le <a href="https://fr.wikipedia.org/wiki/Vide_(physique)">vide</a>) chutent simultanément quand ils sont lâchés simultanément, quelles que soient leurs compositions internes.</p>
+<p>Ce constat de la <a href="https://fr.wikipedia.org/wiki/Simultan%C3%A9it%C3%A9">simultanéité</a> des chutes a été fait dès <a href="https://fr.wikipedia.org/wiki/Galil%C3%A9e_(savant)">Galilée</a>. <a href="https://fr.wikipedia.org/wiki/Isaac_Newton">Isaac Newton</a> par sa <a href="https://fr.wikipedia.org/wiki/Loi_universelle_de_la_gravitation">loi universelle de la gravitation</a> a montré que cela était équivalent à l'égalité entre masse inertielle et masse gravitationnelle, et a expérimenté cette égalité à l'aide de la comparaison des fréquences de balanciers constitués de matériaux différents.</p>
+<p>Par la suite, de multiples expérimentateurs ont testé cette égalité, réduisant toujours plus l'écart possible entre ces deux masses.</p>
+<h3 id="principe-d-equivalence-fort">Principe d'équivalence fort</h3>
+<p>Le principe d'équivalence fort généralise le principe d'Einstein en affirmant que, localement, les effets d'un champ <a href="https://fr.wikipedia.org/wiki/Gravitation">gravitationnel</a> sur toute expérience, même portant sur la <a href="https://fr.wikipedia.org/wiki/Gravitation">gravitation</a> elle-même (comme l'<a href="https://fr.wikipedia.org/wiki/Exp%C3%A9rience_de_Cavendish">expérience de Cavendish</a> par exemple), sont identiques aux effets d'une <a href="https://fr.wikipedia.org/wiki/Acc%C3%A9l%C3%A9ration">accélération</a> du référentiel de l'observateur.</p>
+<p>Il est équivalent de considérer qu'en tout point de l'espace il existe un référentiel localement inertiel, le référentiel en chute libre dans le champ de gravitation (et en l'absence de tout autre champ extérieur), qu'aucune expérience (gravitationnelle ou non) ne peut distinguer d'un référentiel non soumis à la gravitation.</p>
+<p>On ajoute en général l'énoncé, très lié au <a href="https://fr.wikipedia.org/wiki/Principe_de_relativit%C3%A9">principe de relativité</a>, que l'expérience est indépendante du lieu et du moment où elle est faite.</p>
+<p>Pour ce principe, la notion de local est plus étendue que dans le principe précédent : on peut ainsi considérer que le <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_solaire">système solaire</a> dans son ensemble est une expérience gravitationnelle dans un référentiel à peu près inertiel nettement plus grand.</p>
+<h2 id="impossibilite-du-clonage-quantique">Impossibilité du clonage quantique</h2>
+<p>Dans le paradoxe de l'information, l'information est considérée comme la plus élémentaire et microscopique possible et est donc soumise aux lois de la <a href="https://fr.wikipedia.org/wiki/M%C3%A9canique_quantique">mécanique quantique</a>. Ces lois impliquent le <a href="https://fr.wikipedia.org/wiki/Principe_d%27incertitude">principe d'incertitude</a> selon lequel on ne peut déterminer avec une précision aussi grande que l'on veut deux propriétés physiques complémentaires d'un système quantique, comme la vitesse et la position. Mesurer la valeur d'une propriété avec précision implique une incertitude, ou plutôt une indétermination fondamentale sur la valeur de la seconde, d'autant plus grande que la première aura été mesurée avec précision.</p>
+<p>Ce principe implique l'impossibilité de dupliquer un <a href="https://fr.wikipedia.org/wiki/%C3%89tat_quantique">état quantique</a>. En effet, si cela était possible, on pourrait alors mesurer avec une précision aussi grande que l'on veut la position sur un état, et mesurer également avec une grande précision la vitesse sur l'autre, ce qui reviendrait à mesurer avec précision les deux propriétés du système initial, ce qui serait incompatible avec le principe d'incertitude. L'impossibilité du clonage quantique justifie les protocoles de <a href="https://fr.wikipedia.org/wiki/Cryptographie_quantique">cryptographie quantique</a>, qui sont considérés pour cette raison comme étant absolument inviolables.</p>
+<p>La copie de l'information, avant que celle-ci ne franchisse l'horizon, est donc impossible selon les lois de la mécanique quantique. Ajouté au principe précédent, la conclusion inévitable est que l'information ne peut ressortir de l'horizon du trou noir, et y reste donc emprisonnée d'une manière ou d'une autre, ou bien est détruite.</p>
+<p>Le théorème de non-clonage quantique, ou théorème d'impossibilité du clonage quantique, est un résultat de <a href="https://fr.wikipedia.org/wiki/M%C3%A9canique_quantique">mécanique quantique</a> qui interdit la copie à l'identique d'un <a href="https://fr.wikipedia.org/wiki/%C3%89tat_quantique">état quantique</a> inconnu et arbitraire.</p>
+<p>Il est toujours possible d'<a href="https://fr.wikipedia.org/wiki/Intrication_quantique">intriquer</a> l'état d'un système quantique avec un autre; le théorème rend par contre impossible la création d'un état séparable qui serait identique à un autre. Par exemple, deux <a href="https://fr.wikipedia.org/wiki/Qubit">qubits</a> peuvent être placés dans un état intriqué par une <a href="https://fr.wikipedia.org/wiki/Porte_de_Toffoli">porte CNOT</a>, mais cela ne constitue pas un clonage: lors d'une <a href="https://fr.wikipedia.org/wiki/Mesure_physique">mesure</a>, les deux qubits intriqués fourniront un résultat identique, alors que deux systèmes séparés auraient fourni des résultats indépendants.</p>
+<h3 id="enonce-et-demonstration">Énoncé et démonstration</h3>
+<p>Soit un système quantique A dans l'état <span class="math inline">|<em>a</em>⟩<sub><em>A</em></sub></span>. Soit un second système quantique B de même <a href="https://fr.wikipedia.org/wiki/Espace_de_Hilbert">espace d'états</a> H, pris initialement dans un état quelconque <span class="math inline">|<em>b</em>⟩<sub><em>B</em></sub></span>, indépendant de <span class="math inline">|<em>a</em>⟩<sub><em>A</em></sub></span>. Ces deux systèmes quantiques forment un système total dont l'état est donné par le <a href="https://fr.wikipedia.org/wiki/Produit_tensoriel">produit tensoriel</a> <span class="math inline">|<em>a</em>⟩<sub><em>A</em></sub>⊗|<em>b</em>⟩<sub><em>B</em></sub></span>, plus simplement noté <span class="math inline">|<em>a</em>⟩<sub><em>A</em></sub>|<em>b</em>⟩<sub><em>B</em></sub></span> dans ce qui suit.</p>
+<p>Les seules <a href="https://fr.wikipedia.org/w/index.php?title=Op%C3%A9ration_quantique&amp;action=edit&amp;redlink=1">opérations quantiques</a> permises sont soit une mesure, soit une évolution temporelle du système.</p>
+<p>On ne peut pas copier <span class="math inline">|<em>a</em>⟩<sub><em>A</em></sub></span> en le mesurant directement, sous peine de réduire le système à l'un de ses <a href="https://fr.wikipedia.org/wiki/%C3%89tat_propre">états propres</a> et perdre une partie de l'information contenue dans l’état initial que l'on voulait copier.</p>
+<p>On ne peut donc qu'agir sur l'<a href="https://fr.wikipedia.org/wiki/Op%C3%A9rateur_hamiltonien">hamiltonien</a> du système combiné et donc sur son <a href="https://fr.wikipedia.org/wiki/Op%C3%A9rateur_d%27%C3%A9volution">opérateur d'évolution</a> U. On cherche donc un opérateur U tel que</p>
+<p><span class="math display"><em>U</em>|<em>a</em>⟩<sub><em>A</em></sub>|<em>b</em>⟩<sub><em>B</em></sub> = |<em>a</em>⟩<sub><em>A</em></sub>|<em>a</em>⟩<sub><em>B</em></sub></span></p>
+<p>C'est-à-dire que le système combiné ait changé de telle sorte à ce que le système A soit dans le même état qu'initialement, et que le système B soit à présent dans le même état que A; autrement dit l'opérateur U a cloné l'état a. Le théorème nous indique qu'il est impossible qu'un opérateur de clonage universel U qui fonctionnerait pour n'importe quel état initial de A puisse exister.</p>
+<p><strong>Théorème</strong> — Il n'existe aucun opérateur unitaire <span class="math inline"><em>U</em></span> sur <span class="math inline"><em>H</em> ⊗ <em>H</em></span> tel que pour tous états <span class="math inline"><em>a</em></span> et <span class="math inline"><em>b</em></span> de <span class="math inline"><em>H</em></span> on ait <span class="math inline"><em>U</em>|<em>a</em>⟩<sub><em>A</em></sub>|<em>b</em>⟩<sub><em>B</em></sub> = |<em>a</em>⟩<sub><em>A</em></sub>|<em>a</em>⟩<sub><em>B</em></sub></span></p>
+<p>En effet, si un tel opérateur existait, il fonctionnerait aussi pour tout autre état <span class="math inline">|<em>α</em>⟩<sub><em>A</em></sub></span> quelconque de <span class="math inline"><em>A</em></span> :</p>
+<p><span class="math display"><em>U</em>|<em>α</em>⟩<sub><em>A</em></sub>|<em>b</em>⟩<sub><em>B</em></sub> = |<em>α</em>⟩<sub><em>A</em></sub>|<em>α</em>⟩<sub><em>B</em></sub></span></p>
+<p>On a donc pour tout <span class="math inline">|<em>a</em>⟩<sub><em>A</em></sub></span> et <span class="math inline">|<em>α</em>⟩<sub><em>A</em></sub></span> quelconques, l’opérateur <span class="math inline"><em>U</em></span> étant unitaire (i.e. <span class="math inline"><em>U</em><sup>†</sup><em>U</em> = <em>I</em></span>) :</p>
+<p><span class="math display">⟨<em>b</em>|<sub><em>B</em></sub>⟨<em>a</em>|<sub><em>A</em></sub><em>U</em><sup>†</sup><em>U</em>|<em>α</em>⟩<sub><em>A</em></sub>|<em>b</em>⟩<sub><em>B</em></sub> = ⟨<em>a</em>|<sub><em>B</em></sub>⟨<em>a</em>|<sub><em>A</em></sub>|<em>α</em>⟩<sub><em>A</em></sub>|<em>α</em>⟩<sub><em>B</em></sub></span></p>
+<p>i.e.</p>
+<p><span class="math display">⟨<em>b</em>|<sub><em>B</em></sub>⟨<em>a</em>|<sub><em>A</em></sub>|<em>α</em>⟩<sub><em>A</em></sub>|<em>b</em>⟩<sub><em>B</em></sub> = ⟨<em>a</em>|<sub><em>B</em></sub>⟨<em>a</em>|<sub><em>A</em></sub>|<em>α</em>⟩<sub><em>A</em></sub>|<em>α</em>⟩<sub><em>B</em></sub></span></p>
+<p>soit</p>
+<p><span class="math display">⟨<em>a</em>|<em>α</em>⟩=⟨<em>a</em>|<em>α</em>⟩<sup>2</sup>.</span></p>
+<p>ce qui n'est possible que si ces deux états sont <a href="https://fr.wikipedia.org/wiki/Orthogonalit%C3%A9">orthogonaux</a> ( si <span class="math inline">⟨<em>a</em>|<em>α</em>⟩ = 0</span> ) ou égaux ( si <span class="math inline">⟨<em>a</em>|<em>α</em>⟩ = 1</span>). Cela entre en contradiction avec l’hypothèse de départ que ces états étaient quelconques, on a montré par l'absurde l'impossibilité de cloner l'état <span class="math inline">|<em>a</em>⟩<sub><em>A</em></sub></span>.</p>
+<h3 id="consequences">Conséquences</h3>
+<p>En informatique classique, l'état d'un ou plusieurs <a href="https://fr.wikipedia.org/wiki/Bit">bits</a> peut facilement être dupliqué : cette opération est utilisée dans tout système informatique, du <a href="https://fr.wikipedia.org/wiki/Copier-coller">copier-coller</a> à la transmission d'une <a href="https://fr.wikipedia.org/wiki/Page_web">page Web</a> d'un serveur à l'ordinateur d'un internaute. Cela est donc impossible en informatique quantique.</p>
+<p>En particulier il est donc impossible d'utiliser un <a href="https://fr.wikipedia.org/wiki/Code_de_r%C3%A9p%C3%A9tition">code de répétition</a> comme <a href="https://fr.wikipedia.org/wiki/Code_correcteur">code correcteur</a> d'erreur, ou par exemple, de sauvegarder le résultat intermédiaire d'un calcul quantique. Il est donc nécessaire de d'utiliser des <a href="https://fr.wikipedia.org/wiki/Code_quantique">codes correcteurs quantiques</a>.</p>
+<p>L'impossibilité du clonage quantique est liée à l'impossibilité de créer facilement des <a href="https://fr.wikipedia.org/w/index.php?title=M%C3%A9moire_quantique&amp;action=edit&amp;redlink=1">mémoires quantiques</a>, indispensables pour créer des <a href="https://fr.wikipedia.org/w/index.php?title=R%C3%A9seau_quantique&amp;action=edit&amp;redlink=1">réseaux quantiques)</a>, permettant de <a href="https://fr.wikipedia.org/wiki/T%C3%A9l%C3%A9portation_quantique">transférer des états quantiques</a> par un réseau, au lieu de directement de l'émetteur au récepteur comme actuellement.</p>
+<h2 id="le-principe-de-conservation-de-l-information">Le principe de conservation de l'information</h2>
+<p>En <a href="https://fr.wikipedia.org/wiki/Physique_classique">physique classique</a>, les lois de la nature sont <a href="https://fr.wikipedia.org/wiki/D%C3%A9terminisme">déterministes</a> et réversibles dans le temps. Même si une encyclopédie est brûlée, ou si un œuf tombe sur le sol et se brise, il est - en principe - parfaitement possible, à partir de l'état final, de dérouler les lois de la physique à l'envers pour reconstituer l'encyclopédie intacte, ou l’œuf non brisé. Cela implique une totale conservation de l'information, qui est traduite notamment par le <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Liouville_(hamiltonien)">théorème de Liouville</a>. Même si l'information devient illisible et éparpillée, elle est néanmoins toujours présente et jamais détruite.</p>
+<p>En <a href="https://fr.wikipedia.org/wiki/Physique_quantique">physique quantique</a>, la situation ne change pas fondamentalement. L'équation de Schrödinger qui gouverne l'évolution d'un <a href="https://fr.wikipedia.org/wiki/%C3%89tat_quantique">état quantique</a> est également déterministe et réversible. Cela se traduit par l'unitarité de l'état quantique, représenté par un <a href="https://fr.wikipedia.org/wiki/Vecteur_unitaire">vecteur unitaire</a> qui doit toujours conserver la même <a href="https://fr.wikipedia.org/wiki/Norme_(math%C3%A9matiques)">norme</a>, quelle que soit l'évolution du vecteur et de l'état. La question se complique toutefois quelque peu si on fait intervenir le <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_mesure_quantique">problème de la mesure quantique</a> : normalement, le système composé du <a href="https://fr.wikipedia.org/wiki/Chat_de_Schr%C3%B6dinger">chat de Schrödinger</a> et de la fiole de poison évolue unitairement, et donc de manière déterministe et réversible, vers l'état superposé chat mort/chat vivant. La mesure - l'examen de la boite contenant le chat, qui le montre dans un seul état - semble rompre le déterminisme et l'unitarité.</p>
+<p>Toutefois, la théorie de la <a href="https://fr.wikipedia.org/wiki/D%C3%A9coh%C3%A9rence_quantique">décohérence</a> donne une interprétation du problème de la mesure compatible avec l'unitarité. Dans cette théorie, les états superposés deviennent rapidement indétectables, mais existent toujours néanmoins et l'information n'est pas perdue. Dans une autre interprétation du problème de la mesure, la <a href="https://fr.wikipedia.org/wiki/Th%C3%A9orie_d%27Everett">théorie d'Everett</a>, il n'y a pas la moindre place pour l'indéterminisme et la perte d'information, et l'unitarité est parfaitement respectée. L'unitarité, et donc la conservation de l’information, est vraiment considérée par les physiciens comme étant un principe fondamental et solide, dont la remise en cause remettrait complètement en question la <a href="https://fr.wikipedia.org/wiki/M%C3%A9canique_quantique">mécanique quantique</a>.</p>
+<p>Ce théorème dit que le volume de l'<a href="https://fr.wikipedia.org/wiki/Espace_des_phases">espace des phases</a> d'un système est constant le long des chemins que le système parcourt dans son espace, autrement dit ce volume reste constant dans le temps.</p>
+<p>L'équation de Liouville décrit l'évolution temporelle de la densité de probabilité <span class="math inline"><em>ρ</em></span> dans l'<a href="https://fr.wikipedia.org/wiki/Espace_des_phases">espace des phases</a>. Cette densité de probabilité est définie comme la <a href="https://fr.wikipedia.org/wiki/Probabilit%C3%A9">probabilité</a> pour que l'état du système soit représenté par un point à l'intérieur du volume <span class="math inline"><em>Γ</em></span> considéré.</p>
+<h3 id="en-mecanique-classique">En mécanique classique</h3>
+<p>On utilise les <a href="https://fr.wikipedia.org/wiki/Coordonn%C3%A9es_g%C3%A9n%C3%A9ralis%C3%A9es">coordonnées généralisées</a> <span class="math inline">(<em>q</em>,<em>p</em>)</span> où <span class="math inline"><em>N</em></span> est la dimension du système. La densité de probabilité <span class="math inline"><em>ρ</em>(<em>p</em>,<em>q</em>)</span> est définie par la probabilité <span class="math inline"><em>ρ</em>(<em>p</em>,<em>q</em>)<em>d</em><sup><em>N</em></sup><em>q</em><em>d</em><sup><em>N</em></sup><em>p</em></span> de rencontrer l'état du système dans le volume infinitésimal <span class="math inline"><em>d</em><sup><em>N</em></sup><em>q</em><em>d</em><sup><em>N</em></sup><em>p</em></span>.</p>
+<p>Lorsqu'on calcule l'évolution temporelle de cette densité de probabilité <span class="math inline"><em>ρ</em>(<em>p</em>,<em>q</em>)</span>, on obtient :</p>
+<p><span class="math inline">$\frac{d\rho}{dt} = \frac{\partial\rho}{\partial t} + \sum_{i = 1}^{N}{\lbrack\frac{\partial\rho}{\partial q_{i}}{\overset{˙}{q}}_{i} + \frac{\partial\rho}{\partial p_{i}}{\overset{˙}{p}}_{i}\rbrack} = 0$</span></p>
+<p>On peut utiliser les <a href="https://fr.wikipedia.org/wiki/M%C3%A9canique_hamiltonienne#%C3%89quations_canoniques_de_Hamilton_2">équations canoniques de Hamilton</a> en les remplaçant dans l'équation précédente :</p>
+<p><img alt="Paradoxe de l'information" loading="lazy" src="data:image/jpeg;base64,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" style="width:258px;max-width:100%;height:auto"/>,</p>
+<p>on obtient le résultat</p>
+<p><span class="math inline">$\frac{\partial}{\partial t}\rho(p,q,t) = - \{\rho(p,q,t),H\} = \{ H,\rho(p,q,t)\}$</span>,</p>
+<p>où <span class="math inline">{,}</span> désigne les <a href="https://fr.wikipedia.org/wiki/Crochet_de_Poisson">crochets de Poisson</a>.</p>
+<h3 id="en-mecanique-quantique">En mécanique quantique</h3>
+<p>D'après le <a href="https://fr.wikipedia.org/wiki/Principe_de_correspondance#Expression_math%C3%A9matique_du_principe_de_correspondance">principe de correspondance</a>, on peut rapidement en déduire l'équation de Liouville en <a href="https://fr.wikipedia.org/wiki/M%C3%A9canique_quantique">mécanique quantique</a> :</p>
+<p><span class="math inline">$\frac{1}{i\hslash}\lbrack\overset{\hat{}}{H},\overset{\hat{}}{A}(t)\rbrack = \{\overset{\hat{}}{H},\overset{\hat{}}{A}\} + O(\hslash^{2})$</span></p>
+<p>d'où on déduit :</p>
+<p><span class="math inline">$\frac{\partial}{\partial t}\overset{\hat{}}{\rho} = \frac{i}{\hslash}\lbrack\overset{\hat{}}{\rho},\overset{\hat{}}{H}\rbrack$</span></p>
+<p>Ici, <span class="math inline">$\overset{\hat{}}{H}$</span> est l'<a href="https://fr.wikipedia.org/wiki/Op%C3%A9rateur_hamiltonien">opérateur hamiltonien</a> et <span class="math inline"><em>ρ</em></span> la <a href="https://fr.wikipedia.org/wiki/Matrice_densit%C3%A9">matrice densité</a>. Parfois cette équation est aussi nommée l'équation de <a href="https://fr.wikipedia.org/wiki/Von_Neumann">Von Neumann</a>.</p>
+<h3 id="theoreme-de-liouville">Théorème de Liouville</h3>
+<p>De l'équation de Liouville plus haut, on déduit le théorème de Liouville, qui peut s'énoncer comme suit</p>
+<p>Théorème de Liouville —  La fonction de distribution est constante le long de n'importe quelle trajectoire de l'espace des phases</p>
+<p>ou encore sous la forme</p>
+<p>Théorème de Liouville —  Le volume d'une région de l'espace des phases reste constant lorsqu'on suit cette région dans le temps</p>
+<p>Cela revient à dire que le volume V de l'espace des phases est invariant par rapport au temps : <span class="math inline">$\frac{dV}{dt} = 0$</span></p>
+<h2 id="solutions-envisagees">Solutions envisagées</h2>
+<ul>
+<li><p>L'information est perdue de manière irrémédiable.</p></li>
+</ul>
+<blockquote>
+<p><strong>Avantage :</strong> Semble être une conséquence directe de calculs issus de la <a href="https://fr.wikipedia.org/wiki/Gravit%C3%A9_semi-classique">gravité semi-classique</a>, calculs relativement peu sujets à controverse.</p>
+<p><strong>Inconvénient :</strong> Contredit le principe d'unitarité.</p>
+</blockquote>
+<ul>
+<li><p>L'information s'échappe au fur et à mesure de l'évaporation du trou noir.</p></li>
+</ul>
+<blockquote>
+<p><strong>Avantage :</strong> Solution en accord avec la notion de réversibilité requise par la mécanique quantique. Séduisante d'un point de vue intuitif, du fait du parallèle que l'on peut faire avec la récupération d'information dans un processus de <a href="https://fr.wikipedia.org/wiki/Combustion">combustion</a>.</p>
+<p><strong>Inconvénient :</strong> Demande de grands changements de la gravité classique et semi-classique (car elles n'acceptent pas de perte d'information).</p>
+</blockquote>
+<ul>
+<li><p>L'information s'échappe lors de la dernière phase de l'évaporation du trou noir.</p></li>
+</ul>
+<blockquote>
+<p><strong>Avantage :</strong> Les changements demandés par rapport à la gravité classique et semi-classique ne sont nécessaires que pour les situations où la <a href="https://fr.wikipedia.org/wiki/Gravit%C3%A9_quantique">gravité quantique</a> est prédominante.</p>
+<p><strong>Inconvénient :</strong> Juste avant que l'information s'échappe, un petit trou noir devrait potentiellement pouvoir contenir n'importe quelle quantité d'information, ce qui enfreint la limite d'information postulée par Bekenstein pouvant être contenue au sein d'un espace fini (limite impliquant par ailleurs la <a href="https://fr.wikipedia.org/wiki/Limite_de_Bremermann">limite de Bremermann</a> pour l'informatique).</p>
+</blockquote>
+<ul>
+<li><p>L'information est contenue dans un résidu de la <a href="https://fr.wikipedia.org/wiki/Longueur_de_Planck">taille de Planck</a>.</p></li>
+</ul>
+<blockquote>
+<p><strong>Avantage :</strong> Pas de mécanisme nécessaire pour que l'information s'échappe.</p>
+<p><strong>Inconvénient :</strong> Pour contenir l'information qui s'évapore d'un trou noir, les résidus devraient pouvoir avoir un nombre d'<a href="https://fr.wikipedia.org/wiki/%C3%89tat_quantique">états</a> internes infini.</p>
+</blockquote>
+<ul>
+<li><p>L'information est contenue dans un résidu plus grand.</p></li>
+</ul>
+<blockquote>
+<p><strong>Avantage :</strong> La taille du résidu est proportionnelle au trou noir initial, donc il n'y a pas besoin d'un nombre infini d'états internes.</p>
+<p><strong>Inconvénient :</strong> L'<a href="https://fr.wikipedia.org/wiki/%C3%89vaporation_des_trous_noirs">évaporation du trou noir</a> doit s’arrêter avant que le trou noir n'atteigne l'échelle de Planck, ce qui signifie enfreindre la gravité semi-classique à échelle microscopique.</p>
+</blockquote>
+<ul>
+<li><p>L'information est contenue dans un univers nouveau-né qui se détache de notre propre univers.</p></li>
+</ul>
+<blockquote>
+<p><strong>Avantage :</strong> Ce scénario est prévu par la <a href="https://fr.wikipedia.org/wiki/Th%C3%A9orie_d%27Einstein-Cartan">théorie d'Einstein-Cartan</a>, théorie qui étend la théorie de la relativité générale en utilisant les notions de <a href="https://fr.wikipedia.org/wiki/Moment_angulaire">moment angulaire</a> et de <a href="https://fr.wikipedia.org/wiki/Spin">spin</a>. Aucun principe général de la physique n'est alors enfreint.</p>
+<p><strong>Inconvénient :</strong> La théorie d'Einstein-Cartan est difficile à vérifier car c'est seulement à des densités extrêmes que ses prédictions diffèrent de celles faites par la théorie de la relativité générale.</p>
+</blockquote>
+<ul>
+<li><p>L'information est encodée dans des liens entre futur et passé.</p></li>
+</ul>
+<blockquote>
+<p>Avantage : La <a href="https://fr.wikipedia.org/wiki/Gravit%C3%A9_semi-classique">gravité semi-classique</a> suffit, i.e., la solution ne dépend pas de détails de la <a href="https://fr.wikipedia.org/wiki/Gravit%C3%A9_quantique">gravité quantique</a>.</p>
+<p>Inconvénient : Vue contre-intuitive de la façon dont évolue le temps.</p>
+</blockquote>
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 15/11/2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

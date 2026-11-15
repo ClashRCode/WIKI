@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Force centrifuge - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#expression-de-la-force-centrifuge" class="toc-level-1">Expression de la force centrifuge</a>
+            <a href="#force-et-acceleration-centrifuge" class="toc-level-1">Force et accélération centrifuge</a>
+            <a href="#ordres-de-grandeurs-pour-des-accelerations-centrifuges" class="toc-level-1">Ordres de grandeurs pour des accélérations centrifuges</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            
+
+
+
+
+<h1 id="force-centrifuge">Force centrifuge</h1><h1 id="introduction">Introduction</h1>
+<p>La force centrifuge, nom courant de l'effet centrifuge, est une force qui apparaît en physique dans le contexte de l'étude du mouvement des objets dans des référentiels non inertiels. L'effet ressenti est dû aux mouvements de rotation de ces référentiels et se traduit par une tendance à éloigner les corps du centre de rotation. Un exemple en est la sensation d'éjection que ressent un voyageur dans un véhicule qui effectue un virage.</p>
+<h1 id="expression-de-la-force-centrifuge">Expression de la force centrifuge</h1><p><img alt="Illustration – Expression de la force centrifuge" loading="lazy" src="data:image/jpeg;base64,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" style="width:min(100%,220px)"/></p>
+<p><img alt="Illustration – Expression de la force centrifuge" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,206px)"/>Elle provient directement de la cinématique classique et des trois lois du mouvement de Newton. Son intensité est donnée par la formule :</p>
+<p>Ces deux relations équivalentes sont valables dans le Système international d'unités avec les notations et unités suivantes (convertir les unités si besoin) :</p>
+<ul>
+<li><p>F<sub>cen</sub> est la force centrifuge en newtons (N), avec 1 newton voisin de 0,1 kilogramme-force ;</p></li>
+<li><p>m est la masse, en kilogramme (kg), de l'objet considéré ;</p></li>
+<li><p>ω est la vitesse angulaire6 en radians par seconde (rad/s), donc 1 tour par seconde = 6,28 rad/s et 1 tour par minute = 0,105 rad/s ;</p></li>
+<li><p>v est la vitesse linéaire sur la tangente à la trajectoire en mètres par seconde (m/s), 1 m/s correspond à 3,6 km/h ;</p></li>
+<li><p>R est la distance de l'axe de rotation au centre de gravité de l'objet, c'est-à-dire le rayon de courbure de la trajectoire en mètres (m).</p></li>
+</ul>
+<p>La force centrifuge est représentable par le vecteur A(P<sub>/G</sub>) qui est perpendiculaire à l'axe instantané de rotation z.</p>
+<h1 id="force-et-acceleration-centrifuge">Force et accélération centrifuge</h1>
+<p><img alt="Illustration – Force et accélération centrifuge" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,121px)"/>La force centrifuge et le poids s'exerçant sur un objet de masse m sont deux forces qui sont proportionnelles à m, (selon le principe d'équivalence). Aussi, est-il souvent plus évocateur de considérer, non pas les forces F, mais les accélérations F/m.</p>
+<p>L'accélération a est une grandeur cinématique, dont l'unité SI est le mètre par seconde carrée, (m/s2).</p>
+<p>On peut également utiliser le nombre de g, défini par le rapport entre l'accélération considérée et l'accélération de la pesanteur terrestre, laquelle est environ 9,81 m/s<sup>2</sup>.</p>
+<p>En langage courant, le nombre de g est donc le dixième de la valeur de l'accélération exprimée en m/s<sup>2</sup>.</p>
+<h1 id="ordres-de-grandeurs-pour-des-accelerations-centrifuges">Ordres de grandeurs pour des accélérations centrifuges</h1>
+<p>Selon les vitesses (linéaires ou angulaires) et les rayons de courbure <em>R</em>, le calcul numérique donne approximativement :</p>
+<ul>
+<li><p>0,1 g : train TGV, 360 km/h, R = 10 km.</p></li>
+<li><p>0,5 g : vélo incliné de 26° par rapport à la verticale, 36 km/h, R = 20 m.</p></li>
+<li><p>1 g : hypothétique gravité artificielle dans un habitat spatial, 2 tr/min, R = 224 m.</p></li>
+<li><p>3 g : graine de pois sur trieuse rotative, 366,2 tr/min, R = 2 cm</p></li>
+<li><p>5 g : ressource ou virage d'un avion à hélice, 1 800 km/h, R = 5 km ; ou avion à hélice, 180 km/h, R = 50 m.</p></li>
+<li><p>8 g : ressource ou virage d'un avion à réaction, 720 km/h, R = 500 m.</p></li>
+<li><p>13 g : centrifugeuse humaine pour l'entraînement des pilotes de chasse, 0,64 tr/s, R = 8 m.</p></li>
+<li><p>504 g : essorage du linge d'une machine à laver, 1 400 tr/min, R = 23 cm (diamètre du tambour = 46 cm).</p></li>
+<li><p>25 000 g : centrifugeuse de laboratoire, 15 000 tr/min, R = 10,14 cm.</p></li>
+<li><p>1 000 000 g : centrifugeuse pour l'enrichissement de l'uranium, 100 000 tr/min, R = 9,1 cm (hypothétique).</p></li>
+</ul>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Superfluidité - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  
+    /* Complément : listes, tableaux, citations (le reset Tailwind les neutralise) */
+    .content ul { list-style: disc; margin: 0 0 1rem 1.5rem; }
+    .content ol { list-style: decimal; margin: 0 0 1rem 1.5rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content blockquote { border-left: 4px solid #c7d2fe; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+    .content table { border-collapse: collapse; margin: 1rem 0; max-width: 100%; display: block; overflow-x: auto; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; }
+    .content th { background-color: #f1f5f9; font-weight: 600; }
+    .content a { color: #4f46e5; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content strong { font-weight: 700; }
+    .content em { font-style: italic; }
+    .content u { text-decoration: underline; }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#point-lambda" class="toc-level-1">Point lambda</a>
+            <a href="#propriete-d-un-superfluide" class="toc-level-1">Propriété d&#x27;un superfluide</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="titre-fiche">Superfluidité</h1>
+<p>La superfluidité est un état de la matière dans lequel celle-ci se comporte comme un fluide dépourvu de toute viscosité.</p>
+<h2 id="point-lambda">Point lambda</h2><p><img alt="Superfluidité" loading="lazy" src="data:image/png;base64,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" style="width:250px;max-width:100%;height:auto"/></p>
+<p>Les physiciens mentionnés ci-dessus ont constaté qu'en dessous de la température critique de 2,17 <a href="https://fr.wikipedia.org/wiki/Kelvin">kelvins</a>, (soit −270,98 °C), qui est appelé le point lambda (λ), l'<a href="https://fr.wikipedia.org/wiki/H%C3%A9lium_4">hélium 4</a> subissait une <a href="https://fr.wikipedia.org/wiki/Transition_de_phase">transition de phase</a>. Il passait d'un état liquide à un autre aux propriétés sensiblement différentes. En effet, l'expérience, confirmée par la suite, montra que ce nouvel état de l'hélium conduisait très bien la chaleur, ce qui ne pouvait s'expliquer que par une faible <a href="https://fr.wikipedia.org/wiki/Viscosit%C3%A9">viscosité</a>.</p>
+<p>Des expériences plus spécifiques à la <a href="https://fr.wikipedia.org/wiki/M%C3%A9canique_des_fluides">mécanique des fluides</a> montrèrent ensuite que l'écoulement de cet hélium dans un tuyau était sensiblement indépendant de la pression appliquée sur les parois du tuyau. On a également montré que cet écoulement était indépendant de la section du tuyau en question.</p>
+<p>Ceci ne pouvait s'expliquer que par une absence totale de <a href="https://fr.wikipedia.org/wiki/Viscosit%C3%A9">viscosité</a>, d'où le nom de superfluidité. Finalement, un liquide est dit superfluide s’il n'oppose aucune résistance à l'écoulement. En conséquence, les solides qui se meuvent dans le liquide ne subissent aucun <a href="https://fr.wikipedia.org/wiki/Frottement">frottement</a> visqueux.</p>
+<p>Un liquide superfluide placé dans un récipient va s'échapper par capillarité en remontant les parois du récipient et en s'écoulant en dessous.</p>
+<h2 id="propriete-d-un-superfluide">Propriété d'un superfluide</h2>
+<p>D'autres propriétés remarquables d'un superfluide sont l'existence d'une conductivité thermique infinie et la présence de tourbillons possédant une <a href="https://fr.wikipedia.org/wiki/Vorticit%C3%A9">vorticité</a> quantifiée. Du point de vue théorique, on peut décrire l'hydrodynamique d'un superfluide par un modèle à deux fluides : le fluide normal qui possède une viscosité non nulle et le superfluide de viscosité nulle. Lorsque la température diminue, la fraction superfluide augmente et la fraction normale diminue. En dessous du point λ, l'hélium superfluide acquiert la qualité de <a href="https://fr.wikipedia.org/wiki/Supraconductivit%C3%A9">supraconducteur de chaleur</a>, c’est-à-dire qu'il ne supporte pas la moindre différence de température entre deux de ses parties. Sans quoi, l'hélium n'est plus exactement un superfluide.</p>
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 15/11/2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

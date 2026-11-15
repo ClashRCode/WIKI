@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plasma - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  
+    /* Complément : listes, tableaux, citations (le reset Tailwind les neutralise) */
+    .content ul { list-style: disc; margin: 0 0 1rem 1.5rem; }
+    .content ol { list-style: decimal; margin: 0 0 1rem 1.5rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content blockquote { border-left: 4px solid #c7d2fe; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+    .content table { border-collapse: collapse; margin: 1rem 0; max-width: 100%; display: block; overflow-x: auto; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; }
+    .content th { background-color: #f1f5f9; font-weight: 600; }
+    .content a { color: #4f46e5; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content strong { font-weight: 700; }
+    .content em { font-style: italic; }
+    .content u { text-decoration: underline; }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#formation-d-un-plasma" class="toc-level-1">Formation d&#x27;un plasma</a>
+            <a href="#classifications-de-plasmas" class="toc-level-1">Classifications de plasmas</a>
+            <a href="#plasmas-specifiques-et-applications" class="toc-level-1">Plasmas spécifiques et applications</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="titre-fiche">Plasma</h1>
+<h2 id="introduction">Introduction</h2>
+<p>L'état plasma est un état de la matière, tout comme l'état solide, l'état liquide ou l'état gazeux, bien qu'il n'y ait pas de transition brusque pour passer d'un de ces états au plasma ou réciproquement. Il est visible sur Terre, à l'état naturel, le plus souvent à des températures élevées favorables aux ionisations, signifiant l’arrachement d'électrons aux atomes. On observe alors une sorte de « soupe » d'électrons extrêmement actifs, dans laquelle « baignent » également des ions ou des molécules neutres. Bien que globalement électriquement neutre, le plasma est composé d’électrons et d’ions ce qui le rend très sensible à l'action de champs électrique, magnétique et électromagnétique (internes comme externes) et ce qui rend sa dynamique, en général, d'une grande complexité. De plus, les propriétés chimiques de cet état sont assez différentes de celles des autres états ; elles sont parfois dites « exotiques ». Les exemples de plasmas les plus courants sur Terre sont les flammes de haute température et la foudre.</p>
+<p>Le terme plasma (on parle aussi de « quatrième état de la matière »), a été utilisé en physique par analogie avec le plasma sanguin. La branche qui l'étudie est la physique des plasmas.</p>
+<h2 id="formation-d-un-plasma">Formation d'un plasma</h2>
+<p>Dans les conditions usuelles, un milieu gazeux ne conduit pas l’électricité car il ne contient quasiment aucune particule chargée libre (électrons ou ions). Lorsque ce milieu est soumis à un champ électrique faible, il reste un isolant électrique car il n’y a pas d’augmentation du nombre de particules chargées. Mais si le gaz est soumis à un fort champ électrique (par exemple, 30 kV/cm<sup>3</sup> pour l'air à la pression atmosphérique), des électrons libres et des ions positifs peuvent apparaître en quantité significative de telle sorte que le gaz devienne conducteur.</p>
+<p>Lorsque l’ionisation est suffisamment importante pour que le nombre d’électrons par unité de volume (n<sub>e</sub>) ne soit pas négligeable par rapport à celui des atomes neutres (n<sub>n</sub>), le gaz devient alors un fluide conducteur appelé plasma dont le degré d’ionisation est défini par la formule :</p>
+<p><img alt="Plasma" loading="lazy" src="data:image/png;base64,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" style="width:100px;max-width:100%;height:auto"/></p>
+<p>qui est l’un des paramètres importants pour caractériser un plasma.</p>
+<p>Les particules chargées électriquement qui composent le plasma sont soumises aux forces de Laplace. Le fluide est donc sensible aux champs magnétiques et peut, par exemple, être dévié ou déformé par un champ magnétique (aimant par exemple).</p>
+<p>Typiquement l'énergie d'ionisation d'un atome ou d’une molécule est de quelques électronvolts (eV). La température nécessaire pour former un plasma en équilibre thermodynamique (généralement local) est donc celle à partir de laquelle l'énergie thermique, qui peut être estimée par le produit kT, atteint cet ordre de grandeur, c'est-à-dire lorsque kT ≈ 1 eV, soit une température d'environ 11 000 K.</p>
+<h2 id="classifications-de-plasmas">Classifications de plasmas</h2>
+<p>Il existe une très grande diversité de plasmas, distingués par au moins une de leurs propriétés.</p>
+<p>Par exemple, si le degré d’ionisation est considéré, les plasmas sont classés en « plasmas chauds » et « plasmas froids ». En effet, les plasmas fortement ionisés sont nommés « plasmas chauds » par opposition des plasmas faiblement ionisés, dit plasmas froids4.</p>
+<p>L’échelle de température des plasmas va de la température ambiante à plusieurs millions de kelvin pour un plasma de fusion thermonucléaire. Il ne faut donc pas être étonné qu’un plasma d’arc d’environ 10 000 K soit de la famille des plasmas froids.</p>
+<p>Ceci étant dit, les frontières ne sont pas bien définies et parfois, d’autres familles comme celle des « plasmas naturels » sont définies à côté des deux familles susmentionnées. Par exemple, selon son site Web, l’objectif de la division plasmas de la Société française de physique (SFP) est de rassembler la communauté des physiciens des trois grands domaines des plasmas (naturels, chauds ou de fusion, froids ou industriels).</p>
+<ul>
+<li><p>Selon la pression, il est distingué « les plasmas à haute pression » (dont les plasmas à pression atmosphérique) et « les plasmas à basse pression » (comme par exemple les plasmas de gravure en microélectronique.</p></li>
+<li><p>Selon l’équilibre thermodynamique (généralement local) atteint ou non, les plasmas se classent dans les « plasmas en équilibre » et les « plasmas hors équilibre (nonequilibrium) ».</p></li>
+<li><p>Selon la température des espèces lourdes, les plasmas froids se divisent en plasmas thermiques et non thermiques.</p></li>
+<li><p>Selon la nature de la source d’énergie pour la production de plasma, on distingue les plasmas DC, les plasmas RF, les plasmas micro-ondes, les plasmas transitoires ou encore laser plasma, …</p></li>
+<li><p>Selon la configuration électro-mécanique, les plasmas couronnes, les plasmas DBD…</p></li>
+<li><p>etc.</p></li>
+</ul>
+<p>Ainsi, on distingue les plasmas naturels :</p>
+<ul>
+<li><p>le plasma astrophysique ;</p></li>
+<li><p>les étoiles, nébuleuses gazeuses, quasar, pulsar ;</p></li>
+<li><p>les aurores boréales ;</p></li>
+<li><p>la foudre ;</p></li>
+<li><p>l'ionosphère ;</p></li>
+<li><p>le vent solaire ;</p></li>
+<li><p>la queue des comètes ;</p></li>
+<li><p>la traînée des étoiles filantes ;</p></li>
+<li><p>le cœur des flammesb.</p></li>
+</ul>
+<p>Et les plasmas industriels :</p>
+<ul>
+<li><p>les décharges électriques (arcs comme dans les disjoncteurs à haute-tension ou les torches, ou d'autres types de décharges comme dans les lampes à gaz, les décharges micro-ondes, ou les générateurs de rayon X) ;</p></li>
+<li><p>les plasmas de traitement pour dépôt, gravure, modification de surface ou dopage par implantation ionique ;</p></li>
+<li><p>dans certains types de téléviseurs ;</p></li>
+<li><p>la propulsion par plasmas ;</p></li>
+<li><p>la fusion nucléaire (voir aussi Tokamak, Stellarator et Z-pinch).</p></li>
+</ul>
+<p>Il existe de nombreuses autres applications qui ne sont encore que des expériences de laboratoire ou des prototypes (radar, amélioration de combustion, traitement des déchets, stérilisation, etc.).</p>
+<h2 id="plasmas-specifiques-et-applications">Plasmas spécifiques et applications</h2>
+<ul>
+<li><p>plasma quarks-gluons, un état de la matière où les quarks et les gluons ne sont plus confinés dans des particules, mais libres ;</p></li>
+<li><p>plasma astrophysique, une matière qui représente la grande proportion de l'espace en dehors des galaxies, étoiles et planètes ;</p></li>
+<li><p>plasma de fusion, ces types de plasma sont créés avec des lasers par confinement inertiel ;</p></li>
+<li><p>plasma stealth, utilisation de plasma (état de la matière) dans la recherche de la furtivité ;</p></li>
+<li><p>lampe à plasma, qui utilise la luminosité du plasma ;</p></li>
+<li><p>écran à plasma, écran plat dont la lumière est créée par du phosphore excité par une impulsion électrique plasma ;</p></li>
+<li><p>torche à plasma, méthode de génération de plasma utilisée dans différentes applications (en chimie, traitement des déchets, etc.) ;</p></li>
+<li><p>accélération laser-plasma, méthode de production de faisceaux d'électrons.</p></li>
+</ul>
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 15/11/2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

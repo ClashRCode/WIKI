@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supercavitation - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  
+    /* Complément : listes, tableaux, citations (le reset Tailwind les neutralise) */
+    .content ul { list-style: disc; margin: 0 0 1rem 1.5rem; }
+    .content ol { list-style: decimal; margin: 0 0 1rem 1.5rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content blockquote { border-left: 4px solid #c7d2fe; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+    .content table { border-collapse: collapse; margin: 1rem 0; max-width: 100%; display: block; overflow-x: auto; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; }
+    .content th { background-color: #f1f5f9; font-weight: 600; }
+    .content a { color: #4f46e5; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content strong { font-weight: 700; }
+    .content em { font-style: italic; }
+    .content u { text-decoration: underline; }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#recherche-et-application-militaire" class="toc-level-1">Recherche et application militaire</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="titre-fiche">Supercavitation</h1>
+<h2 id="introduction">Introduction</h2>
+<p>La supercavitation est une technique de propulsion sous-marine permettant à un objet (jusqu'à présent des torpilles) de produire un gaz assez chaud pour vaporiser l'eau, qui enveloppera l'objet afin de réduire le <a href="https://fr.wikipedia.org/wiki/Frottement">frottement</a> de l'eau<a href="https://fr.wikipedia.org/wiki/Supercavitation#cite_note-a-1">1</a>. Il faut savoir que le frottement dans un gaz comme la <a href="https://fr.wikipedia.org/wiki/Vapeur_d%27eau">vapeur d'eau</a> est environ 1 000 fois moindre que dans l'<a href="https://fr.wikipedia.org/wiki/Eau">eau</a>.</p>
+<p><img alt="Supercavitation" loading="lazy" src="data:image/jpeg;base64,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" style="width:220px;max-width:100%;height:auto"/>La <a href="https://fr.wikipedia.org/wiki/Cavitation">cavitation</a> est un phénomène qui se produit quand un liquide est accéléré à grande vitesse, par exemple au niveau des parois des pales d'une hélice. La <a href="https://fr.wikipedia.org/wiki/Pression">pression</a> du fluide baisse à cause de sa grande vitesse (<a href="https://fr.wikipedia.org/wiki/Principe_de_Bernoulli">principe de Bernoulli</a>), et, quand la pression du liquide chute en-dessous de la pression de vaporisation, il se vaporise — typiquement en formant de petites bulles de vapeur d'eau, c’est-à-dire de l'eau dans sa forme gazeuse.</p>
+<p>En <a href="https://fr.wikipedia.org/wiki/Hydrodynamique">hydrodynamique</a> ordinaire, la cavitation est un phénomène qui, la plupart du temps, est fortuit et indésirable : habituellement, les bulles ne sont pas soutenues mais implosent à cause du ralentissement soudain du fluide et de l'élévation soudaine de la pression ambiante. Ces petites implosions peuvent même mener à des dommages physiques, par exemple à la détérioration d'une <a href="https://fr.wikipedia.org/wiki/H%C3%A9lice">hélice</a> mal conçue.</p>
+<p>Un objet, de type torpille, doit de prime abord contourner l'obstacle de la friction de l'eau environnante. La <a href="https://fr.wikipedia.org/wiki/Tra%C3%AEn%C3%A9e">traînée</a> d’un objet est proportionnelle à la masse volumique (ou densité) du fluide dans lequel il se déplace. La masse volumique de l’eau liquide étant beaucoup plus importante que celle de la vapeur d’eau, avec une force de poussée similaire, la torpille se déplace donc beaucoup moins vite dans l'eau.</p>
+<p>Comment créer un milieu gazeux en plein milieu liquide ?</p>
+<p>Le <a href="https://fr.wikipedia.org/wiki/Principe_de_Bernoulli">principe de Bernoulli</a> peut être vu, par exemple dans le cas d'une torpille, facilement comme le principe de <a href="https://fr.wikipedia.org/wiki/Conservation_de_l%27%C3%A9nergie">conservation de l'énergie</a>. La torpille en mouvement communiquant de l'énergie cinétique au fluide sous forme d'énergie cinétique et thermique. La densité de l'eau fait en sorte que l'énergie cinétique de la torpille est davantage "pompée" que dans l'air, ce qui nécessite plus d'énergie pour le déplacement de la torpille.</p>
+<p>Les caractéristiques visuelles d'une torpille en supercavitation sont un nez particulièrement travaillé, en général plat et une forme profilée <a href="https://fr.wikipedia.org/wiki/Hydrodynamique">hydrodynamique</a> et <a href="https://fr.wikipedia.org/wiki/A%C3%A9rodynamique">aérodynamique</a>. La forme du nez aura un rôle de <a href="https://fr.wikipedia.org/wiki/D%C3%A9flecteur">déflecteur</a>.</p>
+<p>Quand un tel objet au bout plat pénètre dans un fluide, l'eau est violemment défléchie (une balle de fusil à bout plat par exemple). La vitesse de l'objet est telle qu'une bulle est visible sur les côtés les premiers moments où l'objet pénètre l'eau.</p>
+<p>Cependant, ceci n'est naturellement pas suffisant pour réduire la friction et la pression de l'eau qui est toujours subie à l'avant et qui restreint la vitesse de la torpille ainsi que la traînée qui s'ensuivra. La déflexion naturelle de l'eau ne peut à elle seule engendrer une supercavitation qui vaporiserait l'eau en avant de la torpille et avant même qu'elle n'entre en contact direct avec l'eau.</p>
+<p>La création d'une supercavitation simplement par l'exercice d'une force plus grande sur l'eau n'est pas réaliste étant donné que la friction devient proportionnellement plus grande.</p>
+<p>Afin d'engendrer une supercavitation, la torpille doit injecter un gaz chaud à l'avant de l'objet qui peut potentiellement vaporiser l'eau en plus. La torpille pénétrera continuellement dans ce gaz et cela formera un enduit gazeux réduisant le frottement de l'eau. D'où la SUPER cavitation, une SUPER bulle ; un néologisme par analogie avec le phénomène de cavitation.</p>
+<p>Le bout du nez de la torpille <a href="https://fr.wikipedia.org/wiki/VA-111_Chkval">Chkval</a> semble de plus être conçu pour distribuer ce nuage de gaz autour de la torpille et l'adapter à des changements de directions. La torpille est censée être contrôlée à distance par <a href="https://fr.wikipedia.org/wiki/Filoguidage">filoguidage</a> ordonnant une plaque circulaire mobile sur le nez et modulant l'éjection de gaz de 8 huit sorties d'éjection autour de la tuyère principale.</p>
+<h2 id="recherche-et-application-militaire">Recherche et application militaire</h2>
+<p>Dans les années 1960, les <a href="https://fr.wikipedia.org/wiki/Ing%C3%A9nieur">ingénieurs</a> <a href="https://fr.wikipedia.org/wiki/Union_des_r%C3%A9publiques_socialistes_sovi%C3%A9tiques">soviétiques</a> ont développé le premier projectile à employer la supercavitation : une <a href="https://fr.wikipedia.org/wiki/Torpille">torpille</a> <a href="https://fr.wikipedia.org/wiki/VA-111_Chkval">VA-111 Chkval</a><a href="https://fr.wikipedia.org/wiki/Supercavitation#cite_note-periscope-w0004768-2">2</a>. Celle-ci peut voyager à 100 m/s (360 km/h) dans l'eau, soit 3 à 5 fois plus vite que les torpilles conventionnelles. Des vitesses encore plus rapides, d'environ 140 m/s (500 km/h), ont été également rapportées. Cependant si le projectile gagne en vitesse, ce genre de torpille perd en maniabilité car elles obligent à un tir direct (droit) sur la cible ; elles ne peuvent virer comme les torpilles traditionnelles car cela romprait la bulle.<a href="https://fr.wikipedia.org/wiki/Aide:R%C3%A9f%C3%A9rence_n%C3%A9cessaire">[réf. nécessaire]</a> On a proposé diverses méthodes sous-marines de propulsion pour atteindre la vitesse nécessaire. Le concept le mieux adapté étant semble-t-il un moteur de fusée brûlant de l'<a href="https://fr.wikipedia.org/wiki/Aluminium">aluminium</a> avec de l'eau.<a href="https://fr.wikipedia.org/wiki/Aide:R%C3%A9f%C3%A9rence_n%C3%A9cessaire">[réf. nécessaire]</a> Cependant, un moteur de fusée conventionnel est utilisé pour propulser la <a href="https://fr.wikipedia.org/wiki/Torpille">torpille</a> à supercavitation <a href="https://fr.wikipedia.org/wiki/VA-111_Chkval">Chkval</a>.</p>
+<p>Hormis la Russie, l'Iran (technologie du VA-111 Chkval)  et maintenant l'Allemagne, il est probable que les <a href="https://fr.wikipedia.org/wiki/%C3%89tats-Unis">États-Unis</a> et le <a href="https://fr.wikipedia.org/wiki/Royaume-Uni">Royaume-Uni</a> (respectivement SuperCav et <a href="https://fr.wikipedia.org/wiki/Torpille_Spearfish">Spearfish</a>) possèdent également de telles torpilles contre lesquelles aucun sous-marin à propulsion classique ne peut rivaliser en vitesse.</p>
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 15/11/2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

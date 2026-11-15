@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relation de conjugaison optique - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  
+    /* Complément : listes, tableaux, citations (le reset Tailwind les neutralise) */
+    .content ul { list-style: disc; margin: 0 0 1rem 1.5rem; }
+    .content ol { list-style: decimal; margin: 0 0 1rem 1.5rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content blockquote { border-left: 4px solid #c7d2fe; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+    .content table { border-collapse: collapse; margin: 1rem 0; max-width: 100%; display: block; overflow-x: auto; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; }
+    .content th { background-color: #f1f5f9; font-weight: 600; }
+    .content a { color: #4f46e5; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content strong { font-weight: 700; }
+    .content em { font-style: italic; }
+    .content u { text-decoration: underline; }
+  </style>
+  <script>window.MathJax = { tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] } };</script>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.js"></script>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#systeme-centre" class="toc-level-1">Système centré</a>
+            <a href="#dioptre-spherique" class="toc-level-1">Dioptre sphérique</a>
+            <a href="#lentilles-spheriques-minces" class="toc-level-1">Lentilles sphériques minces</a>
+            <a href="#miroirs-spheriques" class="toc-level-1">Miroirs sphériques</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="titre-fiche">Relation de conjugaison optique</h1>
+<h2 id="introduction">Introduction</h2>
+<p>En <a href="https://fr.wikipedia.org/wiki/Optique">optique</a>, une relation de conjugaison ou formule de conjugaison est une formule mathématique reliant la position d'un <a href="https://fr.wikipedia.org/wiki/Objet_et_image_(optique)">objet</a> à celle de son <a href="https://fr.wikipedia.org/wiki/Objet_et_image_(optique)">image</a> par un <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_optique">système optique</a>. Elle tire son nom du fait qu'en <a href="https://fr.wikipedia.org/wiki/Optique_g%C3%A9om%C3%A9trique">optique géométrique</a>, dans les conditions de <a href="https://fr.wikipedia.org/wiki/Stigmatisme">stigmatisme</a>, c'est-à-dire lorsque tous les rayons issus d'un point objet émergent en sortie du système en un point unique, ce point est appelé image conjuguée du point objet. On dit aussi alors que les deux points sont conjugués. En pratique, les systèmes optiques n'étant pas rigoureusement stigmatiques (à l'exception du <a href="https://fr.wikipedia.org/wiki/Miroir_plan">miroir plan</a>), les relations de conjugaison ne peuvent être appliquées que dans les <a href="https://fr.wikipedia.org/wiki/Approximation_de_Gauss">conditions de Gauss</a>.</p>
+<h2 id="systeme-centre">Système centré</h2><p><img alt="undefined" loading="lazy" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCAC1AeoDASIAAhEBAxEB/8QAHAABAAMBAQEBAQAAAAAAAAAAAAUGBwQDAggB/8QATxAAAQQCAQIDAwcHCAYIBwEAAQACAwQFEQYSIQcTMUFRYRQXIjJxgZEIFSNWlKHSFkJSYoKVsdEzVXKSosEkJjQ1U3aTs0NEY3SDhKPC/8QAGgEBAAMBAQEAAAAAAAAAAAAAAAECAwQFBv/EADsRAAIBAgMDCQYEBgMBAAAAAAABAgMRBBIhMUGhExRRUmFxkbHRBRUiMjOBorLB8EJicoKS4QYWI0P/2gAMAwEAAhEDEQA/AP1SiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiieUcpxnD8S7KZaV8dcSxwtEbC973yPDGta0dySSOw+KAlkREAXNJk6UV+LHyW4GXJmOljrueBI9jddTg31IGxs/FdKpuVo4KTxSwVyxlJYs3FjbbK1IRktmhLmeY8u12LSG9tj1QFyREQBERAEREB43btbHVJrlyxFWrQMMkssrg1jGjuSSewAXpDNHYiZNC9skcjQ5j2nYcCNgg+5V/wARa2Lu8Ez9bN3X0MZLQmZatMZ1uhiLT1OAAOyB7NFSfH4q0OBx0VOZ09ZlWJsMrhovYGDpcR7NjRQHeihuZchfxPi2Tz0dCXIfm+u6y6tE8Nc9re7tE+4bP3KRxuQrZbH1chTkEta1EyeKQejmOAIP4EIDoREQBERAEREAREQBERAEREAREQBERAEREAREQBEVEs56UZ7lE9jIZSPF4mOGJrasYcBL5ZkkPV0kDQfGNOOhok9kBe0UVxWTKy8cx0mbkryZF8DHTvrkFjnEb2COx7a7jtveuylUAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAFmOf/68eMOJwA/SYzicQzF4erXXJAW1mH4tb1yfgtHv3YMbRsXbUgir143TSvPo1jQST+AKoHgbRsT8YtctyDC3IcruSZaQO7lkLvowM37mxNbr7SgNGREQBU3KycfHilgmWYbhzpxts1ZGn9C2HqZ5gcN/WJ6ddverkqblcvi4fFPBYubDRzZOxjbc0GRL9Ogja5gdGG679Wwd79iAuSIiAIiIAiIgK74ivxMfBM+7PR2JcUKExtsrnUjouk9Qb8deik+Pmq7BY40WyNqGrEYWyfWDOgdIPx1pRniNkKOK4Hn72TxzMnSr0JpZ6b3dIsMDSSwnR1sdvRSXHp4LWBxs9auK0ElWJ8cIOxG0sBDd/AaH3IDssQRWq8kE7GyRStLHsd6OaRog/cs88DrElDj+S4dZe51niuRlxgLz9J9ffXA/7DG8D+ytHWaP/wCq/j1G4Doq8uxBa7+tbqHsfvief91AaWiIgCIiAIiIAiKs85ymVqxYnG4OZsGRyeRhgEpY1/lQNPmTv6Xdj+jY5v2uHtQFmRAiAIiIAiIgCIiAIiIAiLwvWTSpT2RDJMYY3SeXGNufoE6A951oID2eCWkNIBI7EjelUYODXI8ZksbJnJDDlbE09uSKs1krvN7Oa12yG/R00HRIAHt7rLuL/lZ0bte3NyDi+SptjlAjkpDzmBp/myF3T0vHtH+Cnq/5UnCrTxHDUy7nuOg0siBJ+wyLfmtdw5VU5OPSotrxSsdNDC1K+lOzfRmin4N3NcpU4MdTgp1YxFXrxtiijHoxjRoAfYAF7LP63i8y4zrrcL5fYZ/SipMePxD17fOlN+ofNf7uH8S4niIJ2b4M6/cuM6nGPqXpFRfnSm/UPmv93D+JPnSm/UPmv93D+JRzmn0+ZPuXGdTjH1L0iovzpTfqHzX+7h/EnzpTfqHzX+7h/EnOafT5j3LjOpxj6l6RUX50pv1D5r/dw/iT50pv1D5r/dw/iTnNPp8x7lxnU4x9S9IqL86U36h81/u4fxJ86U36h81/u4fxJzmn0+Y9y4zqcY+pekVF+dKb9Q+a/wB3D+JPnSm/UPmv93D+JOc0+nzHuXGdTjH1L0iovzpTfqHzX+7h/EnzpTfqHzX+7h/EnOafT5j3LjOpxj6l6RUC14rWIq00jeC8xY5jHODpMeAwED1cer096rPFfygLuZc2Gxw/IWpPQuxYMv8Awkf/AOlSWMopqLe3sZ0Uv+Ne0KtOVWENI7fij6myoqYPEmUgH+RXMR/+gP40+ciX9SuYfsDf41pzin0nJ7oxfV4r1LmipnzkS/qVzD9gb/GnzkS/qVzD9gb/ABpzin0j3Ri+rxXqXNFTPnIl/UrmH7A3+NPnIl/UrmH7A3+NOcU+ke6MX1eK9S5oqZ85Ev6lcw/YG/xp85Ev6lcw/YG/xpzin0j3Ri+rxXqRnjtcml4dBxmm5zbnKL0GGjLfVrJHbldr3CNr/wAVoFKpBQpwVK0YjggjbFGwejWtGgPwAWMZfmLuQ+LOCsHjXIXw8cpT2XUhVBsCefUbJHM6tBgYH6O/U+i1zB5h2aofK3Y3IY89Tm+Rdi8uTt7dbPY+xWjVjJ2TMa+Ar0I56kbLvX6MkUVTp8/kuXIax4jyqASvDPNmpBrGbOtuPV2AUryLkLuPxQyNw+WyfmuLenHwCUs0PV2yNBFVi1mTE8BXhUVKUdXs1XqS6qOTztqv4mYTDMxdeWtax9qd910RMkLmOYAwP9AHbOx7dKY49yB2fhmldiMrjPLeG9GQgETn9t7aNnYVOynOeTQ85qR1eN8hdgIYp4bbW0A4zTdQEb2O39TQcfUeo7FHVikm2I4CvKcqajqtuq9TR0Udncy7CUBbbjcjkSXhnk0YhJIN+3Wx2C5ePcnfn5J2OwWaxnlNB6shXEQfsns3udka/ep5SObLvM44Wq6TrJfCu1eW0m0VXyvOZMXkJ6Y4rya4Ijrz6tMPif2B209Q366+5TF3Lup4b85jHZCwfLbJ8khi6p++vo9O/Ub7jfsKKpF37C0sFWiotr5tmq9fMkEVewPL3528aruO5/HARl/nXqojjOiB076j37/uK+c5zF+Evmo3jfIcgAxrvOpVRJH39m+odx7VHKxy5r6FuYV+U5HL8Vr7V62PTxAyk+E4TnMlWpRX56tGaZlWWMvZM4NJDS0dyD7lI4Gy+7hMfZkhbA+atFI6JrekMJYCWgH0A3rSh+SZfNWPD/JZPj9K5WzBoyyU69iAGZkwB6QWdwTv2d19cK5jj+TY2CMXo5MpFCwXKz2+XLHL0jq3GdEDe/ZpTnjdK+0z5rWyymou0dG9y7yyLNfHLeJw+C5ewadxzM1bcrh6/J3u8mUfYWyd/sWlKveIeBHKOC5/Clu3XaE0TO29PLD0n7naKuc5YWkEAg7HsKKq+FWfPJ/DjjeXe7qlsY+Eyn3yNb0v/wCJpVqQBERAEREBmv0JPEjPyXMlZ/NGGxTJr7HSOEcksskkjepoPpHFGAANdnd97Ut4USSXOGYqXIl02QbG6x+m2+StHO4yxxdZ7/RidG319GjatjcdSa+1I2pXD7ZBsOEY3NpoaOv+l9EAd/YNL+0cfUxldtalWirQt9I4mhrR9wQHuiIgCIiAIiIAiIgCIiALwyF2HG0bF6y7ogrROmkd7mtBJP4Be6+JoY7ET4Zo2SxSNLXseAWuB9QQfUIDBPyT+anmOE5VUuiN87ctJkCw6P0LG3enu6mu/FaZyDwf4NyTZu8dpNkP/wASBnlO/wCHQP3hRngzi6FGryd9SjVrv/lDkIuqKJrD0Nl+i3sPQewexaKi0eZbSk6UJ6TVzDsj+S7ioJjY45mbmPkB21rnOHf/AGoy0/uXCOFeKvFQ4Qcj5JZjaN+ZXtR3xv3+XMA7XwBW/oute0calZVpNdErTXhNSXgcrwMVrTk4/f1uYNV8Rue42VtebkfGJ5v58Gex0+Nl37Whzdx/eSrTU8S+cxRedb8OjkK/1vlGEykNlpb8GnRJ+C0m5QqZCEw3K0FmI+rJmB7T9xVUt+E3GJZjYoQWsNZJ2JsZYdAQfeAPo/uU+8qn/wBaFOf2cH+FpcCMmJhsalw9f0IgePPHKh6c7ieTcecD3GSxUjQB79s6hr4qdxPixwTNlraPLMO97jpsb7LY3k/Br9E/guI8a51iARi+U1srFrXkZitvY93mM7n8FBZaKKcOHM/CardbrTrePgitdveBoPH49k577Ol9WjOn2pqS8LechzqUfqJr7fqrmpQWYbLPMglZKz06mODh+IXptYhR4j4NZSyRirtnjl0/zYL09GRrvYQ156dqyM8NOT0Yw/jvinyARj6TG5NkV9pPxcQCQtYUfZ9bWjiP8otflczenXVRXhZ9zuaWizYQ+MuH+pa4fyCFvc+bHLUnd8B07YPvT5xuc4vf578L8m9jO7pcTditAj4N7OJ+C0901JfSqQl3SS4Syvgacot6NJRZuzx84lXc1magzvH5CdFmUxksXT9pAIH4qxYjxN4VneluP5Th55H9mx/KmNkP9lxB/csavsrGUlmnSkl02dvHYFOL2MsyL5imjmYHxva9p9HNOwfvC+trgtYufxzWvaWPaHNcNEEbBC+IK8NWIRQRRwxt9GRtDQPuC9EQm7tYIiIQEREAREQBCi8L9qOjSsW5TqOCN0rj7g0En/BAZ74VgZflviDycjfynMDFwn1/RVIxH2+Be6RaSs88Aaclfwpwlmcf9IyIlyUp/pOnldJv8HN/BaGgCIiAKrZHH8jk8Q8Peqzvbx+KhZjtxCYBrp3OZ5ZLPboB3f2K0qoZTAy2PE3CZoZWrFHVx1qB1F0hEsxe5hD2t9CG67n2bCAt6IiAIiIAiIgIPnNTMXuH5mrx+V0OXmpyspyNk8stmLT0kO9nf2pjeN1ZI8RkctSgmzdKuxptuAMgf5Ya/wCmPXuT+K8/EHFPznB87jI70GPfbozQttTv6GQlzSOtxHoB67UlgappYPH1XTssOhrRRmVh22QhgHUD7QdbUNJ7S8KkoO8Hbdp0PaRHIstyfC3hapYaHL4gRjzYa7+m5G7vtzQfovGtfRGip3H3W5KhXuMinhbOxsgjnjLJGg99Oae4PwXQuDOYWvyDGS4+zLZijk0eutM6KRpB2CHD3EBUyyTbTv2HRytKpGEJRUbbZK97dqvZvut2lG8CyKXH85x8DpGCz9+ixvujMvms+7plC0hYdxWzyLgviHzPFUaM3JIg6rkLT3SCO1IJIy1r2D6riPLLXD1JaD7Vp3HPEDAcnkdWqWjBeZ2ko22+VYjPuLD6/dtVjWi3llo+396m1X2ZVjB1aTU4LfHW3etsful2FjREWx5wREQBERAEREAREQBERAEREAREQBERAUTwj/7Fyb/zLkv/AHVe1RPCP/sXJv8AzLkv/dV7QBERAEREAREQHBk8Dic1GY8ljalxvunia/X2EjsqxJ4T4iq8y4G/lsBL6j5DacI/vY7YI+CuyLKdCnPWS1MamGpVHeUVfj4lG/N/iPhO9TK4nkELf5l2E15iPg5n0d/anzj3sUdcl4jmMeG/WsVmi1APiXM7gfcryipyEo/JNrv189eJlzaUfpza79Vx14ldxXOuKckaYaeYpTOcNGCV3Q8/Dofo/uXzlvDfhmfDnZHjGGsveO8pqsDz/bAB/euvMcM47yAH854alZd/TdEA8f2ho/vVfPhf+bdu43yXN4Y/zYRN58A/sP8A81rSxOLw7zQf3i2n+/uQ3Xj80VLu04P1OB/gFw+B7pMM/NYCU92vxeSli6D7wCSB+C+T4bc2xX/cfijlyxn1YsvViub+Dn9nFSBk8S8J9aHC8jhH9AmrMfx21ec/i3BiYZDn+O5zESsaSPNg64nnXZokb27rv/7JiV9ebf8AXFS4yTXEpzmjH50496a4rTicZl8ZsP6wcQ5DA3+g+WpO/wDHbAqdz3x/5nwSfFw5XgkePlnfIZGSXWzMsMaBvy3M7tILh3IP2LVOIeI3H+ZxNFC2I7etvqTfRlb79D+cPiNqxS1YJ3tfJDE97fRzmAkfiu3Be2cJKaqV8NCcey8d3Y7fh8DeElVhmpTuvEzDjX5R/CM1VjfkprWBnd2Md+FwZv4SNBaR9uj8Fe8TzTjWdaDiuQYq9v2V7bHkfaAdhSsteGeIxSxMkjP81zQR+BVay3hZwfNlzr3FMPI93rI2s1jz/abo/vVKlT2dVk3GE6fc1PzUXxNEprfctIO0WffMngaZJweX5NgD7Bj8tKGj+y8uGvhpDwrn2N74rxIlssHpDlsZFNv7Xs6HLPmmFn9Oul/VFr8udcSc0t6NBRZ+ch4tYsbsYTiudYPT5FclqSH7pA5v70HihmMfsZzw55VU16vpMjvRj47jdvX3J7qrS+m4y7pRv4XT4DOt5oCpvjJlDh/CrldtrulzcXYY0+5z2Fg/e4Llr+OHA5JfItZo4yf0MWRrS1nD/faB+9QXjhyTDci8J8nWw+Xx+Q+Wz06v/RbLJOz7MbT9Un2bWFbAYmgr1acortTRKnF7GaDw3GDDcSwuMa0NFShBBoezpjaP+SmF/G6A0BoDsv6uQsEREAVNyuLxE3ingsjNmBFlYMbbigx/l7M8bnM639Xs6SB2+KuSp2VHHvnSwRsuujPfm238kaz/AEJh6meZ1f1t9OvvQFxRFSMpl7uG5hTyL7krsHbsfmmeBztxwzOaHRzD+jt+4j319JpXRh8O6zcYvVJvvtu73uIbsXdFGccgkixrZZZ7UzrDnTj5RIXuY1xJa34AAgfcpNZVI5ZOKd7EoIiKgK74jUcfkuB5+llcgMbQnoTR2LhZ1+RGWkF+vbod9KS49DBXwONhq2BZrx1YmRTAa8xgYAHa9mxo/eo3xFGIPBM+M+6y3EmhN8rNb/SiLpPV0/HXopPj4qjBY75CZDU+SxeSZPrdHQOnfx1pAd6KnZ7P5HC8qoT/ACjeDknZj7cTowfKmlH6KQO9QOrpYQf/ABQfYulmIu5qSlPZvyz1Ici+50P0whsfUImDpA2OrTjvf1Qu3mbjGM5ySTV/PTv9UVzbivwg0/yh7LB2ZkOKskPxdDaLf8JQrZyThWB5YxoyuPjllZ/o7DPoTRn+q8dx/gqhyF3yXx64hIOxtYbIwE+8NdE9aWuCUVJWkro3o16lGaqUpOMlvTsygDGc64Z3xd1vK8Y3/wCVvPEdxjfc2X0f/aUrx/xJwectfm+Z82Kyrez8fkGeTKD8N9nfcValE8h4pheVVfk2Yx0Ftg+q5409nxa4d2/cVjyU4fTf2frt8z0ue4fEaYuFn1o2T+8flf4X0slkWOcz45z/AIjWhr8My2XyePc/zPJkDZJavSQQ0PP0nNPp06PYa9qsXBfFSPMmPEcmrPweeaNGGywxMsfFnV7f6v4bVY4pZ+TmrPh9mbVvYVTm3OsNNVI70vmS6ZR2rit97amgoiLqPCCIqhyu05/JsRUjit2GV4LN6zDWeQ57GtDGtI6gCC5+9e9oVJzyq50YXDuvPJe2jfgm+Owtc1mCu+JksrI3TP8ALjDnaL3aJ0PedAn7ivRQlHj0Lb8GScZR0tL2V3vc9sUjmhpcCT27bHbXqVNqYtvaVrRhFpQd+nvCIisYhxDQXEgAdyT7FzSZKpFkYcc+ZotzRPmji0dljC0Od8AC9o7+9VDxVsvt8UzeMhZbIGOnmlfXYTohhLGEj02Rs/AfFWHB14bor54kvsW6MDAT6NZov0PtLtn7B7kBLoiIAigJMHnnYaOm3lVhl5she698ihLnt7/R6OnpHs7gb7Jl8Hnr0ddtHlM9AxweXKW04X+dJr/SHY+j376boICD8IxqlybY1/1lyX/uq9rIvA7wu5p4fTZR/IuSx269qcyipC4ytmkO+qdz3tDmucfUD113JV/p4XOwUr0NjlNizPONV53U4Wmse/cNA07+17kBPIoCXCZ5+Ghps5VYjvMlL33hShLpG9/odBb0j1HcDfZe1vE5me1Qlg5FNXhrhgsQirE4WiD3JJG27Hb6Otb7ICZRRMOMyrM5Ldkz00lB4IZjzWiDYzoDfWB1HuCe59q56eFzsFG9DY5TYszzgfJ7BpwtNX19Ggad7Prb9EBPIoCbB59+HhqR8rsR3WSFz7wpQF0je+m9Bb0jWx3A32XtbxOZmuUZoORTV4IGtFiAVYnC0Qe5JI23fp9HWkBMooqvjMrFm5rsuemmoPBDKBrRBsZ7aPWB1HWj6n2rmp4TPQY+7XscpsWbM2vIsupwtNb36aBp2/6yAnkUBNhM9Jhq9OPlViK7HIXSXhThLpW99NLCOka2O4G+3xXvaxOYmv0Z4OQzV68AYLFcVYnC0Qe5LiNt2O30da9iAmEUTBi8tHmZ7kufmloyAiOia0QbEe2iHgdR1o+p9q56mEz0OOu15+VWLFmbXkWjThaa3v00DTt/1kBPLlymLp5nHzY+/CJqs7emSMuIDh7tggqKnwefkxFepFyuxDdjeXSXRShLpR300sLeka2O4HsXvaxWYmyNKxByGavWha0T1RVicLJB7kuI23fp9H0UNJqzIaTVmQjvB3hHrFhvIkHdskViVrmn3g9XZfR4dyDFgfmLmF4Mb6V8pG20z7Ors8D7yputi8tFmbFybPTT0ZGkR0TWia2InWiHgdR1o+p9q56mEz0GMt1rHKrFm1NrybZpwtdX166aG9Lt/FY81pL5Y27tPI5+Z0V8sbd2nlYjDnua4j/vPjNbJxD1mxFn6X/pyaP4Er1r+J/HHStgyE1nDWHdvKydd1c/7xHT+9dtjB56XEVqkXKrEN2J7nS3RShLpgd6BYW9I1sdwPYvvJYDIZG7Ue7NOFGMNFik+nDIyyQe5JcCW79O3onJ1I/LLxXpYclVj8k/FX8rfqS9W5WvQtmq2IrETu4fE8OafvC5pc7ia+Sjxk2Tox35RuOq+dglePeGE7P4KnfM/QGcs5KHJ2qEcoPlQY5javknto9TNF2u/r71jGd8Jedt5RcqRUrmSsWLD5IcxI9vRICdskkfvbXNGtjWx0/RB7LKrXrU0vgvruf+jGtiK9JL/wA82u58dn76T9TJoLL7GT5/jcPVp5WHKx2ICfNyuJgr3PlA+MTgC37hvspSDmeNy+aqOg5t+bWxBrZ8XbqRwumcCd7MjQ4E7A00+zstliKbdm7Pt08zdYqk3Zuz7dPMu9mpXuxGKzBFPGfVkjA4H7isc8b/AA+4lDiMPNX49jKtm5nsfUfNWgbE9zJJgHjbdHu3Y961Cnjso3KWbsnIZbNGZrhDT+TRBsJJGiHgdTtaPqfas18X8RmanGMBBd5FPfsScpxflWnVImGv+l0CGtAa7R79120MXWoO9Gbj3NryN3FPadeS4zivD3JUYcLkeUURekEb2tsTWq8UQ293S1weA/6AHoSA4/apLJY3n7LhnxHNqph0AKuRxbHt2P68Zae/2KcyXEcrkauMI5RahyNEy7utqQkzB40QWFvSNDQ2B/ivN/EM+6xHI3mVtsbQOqP831tO+/oXp+9HJRlOzlvckpX17U9itvv0FMnQeLM7zOhiuuziMPlrzI9llK26uJH+4CRpA+9y8MV4lZGe02tl+CclxjiCfObGyzCNf1o3E/uXbHxDPtnkkdzK2+N2+mP831tM+/oXieI52vTl8/nFkHYImfj6rQwf7mlly+GaanTjd31WZNfpru077E2l0npc8W+E4262jkc9Dj7Lmh4juRyQdj7dvaB7FGz8w4bf8TOPQQClkMlax1p1PJQXGuZHH1N6owA7RLiO3+yfivS7xi7dowRWOdsla4kdUtCm9svwAczX4L8xcv8ABLl7PFKbj1Wm2WTKTy26l2MMiiMHV3kPToM6OoAtAHoOkdwuavzXIuSTzb7u6/Kv17yVm3n7ZdtzSAS0ka3r0VTZjeP8mwuT4rPnoMw9znm35U0Xnwuc/qBIj10kO1rY9gVJh8AL+HqXfzH4hcnqzSV3sgh88eQHlhA6mkHbd/ePZ3CyHwt8EPEyhzyGfpt8WFPzBLk+mOQEEEdLGkkSBx18AO/qAvVwmCwsoVKlPFKLhZq8bNu72at6bdL9xSUpaJxP2AxjY2BrQA1o0APYF/dqszcc5K/j9OhFzOzDkIWvE2RFGFzrBO9EsILW6+HrpR+F4fzOhlq1vIeI1vJVInblpvxleMTDR7Fze49/b3LyI0KclJuqlbZpL4u74d/bYvd9BdkVMzfEeY5C/JPj/EO3ja7nOLK7cZXkDAT2HURs6Hbuu3F8d5JT4/YoXOZ2buRkl64si6jCx0Le30AwDpPoe579/gqyowVJVFUTb/h+K64W8GTd3tYeJWSxGK4Fnbmdqtu42OlL8oqmXy/lDenvGHbGi70HtUnxm5Sv8cxlrGtZHTlqxOhY14eGM6Rpuwe+vT7l+efyg/Djnb+N1sjZ5XY5RTxhksWarq0Vd0DNAecGs+uB3B9o3se1TXgp4Z+IFDg0Tjy+1xqO1ObUNFtOGwRG5o05xf8AVLvXpHp233JU8hDleT5RW63xW/Lm7NnDUXdr2NPzFLFz4y9xrkfIMaLebdIYQC2vKSdBhYxzyXOYWt0R/RCtVGq2jSgqtc57YY2xhzvU6Gtn4r8heJvgd4mZDn1iby7XJflr2GLK6ZG3WgAHgHUfT6du2hseq3LFcY8XaFBtWzzLE2vKjYyORlQNkOho9RcxwO9epXr43A01QpuGKjPMnJx2Weits3rpy7DOMnd3idHN9R+M3hrJ229mWiP/AKDD/wAlpK/NPPMj4gY7n/D35Srln2acl51SalHUsy2WeS0PdHG0DuB6hw9PTurEfF2CC3H+duX8lwLTofJ8nxxkXV8eoNOgueHsPFTV6aUtnyvN+W+zfwuTysVtN0RZViOXQZeWT5F4s0rYftscTYKjXMJ9NAgE/gun5dyaDM18IeT5W061E9/y2LDRObDp8Qbotb0kd3BxPpsei5pezq8XlkrOzdmmtnei2dGmLhzGCxfIKhp5WjXuwH+ZMwO0feD6g/EKPuYXOz0aUFflM9axAD59htOFxs/a0jTf7K6Z8ZlZM5Fdjz00VBoAfjxWiLXnR79ZHUPYex9i89pNWZrCpKnJTg7Nb0Vz+SnJeKfT4pl/ltNvf81ZZ5e0D3RzfWb8AdhdeN8Rse62zG56tY49k3HQgv6Ech/+nKPoPH3g/BSlTEZmG1fln5HPYina4V4jViaKpJ7EEDbtf1t7Ufd4hkcrxyxiMpnzfllkDhZnx8Dulvb6Pl9PSfb31vuseScfpv7bv9fvQ9Hn9Ovpi4XfWWkvvul91d9Ym8hnsTiXwMyOUo0nWD0wtsTsjMp9zeojZ+xecWDrxZuXMCaw6xLEISHSbYGAkgAa7d3Er83eIPgtyjGcgazFUL2eoTQxxwTNIcYtAB0bmk6jb1bcNfR074FaLwzPZPi/5lw/MMxkMG+pXbXdXt14n1bZAIBbaAJ9OnsSPq/FZqveTjVja2x7jsqey1GhGrgavKOaeaKVpJX3q7ffbZ2rU15FCUMZlmy3p5OSy24LTXfJWfJYQ2tsktLS0fT0CPrb3peceEzzMLLTfyqw+86UPbfNOEOYzt9Do6ek+h7kb7rrPnyfRQVzC52erRir8osVpoBqxM2nC42j27kEab7fq69V8ZrB56/YsyUeTz0YJa74o6zasTmxyFhaH9euvs4h2t+xAdg43jPkN6iYpnQX3OdYa+xK4vLho/SLtgEDWgQF2Y3H1sTQgoU2GOtXYI4mF7ndLR2A24k9vtWOfk6ce5VT45nZ8ryWWwyzbnrVoy4z/J5YnvjfMDJ73DYb6aAJ7krTGYTPNwz6buVWHXjL1tvfI4Q5re30OjXT9+t90BPooK5hc5PXx8dfk89aSu3VmRtOFxtnt3II0z0P1devwU6gCIufIy2oKUslKsy1Za39HE+Ty2vPuLtHQ+4oCGynKX0eV4bCRV2vivumjmnc7XlPbEZGsA9pIBJ9w171YVSMpxTIm/xvI04nS2al83bvnXXBv04ZI39LdEE7k7a0NN0rugCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCgrWbtM5FJjIW1Gww1G2ZJpXHbC55a1uh7+lx+5TqreMwEk+XymQy9KAvsTwvrkSB5YyIN6B6DR6g533rKq5aKJjWcvhUOn9Cbx8lqWvu7FHHMHubqMktIBIBG+/caXxkcPjcxF5WRoVbjNa6Z4mvH7wuxFfKmrPU0yprLLUp7/C/EVnGTB3MpgZD3/6BacGE/Fjtt18NKj+LWN5RiOP4+xks3Wy9CpmKE7C6sIZxKJ2+WCWnpLS4gE63o7W0LOPyh43Hwizlhm+uoa9tv/47Eb/+Sy5tBfLp3acNhhzSmvk+HuduGzgWjAcgy2Qtvp5XjVzFytYX+d5rJoHdwNB7Tvff0I9ikDn8S3IvxrslTbdZourumaJBsbH0SdrtikbLG2Rh214DgfgVG5fi+Dz4IymKpXCRrqliBcPsd6j8VbLOMbJ3fb/ovlqRjaLu+3/XoSiq/ibamg4RlIawDrV5jaFcEb3JO4RN7fAv39yl7GJczCfmzFWn4ssjbHBNG0SGEDWtB2wew13UFW4xmL92OLlUmGzdGv8Apa83yV0U7JQRp3Tst9/cdwVLm00mv358CXUakk4vXfu9eBFDGPl5rxnAyUqMVPCU5rzWRbeGnpEEW+po12dIf7O/YprI5XkEPiHh8ZWqudgp6FmW1P5JIZM1zBGOv2bBd29ulzZTO8e4vyWxcvYO/WnfG1r8syk6SKRut9Je3Z0CT2I1va87+SyknNuP5arkI2cSmx1gzvfOyNkkziwxHpcQ4np6vT09qKrBtpPVBVqbbinqtpdk0PcvCpfqXw51S1BYDTpxikD9H46XhJncVFI6OTJ0mPaS1zXTsBB9xG/VWzLbcvnja9zuReVm3XpxedZnihj2B1yPDW7+0rzq5Ojec5tS5WsOaNuEUrXED46KnMr2JzK9rnSfRZIzk+UscDsXIL2YbkczkPJxkr4z0wsks9EPS7XSQI9P772tDz1yjYpWsa7OQY6eRhjMgljEkWx6gO9Do9thRL+H1IcXx1hzBjx+BMUsW2RCOXoYWMLjr0DXdta76KZl0kZl0nlyjH5TAYjkfIsO11/NR4zyccx0Zlf+ja5wbr+cXPcSQPXTfcrNhJrVnDUZ7zOi3JXjfM3p6el5aC4a9nffZQvMMhayfEs1V4lkK8udfSl+RCCxH1iXp+iQSdDvrueykMdk48fi6NfNX60ORFaLz2zTsDi/pHUfXv3B7jsozK17jPG17kvoe5F5Mt15a/ylk8T4NF3mteC3Q9Tv00vCDNYy1K2GDI05ZHfVYyZrnH7ACpzLpGZdJQeZuEnjZ4cxf+HXy03/APKNv/NaRJEyaN0cjGvY4aLXDYI+xZlyKzWZ48cdfbsQ14aWBuy+ZK8MaHSSxMA2e2yAe3wKvn8p8F/rrG/tUf8Amo5SKe0h1ILRsjMt4ZcKznUchxbDzvcOkyfJWNfr/aaAR+KrMn5PvD68vnYSXN8fmA+i/G5GVnSfeA4u9oV5/lPgv9dY39qj/wA0/lPgv9dY39qj/wA130fbWKorLTrtLozaeGwo5UntaKP83PPMV3wnijkZGN7iHL0orXV8C/s7X2L+fKPGjD766XEOQRN7jyZZakz/AIfS20K8/wAp8F/rrG/tUf8AmoWt4r8Os3ZqRzUEE8MjoiJtsa4g62131SPiCrv27urxpy74xXGOV8TOVWjGyc7X7TH8T+U5yKpyW/j8/wAPklrR2XxdGOJklrdJ0Wk66ZdEHuOladS8duBWSxlrMPxU7hsw5KtJXc34Eub0/gSrc3keEe0FmXxxb7CLLNf4rzs5bj9yIw2b+LnjPqySaNwP3ErrxXtP2XiGmsPk/pn+ji/3vLRlb+NM+sVyfA51odi8zjb4I2Pk1lkn+BXZcp1chWkq3K8ViCQafFKwOa4fEHsVRspwHwpzLi63ieN9Z7l8D2Qv37+qMtKjPm54vRO8Fz3O4TX1WVs55kY+HRKXArkyezqny1XHvimvFSv+EvGu4u6a8Sck8PrmBe6xwnMyYrv1HHWdz05D8Gk9Uf2tP3L6g8RJMPKypzPFy4OUnpbcafNpSn4Sj6u/c4D7VBmrzLG7OO8VMFkmj6sWXpRb+98T2k/gviXm/N6kT4cngeH5+Jw6XjH5psXUP9icaP2dSw91w24avB9mbKvx5eDPT98QrfDjY5/5tk/8le/9yfZY1CvYhtwsnryxzRPHUySNwc1w94I7FeeQuR46hZuytkdHXidM5sbepxDQSQB7T29FgtjmeM41YNnG47k3C53nb4o4Y72OkPxZG86+1oGlPcb/ACkOM5CU4/Pz1qz9EG3B1mB49pLXgPZ9hB+1Vng8VTi51Kbyr+JfFH/JXS+5KwtKvrg6in/K9J+G/wDtbfSkfX5OPiDheWYXKY3GfK3TVL9q3K6SHpYGT2JHxje/Ut7kexbEsM/JUxuBx+G5Z+Zr0NsvzcoBYCCKw7QEggEBzepw+0+5bmsDgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAqv4p4o5vw25Rj2DqknxdlrB73+WS394CtC+JomzRPieNte0tcPeD2QED4d5QZvgXHckCSbWNrSnfvMbd/v2rCs4/J+lki8Nq2ImJM+EuW8VJv2GKd4aP90tWjoAiIgCo/JeGDkHiFhL919GxiatCzFJj7DuoySOczpeIz2PSARv1G1eFTcrhcfP4p4LLy5qCG/WxtuGLGuaPMsMe5hdIDvsG6APY+vsUNJqzIlFSVmrljxOBxWCZIzF46rRbKQ54rxBgcR6E6XFPwXi9qxJZn4/i5ZpXmR8j6zS5zidkk69dqcRVdKDVmlYo6NNpRcVZdhyZLEY/MVPkmQpV7dfYd5UzA5ux6HRXhiuNYXBSSSYvFUqT5AGvdBC1hcB6A6UkinJG+a2pLpxcs1tSGv8M43lLcly9gsbZsS6L5Za7XOdoa7kj3ALvmxNCzjvzZNTgkpdAj+TuYDH0j0HT6aGgupFCpxV7LaFSgrtJa7Sl8q4DjG8TzkHHaeMwuStUJq8N1jRB5Rc31L2jbRvR2PcpCrwrDXsdjzmcZjsldhqRQvsyxCUv6WgbDj3I3s/evrxGxtTMcDz+Ov5KLF1LNCaKa7K3bK7C0gvI2NgevqFJ8erxVMDjq8FhtqGKrExk7BoStDAA4fAjv8AenJQtlsrEcjTy5cqt3HrBiaFbHfm2GnBHS6DH8nawCPpPqOn00dlcFDhfG8XbjuUsFja1iIkslirta5uxrsQPcSplD6I6cXa62B0oO10tNhljsTj+WeOWchyVWC7UxeCpxeRM0PY2WSWV/Vo+3pAH2FXD5t+Hfqzif2ZqrPhgDked+JOb9WyZeHGtOvZWrsBH4vK0lQ6NNu7ivAh0KUndxV+4rnzb8O/VnE/szU+bfh36s4n9marGijkKfVXgRzal1F4Irnzb8O/VnE/szVE1PBbhda5NakxhsukeXiOWQ+XHs701g0ND3HavKKrw1F7YLwKSwdCVm4LTsRXh4d8QaNDjWI1/wDas/yT5vOI/q1iP2Vn+SsKK3IU+qvAvzaj1F4Ir3zecR/VrEfsrP8AJPm84j+rWI/ZWf5KwonIU+qvAc2o9ReCK983nEf1axH7Kz/JPm84j+rWI/ZWf5KwonIU+qvAc2o9ReCK+PD3iTfTjeJH2VWf5LyteGnDLsL4bHF8PIx7S1wNVu9HsdHWx9ysqK0aUIvNFJMLD0lqorwKNxrgHGvB7jubs4OOaBr2Pt2JrEhmcRGxxA76+i0b0PiV/aHLM29nHQRSyNzIsbJep1WEGowxFxk6uogAP6W6d9Yu7KZ5xhchyLj8+JoGs0Wixk7pnub+i6gXgdLT3c0Fvw2vMcfvX+TY/M3n1qseNiljhr1XOd5rpAATI4hv0QG9mgep3vsArmxI8bpXcfhKkGRsyWboZ1zySO6j5jiXOAP9EEkD4AKSREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAZr4euGF8TfEDjhHRHPZr5yuP6Qnj6ZD/6kf/EtKWa8vI454x8Oz/1YMxXsYCy/2Bx/TQfi5rx960pAEREAVNysGAd4p4GazbtMzjcbbbVrtb+ifCXM8xzjr1B6dd/aVclTcrbwDPFLBVrOPsSZ2TG23VbbX6jihDmeY0t6u5J6dHR9PUIC5IiIAiIgCIiArniNFiZuB8gjztietinUJhbmgG5I4uk9RaNHZA+ClOPtqswOObSkfJVFWIQveNOczoHST8daUZ4jT4mrwPPz52pNcxUdCZ1uvC7pfLEGnqa07GiR8QpPj76suBxz6UT4arqsRhjeduYwsHSCdnuBr2oDvXzNKyCJ8sjg1jAXOcfYB3JX0qX4zZx/HvC7kl6EkTmm6vBr182XUTNfHqeEBG+ATXWPDyPNSM6Jc7fuZV49v6Wd5b/whq0ZRHD8GzjPFMPhIxpuPpQ1vtLGAE/eQVLoAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgOLNCL812HWLDq0DGeZNI06Ijb9Jw37NtBG/ZtZDjpLkXDOCyy3bLMvm8jFebK+d26dJrn2nsGzoMEAEZB9er29tbRYrw24JK9iJk0MrSySORoc17SNEEH1BHsXPPh8dajrxT0KskdYgwtdECItDQ6R7O3bt7EB0QTMsQsmZvoe0ObsEHRGx2PovtEQBERAEREAREQBERAUPxuwljL+Hl+zQZ1ZLDvjy9LQ2RNXd5mgPeWhzfvVs49mq3JMFj8zSd1Vr9eOzGd/wA17Q4f4rve0PaWuAc0jRB9oWZ+C73cek5F4e2HEP45ec6kHHu6jOTJCR79be34aAQGmoiIAqblc5Tr+KmBw78RWlt2cbbmjyDj+lgaxzAY29vR2wT39iuSqmSzeYr+I+Gw8FBj8TZx9qexaMDi6OVjmBjQ/em7BPYjvpAWtERAEREAREQFc8R8nXwvA+QZG3j4clXq0JpZKc31J2hpJY7sex9PRSfHrMdzA46zFAyvHNVikbCz6sYLAQ0fAb0uHnmTyGF4Zm8liarbeQq0pZq8DojIJZGtJa0tHd2z7ApHB2bFzDULNqIRWJa8cksYaWhjywEjR9NEnsgO1Zr4s6zvI+DcPH0hfywyNlvsNeo3zCHfAvMYWlLM+Mn+VPjVybN/WqcdpxYKsfYZnkTTkfEfo2oDTAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiALMfEYjhXOuN8/YOilK78xZlw7AQSu3DK73BkugT7nrTl43KVbIV31rleGzA/XVFMwPa7R2Ng9j3AP3ID2REQBVbIu5N84mHFQSfyc+QWflpHR0+f1M8re/pb11enb3q0qrZHC56fxFw+Wr3HMwlahZhtV/PcBJM9zDG7o9HaAd3PptAWlERAEREAREQEHzk5scOzR42HnM/I5fkQZ0787pPRrq7evv7LvwhuHD0TkQRd+Tx+fvW/M6R1enb136Lg51jcrmOG5rH4OyauUs0pYqswlMRjlLSGu6x3bo+0LvwlezUw9GvdkMlqKvGyZ5cXdTw0Bx2fXvvugPPkmcrcZ4/kc3cOq9CtJZk7+oY0nX2nWvvVW8FcFawvh/RnyTSMpl3yZa+SNEzWHeYQfiAWt/sq3ZjD4/P42fGZSpDcpWGhssEzepjxsHRH2gLsADQAAAB6AIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgP/9k=" style="width:327px;max-width:100%;height:auto"/></p>
+<p>Un <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_optique#Syst%C3%A8me_centr%C3%A9">système optique centré</a> est un système optique qui présente un axe de rotation nommé axe optique. Il peut être entouré de milieux différents d'<a href="https://fr.wikipedia.org/wiki/Indice_de_r%C3%A9fraction">indices de réfraction</a> <span class="math inline"><em>n</em></span> en amont et <span class="math inline"><em>n</em><sup>′</sup></span> en aval. Il est caractérisé par ses points cardinaux parmi lesquels les <a href="https://fr.wikipedia.org/wiki/Point_principal">points principaux</a> objet <span class="math inline"><em>H</em></span> et image <span class="math inline"><em>H</em><sup>′</sup></span>, les <a href="https://fr.wikipedia.org/wiki/Foyer_(optique)">foyers</a> objet <span class="math inline"><em>F</em></span> et image <span class="math inline"><em>F</em><sup>′</sup></span>. Les <a href="https://fr.wikipedia.org/wiki/Focale">distances focales</a> objet <span class="math inline"><em>f</em></span> et image <span class="math inline"><em>f</em><sup>′</sup></span> sont définies par : <span class="math inline">$f = \overline{HF}$</span> et <span class="math inline">$f^{'} = \overline{H^{'}F^{'}}$</span>. <span class="math inline"><em>V</em></span> est sa <a href="https://fr.wikipedia.org/wiki/Vergence">vergence</a>. Si le système peut être considéré stigmatique, les positions d'un objet <span class="math inline"><em>A</em></span> situé sur l'axe optique et de son image <span class="math inline"><em>A</em><sup>′</sup></span>, elle aussi sur l'axe optique, peuvent être liées entre elles grâce à l'une ou l'autre des deux relations de conjugaison.</p>
+<table>
+
+<thead>
+<tr class="header">
+<th><p><strong>Relation de conjugaison avec origine aux points principaux</strong></p>
+<p><strong>(relation de Descartes)</strong></p></th>
+<th><span class="math inline">$\frac{n^{'}}{\overline{H^{'}A^{'}}} - \frac{n}{\overline{HA}} = V = \frac{n^{'}}{f^{'}} = - \frac{n}{f}$</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><strong>Relation de conjugaison avec origine aux foyers</strong></p>
+<p><strong>(relation de Newton)</strong></p></td>
+<td><span class="math inline">$\overline{F^{'}A^{'}} \cdot \overline{FA} = f \cdot f^{'}$</span></td>
+</tr>
+</tbody>
+</table>
+<p>Ces relations sont valables pour tout système centré étudié dans les conditions de Gauss, du plus simple comme le dioptre sphérique au plus complexe. Les systèmes élémentaires présentés par la suite sont donc des cas particuliers.</p>
+<p>Note : les distances surlignées indiquent des <a href="https://fr.wikipedia.org/wiki/Mesure_alg%C3%A9brique">distances algébriques</a>, c'est-à-dire que le signe de la valeur de cette distance dépend des positions relatives des deux points.</p>
+<h2 id="dioptre-spherique">Dioptre sphérique</h2><p><img alt="Relation de conjugaison optique" loading="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAB4CAYAAADblO/uAAAbpElEQVR42u2dd2BUVfq/n6lJSO+9kkBCUbohIE0UC2UBRUUpSlMs4IKuuvrj67rriooKIigrqCisBZUVKwIKEgIBBEILkJCEkGSSTPrMZPr8/kgck5BAgqnDef7LnXsz9773fOY95z3veY8kTWezIei0VJSVIpPJcfPwuOK5Z44f4x8L57F85Vr6DhgojCewI++oL7bZbEgkEvEGrkB+TjaRsT2uaMv3Vyzn56+/4vV31hPfu68wnKDjhW4yGlEolQDodTqcu3UTb6IJwmO6083NrcnPDXo9Lz46HzdnF77a8avdrgJBXaQd8aV1G2PW2XT27diOulAl3kYjuHl4NvlZYd5FHrx5BDfcMJTlq98VIhc0iaQzjNHNJhMWsxknFxe0VVXoNFX4BQVf81171cVcAkPDGrVDXnYWi6f9hRdeeYNho8aIlizofB79kvGDQoGTiwsAMpmMkqJCUn/Zhe0ajhOaTSaK8vMaFXnOubM8fudElr/1jhC5oOt49Ctx/OABvP38CQ6PQCaXXxMvpqKsFJ1GQ3B4xCWefNGdE3nzvQ/p22+AaMECxxG6Qa8nLzsLdy8v/IOCsVqtSKXSa+5llZeWsOD2sbz05tsMSkwSrVfgWEJvSLGqgHMn0ggKiyAmPsHhXkpjU4+G6moennQrCx5dzK0TJ4uWK3B8oQNYzGbKStT4BQYBUFpchJevn0N4etXFXACCwsLtx5554D6GDh3GrPkLRasVtJguqwqZXG4XOUBJUSEpO7dTUlTY5V+KWlWAt5+//e9P3n0bhUQiRC649jx6U11em9WKVCajWFVAtUZDcERkl5tfLi8twcvHF4AThw/y70UL+WL7blxEYpHgWvPojf5qSSRIZTIAPL19sNlsnD76W5d7jt9Frq2q4oWH5/L2B5uFyAXCozfX26f+sgufgAAiYmLt8/adjWJVAf5BwQD8a9FCBvQfwPTZc0VLFQiP3lxvP3jkaNw8PDGZTEDNtJ3VYuk092jQ6ynMuwjAwT2/kJtxlntnzRGtVCA8+p+hKD+PjFMn8A0Momff6zv8ftSFKixmM57ePswcncT7n20lLDJKtFKBEHproNNo7CvELmRmEBgahpOzc4fdz7sv/QNvV1cWLFoiWqhAdN1bi99FbrVakUgkHE1Jpry0pE3iBFcaKhTl57Fz6xc88NCj4sUIhEdvLy5kZqDTagiLimlWlZfLUVleRvbZM3j5+OIbGISru7v9s7zsLLq5ubHimaVMnDSFceMnCeMLWg25MMHlCYuOQa0qoCg/zy50q8Vin8ZrCaVFRcT26lMzHlcVkHs+A28/f/wCgyhWFaBQKlHn53HTrXfw7KKFVFVWMPuhRxl4w1DxIgSi696mBpJKCQgJtefUW8xm9v+8k7TU/eh1umb/H6vFgr5aRzc3N7q5uRERG2cX/dkTaYRERPL+ay+z5NllyOVyJt89HYVCIUQuEB69I5DJ5SSNvYXyErV9yWxleRlKpdNlS2KVlajx8vWrb3yFgsDQMAJDwziffhpNRTlDht0ojCwQHr2z4OXr90fdu+pqknf8SHra0aa77cVF9fLX6/0IqIv5z8svsuipvwvDCoTQOyu6qirir+tHj9rqqyajkdNHf6OyvMz+N9DolJ22qooTh1IpvJhL0sjRwpgCIfSOpLS4CKvViqaygqqKcvtxQ3U1FWWlhERG2QN0coUCv6BgzqefRqfRUK3T1ltpV5eK0hL2/vg9D4rpNIEQesezac0qVBdz2bH1S3Zs/dJ+PC8nm9Co6HqFIiQSCf5BwfRLTKKbmxseXt6oC1Uc3b+PMnVxvf/rFxTMb3v31CsmYbFY2PrZfzl57CinT6QJ4wv+NCIY1wy0VVUMvnEUHl7ehEZF1ytaWVFaQnTP+Cv+j7jefaksL8NQXQ3UJM9Ua7UcXf0mk2+9vd5SWqlUyoJFS1iwaAnevr7iBQiE0NsDV3d3dmz9Ag9vb/rVqdVm0OtROjs3uyy1h5c3eHkjsVjo9sVnVL/0AgG5udzbqzfOwwZh6j8QQ2ISxsQkImLjhOEFQujtbiiFAqi/+YTFbG5RUQuJwYDXlk/xXfsWusQkvn9kEWvWr2PQngNUWixU7NiOz/GjeL78Ioq0Y1gDAjAMHYZh6HCMQ4dh66RLawVC6I4d4JBKsZjNVzZycRG+69bg8eUWKqfcSdY32zG5e/Db/3uWG0eNqekRyOVYBg/hoI8PrndMpGevPsgK8lGmJOPy3TY8lv8TaUUFxkFDMAwdhnH4CMxiZZtACL31MBoMVFWUU1pcVO+4c7dul82OU2Zm4Lf2LVwOHqBs1oNkJB/CVjvFJgVSf9nJoqeesZ/v4+uHT52kmgo3d04FBhHx16cIDA5BqtWiTDuKMiUZr78+hiwnG3N8AoahwzD1H4hx0BBsYlsmQWO9SbGo5cpUa7WUFBUikUgIjYqu99nZE2kEhITayz8BuO7bi++aVciLClEvXkrlbeOhzjjeZrNx7EAKm1eu4P458xk5dlyT362prORCThY9Enojl8sxm83I62xiIc86j3LfXpxSklGkHcWmVGIcOqzG6ycmYfURwTyBEPqfRq/TkXHqBH0GDMLjh2/xe/M1zAGBFD/xJNUDBzd6TWV5GWteXMaQgYPxCwi4rNAbcjLtKGUlJcTFJxAYHHLJ57KiQhSHUlEeOYxTSjLSggJM/QdgSKoZ55vie9X70REIoQuaM07XanH/70f4f7AeXWISxYuXYqpTj70xss6k8/z8WXy4ZRsnjx1pkdChJtpvNBpw9/DEaDBQWVmBn39A4yebzSiPH0O5by/KI4dFkE+M0QUtMlzDANu3P2Hx9GrWtV6+vigVyqbFeQWcnJ3t6bRWq5X83AucOnaUYaNvQtZw+axcjrH/QIz9B/7h9UWQTwhdcHnsAbZDqZTOe5iM/Uew1U69NZd9P/3IqBZ68aZwdnHhugGD6u1Hd+bUCdzcPQgODWt05xpLcAjVU+6iespdNd06rRblsSMYfvwOvy8/R5aTjSUyyt7dF0E+IfRrhoYBtvxX37yqse6FzAwO/LKTB+YsaN0hRB1Bh0VEkZuThdlkIjKm+xWvtbm6UnZ9f07LZAx84aWahlEb5Ou2+SM8n16CzckJY2KSCPIJoTsgVqs9wGaKiKTomefR165QuxpsNhslhSrSjx5p0y2PXd3ciK9zn6Ulak4ePUJoRCTRsXGNZvJdvJBNcGiY/e90o5HY+2aiu29mzQ9JZQWKQwdxStmL+5pVIsgnhN71kWo0eH22GZ/169ANHUbuho+vGGBrDmaTCTcPD7x9fdt1mygfXz8SbxyJKj/PLnJNZSWu7u5IJBL01dUUFxYS2/OPnWk/++h9nnh2mX2HGKuHJ4YxYzGMGVv7MH8E+dxXLBdBPiH0LmSMokJ8/7MW92+3UTF1Glnf7Wh2gK05KJRKcjIzGDx0WLs/m0KpJLxODsDF3BxU+XnE9+6L2Wwmvk9fe/e/tERNv0FDLg3s1TNWC4N8w27E3CAHQSCE3q44ZZzD953V9gBb5p4D2OStaxqr1YpRr+d46n7GjBrT4c8c37svPRJ6YzaZUDo5UVlRTm52FsFh4fj4+rFl00YSbxyJj5NTs/9nU0E+ZUoyXkseF0G+juylXpMPXVWFvLgI1193EzV1AqEPz0EzZiyZv6RQdt/MVhc5QHmJmoLcC5xJO0qf6/t3DjtIpShrhezk5Iy+uprU5F/rLcP9M9hcXTEkDadqyd9Qf7GNwkPHKX9tJZagYLpt/gj/m4bjf/MIPJ9/GufvtiFtpJa+rCAfn9nTkRXkC7UKj944srJSoieMA5vtj0CRzYYy9wJYLFTdegeqF/+NvrYaa1uiLlQREhFJiUqFX0Bg5+vVODsTl9CLuIRe9mNHDx0kIjKK8KjoVtu5xhwdgzk6pkVBPu2D8/GbOgHd1GlULV4KV1FqWwjdgbF4+5Cx92BNg9Jo8PlwPT4b1mEDsr7bgb4dPWtMzwTKS0sICA7u9HYrLVFTXlpCN1dXlE5OVFVV4uTsjNlsRiqVNjo3f9VDmkaCfIpzZ1CmJNcL8ulvuQ3F6ZMEjE6i/I3VGJtILxZco2P0hgE2Q494yp97oV1FDjXr2c8eTyOhz3Wd3maurm68/8U2ZFJZvd1pyktLOHHsCAFBwfRqq00p5XJMCb0xJfRG++B8e/fd5euvUO7bi+LUSfzHjaL69onox90mgnzXutCdTx7Hd+1qnE8ep3TuQ2TuOYDXJ5swe/tQMfnOdr2XC5kZhEREknU2nR51prA6K3VTbOviFxDIyLHjKC8rtR9T5efh5x9gL8zRqkOvi7m4rVuD0887sQYEorv7Xko/2ITV00sE+a51obvu24vfG68i1VdT8vBj5K1+FwDFxVx816zi/I+/tOv9WC0WSooKiegeS0F2FgPumNil7SuRSPCukxWn1Wg4e+ok8X36EhAU3NpfhiExicqnn8fWYHMMQ9Jwe6APGmTy/e2v2JydMV3fv+a8kaOxNtg8Qwi9KzY+kwmPbVvxXbMKU1Q0hf94CX1C7z9OsNkInzeL/DdWY62zsWF7YDQYCK1dJJKXnUWEg3Uzu/foSfcePe2RelV+HpUV5YRHRtuTba46xhIahqVOtt7luFyQz23Dums+k69LC11aVYXPxg14v/8e2lFjyN34CaaQ0EY9Q/7rb9UXf3sNIbp1s2/VpLqYS1AzG25X9PQA/oFBmM1mzqWf4roBg2p/Z23NLqDZaj2pZgb57Jl8iUmX9BqE0Dv6pgtV+L73Du7fbqP8vplk7t6P1dX1std0hMitFgtWq9U+frVYLPWqw3R10n47hFQmq5cXIJPJCIuIJCwi0v7M33z5OTGxcXTvEU+3K7yntms0jQf5FEcO4/zzDofP5OtSrc75RBq+77xdL8Bm68TCUReqMOj1hMd0x1Bd3XGNvA3YtuVT9Ho9lRXlFFzM5eYmYg9ZGecYeMNQnJ2d7d37ap0OmUxmT9bpKPJsNkrDI+h1+4SaXknDTL4LOVgiIh0iyNclhP57gA2bjZKFj9sDbAC/Jf/KicMH8fb1w8Pbm6i4nkTG9egU912sKiCmNspeVqKuV/ixq/P5xx+y+sPNGI1Gnlo4r1GhV5SXoddXE9tggwutporTJ47j5e1N3zq58u3NhazzHExJtk8V/p7J54hBvk4r9N8DbH5vr8QYHUPq/IUEjL2l3ljParXy+t+fYuOuZLZt2sj7b7zK+u93dZpniE3ojVPtCq7yEjU+fo4jdFV+HqVqNRKJhPzcC42ek3M+k7j4Xpcc9wsI5MYxgRgNBvsYPiP9NMFh4bi1YbA0+ZddZGWe44akGzl9Io2BiUmoG1T2bcilQb5KFIdS7UG+wtxcvAYNxjpgEMak4Rj7DeiUQb5OJ/SGAbYLH3+GKTgE3Zl0ytTF+NQpv1SmLkbp5IRUKqXPoMGkpe6371neGXCqs0yzTO1YHt1qtZKbkw02G+ZGatvrq6uRymSXjbzX7bq7urtz8tgR4hJ6tYmdsjMz2LRhHWs2fsI/nl5CqbqYiXfdQ2h4RMue28PDHuTTabVcyDhHX6UCZUoybm+vRHE8Dau/f6cL8nUaVchVBfiuf7fJAFtASCh5OVn1hO7m7kFJUSEAxw6kkJl+qtMIIfd8JmHRMfYeSGV5GV5e3pecZzKZKKuzmEMul+Pu4dnphR4QFMSgxCQMBj1Bjcx0lLZgqCKRSAgJCyekzpr/rIxzVJSXEREd0yrCP3wghd7X9QPAPyCQAUMS//zQrFBFSFQUJk+vywf5KisxDhzcoUG+Dhe68/Fj+K9cgTLj3GWXiLq6u1Ot1V7iMSdMn8mafy5j8IjRRMX1pLggH/9GyiC3JyajkTJ1MeF1yjjpdbpGvZvFbKaqouIPz19awvVdII/7tr9M5eC+vZSXlTK+dllqXXRaLQFBQVf9/6Nj4yhRF1NZXm4XutFguOoAnrOLCyW1O9meO3O6VWyg1WrqrfG3v9PgECzBIegbBPkURw7j+dzfkJ9Jb/cgX4eVe24YYNP8Pt95GY4fPEDvAYPs+5B3VjSVFeg0GgLqeLotG9bhbLUyY+5D9c7dvePHeuWejx0+2CWEbrPZ+OHrr5ArFNxc26Drcur4MWJie+DcSlVmLBYL+3/djVwup2//gS2ewaiqrGDBfXcxfNRN9Bs0hNWv/ZtNX//4p+b3Txw7ctVLjuttvHHsSJsH+drVo0uMRrw+/wTfNaswJPRC9eLLGOKbn/vt4uqKTqutt9CiM+Lm4Ylbg+630WDA09XNYcboEomE2yZNuezntlb0ITKZjGGjxqCpqrJ79dISNQqFgl9++pEJU6dd9np3D082b9tur5abNHJ0h9rvSkE+qUqFqV//mio+ScMxXt8f/sSqQclTr7zR5h7dWa9n0KFUBh5O5WxcPHuHj6DqKsRq0OuRyWRtsoCirUnd/TM+Hh6XTCcV5F2sV5RRq9Hg6tb1fxCqdVqcnF1adUnrpcMDDeriIg6lJDPxznvavV2o8vMICg5pkyi71GrFr7iI8OwsIrLOE1iQj87NjQtR0VyIiiE3KgqTonnd/bj4BOSSNnwR3mWlJO5LJvZsOr8NGsLaRxfbb+5qTOPchVMUbVYrMrn8kobfMOrr3sl7K80emrm1/ZoCN3cP3Nw9KMzPp6K8HP/A9i3oERgc0nbDSKkUdXAI6uAQjtTWGHSvrCD4Yi7dM84xctdPOOn15IdHcCEqhgsxMZQ3UYJbggT5fQsfb/V7dDlyGL83X0OhKkD9yCJKx08iSiolimsXk8FAdEgof7l7OoLWJap7LFarlbG3ja+3kYWjY9FqCT+USmxKMsoDKcjyLmJK6IXxhqE1Qb7r+tmr8bReMM5mw3379/iteh2LpxfqRUvQ3TD0ktOWP7mYwNAwZi9eek01xo9Xv0mQlzd33T9LKLPVu/Ba1r7xCju/+wYnZ2dMJhMz5z3MtJkPXFuGsNlQpJ9GeWAfyv37KH91JbbaBKQ/HYxrGGDLf301hgYpj7+j1+nw8vHlyw/eY9aiJe2+oqk9yDqTzt7t3+Pk4oLJaOT3HpNCqcRkMjZ5XZGqgM8++gAvHx+m3HM/xYUqPv3ofeJ6JjD5nvuEmi/D9//7ksMHUtjy0x66ubpiNpnYt/vna88QEgmmhF6YEnqhnT23/kjgqocQlZX4vb2S7iMTUWafJ/vrH8h9b2OTIgfYtW0rE6bPILpHPL8l/+qQtv7nooe596FHmTb3IUJqV3D9IXRTk9cFBAVTWqLGw8OTbq6uRMZ0J/3Ecbr36CmUfAU++s9aljz3gn3KTa5QMGLsLY7VI1z/LrraPJKc85kcPZTaMr229AuVOdkEPf80MbfWTE+c37mXwr//H+ZmzPtlnDqB1Wpl8IhR/O/jDxyy0Rn0ej5+eyWaygpGj59kP+7k7IK+ulqosg3IzckmMjrGYZ/v/LmzrHhxGd9++XmNjs6m8+uuHW0jdJdjRwifO5OwBQ9Q3X8gmb+mon5kEdZmRsJLi4sw6PWcOnKYgJBQ9u3YfkmmmyPwysZPyDx9kjv6xPHeKy/Zj3v6+NSrtdYU27/9mjUrlrNmxXKyMs8JFTeDwKBgigpVDvt8n27cwHMvvcqWzRuBmi22WrpASn6lwb3bzzvxXfsW2GwUL30aXWLSVd3sT19tYc7Sp+256nt++JYd//uSCdNnONRLCYmI5MV336e8tIRZNw1n0ozZ+AeH4OXjS2lJyRWvv+WOiUy86x4ADu3fJ1TcDMZPncZ7q99kxTsb7HGfjDPplyyP7YqYzWb27NjOk8v+yQ9ff0XGmXSuGzCoxRl5jXp0idGI96aNxA4bhPfmjaj+9Qo5W76+apGrC1XIFQpUF3MBqCgrZfCNo6jWaSl2sB04Nr29EgAvH18iusfZ5/49fXzrLV4RtB7zHnsCZydnJoy4gScXzmXqzSP45ovPHOLZdv3wLRKJhHUrVyCRSPh04wZkMlmLN+ms59FllRV4f/QBXh9/SNX4iWR9sx1LK+yD7RcYxNQH5v3RjfX2YdKM2Q7Z6LRVVWxaswqb1crd8x/GvXaTRk8fn8sKvbAgHycnJwoL8tFptajy8wiLiORU2jF77TVB4yiUSl5atRatRmPf/tmjFTfH7Eg++WA9CxYvxcfPn779BrDsqcX87f/+1eIswHrz6GEL56IbkkjZvTOwdXCZH0fDZrNxb9JAfkz5TRhD0CyKC1U8dP80vvhpj/3YsqWLSBo5mnET/nL1Hv3imveEddsIiUSC1WoVhhA0G01VFcuWv17v2PxFS5qs6NNsoQvaFh9//xYVZBBc20THxl1yLDQ8osVVceAa3Ta5owiJiOJiTrYwhKDdEUJvR4IjImvqrAkEQuiOS2SPnpxLPy0MIRBCd2Tievfl9MnjwhACIXSH9uixcWRnZghDCITQHdrYtWWwxOIWgRC6gxPbuw9nTp0QhhAIoTsyfYckcvhAijCEQAjdkemXOIzUlGRhCIEQuiMTE5/AudOnhCEEQuiOjEQiITgiUmTICYTQHZ2BI0ax9+edwhACIXRH5sZxt7Fr+/fCEAIhdEeme0JvMs+dxXyZqrB/BpswsUAIvXPQf+gwDorou0AI3bEZftsd/PTdNmEIgRC6I5N00y3s3rEdi8UijCEQQndUFEolfYfcwMF9e4UxBELojsytd93LV5/9VxhCIITuyAweMYpDKckYDQZhDIEQusMaXyZj1IRJfFO7p5ZAIITuoNw5ZwEfb1gnDCEQQndkgsLCcfPy5vjR1tvYQSLMKhBC73xMm/8wH65bIwwhEEJ3ZJLGjiP95AnyrmIHjsYQKbACIfROiEQi4f7HnmDdqteFMQRC6I7MzZPvZP/ePaiLi4QxBELoDvsiZDKmP7KINa+/IowhEEJ3ZMZPn0Hqvr1kZZwTxhAIoTvsy5BKeeyFl3h52bPCGAIhdEdmyKgxaHQ6sdhF0KpI0nQ2MRvTycg6k85zc2bwv13JKJTKFl9vQyTNCIRH7/RE94xn5PhJvPXqv4UxBELojsycpU+z66cfxPZNAiF0R0Yml/PMG6t5cuE8sYxVIITuyPTqP5DRk6bw4rNPCmMIhNAdmVmLl5J7MZetn24WxhBcNSLq3gWoKCtl7rjRrN34CXHxCVc8X0TdBcKjd0E8vX14+cPNPDJ7OsWFKmEQgRC6o9I9oTdLlr/O3HumoNVohEEEQuiOypCRo5ny4HzmT78TfXW1MIhACN1RmThjNqMnT2XG5NuFZxcIoTsyUx+Yx2333M8Dd01EU1UlDCIQQndUJs+ew6RZc7j79pu4mJMtDCIQQndUbr/nPpa++iYzp4xn3+6fhUEETSLm0R2A/As5PHX/NMZPvpP5j/8VqUwm5tEFwqM7GiERkazfvhtVaQlTbxmJprJSGEXQwKNX294RZnAcvv/0v8GaItWIeY89sRUQq2EEAPx/ogdDI9b3Rv0AAAAASUVORK5CYII=" style="width:250px;max-width:100%;height:auto"/></p>
+<p>Dans le cas d'un dioptre sphérique étudié dans les conditions de Gauss, les points principaux sont confondus avec le sommet <span class="math inline"><em>S</em></span> du dioptre, point d'intersection du dioptre et de l'axe optique. Les <a href="https://fr.wikipedia.org/wiki/Focale">distances focales</a> objet <span class="math inline"><em>f</em></span> et image <span class="math inline"><em>f</em><sup>′</sup></span> s'écrivent : <span class="math inline">$f = \overline{SF}$</span> et <span class="math inline">$f^{'} = \overline{SF^{'}}$</span>. <span class="math inline"><em>C</em></span> est le centre de la sphère. Les relations peuvent être déduites des relations pour les systèmes centrés.</p>
+<table>
+
+<thead>
+<tr class="header">
+<th><strong>Relation de conjugaison avec origine au sommet</strong></th>
+<th><span class="math inline">$\frac{n^{'}}{\overline{SA^{'}}} - \frac{n}{\overline{SA}} = V = \frac{n^{'} - n}{\overline{SC}} = \frac{n^{'}}{\overline{SF^{'}}} = - \frac{n}{\overline{SF}}$</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Relation de conjugaison avec origine au centre</strong></td>
+<td><span class="math inline">$\frac{n}{\overline{CA^{'}}} - \frac{n^{'}}{\overline{CA}} = V = \frac{n - n^{'}}{\overline{CS}}$</span></td>
+</tr>
+<tr class="even">
+<td><strong>Relation de conjugaison dite de Descartes</strong></td>
+<td><span class="math inline">$\frac{\overline{SF^{'}}}{\overline{SA^{'}}} + \frac{\overline{SF}}{\overline{SA}} = 1$</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Relation de conjugaison avec origine aux foyers<br/>
+(relation de Newton)</strong></td>
+<td><span class="math inline">$\overline{F^{'}A^{'}} \cdot \overline{FA} = f \cdot f^{'}$</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="lentilles-spheriques-minces">Lentilles sphériques minces</h2><p><img alt="Relation de conjugaison optique" loading="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAACCCAYAAABvndWRAAAPvElEQVR42u2de5RVZRmHnz2MMwx3GAQBQUBELoIiolZ4ixHMRJakZWQsS8NWamjqmrK1Cv+oSO0CVgTRbVxLEi9ReAdNENEwMpiRixdMzLKVYWWCGvL1x/ee2m7OmTnnzNnn7HPO71lr1sycs88+e7/7/e3vst/vfUEIIYQQQgghhBBCCCGEEEIIIYQQQgghhBCikvka0EdmEKJyORXYDuyWKQTAYuBB4C5gNTBYJil76oBHgOuBPwOzZJLKoSbPz3UDFgAfAe4DPi5Tlj3XAMuBvdaiXw30lVmqW+jYHf8yYAawTqYsa4YBU4EV9v8B4EvATTKNhP4GsAd4DThGpixrvm0tugu99gTwL3Xhq5vlwPvs77HA/TJJ2TIbuCH0/1XARvu7AXhUXfjyp7YTn70IP0t7ZqjLJ8qP7e3cqPcBXwZuBi6RqapP6N/Gz7S/A7QAf5Epy1ro7fE48JbMVJ1C32Y/ojrYLBOUNzUygRASuhBCQhdCSOhCCAldCFEccp51X8yVNzby90vmcNtbFO+xywHgnzHtuw7oXkbX7A1gf0z77vMP6NMGXaZCz8B/l6hGpvLY5QtY8KqDZ+3nRgeTZJmK4aor4TkHTzoYIHNULW52De9e5+ACB9sc3Ongbgc7HSx0MEY2Km+hAxsdzHTQ5mCUTFKlY/QD1LgA7gBOAJ7Ci3sJsAO4ycEfHCyQk5Qvgc8zcCmwysFxskgVCj3kDHsD+CZwCnAYMB8fEjsN2AUscdDqoNnBIJm77MT+JPAx4Fbnr7Gopq47uGvTvgOjHax0sNbB8fbaUAfzHaxz8Jj9fajsmOyue+S6Dnew1flEI6LahR5yjJMcPGqiHxlxmGYb+61xMNdBT9k02UK3azfQwSYHn5GJJPSoc6QmdJZGW3EH420c3+ZgtYm+m+ybTKHbNevh4AHn04iJahmjZzHGW41/9LYZ33VvdtDV3nsmgAWBz06zAJgMbHbQYjeIQ3R5Ejdm/zdwLjDWwSKngCsJPeQc/wlgGXCivbTZwbywkwSwOfATeePx2zbhJ/FaHDTJoRIl9neAOfhAo5/rhqyue6bu/BDryj/p4Ix2tqu3lr3FwXZrQaY6CHQNStN1T3ONmm2uRfMsEnpGJxlrk3VrHEzsYNuGkOi3megVjVdiodu1+ZyDJxz0l+kk9PYcZZqDp0zEg7LYvrdN3K0OBeYcpetSGqHbNTnPwe8dDJX5JPT2HCWwkNpWC6PtleXn+pno14QCc1Q1pshCt2txhg2xJsiEySMRk1wBpEJqJ+MTTW62wJraDj63J4CWwGei/RB+Nd2KUGCOFmUU7xr+Bp8Z+A4H75dF1KJn21IvtK75BXl8PhWY0xoKzOmlaxdfix6y/UgHWxycJVNK6Nk6zTCboX/c+ZJB+ewjFZjTGgrM6a7rGI/QzeaDLIpONfkk9Jwc5wQHvzGhjurEfsZbT+F5m/FXYE4MQjdb97H1DdfIpBJ6rs7T5OB31soP6MR+auyZ/CIHO0LReLW6voURutm53sFddnNV/EMJKauIswDW4iPsHgc2WJe8IY/9HAhgQygarwU/F9CqwJyCXq+3gY8CjcBPdCOV0HMVaQs+GcI+fAs/z0GXPPf3bgBrA5iLD8JZC8wDnjHRHy836dT1etfs+RI+G1GDrKKuez7dw/4myC0OzingfsOBOU9XUWBOwbruaWw638EjDnpLRxJ6vk50dCik9rgC77tfSPRbTPQjJPS8bHmRRdENkZYk9M440skO1pvoh8ew/yHWMq0PBeYMlNBzsuE5lodAocsSeqedaab7/zi7T0zfcYQJfZPzk4PzKiAwJ3ahm+1ONLFrcZKE3mlnOsTEt80i5epj/K5KCcwpitDNZuPs2pwpXUnohXCoHibCHSbAIObvSxeYUyehZ+wVbckn1FlI6Jmc6nALtnnCwWlF+L5yDMwpqtDNTv1svuMy6UtCL3SLu9pm6I8p0nd2MdEvTXjGnKIL3ezT3cH9DhZKYxJ6oZ2ryZJeLHW+AEWxvrdrmow5U6tZ6GaXOueXGd+iPIGFpaqNaSG1J+F/r7Vxdc8ifO9bAay2aLwTgA34ycJUYM7oKr0eqcST7+Crw2jBkYReMOc6YEkvpgCvA7+1mfraIn3/3gDuCGAm8EF8KatvhQJzRlbZ9XCBX/G2Fd+VV+JJdd1j6T42dibpRQGPo1SBOSXruqexwcU2caoSXhJ6bE52hI2hHy91aiRLwBENzOld6UK3c59lIbPDEuwuQ3nvsulGoK+EXl6CP9GSXqxMQjc6FJizNRSY06NShW7nfLo9qZiYUDdZD/wi9P/FwPkao5fXmHFT4AtNLMMvs1yaY1dyDHBX6OeETh5PqpTVROCL+JvPb030FxQ4MKc/sBi42343lugaPIpf136bgw+0s+mxEVtPAD5MvDeICcBOa8ErKbd9dbXokZalNhJS2zWLj00FluPDb+vjuLkWODAn1aLX2O+UsE7BPx2oKaH9R9jcydkZNplhN6SUrQN8cpE4Q2wXmW0+BVxhr/UkYeHPatFza1n2Wx25KfbSQXXkMtDLWt6R3l8LflzRjDnL8Gvzn7UeSD6BOScCL+Oz+QA8hk/FPamE9n8Rn132BgefzrBZ74it24BXYjqkenzRyUF2U7nYXn8DeFNCL3/BvxnAN62lmAxsdP7RWCaOxjvmp4n5sZ1lzNkQ+HDSccA9vDdjTraBOYcBf4689idKXCAjgFfxQ6kLHVyXZpPxIVsDPAxsi+lwzgU24VdH1gL/suGDuu4V2qUfE0p6cWyarvuyBBxjg43hw6Wsjm6n6z4BeCDy3kM255AEm9c7XyxiUai3MgP4ThEP4z7ea8MPA99Noo+qRS9MK7Mj8JNFXwW+Z6I/ImHHuC8UmHMGPjDn5nYCc1qtC/p56wbPB/YAOxJyPm8DF+LnSX5WooVCZ+Mn4lLcazfKJPpoh2OQyITTyzOhx3Doe4skfjB9IGiDWQOh+S148GxY8Zh/Brwmicf7A2g8H2b29aKpvxVeWQBDdvubQS3wMesOtwG345M9Jsreu6G5Do6bCF951g8tHq0Sd/sPsLcQQp/JQc8D39cLDq2HX/9Nss5MA9RcD6M+BWNXwQvXwbZ9cCDJx3wMdJ8NU2bAoD7w+v3w0mLYtdu3nonmRhgzE0ZMh0dejv14e9fC87PgIw/D+n+U8LRbgZvj/pKB+CABpe9tfyzZ10Jqt9gYOen54q/CTy6OizkwJw5bz7GFQYfH/E09wDlwVZEK/FpgHfAJyTkrJxxqj7o2Ov/cNdFCjxx7KhqvLabAnELaeZrdnEZL6IVhI/7Oea9knJMjTrbc5qsTmgX1IKGHjj1TYM4hCbPxFDu+kyX0znEysMT+/iVVtpSyQM4YriM3sByEHjn+LiHR7zTRNyVlaOJgrEUwTpfQ82cpPlJqJfAU/rGSyN0Za2zs+2y+deRKJfTIedQnMWOOg8GWQeijEnruNACb+f+du87+1zP5/B2ym8XOP9OZOnKlEnrkXBpM9Cut+7zQlTDIxiZD1zv4rISeG0cB50Vem0tlVSsplVP2N2E8XcKkF50SeuR8+oRKWaWi8Y4s0Y30vsIlnqyuyTgRn2OODoXUTipXoUfOqdF6KxusOz2/yAk5ax382MH3O594UkIXhXXOkxysM9GPKGehR85rqAl9XShN1qFFsGfg4CYHd2e5xFhCF0UVfOx15Iop9Mi5jbUu/ZZQYE7PmL9zvoOH86+TJ6GL+JyzWHXkiir0yDlGA3PmOugW03fNtcSTAyR0kUTBx11HrmRCj5zn5LgDc2yfbQ5GSegiqYIfEqojd3qlCT10numi8QoWmOPgVEs8eayELpIs+HGhGfoJlSb0yLmGA3MKVr/Ohgxt2a9BkNBF6USQCqltcT6HWcUJPXK+4cCcnRZ/MLYT+xtui2FmS+gi6c4f2MqyVnP8XpUq9Mh5pwvMGZXHfgZakYxLJXRRDo5fZ4+QnrPftZUs9Mi5N5ro19gNrzmXHo5Ndj7gYEGWQq/B53Tvy3tDl+tI6FJeUXmC75dHHbmyFnrk/A/PJzDHbpS32xxATQdCHwG8hF/otQb4um00x36EKJrDDwvVkftAtQg9zRi82Sbd1nQUmGPLcJe4tOWbDxL66tCbOyV0UWpnn2JJL1a2s7ikIoUesUMqMKc1FJjTPcO2zbZNt3aE/jx+wUwL8A3bqJ/9CFEyR29yvsrM0jSRYRUv9IgtUoE52zMF5ji43FKA9c8g9PX4Qh6nm+16yctEUhw8VUcumvSiqoQeskemNFld7P3zrHzz0A667r8Gji/C8c5wvhKPEFk5TPdw0ot6+EI1Cj3N+LwpTWDONAdb13HqpAyTcbcDqyhCDj3LXXCP82WhhMjJcRa9Cq98HLbLIv+zS9dImqwVb9LtpW68uQvcWPyjy1RRxx4lOLafObi6o20DXUoRZhYsvBrmneYnmP5ZpK/dSxkUibCWejAwHF8r/hXgGeDfOezjHQpbaXUAPjnJkUE7VXRq5doizK/g1V/5MeoFxLcUNm66EP+E2Ah8bfSjrMG8z36KWcFoMPAV4MogYaWyRPK5qtrH6Dl0nVOJJ29IE5gzIObv7uXgoWyLeSpzqxB5EsDrwJnAMcCgAE4DLrK377X8ePNcPL2L84AvB34iUAi16EVo2bs4WO7gp+F1BbkE5gghoZeH2ANbV7AqXSEOE/1CB89bZOJMp0UvQkIvW8HPtzDj3hnezxSYo4lxIaGXmdg/aVF0g7Po8jcVOmOOEBJ68cR+jq2UOyrL7bumqV83uZ1hwihZWUjoyRD7SSb2STl+rncoY87TNqE3OvR+vSXHGC8rCwk9GWIfZy10U5r3TnFwZwef7xcS/RYT/QgLWV7rVPNQSOiJEfsRJtLzI6+Pd7Ahh/0Mscm+9RaY83UL0tEjOyGhJ0Ts/Uyc80KvNTq/piCf/Z3u4EEHLzi4sKPtNaUvRBEIYI+Ds4A7HQwOfPLJPeSQhcbBMHxE3DR8VN73gAcDv1BGCLXoCWrZ6xyscHCLPVN/2WW5vNUqwU7P55m7Yt2FiF/c51gY7A34rDBz8K3wrcBfybJOfADXBfBQAPsldCGS122/B58JZo91t3fZsHkffi3+YXEfg4QuRHHE/mIAiwKYil/ltgsf9PJ+9IhMaIxe8d36Q33CyXjRrLsQpW3pi5KRRl13IaoACV100ODwI5lBQhflTy0+H3lDmvfOBv4oE0noovzZb632Tzh4HfQVwA9lovKni0wg8I96huJrh+3HL39sxT/fXSXzVMYYTIgUP7Sb/3jgT8C1wG6ZRYjK4hB85ZEdwE9lDiEql+nAa8BEmUKIymaITCCEEEIIIYQQQgghhBBCCCGEEEIIIYQoW/4LybczcMdJ/1kAAAAASUVORK5CYII=" style="width:263px;max-width:100%;height:auto"/></p>
+<p>L'<a href="https://fr.wikipedia.org/wiki/Approximation_de_Gauss">approximation de Gauss</a> appliquée aux <a href="https://fr.wikipedia.org/wiki/Lentille_mince">lentilles minces</a> sphériques revient à étudier un système centré dont les points principaux sont confondus avec le centre optique de la lentille mince : les <a href="https://fr.wikipedia.org/wiki/Focale">distances focales</a> objet <span class="math inline"><em>f</em></span> et image <span class="math inline"><em>f</em><sup>′</sup></span> s'écrivent : <span class="math inline">$f = \overline{OF}$</span> et <span class="math inline">$f^{'} = \overline{OF^{'}}$</span>. On considérera ici le cas d'une lentille entourée d'un même milieu si bien que <span class="math inline"><em>n</em> = <em>n</em><sup>′</sup></span>.</p>
+<table>
+
+<thead>
+<tr class="header">
+<th><strong>Relation de conjugaison avec origine au centre optique<br/>
+(relation de Descartes)</strong></th>
+<th><span class="math inline">$\frac{1}{\overline{OA^{'}}} - \frac{1}{\overline{OA}} = V = \frac{1}{f^{'}}$</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Relation de conjugaison avec origine aux foyers<br/>
+(relation de Newton)</strong></td>
+<td><span class="math inline">$\overline{F^{'}A^{'}} \cdot \overline{FA} = f \cdot f^{'}$</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="miroirs-spheriques">Miroirs sphériques</h2><p><img alt="undefined" loading="lazy" src="data:image/gif;base64,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" style="width:286px;max-width:100%;height:auto"/></p>
+<p>Les notations utilisées sont les mêmes que pour le dioptre sphérique. Les relations peuvent être déduites des relations des dioptres sphériques en posant <span class="math inline"><em>n</em><sup>′</sup> =  − <em>n</em></span>. Les distances focales objet et image sont identiques : <span class="math inline">$f = f^{'} = \overline{SF} = \frac{\overline{SC}}{2}$</span> ; les foyers objet <span class="math inline"><em>F</em></span> et image <span class="math inline"><em>F</em><sup>′</sup></span> sont confondus.</p>
+<table>
+
+<thead>
+<tr class="header">
+<th><strong>Relation de conjugaison avec origine au sommet</strong></th>
+<th><span class="math inline">$\frac{1}{\overline{SA^{'}}} + \frac{1}{\overline{SA}} = V = \frac{2}{\overline{SC}} = \frac{1}{\overline{SF}}$</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Relation de conjugaison avec origine au centre</strong></td>
+<td><span class="math inline">$\frac{1}{\overline{CA^{'}}} + \frac{1}{\overline{CA}} = \frac{2}{\overline{CS}}$</span></td>
+</tr>
+<tr class="even">
+<td><p><strong>Relation de conjugaison avec origine aux foyers</strong></p>
+<p><strong>(relation de Newton)</strong></p></td>
+<td><span class="math inline">$\overline{F^{'}A^{'}} \cdot \overline{FA} = f \cdot f^{'} = f^{2}$</span></td>
+</tr>
+</tbody>
+</table>
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 15/11/2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
