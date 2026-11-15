@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chromodynamique quantique - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#presentation" class="toc-level-1">Présentation</a>
+            <a href="#confinement" class="toc-level-1">Confinement</a>
+            <a href="#dans-le-modele-standard" class="toc-level-1">Dans le modèle standard</a>
+            <a href="#groupe-special-unitaire-su" class="toc-level-1">Groupe spécial unitaire SU</a>
+            <a href="#groupe-special-unitaire-complexe-su-n" class="toc-level-2">Groupe spécial unitaire complexe SU(n)</a>
+            <a href="#groupe-special-unitaire-complexe-su-2" class="toc-level-2">Groupe spécial unitaire complexe SU(2)</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            
+
+
+
+
+
+
+
+
+<h1 id="chromodynamique-quantique">Chromodynamique quantique</h1><h1 id="introduction">Introduction</h1>
+<p>La chromodynamique quantique (en abrégé CDQ ou QCD, ce dernier de l'anglais Quantum ChromoDynamics) est une théorie physique qui décrit l’interaction forte, l’une des quatre forces fondamentales, qui permet de comprendre les interactions entre les quarks et les gluons et, au passage, la cohésion du noyau atomique. Elle fut proposée en 1973 par H. David Politzer, Frank Wilczek et David Gross pour comprendre la structure des hadrons (c'est-à-dire d'une part les baryons comme les protons, neutrons et particules similaires, et d'autre part les mésons). Ils reçurent le prix Nobel de physique en 2004 pour ces travaux. Elle utilise la théorie quantique des champs pour rendre compte de l’interaction entre quarks et gluons.</p>
+<h1 id="presentation">Présentation</h1>
+<p>D’après cette théorie, les quarks (et les antiquarks correspondants) sont confinés dans les particules qu’ils constituent, c'est-à-dire qu'il est impossible d'en observer à l'état libre. Ils possèdent une propriété nommée « charge de couleur » abrégée en « couleur » : bleue, verte ou rouge pour une particule ; antibleue, antiverte ou antirouge pour une antiparticule.</p>
+<p>Il s'agit d'un nombre quantique, analogue à la charge électrique de la force électrostatique. Il n'existe pas de lien avec la notion de couleur du spectre lumineux hormis un parallèle avec la décomposition de la lumière visible chez l'humain en 3 composantes rouge-vert-bleu.</p>
+<p>Un autre principe fondamental de la théorie est en effet qu’une particule constituée de quarks doit toujours avoir une couleur résultante blanche, c'est-à-dire que sa charge de couleur doit être nulle. Cela peut être obtenu en combinant trois quarks de couleurs différentes : bleu, vert et rouge. Le baryon résultant est ainsi de couleur blanche. De la même façon, en combinant un quark et un antiquark de couleurs opposées (par exemple, bleu et antibleu), nous obtenons un méson de couleur blanche.</p>
+<h1 id="confinement">Confinement</h1>
+<p>Le confinement des quarks provient du fait que la force qui les lie croît avec la distance. Lorsque celle-ci est très faible, les quarks n’interagissent presque pas entre eux, tandis que plus ils s’écartent et plus l’interaction s’intensifie. Ce phénomène est appelé la liberté asymptotique. Cela explique le confinement des quarks : prenons l’exemple d’un baryon (particule composée de 3 quarks). Si l’on essaye d’écarter un quark, il faut lui fournir une certaine énergie. Mais comme l’interaction forte croît avec la distance, il faudra fournir de plus en plus d’énergie, jusqu’à un certain niveau où l’énergie fournie permettra la création d’une paire quark-antiquark supplémentaire, et on obtiendra ainsi un méson (particule composée de 1 quark et 1 antiquark) en plus de notre baryon. C’est pour cela que l’on obtient des jets hadroniques durant les collisions dans les accélérateurs de particules, et non des jets de quarks.</p>
+<p>Il est cependant possible d'obtenir des quarks et gluons quasi-libres en créant un plasma quark-gluon. En collisionnant des ions lourds à suffisamment haute énergie, les quarks et gluons qu'ils contiennent sont soumis à des conditions de température et de pression extrêmes permettant la création d'un état plasma, en partie analogue au plasma électrique. Les interactions entre particules sont alors masquées par l'effet d'écrantage de la charge de couleur, ce qui les rend pratiquement libres.</p>
+<h1 id="dans-le-modele-standard">Dans le modèle standard</h1>
+<p>La chromodynamique quantique est une part importante du modèle standard de la physique des particules. Le terme « chromodynamique » vient du mot grec chrôma qui signifie couleur.</p>
+<p>De manière plus précise, la chromodynamique quantique décrit l’interaction forte comme un groupe de jauge particulier sur la couleur des quarks, nommé groupe de jauge SU(3) (pour special unitary group, groupe spécial unitaire de degré 3).</p>
+<p>Dans ce modèle de groupe, la charge de couleur des quarks et antiquarks composant les hadrons peut être projetée suivant les 3 axes définissant la charge de couleur, chaque axe de cette couleur étant quantifiée selon deux états complémentaires : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math> ou <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>r</mi><mo accent="true">¯</mo></mover><annotation encoding="application/x-tex">\overline{r}</annotation></semantics></math> pour la charge rouge, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math> ou <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>v</mi><mo accent="true">¯</mo></mover><annotation encoding="application/x-tex">\overline{v}</annotation></semantics></math> pour la charge verte, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math> ou <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>b</mi><mo accent="true">¯</mo></mover><annotation encoding="application/x-tex">\overline{b}</annotation></semantics></math> pour la charge bleue. Pour les mésons constitués d'une paire quark+antiquark, on pourrait s'attendre à trouver 9 charges de couleur possibles définissant des états linéairement indépendants. Cependant le modèle chromodynamique nous apprend qu'un de ces états est intimement lié aux autres, réduisant le modèle de composition des gluons à une combinaison de seulement 8 états indépendants, selon l'équation :</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mover><mi>r</mi><mo accent="true">¯</mo></mover><mo>+</mo><mi>v</mi><mover><mi>v</mi><mo accent="true">¯</mo></mover><mo>+</mo><mi>b</mi><mover><mi>b</mi><mo accent="true">¯</mo></mover><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r\overline{r} + v\overline{v} + b\overline{b} = 0</annotation></semantics></math>.</p>
+<p>Par ce fait, il n'est pas possible de distinguer les quarks ou antiquarks composant les mésons, qui forment une algèbre d'états à part (pour la conservation des charges de couleur), et donc que les gluons constituent une classe de particules qu'on doit distinguer des hadrons. Cette équation contraint aussi la composition des autres hadrons dans la qualification de la charge de couleur de leur état composé, quel que soit le nombre de quarks ou antiquarks (et de gluons) qui les composent, et ne permet pas de prédire le type de gluon qui sera émis lors de leur désintégration ou leur interaction, en dehors de cette équation qui définit un invariant des états solutions possibles (comparable à l'invariant de la loi de conservation du nombre baryonique dans le modèle standard, ou celle de la conservation du spin, de la charge, ou encore à celle de la conservation de l'énergie totale prenant en compte l'équivalence masse-énergie).</p>
+<h1 id="groupe-special-unitaire-su">Groupe spécial unitaire SU</h1>
+<p>En mathématiques, le groupe spécial unitaire de E, où E est un espace hermitien, est le groupe des automorphismes unitaires de E de déterminant 1, la loi de composition interne considérée étant la composition d’automorphismes. Il est noté SU(E). C’est un sous-groupe de U(E), le groupe unitaire des automorphismes de E.</p>
+<p>De manière générale, on peut définir le groupe spécial unitaire d'une forme sesquilinéaire hermitienne complexe non dégénérée, ou d'une forme sesquilinéaire hermitienne ou antihermitienne non dégénérée sur un espace vectoriel de dimension finie sur certains corps (commutatifs ou non) relativement à une involution.</p>
+<h2 id="groupe-special-unitaire-complexe-su-n">Groupe spécial unitaire complexe SU(n)</h2>
+<p>Un cas particulier est le groupe spécial unitaire de degré n qui est le groupe des matrices unitaires à coefficients complexes de dimensions n×n et de déterminant 1, et que l’on note SU(n).</p>
+<p>SU(n) est un groupe de Lie réel compact simplement connexe de dimension <em>n</em><sup>2</sup> – 1. Pour <em>n</em> ≥ 2, c'est un groupe de Lie simple.</p>
+<p>Son algèbre de Lie, notée <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>𝔰</mi><mi>𝔲</mi><mo form="prefix" mathvariant="fraktur" stretchy="false">(</mo></mrow><mi>n</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\mathfrak{su(}n)</annotation></semantics></math>, est l'algèbre de Lie réelle des matrices complexes n×n antihermitiennes de trace nulle, le commutateur standard servant de crochet de Lie.</p>
+<h2 id="groupe-special-unitaire-complexe-su-2">Groupe spécial unitaire complexe SU(2)</h2>
+<p>Le groupe SU(2) est explicitement :</p>
+<p><img alt="Illustration – Groupe spécial unitaire complexe SU(2)" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,336px)"/></p>
+<p>Il est difféomorphe à la 3-sphère par l'application suivante :</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>φ</mi><mo>:</mo><msup><mi>S</mi><mn>3</mn></msup><mo>⊂</mo><msup><mi>ℝ</mi><mn>4</mn></msup></mtd><mtd columnalign="center" style="text-align: center"><mo>→</mo></mtd><mtd columnalign="center" style="text-align: center"><mtext mathvariant="normal">SU</mtext><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mrow><mo form="prefix" stretchy="true">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi><mo>,</mo><mi>d</mi><mo form="postfix" stretchy="true">)</mo></mrow></mtd><mtd columnalign="center" style="text-align: center"><mo>↦</mo></mtd><mtd columnalign="center" style="text-align: center"><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>a</mi><mo>+</mo><mi>i</mi><mi>b</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><mi>c</mi><mo>+</mo><mi>i</mi><mi>d</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>c</mi><mo>+</mo><mi>i</mi><mi>d</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>a</mi><mo>−</mo><mi>i</mi><mi>b</mi></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{matrix}
+\varphi:S^{3} \subset \mathbb{R}^{4} &amp; \rightarrow &amp; \text{SU}(2) \\
+(a,b,c,d) &amp; \mapsto &amp; (\begin{matrix}
+a + ib &amp; - c + id \\
+c + id &amp; a - ib
+\end{matrix}).
+\end{matrix}</annotation></semantics></math></p>
+<p>Le difféomorphisme φ transmet la multiplication de SU(2) à S<sup>3 </sup>: cela donne la multiplication des quaternions. SU(2) est donc isomorphe au groupe des quaternions unitaires. Comme les quaternions représentent les rotations dans l’espace à 3 dimensions, il existe un homomorphisme surjectif de groupes de Lie SU(2) → SO(3) de noyau {+I, –I}.</p>
+<p>Les matrices suivantes forment une base de <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>𝔰</mi><mi>𝔲</mi></mrow><mrow><mo form="prefix" stretchy="true">(</mo><mn>2</mn><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\mathfrak{su}(2)</annotation></semantics></math> :</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><msub><mi>σ</mi><mi>x</mi></msub><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>i</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>i</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">i\sigma_{x} = (\begin{matrix}
+0 &amp; i \\
+i &amp; 0
+\end{matrix})</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><msub><mi>σ</mi><mi>y</mi></msub><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo>−</mo><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">i\sigma_{y} = (\begin{matrix}
+0 &amp; 1 \\
+ - 1 &amp; 0
+\end{matrix})</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><msub><mi>σ</mi><mi>z</mi></msub><mo>=</mo><mrow><mo form="prefix" stretchy="true">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mi>i</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><mi>i</mi></mtd></mtr></mtable><mo form="postfix" stretchy="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">i\sigma_{z} = (\begin{matrix}
+i &amp; 0 \\
+0 &amp; - i
+\end{matrix})</annotation></semantics></math></p>
+<p>(où i est « l’unité imaginaire »)</p>
+<p>Les matrices <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>σ</mi><annotation encoding="application/x-tex">\sigma</annotation></semantics></math> (dites « matrices de Pauli ») sont souvent utilisées en mécanique quantique pour représenter le spin des particules.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

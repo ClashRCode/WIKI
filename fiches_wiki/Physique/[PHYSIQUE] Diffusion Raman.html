@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diffusion Raman - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#description" class="toc-level-1">Description</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="diffusion-raman">Diffusion Raman</h1>
+
+
+
+
+<h2 id="introduction">Introduction</h2>
+<p>La diffusion Raman, ou effet Raman, est un phénomène optique découvert indépendamment en 1928 par les physiciens Chandrashekhara Venkata Râman et Leonid Mandelstam. Cet effet consiste en la diffusion inélastique d'un photon, c'est-à-dire le phénomène physique par lequel un milieu peut modifier légèrement la fréquence de la lumière qui y circule. Ce décalage en fréquence correspond à un échange d'énergie entre le rayon lumineux et le milieu. Cet effet physique fut prédit par Adolf Smekal en 19231.</p>
+<p>Cet échange peut avoir plusieurs causes : vibrations du cristal ou de la molécule, excitations magnétiques... La mesure de ce décalage permet de remonter à certaines propriétés du milieu. On parle alors de Spectroscopie Raman. Cette technique est largement répandue dans l'industrie et la recherche depuis l'apparition du laser.</p>
+<p>Dans le cas particulier où la diffusion est due à des ondes acoustiques, on parle de diffusion Brillouin.<br/>
+<img alt="Illustration – Introduction" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,480px)"/></p>
+<p>Les différentes types de diffusion de la lumière : 1) Diffusion Rayleigh : aucun échange d'énergie, les photons incidents et diffusés ont la même énergie. 2) Diffusion Raman avec décalage Stokes : la molécule absorbe de l'énergie et le photon diffusé a moins d'énergie que le photon incident. 3) Diffusion Raman avec décalage anti-Stokes : la molécule perd de l'énergie et le photon diffusé a plus d'énergie que le photon incident.</p>
+<h2 id="description">Description</h2>
+<p>La diffusion Raman est la diffusion inélastique d'un photon par un milieu. Le fait que la diffusion soit inélastique implique qu'il y a un échange d'énergie entre le photon incident et la molécule via l'excitation vibrationnelle ou bien, en état solide, la création ou l'annihilation d'un phonon optique. Ainsi, la lumière diffusée n'a pas la même longueur d'onde que la lumière incidente. On distingue deux cas :</p>
+<ul>
+<li><p>décalage Stokes : la lumière est décalée vers le rouge (plus grande longueur d'onde, plus petite énergie) avec l'excitation vibrationnelle ou la création d'un phonon. Le nom Stokes rappelle le physicien George Stokes qui a démontré en 1852 que la fluorescence implique un décalage vers le rouge.</p></li>
+<li><p>décalage anti-Stokes : la lumière est décalée vers le bleu (plus courte longueur d'onde, plus grande énergie) avec la désexcitation vibrationnelle ou l'absorption d'un phonon.</p></li>
+</ul>
+<p>S'il n'y a pas d'échange d'énergie entre la molécule et le photon incident, alors la diffusion est élastique et la longueur d'onde du photon diffusé n'est pas décalée. On parle alors de diffusion Rayleigh.</p>
+<p>Le décalage en longueur d’onde dépend de la matière et lui est caractéristique : il ne dépend pas de la longueur d’onde d’excitation, ce qui rend possible une analyse de la composition chimique d'un échantillon à partir de la façon dont il diffuse la lumière (voir Application à la spectroscopie Raman ci-dessous).</p>
+<p>L'intensité des raies Raman dépend seulement du nombre de molécules dans les différents modes vibrationnels qui leur sont associés. L’utilisation de la distribution de Boltzmann permet de rendre compte correctement du rapport d’intensité entre les raies Stokes et anti-Stokes : les modes vibrationnels de basse énergie étant les plus peuplés, les raies Stokes sont plus intenses que les raies anti-Stokes.</p>
+<p>Les photons incidents peuvent être diffusés mais peuvent aussi modifier les vibrations dans l'échantillon étudié, par exemple en état solide par la création (processus Stokes) ou la destruction (processus anti-Stokes) des phonons. Les raies Raman (Stokes ou anti-Stokes) sont caractéristiques de la composition chimique du matériau, de sa structure cristalline ainsi que de ses propriétés électroniques. L'utilisation concerne alors la chimie, l'œnologie, la bijouterie... C'est une des rares méthodes qui permet, à température ambiante, d'obtenir une caractérisation vibrationnelle ou chimique d'un objet. De plus, elle est non destructive et nécessite une très petite quantité de matériau. Dans certains cas particuliers, il est également possible d'estimer des concentrations relatives à l'aide d'une référence connue.</p>
+<p>Son inconvénient majeur est la faible intensité de ses raies qui est très inférieure à celle des raies Rayleigh. Il existe cependant un effet Raman en résonance qui fait appel à la théorie vibronique, ce phénomène s'explique plus simplement par le fait que lorsque la fréquence de l'excitatrice est proche des fréquences de transition électronique des atomes il y a un accroissement de l'intensité observée. Cet effet peut être recherché afin de réaliser de meilleures observations.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

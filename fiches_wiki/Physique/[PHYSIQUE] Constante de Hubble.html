@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Constante de Hubble - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#notation" class="toc-level-2">Notation</a>
+            <a href="#dimension-et-unites" class="toc-level-2">Dimension et unités</a>
+            <a href="#valeur" class="toc-level-2">Valeur</a>
+            <a href="#signification-intuitive" class="toc-level-2">Signification intuitive</a>
+            <a href="#formalisation" class="toc-level-2">Formalisation</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="constante-de-hubble">Constante de Hubble</h1>
+
+
+
+
+
+
+
+
+<h1 id="introduction">Introduction</h1>
+<p>La constante de Hubble <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>H</mi><mn>0</mn></msub><annotation encoding="application/x-tex">H_{0}</annotation></semantics></math>paramètre de Hubble H (ou paramètre de Hubble-Lemaître), est la constante de proportionnalité existant aujourd'hui entre la distance et la vitesse de récession apparente des galaxies de l'Univers observable (plus une galaxie est éloignée de la Terre, plus elle s'en éloigne vite). Elle permet d'expliciter la loi de Hubble-Lemaître décrivant l'expansion de l'Univers, dans le cadre du modèle cosmologique du Big Bang, et de déterminer le taux d'expansion actuel de l'Univers.</p>
+<p>Ce nom a été donné en l'honneur de l'astronome américain Edwin Hubble qui a été le premier, en 1929, à mettre clairement en évidence la proportionnalité des distances et des vitesses, grâce à ses observations effectuées à l'observatoire du Mont Wilson. Quelques années auparavant, Alexandre Friedmann en 1922 et Georges Lemaître en 1927 avaient de leur côté et indépendamment construit le modèle théorique d'un univers en expansion à partir des équations de la relativité générale, et démontré mathématiquement la possibilité de l'existence d'une telle proportionnalité.</p>
+<p>La constante de Hubble est généralement exprimée en km/s/Mpc, fournissant ainsi la vitesse en kilomètres par seconde (km/s) d'une galaxie, en fonction de sa distance en mégaparsecs (Mpc). Sa valeur déduite des observations est d'environ 70 km/s/Mpc mais depuis les années 2010 un nombre important de mesures indépendantes sont proches mais incompatibles au regard de la précision affichée, ces différences n'étant pas encore expliquées.</p>
+<p>Bien que dénommé « constante », ce paramètre cosmologique varie en fonction du temps. Il est défini comme le taux d'expansion de l'Univers divisé par le facteur d'échelle, H(a) ≡ 𝑎̇/a. La constante de Hubble, H0, est sa valeur à l'heure actuelle (a = 1), c'est-à-dire le taux d'expansion actuel de l'Univers. Il décrit donc le taux d'expansion de l'Univers à un instant donné.</p>
+<p><strong>Terminologie</strong></p>
+<p>En toute rigueur, il convient de distinguer la constante de Hubble, le paramètre de Hubble et le taux d'expansion.</p>
+<p>La constante de Hubble est la valeur actuelle du paramètre de Hubble.</p>
+<p>Le taux d'expansion se réfère au taux auquel se produit l'expansion de l'Univers à une époque donnée, et dont la valeur actuelle est la valeur du paramètre de Hubble, en pourcentage.</p>
+
+<h2 id="notation">Notation</h2>
+<p>La constante de Hubble est généralement notée <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>H</mi><mn>0</mn></msub><annotation encoding="application/x-tex">H_{0}</annotation></semantics></math><em>H</em> est l'initiale du patronyme d'Edwin Hubble (la lettre H seule est déjà beaucoup utilisée en physique) et l'indice zéro indique que c'est la valeur actuelle de la constante de Hubble.</p>
+<h2 id="dimension-et-unites">Dimension et unités</h2>
+<p>La dimension de la constante de Hubble est celle de l'inverse d'un temps.</p>
+<p>Son unité SI est la seconde à la puissance moins un (s−1).</p>
+<p>Il est cependant d'usage de l'exprimer en kilomètres par seconde par mégaparsec (km/s/Mpc ou km⋅s−1⋅Mpc−1), sous la forme suivante :</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>H</mi><mn>0</mn></msub><mo>=</mo><mn>100</mn><mi>h</mi><mi>k</mi><mi>m</mi><msup><mi>s</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mi>M</mi><mi>p</mi><msup><mi>c</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">H_{0} = 100hkms^{- 1}Mpc^{- 1}</annotation></semantics></math>,</p>
+<p>où <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>est le taux d'expansion.</p>
+<h2 id="valeur">Valeur</h2>
+<p>Sa valeur observationnelle est actuellement d'environ 70 km/s/Mpc.</p>
+<p>Un parsec vaut sensiblement 3,1 × 1016 m. En unités du système international d'unités, la constante vaut donc sensiblement 2,26 × 10−18 s−1 (ce qui représente une « fréquence » de 7,13 par 100 milliards d'années).</p>
+
+<h2 id="signification-intuitive">Signification intuitive</h2>
+<p>Une valeur de 70 km/s/Mpc pour la constante de Hubble signifie qu'une galaxie située à 1 mégaparsec (environ 3,26 millions d'années-lumière) de l'observateur s'éloigne du fait de l'expansion de l'Univers (et donc hors effet d'un mouvement propre de l'objet, négligeable à très grande distance) à une vitesse d'environ 70 km/s. Une galaxie située à 10 Mpc s'éloigne à une vitesse de 700 km/s, etc.</p>
+<p>Une conséquence a priori surprenante de la loi de Hubble-Lemaître est qu'une galaxie qui serait située à plus de 4 000 Mpc (13 milliards d'années-lumière) s'éloignerait de nous à une vitesse supérieure à la vitesse de la lumière. Ceci indique simplement que l'interprétation en termes de mouvement des galaxies dans l'espace devient impropre à très grande distance. La relativité générale explique qu'il faut considérer que l'on est en présence d'une expansion de l'espace lui-même.</p>
+<p>Les écarts entre les différentes valeurs indiquées ci-dessus pour la constante de Hubble sont modestes ; mais si cette différence provient d'une accélération de l'expansion de l'Univers et non d'approximations de mesure, elle pourrait remettre en question le modèle cosmologique du devenir de l'Univers. Aux précédentes hypothèses de Big Bounce, Big Crunch et Big Chill viendrait alors s'ajouter la possibilité d'un Big Rip déjà envisagé par l'astrophysicien américain Robert Caldwell dans les années 1990.</p>
+<h2 id="formalisation">Formalisation</h2>
+<p>La découverte expérimentale de la relation linéaire entre le décalage vers le rouge et la distance d'un objet distant, associé à une relation linéaire a priori entre la vitesse de récession et le décalage vers le rouge, se formalise de manière mathématique de la manière suivante :</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><msub><mi>H</mi><mn>0</mn></msub><mi>D</mi></mrow><annotation encoding="application/x-tex">v = H_{0}D</annotation></semantics></math></p>
+<ul>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math> est la vitesse de récession, exprimée typiquement en km/s ;</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>H</mi><mn>0</mn></msub><annotation encoding="application/x-tex">H_{0}</annotation></semantics></math>est la constante de Hubble et correspond à la valeur du paramètre de Hubble à l'instant t0, exprimée en fonction du facteur d'échelle ;</p></li>
+<li><p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math> est la distance propre (qui peut varier en fonction du temps, au contraire de la distance comobile qui est constante) entre l'objet distant et l'observateur, mesurée en mégaparsecs (Mpc) depuis la galaxie de l'observateur, dans l'espace à 3 dimensions défini par le temps cosmologique donné. La vitesse de récession <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>est alors simplement <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mi>d</mi><mi>D</mi><mi>/</mi><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">v = dD/dt</annotation></semantics></math>.</p></li>
+</ul>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

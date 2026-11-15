@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diffusion Brillouin - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction-description-classique" class="toc-level-1">Introduction Description classique</a>
+            <a href="#description-quantique" class="toc-level-1">Description quantique</a>
+            <a href="#geometries-de-diffusion-courantes" class="toc-level-1">Géométries de diffusion courantes</a>
+            <a href="#determination-des-proprietes-elastiques-d-un-milieu" class="toc-level-1">Détermination des propriétés élastiques d&#x27;un milieu</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="diffusion-brillouin">Diffusion Brillouin</h1>
+
+
+
+
+
+
+
+<h2 id="introduction-description-classique">Introduction
+Description classique</h2>
+<p>Dans une description classique de la diffusion Brillouin, on considère la diffusion de la lumière par une onde acoustique plane. La déformation du milieu associée à cette onde s'accompagne d'une modification locale de l'indice de réfraction du milieu.</p>
+<p>Pour des faisceaux intenses (par exemple un laser) voyageant dans un milieu, les variations dans le champ électrique du faisceau lui-même peut produire des vibrations acoustiques dans le milieu via l'électrostriction. Le faisceau peut subir de la diffusion Brillouin à cause de ces vibrations, habituellement dans la direction inverse du faisceau incident, un phénomène connu sous le nom de diffusion Brillouin stimulée. Pour les gaz et les liquides, les décalages de fréquence typiques sont de l'ordre de 1–10 GHz (décalages en longueur d'onde de ~1–10 pm pour la lumière visible).</p>
+<h2 id="description-quantique">Description quantique</h2>
+<p>D'un point de vue quantique, la diffusion Brillouin consiste en l'interaction de photons avec des quanta acoustiques ou vibrationnels (phonons).</p>
+<h2 id="geometries-de-diffusion-courantes">Géométries de diffusion courantes</h2>
+<p>Dans la pratique, on cherche en général à mesurer les propriétés d'onde avec un vecteur d'onde bien précis. On se limite donc à des géométries de diffusion simples. Trois géométries sont couramment utilisées. Elles sont décrites ci-dessous.</p>
+<ul>
+<li><p>La rétrodiffusion : on collecte la lumière diffusée à 180 degrés, soit dans la même direction que la direction de la lumière incidente.</p></li>
+<li><p>La diffusion à 90 degrés : le rayon collecté et le rayon incident forment un angle de 90 degrés.</p></li>
+<li><p>La diffusion en mode de plaque : on collecte la lumière rétrodiffusée par une plaquette fine mise en incidence. La lumière collectée provient alors de deux phénomènes de diffusion différents : une part est directement rétrodiffusée, et une autre part provient de la diffusion de la lumière par une onde de vecteur d'onde dans le plan de la plaquette.</p></li>
+</ul>
+<p><img alt="Illustration – Géométries de diffusion courantes" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,120px)"/><img alt="Illustration – Géométries de diffusion courantes" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,120px)"/><img alt="Illustration – Géométries de diffusion courantes" loading="lazy" src="data:image/png;base64,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" style="width:min(100%,120px)"/></p>
+<p>Rétrodiffusion Diffusion à 90 degrés Diffusion en géométrie plaquette</p>
+
+<h2 id="determination-des-proprietes-elastiques-d-un-milieu">Détermination des propriétés élastiques d'un milieu</h2>
+<p>Le décalage en fréquence mesuré permet de calculer la vitesse de l'onde élastique diffusante. En mesurant des vitesses d'onde se propageant dans plusieurs directions différentes, il est possible de calculer l'ensemble des modules élastiques du matériau.</p>
+
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

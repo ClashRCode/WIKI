@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Effet Weissenberg - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="effet-weissenberg">Effet Weissenberg</h1>
+
+
+
+<p><img alt="Illustration – Effet Weissenberg" loading="lazy" src="data:image/jpeg;base64,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" style="width:min(100%,220px)"/></p><h2 id="introduction">Introduction</h2>
+<p>L'effet Weissenberg est une manifestation d'une différence de contraintes normales non nulle typique de certaines solutions de polymères (fluides viscoélastiques). Le phénomène se manifeste par la montée du liquide le long d'une tige en rotation plongée dans un tel fluide viscoélastique.</p>
+<p>On peut observer ce phénomène chez soi lors de l'utilisation d'un batteur dans des blancs d'œufs.</p>
+<p>Il existe aussi un effet Weissenberg au niveau microscopique.</p>
+<p>Cet effet est dû à l’existence de contraintes normales, c'est-à-dire agissant dans une direction perpendiculaire (ici, radiale) à la direction principale de l’écoulement (ici, tangentielle).</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

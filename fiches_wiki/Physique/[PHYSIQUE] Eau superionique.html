@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eau superionique - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#une-glace-deau-mi-solide-mi-liquide-dans-le-manteau-des-plan" class="toc-level-2">Une glace d’eau mi-solide mi-liquide dans le manteau des planètes glacées</a>
+            <a href="#le-saviez-vous" class="toc-level-2">Le saviez-vous ?</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="eau-superionique">Eau superionique</h1>
+
+
+
+
+
+<h1 id="introduction">Introduction</h1>
+<p>L'eau n'aura décidément pas fini de nous surprendre. La voilà qui s'invite dans les laboratoires sous forme de glace d'eau superionique. Il s'agit d'un état de la matière particulier obtenu dans des conditions de très hautes température et pression, où la glace d'eau est à la fois solide et liquide : en l'occurrence 5.000 K et 190 GPa, soit deux millions de fois la pression atmosphérique ! Ce sont les conditions qui règnent au centre de la Terre.</p>
+<p>L'eau superionique n'existe pas naturellement sur notre planète, mais elle pourrait se trouver dans cet état dans le manteau des planètes géantes de glace, telles Uranus et Neptune. Son existence, prévue depuis les années 1980 par la théorie, corroborée ensuite par des simulations numériques en 1999, a enfin été confirmée expérimentalement par des physiciens américains : Marius Millot et ses collègues du Lawrence Livermore National Laboratory (LLNL), de l'université de Californie, à Berkeley, et de l'université de Rochester, dans l'État de New York.</p>
+<p>Au terme de quatre années de mesure et d'analyse de données, les chercheurs ont publié la découverte dans Nature Physics. « Notre travail fournit une preuve expérimentale de l'existence de l'eau superionique et montre que ces prédictions n'étaient pas dues à des artefacts dans les simulations », rapporte Marius Millot dans un communiqué du LLNL.</p>
+<h2 id="une-glace-deau-mi-solide-mi-liquide-dans-le-manteau-des-plan">Une glace d’eau mi-solide mi-liquide dans le manteau des planètes glacées</h2>
+<p>Les simulations numériques de 1999 constituaient déjà un exploit pour l'époque, où la puissance de calcul était beaucoup plus faible. Par ailleurs, des limitations technologiques empêchaient les expériences en laboratoire. Aujourd'hui, de telles barrières sont tombées : Marius Millot et ses collègues sont parvenus à créer de l'eau superionique en comprimant un échantillon d'eau entre deux pointes de diamants.</p>
+<p>Le procédé, appelé cellule à enclumes de diamants, a permis d'augmenter la pression jusqu'à 2,5 GPa, soit 25.000 atmosphères=, et de créer une glace d'eau, dite glace VII, un type de glace parmi une quinzaine connus, qui est 60 % plus dense que l'eau. Ensuite, la glace VII a été bombardée par un laser. Une fraction de seconde a suffi pour que la température atteigne 5.000 K et la pression 190 GPa. L'eau superionique s'est formée avant de fondre, à peine 10 à 20 nanosecondes plus tard.</p>
+<p>Soumise à ces conditions extrêmes, l'eau, de formule brute H2O (deux atomes d'hydrogène liés à un atome d'oxygène), voit ses propriétés changer et elle devient « superionique ». La chaleur affaiblit les liaisons entre hydrogène et oxygène au sein des molécules d'eau, tandis que la pression maintient les atomes d'oxygène figés dans un alignement cristallin, c'est-à-dire solide. Les ions hydrogène (rien d'autre que des protons) se mettent donc à circuler librement dans le réseau cristallin d'oxygène, comme un liquide.</p>
+<p>Grâce au déplacement des particules chargées, l'eau superionique est conductrice, sauf que contrairement à un métal, l'électricité circule par l'intermédiaire des particules chargées positivement, ici les protons, au lieu des électrons. Si l'on parvient à obtenir de l'eau à l'état superionique dans des conditions moins contraignantes, une application sera donc envisageable en électronique, notamment pour faire des batteries.</p>
+<p>Cette découverte expérimentale intéresse également l'astronomie. Elle pourrait alimenter les modèles sur la dynamique et la structure interne des géantes glacées de notre système solaire, ainsi que des exoplanètes similaires, car les conditions extrêmes reproduites en laboratoire par Marius Millot et son équipe sont celles qui règnent au sein d'Uranus et de Neptune. Les résultats tendent à montrer que l'eau serait présente dans le manteau de ces planètes à l'état superionique, ce qui permettrait d'ailleurs d'expliquer leur champ magnétique étrange.</p>
+<p>En outre, cette preuve expérimentale confirme la fiabilité des modélisations numériques et leur capacité prédictive : d'autres états exotiques de la matière et d'autres voies de recherche pourraient être envisagés grâce à des simulations.</p>
+<h2 id="le-saviez-vous"> Le saviez-vous ?</h2>
+<p>D’autres substances peuvent exister à l’état superionique. Les physiciens prévoient d’ailleurs de poursuivre leurs recherches sur d’autres composés, comme l’hélium, afin de mieux comprendre ce qu’il se passe à l’intérieur des géantes gazeuses, telles Jupiter et Saturne.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Effet Coanda - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#description" class="toc-level-1">Description</a>
+            <a href="#utilisation-en-aerodynamique" class="toc-level-1">Utilisation en aérodynamique</a>
+            <a href="#dispositif-anticouple" class="toc-level-2">Dispositif anticouple</a>
+            <a href="#reduction-de-la-trainee" class="toc-level-2">Réduction de la traînée</a>
+            <a href="#drones" class="toc-level-2">Drones</a>
+            <a href="#l-echappement-a-effet-coanda" class="toc-level-2">L&#x27;échappement à effet Coandă</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            
+
+
+
+
+
+
+
+<h1 id="effet-coanda">Effet Coanda</h1><h1 id="introduction">Introduction</h1>
+<p>L’effet Coandă est l’attraction ou l'attachement<sup>1</sup> d’un jet de fluide par une surface convexe sur laquelle il s'écoule. Le fluide suit la surface et subit une déviation avant de s'en détacher avec une trajectoire différente de celle qu'il avait en amont. On peut décrire ce phénomène comme une « bifurcation stationnaire dans un écoulement fluide ».</p>
+<p>Cet effet est en partie à l'origine du fonctionnement d'une aile d'avion (sa portance).</p>
+<h1 id="description">Description</h1>
+<p>Un effet Coandă très simple peut être observé en approchant tangentiellement du corps arrondi d'une bouteille le flux d'air d'un sèche-cheveux, qui se trouve dévié et contourne la bouteille. Un autre exemple bien connu de l'effet Coandă peut être observé à partir de l'expérience souvent nommée « de Bernoulli » qui place en lévitation aérodynamique une balle<sup>2</sup> au-dessus de la buse d'un sèche-cheveux. Si cette expérience peut être comprise assez facilement dans le cas où le sèche-cheveux délivre son souffle verticalement, la réflexion devient plus complexe lorsque l'on incline ce sèche-cheveux, situation où l'on constate que la balle reste captive du courant d'air. On peut penser que la balle est maintenue <em>au-dessous</em> du courant d'air par l'effet Coandă.</p>
+<p>De même, dans le cas des balles de sport liftées on peut faire appel à l'effet Coandă. Lorsqu'une balle est projetée en avant et qu'elle est dotée d'un mouvement de rotation, la partie de l'air qui passe au-dessus de la balle est déviée vers le bas en contournant la balle (effet Magnus). La même expérience peut être réalisée sans effet Magnus en sustentant un tube à essais qui ne peut tourner et dont le fond arrondi est contourné par un jet dirigé vers le haut que le fond du tube à essais dévie vers le bas.</p>
+<h1 id="utilisation-en-aerodynamique">Utilisation en aérodynamique</h1>
+<h2 id="dispositif-anticouple">Dispositif anticouple</h2>
+<p>Le NOTAR, un dispositif anticouple pour hélicoptères, utilise l'effet Coandă.</p>
+<h2 id="reduction-de-la-trainee">Réduction de la traînée</h2>
+<p>L'effet Coandă peut être utilisé pour modifier la résultante des efforts induits sur un véhicule en mouvement par le fluide environnant. En particulier, certains dispositifs de contrôle tirent parti de cette propriété pour réduire la traînée.</p>
+<h2 id="drones">Drones</h2>
+<p>Cet effet peut être utilisé pour la propulsion et sustentation de drones.</p>
+<h2 id="l-echappement-a-effet-coanda">L'échappement à effet Coandă</h2>
+<p>Ce principe a été ou est utilisé en Formule 1 (après l'interdiction par la FIA pour la saison 2012 des diffuseurs soufflés) pour améliorer les systèmes de sortie d'échappements du moteur afin d'augmenter l'efficacité aérodynamique de véhicules de course monoplaces. Il aurait été adapté à la F1 par McLaren et utilisé dès le début de la saison, puis adopté par Mercedes au Grand-Prix de Singapour, puis par Lotus au Grand-Prix du Japon et enfin par la plupart des écuries avant d'être interdit depuis la saison 2014.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

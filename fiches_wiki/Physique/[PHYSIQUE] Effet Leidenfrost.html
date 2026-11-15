@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Effet Leidenfrost - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    /* Compléments pour le contenu converti (listes, liens, tableaux) */
+    .content h1, .content h2, .content h3, .content h4 { scroll-margin-top: 100px; }
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content li p { margin-bottom: 0.25rem; }
+    .content li ul, .content li ol { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+    .content a { color: #4f46e5; text-decoration: underline; }
+    .content a:hover { color: #3730a3; }
+    .content strong { font-weight: 600; }
+    .content em { font-style: italic; }
+    .content sub { vertical-align: sub; font-size: 0.75em; }
+    .content sup { vertical-align: super; font-size: 0.75em; }
+    .content .table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+    .content table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; vertical-align: top; text-align: left; }
+    .content th { background-color: #e0e7ff; color: #312e81; font-weight: 600; }
+    .content td p, .content th p { margin-bottom: 0.25rem; }
+
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#mise-en-evidence-du-phenomene" class="toc-level-1">Mise en évidence du phénomène</a>
+            <a href="#application" class="toc-level-1">Application</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="effet-leidenfrost">Effet Leidenfrost</h1>
+
+
+
+
+
+<p><img alt="Illustration – Effet Leidenfrost" loading="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANwAAABYCAIAAAARGQ4YAAAABGdBTUEAAK/INwWK6QAAAAlwSFlzAAAASAAAAEgARslrPgAAAAl2cEFnAAAA3AAAAFgAAky2AQAAHs9JREFUeNrtfUuMHMeZ5vdHZNaru7rZLz7EblImaZojS6Ro2uZoBoYGA2NkwzBs2PAYxh7sw+xpbSxg3ReGD3uwDwsDNvbgwwB7WAGysT7sylphtZAlrWdW1tAivSRlkZREimQ3STXVzX7WIzP+PUQ+IiIfVdVsaiSyAoXuqqisyMjIL77/GZHEzBiWYfkoFTEcgmEZgnJYhmUIymEZgnJYhmUIymEZgnJYhmUIymEZgnJYhmUIymEZliEoh+UjXrzhEAxUWkDLrqkAjeG4DEF5r8sa0AFuMFpAi3EjiL8gdAKEIZgAAAwAQqDmR+9HBGYkAOwiNIEmQMPRHLzQMCFDl1VgkTGvsBBgowtWqAeoMHxgIoQAiECEKsOPoaYHrsvYJIDBwAbhDoGBTQ+BRKOCPR4+ITE5ZNMhKAcSx/OMs13cbkN20exiQqHB8AmSICjCIpEmShj/IlTq4WM2XkDICBgbwJLEsg+qYFcVj/rYPZRNQ1CWlNvA6QBXW6AWdrYxxqgAUgAEIkgCJaAEKGZKRxwzAIZCxJTMUAxmKCDUAFVQjDawRFisY6SOYzUcoiE0h6DMwrGLy+sYW8dUiBogRArE5G+KSOM9ELGmZkeNS82OKqZJDU3nxQylsEK4UUVtFJ9r4OAQfUNQagvmtS7eXUNzHTMBKpoOBYSNRRGjUNjQJFt6R4iMaTLhyAiUCgpQjFC/118pKMYqYWkEO5r4qwomhhh8kEF5hfHyKvw7mA7gJ+ATEIAU0UcZVxJSdIpYoUxEeapbajgCChEuU16M3wQJRjnGKCNQuOOhuwOfHcXBoYn+AIJSAX/o4twydq6iAZAw8GcAURpSW9gSXJhkGVPmbcJ7BJ+xW2EHI4xld2jiUiHkSL8MMzWbwFITByfwWQl/CMa4eA8CIl/r4K2b2N2GL8AaZIihltChYc24EtywcvRfBk5LtAX2A13Ca8DhDg6ECBlMkT2uAAEwQSBiUwEwp3TLQFVhahnXAvAMPjfEZVzu/zDj6x2cvYWdLUiyhLK2V0QsiVMNEgYiAYGUUKWAJHiEBYkVD08yPgk8Rvi6wJUKNsk6hWbTBNkwQR/PChAkYWwNi+/jDyE6Qzw+CKA818If3sfMZuxoNNyNhNTXI2M6NGFkolMauPQFliQeIVQFSACECcKnJBYkJNwfJrzo2O9kuJwY8Fdx+xZOKXSHkLy/QbkEvLKGh9bhs43CLDJMvw9Fg5IiUuugImJKjWBB8ESsdwKbwKpILaQIlwlZIiZLQytN50aMy1vL+DNjGGG7b0HZBv7XGppLqHJ0/xP/ohOhMb2PGiJIJGxCmSK11iGwm7AIgOATPGADWGE8osBIBXcirBMAmlqpY8UTQQHyNs4s4RoPQXmfln/pYmkRzTCmJVN0wgrSwAYHGdB0HEOJ0bMPaAD/LPC2wJvAfwf2BxiDJa+t9+YZYZ3RxCYr+Lfx+w20h6C8LwX3G3cwvelm6VDGI+h4H3MxZPqDtH7pCRxl7AtxI8SSwskA+2NrCRmsIzdXiFyLXlfWQty+jTfDoUvovit/7MK/A2kiAJa5nQayTRg5NEa2xIcV8mFgFnhIe8KB0MQx2xKcM5XFPWdgcgOn1vAX46gOmfJ+0iYvbWCsE2c9lhYTIjIxxo1xyUpkbeJ4IsKQIldnvctSY6wv4S01ZMr7qCwD65uY4sEybBl4V+KGBwiMMf4ixFiv4+9dabZwroVPNwyyHzLlx7pcaAHrg10YA297WPFwgHBQoFbFmSpWyMqcNLOBugqhiuLdOodyG2HKwGiI+WUsDsX3fVMWO0AwAAKIcVNgxcOnGRPADmAO2CXxhhdnoyU5aYjyKkIVB7LjeiDNW2MToHHlQIUA0cJ1NQTl/VLWBMYCKBt6CTJUAiCOss4AtAmeACRYQEmEQBVok5EoaWRJhsYrQa0yTmFyJ5tEC6uyfKrU2rjafUAd6fcbKEOFxVaUA2Hefs4wVpIHqd/cEWAB5UERAGwCbbay0cyEtOwrNHDJhljnTE/SecIWuSKZJ4AC6gEWWg8oKO83Q6dNCEJ4CixiuiKYNg9zWqMAYijCjMK1ANdrmAYIaAHXGIeCaKkDERSnghWcLhxLctXYQG3KiJoyY0g6MDUnRtaEEkA3QBuo38VovPrqqy+88ILOTmTmer3+3e9+d9++fUNQlhWl1Pnz52/evCmEICIAvu8fP3680dji6r8ugQCPDQNF33UCM0A5NQqoMT6zgTcZlyoQgGR8qoP9CiFBAKECCExgO6lCq5jW0hxD3OtU84SkTRAjYxixrZsC8BmbG7g9hdm7GN5Go/GLX/xieXkZwPT09NNPPz0zMzNkyt5lc3PzZz/72YsvvhiGIRHt2rXrpZdeOnDgwNZa0wEYl41sgkzvPUExiKGAGvCZTXTaAKFGqBFCguCItEJEKgFxhMhuu7uxuTE2Np4ugYjXP6TrdZIFEmZNxpw3JT4MXN6NRd9ut2/durWysjI7O7u8vHz48OGf//znX/ziF4k+Bmnu8kc/+tG/4umJaO/evU899dTGxsbZs2fX19dnZ2e/8IUvVKvVWq0mhNjCJHtLIVyBn8kQg5kSYb6QflUh+IkXHW74JYGUEHj9tf/7f1556ejxE1mOjFRPLQpioyeMzSxrZRnSZT2JuFeAUgCw1sCjYxgfEIsLCwvnzp176623Wq3Www8/3Gg0arXaL3/5y5MnT34sEImPznKIMAyfeeaZH//4x1/+8pe///3vz8/Pt1qtycnJ2dnZmZkZzxuA0f9bC7fewQ4VJZuZS3BEkodmLoewV0dYOZTCyIY0Es9U2H363/3De5ff/S+//m1jZDRZ6w0YRo+9fEw7kkz7PVkaYa6RiL4NwcDGXnx9EtP9YfHmzZvXrl1bWVlpNpuzs7O7d++uVqsA1tbWgiDYsWPHx8gw+Git0Tl79qwQ4pFHHgGwsbExPz9//fr1Vqs1MTExNzfXJzrPKzx/BXvXIIS18iZdHZZBYZLDS8ZqMipYOCYF3n377b//yt+0261fPf/qJ48c0RhKZHQYS2praU7yMvCXuDyTw/THUCEANvbhH8bLFKwSLG65MPPS0tLIyIjTzurq6ujo6IfDtR8t6/vRRx81lfRDhw4dOnRIo/PChQt/+tOf+kHnQYHmDmyuoxGrknp9jIrVQWXk/KYuG/MwBQgItpydghI3JP/m1/91Yf6aEOL11/7p0JEjjtQ2EcnG5hmJyFa2zwhsaZxadgsfM/X8QGkWiydOnLhLLCby6rnnnjt16tTOnTu/853vTE5OAlhcXHz22WcvXLjw05/+1Pf9Bw6URSbkQOisAo/V8WoN+zZTx5AGHMiIzRjpvWGysgsQFOMyXiOmV3uBI+68cX3hn373vycnp0mI8//vjU5XMYQJssSpqWW66eZk29luxoTMjwpYH8Nf+Vbs+95hMSm3bt26cOHC008//dJLL73++utPPfWURuqePXvOnTsXhqEG5fLy8rPPPuv7/sbGxpEjR06fPn3ixAnf9y9evLi0tPTwww93u93r169/61vfmp2dvT9BuQV0Hq/i4hTuLGBCQXFqzSRkaeJSMQRFW69E1h9FrmwSYI5CO6syyk9r7Zj49//5Hy+eObN7fMeRw0faLBjwM85IFZssKUEmdgysheHKdqQTY6mB4zM4QADQ6XRu3Lhx9erV1dXVZrM5Nze3a9euu8HiG2+88fzzzz/xxBPVanX37t2mo2N+fp6Zx8bGpqenT506pUG5a9euJ5988ve//31y2Nra2ssvv/zDH/7whRdeeOWVV77xjW8888wz4+PjnU7na1/72k9+8pPvfe97zPyb3/zmBz/4wYPiPDfRubCwcPHixTNnzmiraOfOnZ7n1QhfH8dvBeZvYm83Rkns1nHIkgy3dUjoCrQJbYFAYMUDBNgHESY9+AQA3lh9z55PLG/eDndMLXxi9zUFMGQAVqgojASQjFFdabqmFBgINTRVjv9SMcAIGItNPLIbJ/1IVTh//vz6+vrdYzEphw4d+va3v33p0qXJyUnHAKrX6/oURDQ+Pm6KdUfvnJubO3HixKVLl5RSx44d+9WvftXtdo8fP/74449rCr9+/fqFCxcexIhOo9E4ePDgwYMHNTovXbq0sbFx6NAhAGMCX23ifwR4dw07W2gwKhxJQ1aAADNYIAACgZZAx0fLA3mQPkYldkg0CZ8WqAJTAGVG6tjBT4hqteEDQAjcBkJglXFLIQDe7kIxVAccwg9R60IQRoKIFGXMjqQdRgoB0AbueAjH8Dc78aiMTkdER48e3YJrrKQ0m81ms/nee+8dOHCg2WyaX+3du3dzc/OPf/zjm2++efTo0Y2NDSKq1+sOLpk5CAJdqZTSQRCllP4YBIF+v2Ub+j4JMybo1GOky4jANydxYQxnuvigi3YLXoB6B50qQg8SED4qFYxKTPsYJ8wIjABj6CuLccfUlDmID8W++0ckAIQSDCzV0QaWGYsKbYWFbrRhS7sFKDCj2oICNiqoVFHx8ckaHvOxx7ZutheRWvjOz89fvnx5z549c3NzIyMjyVfj4+Nf+tKXXnzxxcOHDx87dux3v/tdt9v9yle+UqvVTp48KWU0MKOjo5///OcBHDx4UCPvxIkTnufNzc0R0cmTJ2u12tTU1OOPP34/uITuoR8U+ABYBhYUdosogbcGjAPMEEr1n8KT8f8X5pyT3VZAkZheYgSEELgaQBL2+2IcGPmwhuL999+/dOnSBx98cPr06W9+85tHjhwpOvLKlSu+7z/00EMPtJ9SKTCHubd5c3N1dfWWNmasjUwJrdbqO++cYQ70jn5pICf9SEJw6nTUldFqHbzzzqk7d272dMDp1rKlWsX4uJW0lqSuKeUms0U8zgQGM4MhpL9//1/61aZzZJ/vfX9s9+5jRNIJUeq/9fpMtTpm1muVgOgjnR12T0DJjDAMiADwBx/caLfXpbRQ0m6vXLlymigUAp6HRgOVCgBcvXr+zp3LzWb00SwrK4uLi+/4fhZwUKq7trZk7YGRWehd9JEI/+qz0sG6lV/H+cNr/FbWapMAOaDU82Fs7OFGY2c6GYxpMzIyNzX1WPKV749OTR0n8pIWqtXJanXSctR+WFC+K1B2Oq3bt68CHd/H+vr78/NnKxVUKrhz5/r8/JlaDVLi5s1L7fZSpQLfj0IsQgAI2u3lBFVS6soyfJRIyeS+Drdvz8K3fEiTQRNCVCoTRJT8pNHY22g8lLRTq01PTHyWSABcrc6MjT0WrQ4Vfr0+p9FMRPrNhwrKIOh0Ohvvv3/5vff+ZWXl8o0br62uvtlotJpNCNHudNYSDkuuWQyf1POxBXSxJuP5/hgRASxldXT0U0JUiOD7I5OTf+l5tfHxo5XKlJTVWm2OSBJV7hUou932r3/9H65cebndvthoLE9MqHodngca7vk5xK7NvpXKqJR+pTIyMXG4UvFnZ783Pf33/S9zGIBsPa9SqYz8+c+v7dgBpUhKBAFqNfh+BM0S3WhY7tfiKOU6JBsEa0Sk1J21tevVKs/PX202n6hW928/KIno6NGnnnvuPy0uLi8vw/OoWkWthno9etVqXKkgsWm0pkjFm5kMsftxlN36VgpBRASQlFJKSMlEJAQqFapURL0uPY8ADsOw2w2Yq0LUBqC/gfo6O/vpvXuPnT//su+z56HToY0NSBnhz/PIeA/Pi4wbz4OU8DxUKvp6WNeYkHVQG9tDOcbpsGzvZCYiIaQQInHRSun7vu95HpFeyMRCcLXqV6ue70si8jyvUpFCMHMIhEShUh1mhGGXmZVipVSnE7Tbqt1W7Xa4b9+Tnjdzr0BZr48++ujfnTr1SrfLUkII1ryoERa/p6TGecW2NunQgOeZldYxJmqlZABCkG4fgBCsvY9EZPos4yFmsrYzy94GlQiapK7o2LxZQaWzpWQOUdGvmJ0fUkZRi5iJCERCX6gO3Qud/gQhpe/7NWPFh3JOQSTq9Wa9PiGlDwREAcC+X6/VGpWKBDrMAXNXCPI84XkAAuYO0AFCZgKYWSmlOp1uEHTCsNPtboZhp9PRkUVWisOQlUIQcLvNnQ632xyG1aNH/24gd9LABvxf//U3fvvbX968edk0rmP0RERoojD5K4SGUSrfk2MSl5AmWn0bkkotF0yLSgjyfX0/tPggIkEkYp5mAL4v43ZICNKdNN2lAEupYS2JpD6MSAih33hCCEBKKYSIlrUJIXQ9kRBCn5eEAJE+QvdWaJeefhMPmzReHiCYozU/ACHavEgy6/4IIi9GYTJ5TFBGaSRKhQBrrY5ZCCF9v6ozn5QKlApjNmVmzWqILyZUahPoKNVWqhuGnSBoM7eZu0Cbubu52dGNK8Wa/JhVGDIzd7vdIGh3u12l2mGYwBFBwNqdFASsFNptBAEHAXbt+sz09OcHwtjAoJyd/dTf/u2/eeaZ/6ino3a96r/deG9kEmmqYgwskIAUrL8yIRu/IrwmclxjCEkiYwypCF4eE7S2wCBIoaSMH/vgCUEQQmmgeB4TRczq+5TQqpDkRaBkIZTvS5BHEEIILwIeSeFJ6QGkK6UEkafRJiQ8GSFYp16SzcQaDRptRBp5ksjTS4CYKSE8Zg06pREpBANBJAUQ/08JT6MkYA51kgSzil0ozKwApTGklGJWZo6e5k4ixdxh7ijVZu4q1WHuao6MG9clXhOvs+XDUClmDsOwG4bdMNQZF6SUxiLpSG20gE5xGCIMwVw5fPjfVqtTg4FyZXlpUFx+7rNf/Z/P/+Ptxfl+tD3OE0iay03gkhEnll60OAYJBGW8+Cuu8TwiUgR4XigkKKIQSAkhIzYhQUJAapWcIEgza9wIkZRCSCaCJlyijpSChOZGzX5tPVsoLSASiGoi61PEky3VIXQojwUJr1rzYnilQZH4kLhzukqTP0XNa5ediM8aIYxZKcXQCXAKFMTIi0GpQaI4xTDCdGGvXmjOLeZAqa7WAJkVs0IUCoqqtEqhT8S6PdbBUQVOk/CZoeLGOVlwHCIMKVSYm/3CgYNfH1jN/eoTx3ocgWTEojfMauHGO+32JpWGCvrWtHpYM4LK9j4l41EMbjvGZqTGAWS1Q6muF//l6BclC1IsZmS3XaP4Vdo9W5EeOYkeJFI1OGnNaENXKc3x8QDmxGcYIaIl6WxEcUzvM8frL8yiDF2WM75qzjmPeR8pCtybcXardaXDnjQ398XJqUcGTXKhQyPJXcmCg0QiOxLbgQCQFMLU98lCLaznvZKl3mfBkXAIKAte8xSUg7Y8cN/F4ibHPtom+3ardjLl9IKLjqR7sMVLX/t7UtkPmUPmgffp8rxYsSLKIxIQos1HyQWffR8jNLAWxDlgEqm2bnMCWWZpOgsMEqFMx5KG49Omp3TnQHwCsm1ym27TWencDcqvjvtJPW8qDSYfuOTTAMgTViOcQXBfk6mfSyjr/VaLV/ESkgKDRCrwEnCQIWkMRKVPztJgjPBLJFIs2fSZPq3DQhjZVJ2hZrKkpfXz+BiR9ooIEPHMoMy4GqczO4UU4hmx4EgDykhwkUF6fCSRc1et6ZQj9qnI/2S3sL2+WxqkflsomUrb8Hxh0gQ5z++I7xMbeo+hqpGBCgKBmIRmS8S/chU284fxWTndkzyhU4Z1R3Xreg0YCWZOXSMEh2sNqWKc1ZhKKckazJESaqpzGHOPYDwLh23skqUfpugiIjATWZPTpl73FJYezEh+S5YR5bo8HfHlqEbOfLEnSQ7dZxRxa2LRgMjewvTwfClgyz495mQIUGO8CLD2rCdHChJrjooRmYwB26ChrP1kU0nmjInNk3IQZbk2l4fIvoc5hGeTtKNeUNpzZ9aSK0lsd3ziWbSplYxpSZk+kz21LOUn/p4pey3WRZE7zm6l/s8GC1g2n80llqhzse5MMFstsSmMyjXS5JPnC3ewsvaJ2ZoQlrrmikVjsMp1O0f9KxBqFM8Qi1gcJJMF38y9IddcFhnlIaOnouhaCq7aHXb3t7nTL9MxB9/FPxQGqbtt6IwyA3q2FmQ1TtkpY2pGZId6yQW6dT8sfqX8IaEMNwvKYR9PSkGlcXdXRxbu8XmjRoIyP4y/ZrIcwsLopd0U5RrU5GKCHZozOLRAf6U8is+HqdOye9ERkhmx55KKQOm+N3UFYwraVEeOBg9nxjqTM71q4dxmskkzGaXcvhkeK9tNljpZ4YI7o0uQHR51sSioWIuGoC1J/S0cQwVeEu0lK12xRQP7JEr9n3bU27VGEx9dSpruDn2ue4tNHaXA0adrrQfgcbT/KmWvkzPXxbmmLuUH4k28JVu8muH1XskB1lkzOxS6OZTxw2Gi3hjDRLGHPTPIyAarcl0HH2KGi3Hb2Lpazt5U9wZzruOut0lYZLJywWGc0e3J9hxmu5XttuOY5lIfprv7dR5OHLYtcIxy3ozmIu84lTtWKXowFbvjYG2endIKkdt/IuWMA5exkBjIs9vnCtR+jqFeB5lOV50WkNcH7p/BbcT0c1h2qgxmaDq4ZEBxhmXyL4CLcGJ3r4C6qCgCwP3eL84/t80hJrg47VCWWfKGu2y5xYfJjnA8uvkijrOw6EOcFzBrf3OOCwmVkeNV4SK/dGlTqaiz0MSpAgNzqVeKAC7WavKT6Jg57RgV61DF42ldV44X1qphFLI6lylRXHRpQjGHivtfqaNTUMo5hplVRsgqOwTLIGWQn4r7WCjOjMCvsqmL0wcfZnpScFOdEbHmAZuAoXKmpEwssKCptEOJhqUj1vE27Na1M7KSPyfubXZMqX7IgC0wsfk8AEfexiI7vgiOAt5pjaVlwhXoqaBAYYhdFQBPbGd46O7E+kB94JJb1F9bW4tIZ7fQ37pW7agiFi41Joi3dcyzYKJtGpxyvY4HvAsf0QWwRoIg59KbMx2zpMjMg6Gmv/tQEgsedAU9Ze9cTC2apGOuSi883kqAC8anp6lX5pS4G38LjO0QSsYhn0oylWL7ANTvHaJeg2fLYodNetz7XLLkPnDI/arClrjjXDYrUhjyW+RC/wS2/tTHXLD2FLtOrxIJnn7MaapkoHLcKXm4dMdgG0A5aHYA0zb5RnssuRuMBQfuU8yZTFscpV69p/JJa9j03OMqqTdTUt6yoBxfcE5T/V119g16Wd9Fe9bk1/dHirn+RS5lSu5HV2cUSXDbDZEzibPZrOWnzrk0Zx+pXN9j3hm5gJYz9o1Vbct0zio3ji7KnGt3FjOl9Xy0ArvStMWZC/xm+RfCOY53zhtkvlum1Mb1wJsQEZWp3u7n8qV96HmpUSWX6xg9mDLPp0PuokQqY7mcIDAKnGFOGieKOYYoE4SHaYbHEyYz5fKuhnqrUm5mP+fTsOtz5Vz3kK0lp4hSKabEFvTFXPN+u81d7smU/ShbPbtZ4JO3vnW1WodW8pYO9GDK3jZsHvkVs05RgETFa8qY8zXNsiBCrteyWIFOHUAOqWusJQaa4ftjm5eTpWr30Pruh037ulXb4a8q9lkQ+gEQc7EKOvC+H4Strri7Cz+aiiz6Qg3GGaI4nM3Fuo0bb+VMUZwzHUpEqYau6DmM5dvJ3Y1jsvx3fTq3uOdJ2WL3rOAYtMOcrvYf+Cq5WNve2iBSr1vGlo898hb0dZmGAW7elPhBFpEjhM1HVHNfd8Q0Bhzu1hVy/5ifHJqbZ8/Fi/WKE/7sBxracTp2W3Pbjvd+MFOJrfE3s+dyU4a5eJkBZRLXzA46vyUjbY6NmkRXyk2gzF5WTk4uO6k8ucmYyAYSydUsOXv5tv7tKMGc7SobQ81pZ5LtK0lrhGwOgpNx76RdZS4bzqJPe8DZbkI4AlcNwoqqD4uHzchkPLPMX2W5ipGxDbnQS8xFuUXFylrOSfujZXbM4XKFpLc7lgcVNIUn7Yfcyx0cnJU/uop6ukQM+eNWqjQnhS3aLpW/femUfUrwEp1M9bAGinXs/kKHfWiBlt6D0swPLnNEs+NSUSC2t/nkjBOnH3MnL3qeSMdcl5jp0NaeS1XQsOWFYxVvWGBv0W4/29l6ujMjlwVSsyV9UjQzOP/uJvqAHZDKvt2WiE5/7m/uG1ImhVCBN7zI31RWs43RAVNPSLN1Cz3GBYpNTzXRku/FHqLifhoOfra9OsR5Y0Vm8F0n0BADkUC04MsOcI3OsCPEEwEdT2hj0ZbhY0rA3C8o73K/fs734fYWoNyPAY1+c/iKGuLSz+U0XD7ZcqNt3Ms5lX/1eUxJhje2QCdhh+7SR+4leVumL900YZiZFXH0MIucjGQ3XctMvcvVZwxBo/eCcdia2bK+t26Db904560xcV+6RLkCV57rbubnMqOPTHjOz8MttJJ7OEqYS9RKG8hkbI9BWVxaES7b4Wi5D7XP3cgt4Kzrx1KpCflRM0O+x9SXuoeUKfP1NkWwjwW254ljgwrK/DAoOy5DMpLuOWOAO+tscqzsHM2q0BjP/mKAgH65GGVOghluWpC+JC5NPSrNZybDquXMKjmHLKPVXxwb/ZFXJbF80/W2SBJNKBl+kbeA1rxVZDynJ8Zu3s4K8Vkib4/pxEmO+v99RZo/S643jwAAACJ6VFh0U29mdHdhcmUAAHjac0zJT0pV8MxNTE8NSk1MqQQAL5wF1K4MqU0AAAAASUVORK5CYII=" style="width:min(100%,220px)"/><strong>Introduction</strong><u><br/>
+</u>L’effet Leidenfrost est le phénomène qui met en caléfaction une goutte d'un liquide sur une plaque chaude. Le principe étant qu'une fine pellicule de vapeur se crée à partir du liquide et isole de la chaleur. Il a été décrit par Johann Gottlob Leidenfrost qui donne son nom à ce phénomène.</p>
+<h2 id="mise-en-evidence-du-phenomene">Mise en évidence du phénomène</h2>
+<p>L'effet Leidenfrost peut être mis en évidence en projetant des gouttes d'eau sur une poêle ou une plaque chauffante plusieurs fois de suite à diverses températures. Initialement, quand la température de la poêle est inférieure à 100 °C, l'eau s'étale et s'évapore lentement. Quand la température de la poêle passe au-dessus de 100 °C, les gouttes d'eau sifflent en touchant la poêle et s'évaporent assez rapidement. Ensuite, lorsque la température dépasse le point Leidenfrost (environ 160 °C pour l'eau), l'effet Leidenfrost entre en jeu. Cette fois, les gouttelettes ne disparaissent pas, mais glissent sur la poêle. La raison est que, lorsque l'eau touche la plaque, elle se vaporise immédiatement dans sa partie inférieure : la fine couche de gaz résultant de 0,1 mm d'épaisseur assure la suspension du reste de la goutte d'eau et l'isole thermiquement de la plaque chauffante car la conductivité thermique de la vapeur d'eau est environ 27 fois moindre que celle de l'eau liquide.</p>
+<h2 id="application">Application</h2>
+<p>Si l'on touche du métal en fusion avec sa main et que celle-ci est un peu humide, il est possible de remarquer qu'une fine couche de vapeur d'eau nous protégera brièvement de la température. De même, si l'on verse de l'azote liquide sur les mains, une fine couche d'azote gazeux va se former au contact de la surface chaude qu'est la main, contribuant à son isolation. On peut le constater dans diverses vidéos sur des sites grand public, réalisées par des professionnels aguerris. L'effet Leidenfrost est particulièrement étudié dans les domaines où un refroidissement efficace est nécessaire comme l'automobile ou le nucléaire.</p>
+
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 14 novembre 2026</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
