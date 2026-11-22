@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Émission par effet de champ - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+
+    /* Compléments pour les éléments absents du template */
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content table { border-collapse: collapse; margin: 1.5rem auto; max-width: 100%; display: block; overflow-x: auto; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; text-align: left; }
+    .content th { background-color: #f1f5f9; font-weight: 600; }
+    .content blockquote { border-left: 4px solid #4f46e5; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+    .content math[display="block"] { display: block; margin: 1rem 0; overflow-x: auto; }
+
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="emission-par-effet-de-champ">Émission par effet de champ</h1>
+          <h2 id="introduction">Introduction</h2><p><img alt="Émission par effet de champ - illustration 1" loading="lazy" src="data:image/jpeg;base64,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" style="width:250px;max-width:100%"/></p>
+          <p>L'émission par effet de champ, ou, sous forme abrégée, lʼémission de champ, est l'émission d'électrons induits par des champs électromagnétiques externes. Elle peut avoir lieu à partir d'une surface solide ou liquide, ou bien directement au niveau d'un atome en milieu gazeux.</p>
+          <p>La théorie d'émission par effet de champ à partir des métaux a été décrite la première fois par Fowler et Nordheim en 1928.</p>
+          <p><strong>Calcul du courant</strong></p>
+          <p>Le courant <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>d'émission électronique se calcule au moyen de l'équation dite de Fowler-Nordheim :</p>
+          <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mrow><mo form="prefix" stretchy="true">(</mo><mi>E</mi><mo form="postfix" stretchy="true">)</mo></mrow><mo>=</mo><msub><mi>K</mi><mn>1</mn></msub><mfrac><msup><mrow><mo form="prefix" stretchy="true">|</mo><mi>E</mi><mo form="postfix" stretchy="true">|</mo></mrow><mn>2</mn></msup><mi>Φ</mi></mfrac><mo>⋅</mo><msup><mi>e</mi><mrow><mo>−</mo><msub><mi>K</mi><mn>2</mn></msub><mo>⋅</mo><mfrac><msup><mi>Φ</mi><mfrac><mn>3</mn><mn>2</mn></mfrac></msup><mo form="prefix" stretchy="false">|</mo></mfrac><mrow><mspace width="0.222em"></mspace><mi>E</mi><mo form="postfix" stretchy="true">|</mo></mrow></mrow></msup></mrow><annotation encoding="application/x-tex">j(E) = K_{1}\frac{|E|^{2}}{\Phi} \cdot e^{- K_{2} \cdot \frac{\Phi^{\frac{3}{2}}}{|}\left. \ E \right|}
+          </annotation></semantics></math>avec</p>
+          <table>
+          <colgroup>
+          <col style="width: 9%"/>
+          <col style="width: 1%"/>
+          <col style="width: 88%"/>
+          </colgroup>
+          <thead>
+          <tr class="header">
+          <th><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>E</mi><annotation encoding="application/x-tex">E</annotation></semantics></math></th>
+          <th>:</th>
+          <th>intensité du champ électrique</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="odd">
+          <td><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mn>1</mn></msub><annotation encoding="application/x-tex">K_{1}</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>K</mi><mn>2</mn></msub><annotation encoding="application/x-tex">K_{2}</annotation></semantics></math></td>
+          <td>:</td>
+          <td>paramètres dépendants du matériau et de la géométrie du champ</td>
+          </tr>
+          <tr class="even">
+          <td><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Φ</mi><annotation encoding="application/x-tex">\Phi</annotation></semantics></math></td>
+          <td>:</td>
+          <td>Travail de sortie</td>
+          </tr>
+          </tbody>
+          </table>
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 22 novembre 2026</p>
+            <p id="viewCount" class="mt-1">Nombre de lectures : 0</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+  <!-- Compteur de vues  -->
+  <script src="../compteur.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mécanotransduction - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+
+    /* Compléments pour les éléments absents du template */
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content table { border-collapse: collapse; margin: 1.5rem auto; max-width: 100%; display: block; overflow-x: auto; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; text-align: left; }
+    .content th { background-color: #f1f5f9; font-weight: 600; }
+    .content blockquote { border-left: 4px solid #4f46e5; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+    .content math[display="block"] { display: block; margin: 1rem 0; overflow-x: auto; }
+
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#terminologie" class="toc-level-1">Terminologie</a>
+            <a href="#stimuli-mecaniques" class="toc-level-1">Stimuli mécaniques</a>
+            <a href="#principes-generaux" class="toc-level-1">Principes généraux</a>
+            <a href="#mecanorecepteurs-et-mecanismes-moleculaires" class="toc-level-1">Mécanorécepteurs et mécanismes moléculaires</a>
+            <a href="#canaux-ioniques-mecanosensibles" class="toc-level-2">Canaux ioniques mécanosensibles</a>
+            <a href="#piezo1-et-piezo2" class="toc-level-2">PIEZO1 et PIEZO2</a>
+            <a href="#integrines" class="toc-level-2">Intégrines</a>
+            <a href="#taline-et-vinculine" class="toc-level-2">Taline et vinculine</a>
+            <a href="#kinase-dadhesion-focale" class="toc-level-2">Kinase d’adhésion focale</a>
+            <a href="#adherences-intercellulaires" class="toc-level-2">Adhérences intercellulaires</a>
+            <a href="#cytosquelette" class="toc-level-1">Cytosquelette</a>
+            <a href="#rigidite-de-la-matrice-extracellulaire" class="toc-level-1">Rigidité de la matrice extracellulaire</a>
+            <a href="#yap-et-taz" class="toc-level-1">YAP et TAZ</a>
+            <a href="#transmission-des-forces-au-noyau" class="toc-level-1">Transmission des forces au noyau</a>
+            <a href="#mecanotransduction-et-signalisation-cellulaire" class="toc-level-1">Mécanotransduction et signalisation cellulaire</a>
+            <a href="#mecanotransduction-dans-differents-tissus" class="toc-level-1">Mécanotransduction dans différents tissus</a>
+            <a href="#systeme-cardiovasculaire" class="toc-level-2">Système cardiovasculaire</a>
+            <a href="#os" class="toc-level-2">Os</a>
+            <a href="#muscle-squelettique" class="toc-level-2">Muscle squelettique</a>
+            <a href="#systeme-sensoriel" class="toc-level-2">Système sensoriel</a>
+            <a href="#developpement-embryonnaire" class="toc-level-2">Développement embryonnaire</a>
+            <a href="#mecanotransduction-chez-les-microorganismes" class="toc-level-1">Mécanotransduction chez les microorganismes</a>
+            <a href="#mecanotransduction-et-pathologies" class="toc-level-1">Mécanotransduction et pathologies</a>
+            <a href="#cancer" class="toc-level-2">Cancer</a>
+            <a href="#fibrose" class="toc-level-2">Fibrose</a>
+            <a href="#maladies-cardiovasculaires" class="toc-level-2">Maladies cardiovasculaires</a>
+            <a href="#maladies-musculosquelettiques" class="toc-level-2">Maladies musculosquelettiques</a>
+            <a href="#laminopathies" class="toc-level-2">Laminopathies</a>
+            <a href="#methodes-experimentales" class="toc-level-1">Méthodes expérimentales</a>
+            <a href="#microscopie-a-force-atomique" class="toc-level-2">Microscopie à force atomique</a>
+            <a href="#pinces-optiques-et-magnetiques" class="toc-level-2">Pinces optiques et magnétiques</a>
+            <a href="#microscopie-des-forces-de-traction" class="toc-level-2">Microscopie des forces de traction</a>
+            <a href="#substrats-a-rigidite-controlee" class="toc-level-2">Substrats à rigidité contrôlée</a>
+            <a href="#micropatterning" class="toc-level-2">Micropatterning</a>
+            <a href="#patch-clamp" class="toc-level-2">Patch-clamp</a>
+            <a href="#relations-avec-le-metabolisme" class="toc-level-1">Relations avec le métabolisme</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="mecanotransduction">Mécanotransduction</h1>
+            <h2 id="introduction">Introduction</h2>
+            <p>La mécanotransduction est l’ensemble des processus par lesquels une cellule détecte des stimuli mécaniques et les convertit en signaux biochimiques ou électriques susceptibles de modifier son comportement, son métabolisme ou l’expression de ses gènes.</p>
+            <p>Elle intervient dans de nombreux phénomènes physiologiques, notamment le toucher, la proprioception, l’audition, la régulation du système cardiovasculaire, le remodelage osseux, l’adaptation du muscle squelettique, le développement embryonnaire, la migration cellulaire et la différenciation des cellules souches.</p>
+            <p>À l’échelle cellulaire, les forces mécaniques peuvent être détectées par différentes structures, notamment des canaux ioniques mécanosensibles, des intégrines, les adhésions focales, les cadhérines, le cytosquelette, la membrane plasmique et le noyau.</p>
+            <p>La mécanotransduction constitue l’un des domaines centraux de la mécanobiologie, discipline étudiant les relations entre forces physiques et systèmes biologiques.</p>
+            <h2 id="terminologie">Terminologie</h2>
+            <p>La mécanotransduction est parfois distinguée de la mécanosensation et de la mécanoréponse.</p>
+            <p>La mécanosensation correspond à la détection initiale d’une variation de force, de tension ou de géométrie par une molécule ou une structure cellulaire. La mécanotransduction désigne plus précisément la conversion de cette information physique en signal intracellulaire. La mécanoréponse correspond aux conséquences fonctionnelles ultérieures, telles qu’une modification de la migration, de la prolifération, de la différenciation ou de l’expression génétique.</p>
+            <p>Ces étapes ne sont toutefois pas toujours nettement séparables et plusieurs structures cellulaires peuvent simultanément détecter, transmettre et amplifier les forces.</p>
+            <h2 id="stimuli-mecaniques">Stimuli mécaniques</h2>
+            <p>Les cellules sont exposées à de nombreux types de contraintes mécaniques.</p>
+            <p>Celles-ci comprennent notamment :</p>
+            <ul>
+            <li><p>la traction ;</p></li>
+            <li><p>la compression ;</p></li>
+            <li><p>l’étirement ;</p></li>
+            <li><p>le cisaillement ;</p></li>
+            <li><p>la pression hydrostatique ;</p></li>
+            <li><p>les variations de tension de la membrane cellulaire ;</p></li>
+            <li><p>la rigidité de la matrice extracellulaire ;</p></li>
+            <li><p>la viscoélasticité du milieu extracellulaire ;</p></li>
+            <li><p>le confinement spatial ;</p></li>
+            <li><p>les forces exercées par les cellules voisines ;</p></li>
+            <li><p>les forces générées par la cellule elle-même.</p></li>
+            </ul>
+            <p>La nature du stimulus varie selon les tissus. Les cellules endothéliales, par exemple, sont continuellement exposées aux forces de cisaillement produites par la circulation sanguine, tandis que les cellules osseuses et musculaires sont fortement influencées par les forces liées à la charge mécanique.</p>
+            <h2 id="principes-generaux">Principes généraux</h2>
+            <p>La mécanotransduction ne correspond pas à une voie de signalisation unique.</p>
+            <p>Plusieurs mécanismes peuvent agir simultanément. Un schéma simplifié comprend généralement :</p>
+            <ol type="1">
+            <li><p>l’application ou la production d’une force mécanique ;</p></li>
+            <li><p>la déformation d’une membrane, d’une protéine ou d’une structure cellulaire ;</p></li>
+            <li><p>l’activation d’un mécanorécepteur ou d’un mécanisme mécanosensible ;</p></li>
+            <li><p>la production ou la modification de signaux intracellulaires ;</p></li>
+            <li><p>l’activation de voies de signalisation ;</p></li>
+            <li><p>éventuellement, la transmission du signal vers le noyau ;</p></li>
+            <li><p>une modification du comportement ou de l’expression génétique.</p></li>
+            </ol>
+            <p>Les forces peuvent modifier directement la conformation de certaines protéines, provoquer l’ouverture de canaux ioniques ou modifier l’organisation de complexes moléculaires.</p>
+            <h2 id="mecanorecepteurs-et-mecanismes-moleculaires">Mécanorécepteurs et mécanismes moléculaires</h2>
+            <h3 id="canaux-ioniques-mecanosensibles">Canaux ioniques mécanosensibles</h3>
+            <p>Certains canaux ioniques peuvent s’ouvrir ou modifier leur activité en réponse à une contrainte mécanique exercée sur la membrane ou sur des structures auxquelles ils sont associés.</p>
+            <p>L’ouverture du canal permet alors le passage d’ions, notamment du calcium, du sodium ou du potassium, créant rapidement un signal électrique ou biochimique intracellulaire.</p>
+            <p>Plusieurs mécanismes d’ouverture ont été proposés. Dans le modèle dit <em>force-from-lipid</em>, les changements de tension ou de courbure de la bicouche lipidique modifient directement la conformation du canal. Dans d’autres systèmes, la force peut être transmise au canal par des structures protéiques associées au cytosquelette ou à la matrice extracellulaire.</p>
+            <h3 id="piezo1-et-piezo2">PIEZO1 et PIEZO2</h3>
+            <p>Les protéines PIEZO1 et PIEZO2 sont des canaux cationiques directement activés par des forces mécaniques.</p>
+            <p>Leur rôle comme composants essentiels de canaux mécaniquement activés a été démontré en 2010 par Bertrand Coste, Ardem Patapoutian et leurs collaborateurs.</p>
+            <p>PIEZO1 et PIEZO2 présentent une structure inhabituelle et sont capables de convertir des déformations de la membrane en courants ioniques.</p>
+            <p>PIEZO2 joue notamment un rôle majeur dans le toucher et la proprioception, tandis que PIEZO1 intervient dans de nombreux processus non neuronaux, notamment dans le système cardiovasculaire, les cellules sanguines, le développement et l’homéostasie de différents tissus.</p>
+            <p>Les travaux ayant conduit notamment à l’identification des récepteurs du toucher ont contribué à l’attribution du prix Nobel de physiologie ou médecine 2021 à Ardem Patapoutian, conjointement avec David Julius pour leurs découvertes concernant les récepteurs de la température et du toucher.</p>
+            <h3 id="integrines">Intégrines</h3>
+            <p>Les intégrines sont des récepteurs transmembranaires reliant la matrice extracellulaire au cytosquelette.</p>
+            <p>Elles participent à la formation des adhésions focales, complexes moléculaires dans lesquels sont notamment présentes la taline, la vinculine, la paxilline et la kinase d'adhésion focale (FAK).</p>
+            <p>Ces structures transmettent les forces entre l’environnement extracellulaire et le cytosquelette d’actine et constituent d’importants sites de mécanotransduction.</p>
+            <p>Les intégrines peuvent répondre à la rigidité, à la géométrie et aux contraintes exercées par la matrice extracellulaire.</p>
+            <h3 id="taline-et-vinculine">Taline et vinculine</h3>
+            <p>Certaines protéines des adhésions focales peuvent directement changer de conformation lorsqu’elles sont soumises à une force.</p>
+            <p>Une expérience réalisée sur des molécules individuelles de taline a montré que son étirement mécanique peut exposer des sites de liaison jusque-là enfouis, permettant la fixation de la vinculine.</p>
+            <p>Ce mécanisme constitue un exemple de mécanotransduction moléculaire directe, dans lequel une force modifie la conformation d’une protéine et par conséquent ses interactions biochimiques.</p>
+            <h3 id="kinase-dadhesion-focale">Kinase d’adhésion focale</h3>
+            <p>La kinase d'adhésion focale ou FAK est une tyrosine kinase non réceptrice associée aux complexes d’adhésion.</p>
+            <p>Son activation peut être modifiée par les contraintes mécaniques et participer à plusieurs voies de signalisation impliquées notamment dans la croissance, la survie et la migration cellulaires.</p>
+            <p>FAK peut interagir fonctionnellement avec des voies comprenant Src, les protéines Rho, les MAP kinases et la voie PI3K/Akt.</p>
+            <h3 id="adherences-intercellulaires">Adhérences intercellulaires</h3>
+            <p>Les forces mécaniques sont également transmises entre cellules.</p>
+            <p>Les cadhérines des jonctions adhérentes relient les cellules voisines au cytosquelette d’actine par l’intermédiaire de protéines telles que les caténines.</p>
+            <p>Ces complexes permettent à la fois la transmission des forces entre cellules et leur détection.</p>
+            <p>L’alpha-caténine peut notamment modifier sa conformation sous l’effet de la tension et participer au recrutement de protéines aux jonctions intercellulaires.</p>
+            <p>Ces mécanismes participent notamment à la cohésion des tissus, à leur remodelage et aux phénomènes de morphogenèse.</p>
+            <h2 id="cytosquelette">Cytosquelette</h2>
+            <p>Le cytosquelette constitue à la fois un réseau de transmission des forces et une structure capable d’y répondre.</p>
+            <p>Il comprend notamment :</p>
+            <ul>
+            <li><p>les filaments d’actine ;</p></li>
+            <li><p>les microtubules ;</p></li>
+            <li><p>les filaments intermédiaires.</p></li>
+            </ul>
+            <p>Le réseau actine–myosine produit lui-même des forces contractiles. Ces forces peuvent être transmises aux adhésions cellulaires, à la membrane, au noyau ou à la matrice extracellulaire.</p>
+            <p>Les cellules peuvent ainsi exercer des forces sur leur environnement et mesurer la résistance qu’il oppose. Ce processus participe notamment à la détection de la rigidité du substrat.</p>
+            <p>Les GTPases de la famille Rho, notamment RhoA, jouent un rôle important dans la régulation de la contractilité actomyosine et dans plusieurs voies de mécanotransduction.</p>
+            <h2 id="rigidite-de-la-matrice-extracellulaire">Rigidité de la matrice extracellulaire</h2>
+            <p>Les cellules peuvent adapter leur comportement aux propriétés mécaniques de la matrice extracellulaire, notamment à sa rigidité, sa viscoélasticité et son architecture tridimensionnelle.</p>
+            <p>Une expérience devenue classique publiée en 2006 a montré que des cellules souches mésenchymateuses cultivées sur des matrices présentant différentes rigidités adoptaient préférentiellement des caractéristiques correspondant à différents lignages cellulaires.</p>
+            <p>Ces observations ont fortement contribué au développement du concept de mécanosensibilité à la rigidité.</p>
+            <p>Les résultats obtenus sur des substrats bidimensionnels ne peuvent toutefois pas toujours être directement extrapolés aux tissus vivants. Dans une matrice tridimensionnelle, les cellules sont également soumises au confinement, à la viscoélasticité, à la dégradabilité de la matrice et à des contraintes spatiales complexes.</p>
+            <h2 id="yap-et-taz">YAP et TAZ</h2>
+            <p>Les protéines YAP et TAZ sont des coactivateurs transcriptionnels capables de relayer certains signaux mécaniques vers le noyau.</p>
+            <p>Une étude publiée en 2011 a montré que leur localisation cellulaire et leur activité étaient influencées par la rigidité de la matrice extracellulaire, la géométrie cellulaire et la tension du cytosquelette d’actomyosine.</p>
+            <p>Lorsque certaines cellules sont fortement étalées sur une matrice rigide et présentent une tension cytosquelettique élevée, YAP et TAZ peuvent davantage s’accumuler dans le noyau. Sur des matrices plus souples ou lorsque la tension d’actomyosine diminue, leur localisation nucléaire peut être réduite.</p>
+            <p>YAP et TAZ interagissent avec la voie Hippo, mais leur régulation mécanique peut également impliquer d’autres mécanismes dépendant du cytosquelette et de l’architecture cellulaire.</p>
+            <p>Ils participent à la régulation de la prolifération, de la différenciation, de la régénération tissulaire et de nombreux processus pathologiques.</p>
+            <h2 id="transmission-des-forces-au-noyau">Transmission des forces au noyau</h2>
+            <p>Le noyau cellulaire n’est pas uniquement la destination finale des voies biochimiques de mécanotransduction. Il peut également être soumis directement à des forces mécaniques.</p>
+            <p>Le cytosquelette est physiquement relié à l’enveloppe nucléaire par le complexe LINC (<em>linker of nucleoskeleton and cytoskeleton</em>).</p>
+            <p>Ce complexe comprend notamment des protéines de la famille des nesprines situées dans la membrane nucléaire externe et des protéines SUN de la membrane nucléaire interne.</p>
+            <p>Les protéines SUN sont reliées à la lamina nucléaire, notamment aux lamines, qui interagissent à leur tour avec la chromatine.</p>
+            <p>Les forces exercées à l’extérieur de la cellule peuvent ainsi être transmises physiquement :</p>
+            <p>matrice extracellulaire → adhésions → cytosquelette → complexe LINC → lamina nucléaire → chromatine.</p>
+            <p>La déformation du noyau peut modifier l’organisation de la chromatine, les échanges nucléocytoplasmiques et l’activité de certains facteurs de transcription.</p>
+            <p>La distinction entre mécanotransduction directement effectuée par le noyau et réponses nucléaires secondaires à des voies de signalisation cytoplasmiques reste cependant un domaine actif de recherche.</p>
+            <h2 id="mecanotransduction-et-signalisation-cellulaire">Mécanotransduction et signalisation cellulaire</h2>
+            <p>Les stimuli mécaniques peuvent modifier plusieurs systèmes de signalisation intracellulaire.</p>
+            <p>Parmi les voies fréquemment associées à la mécanotransduction figurent :</p>
+            <ul>
+            <li><p>la signalisation du calcium ;</p></li>
+            <li><p>les protéines Rho et Rac ;</p></li>
+            <li><p>la kinase d'adhésion focale ;</p></li>
+            <li><p>les kinases Src ;</p></li>
+            <li><p>les MAP kinases ;</p></li>
+            <li><p>la voie PI3K/Akt ;</p></li>
+            <li><p>la voie mTOR ;</p></li>
+            <li><p>la voie Hippo et les protéines YAP/TAZ ;</p></li>
+            <li><p>certaines voies Wnt/β-caténine.</p></li>
+            </ul>
+            <p>Ces voies ne sont pas spécifiques à la mécanotransduction. Elles participent également aux réponses à des hormones, facteurs de croissance, nutriments ou stress cellulaires.</p>
+            <p>La réponse finale résulte par conséquent de l’intégration des signaux mécaniques avec les autres informations reçues par la cellule.</p>
+            <h2 id="mecanotransduction-dans-differents-tissus">Mécanotransduction dans différents tissus</h2>
+            <h3 id="systeme-cardiovasculaire">Système cardiovasculaire</h3>
+            <p>L’endothélium vasculaire est continuellement exposé au cisaillement produit par la circulation sanguine.</p>
+            <p>Les cellules endothéliales possèdent plusieurs structures participant à la détection de ces forces, notamment les complexes de jonction intercellulaire, les intégrines, le glycocalyx, le cytosquelette et des canaux tels que PIEZO1.</p>
+            <p>Les caractéristiques de l’écoulement influencent l’orientation des cellules, l’expression de nombreux gènes, la production de monoxyde d'azote et le fonctionnement de la paroi vasculaire.</p>
+            <p>Une altération de ces mécanismes est impliquée dans plusieurs processus cardiovasculaires pathologiques.</p>
+            <h3 id="os">Os</h3>
+            <p>Le tissu osseux s’adapte aux contraintes mécaniques auxquelles il est soumis.</p>
+            <p>Les ostéocytes sont considérés comme des cellules majeures de la détection des charges mécaniques dans l’os.</p>
+            <p>Plusieurs structures ont été proposées comme mécanorécepteurs ou éléments de transmission, notamment :</p>
+            <ul>
+            <li><p>les intégrines ;</p></li>
+            <li><p>le cytosquelette ;</p></li>
+            <li><p>les connexines ;</p></li>
+            <li><p>les canaux ioniques ;</p></li>
+            <li><p>le cil primaire ;</p></li>
+            <li><p>PIEZO1.</p></li>
+            </ul>
+            <p>L’activation mécanique des ostéocytes influence notamment les voies Wnt/β-caténine et l’expression de la sclérostine, participant à la régulation de l’activité des ostéoblastes et ostéoclastes.</p>
+            <p>Ces mécanismes contribuent au remodelage osseux en réponse à l’activité physique, à l’immobilisation ou aux modifications de charge.</p>
+            <h3 id="muscle-squelettique">Muscle squelettique</h3>
+            <p>Dans le muscle squelettique, la mécanotransduction joue un rôle dans l’adaptation aux contraintes provoquées par l’activité musculaire et l’entraînement contre résistance.</p>
+            <p>Les forces produites ou supportées par la fibre musculaire peuvent être transmises à plusieurs structures, notamment :</p>
+            <ul>
+            <li><p>les sarcomères ;</p></li>
+            <li><p>la titine ;</p></li>
+            <li><p>le cytosquelette ;</p></li>
+            <li><p>les intégrines ;</p></li>
+            <li><p>les costamères ;</p></li>
+            <li><p>le complexe dystrophine-glycoprotéines ;</p></li>
+            <li><p>les adhésions associées au sarcolemme.</p></li>
+            </ul>
+            <p>Ces structures peuvent participer à la conversion de la tension mécanique en signaux biochimiques.</p>
+            <p>La kinase d'adhésion focale est notamment impliquée dans la signalisation liée aux intégrines et à la charge mécanique.</p>
+            <p>Plusieurs voies peuvent ensuite participer à l’adaptation musculaire, notamment mTORC1, les MAP kinases et certaines voies dépendantes de YAP/TAZ.</p>
+            <p>La tension mécanique est considérée comme un stimulus majeur de l’hypertrophie musculaire induite par la surcharge. Les mécanismes moléculaires précis reliant la tension à l’activation de mTORC1 et à la synthèse protéique ne sont toutefois pas entièrement élucidés.</p>
+            <p>Le système comprenant notamment la protéine filamine C, BAG3 et d’autres protéines associées au cytosquelette constitue l’un des mécanismes proposés pour détecter les contraintes mécaniques au niveau des structures musculaires.</p>
+            <h3 id="systeme-sensoriel">Système sensoriel</h3>
+            <p>Dans les systèmes sensoriels, la mécanotransduction permet de convertir directement des stimuli mécaniques en signaux électriques neuronaux.</p>
+            <p>Elle participe notamment :</p>
+            <ul>
+            <li><p>au toucher ;</p></li>
+            <li><p>à la pression ;</p></li>
+            <li><p>à la proprioception ;</p></li>
+            <li><p>à la perception de l’étirement des organes ;</p></li>
+            <li><p>à l’audition ;</p></li>
+            <li><p>à l’équilibre.</p></li>
+            </ul>
+            <p>Dans ces systèmes, l’ouverture rapide de canaux mécanosensibles peut produire une dépolarisation de la cellule sensorielle.</p>
+            <p>PIEZO2 joue notamment un rôle essentiel dans plusieurs formes de mécanoréception somatique.</p>
+            <h3 id="developpement-embryonnaire">Développement embryonnaire</h3>
+            <p>Les forces mécaniques interviennent également dans la morphogenèse.</p>
+            <p>La croissance des tissus, la contraction actomyosine, les mouvements cellulaires et les interactions entre cellules produisent des contraintes susceptibles d’influencer l’expression génétique et le devenir cellulaire.</p>
+            <p>Ces mécanismes peuvent participer à l’organisation des tissus au cours de l’embryogenèse.</p>
+            <h2 id="mecanotransduction-chez-les-microorganismes">Mécanotransduction chez les microorganismes</h2>
+            <p>La capacité à détecter des forces mécaniques est antérieure à l’apparition des organismes multicellulaires.</p>
+            <p>Chez de nombreuses bactéries, les canaux mécanosensibles <em>MscL</em> et <em>MscS</em> participent à la réponse aux variations rapides d’osmolarité.</p>
+            <p>Lorsqu’une bactérie est exposée brutalement à un milieu hypo-osmotique, l’entrée d’eau augmente la tension de sa membrane. L’ouverture de ces canaux permet alors la libération rapide d’ions et de petites molécules, contribuant à éviter la rupture cellulaire.</p>
+            <p>Les canaux MscL et MscS constituent des modèles importants pour l’étude de la détection de la tension directement à partir de la bicouche lipidique.</p>
+            <h2 id="mecanotransduction-et-pathologies">Mécanotransduction et pathologies</h2>
+            <p>Une altération des mécanismes de détection ou de transmission des forces est associée à de nombreuses pathologies.</p>
+            <h3 id="cancer">Cancer</h3>
+            <p>Les tumeurs modifient souvent les propriétés mécaniques de leur environnement.</p>
+            <p>L’accumulation et le remodelage de la matrice extracellulaire peuvent augmenter la rigidité du tissu. Cette rigidification peut à son tour modifier la signalisation par les intégrines, les adhésions focales et YAP/TAZ.</p>
+            <p>Des boucles de rétroaction entre activité cellulaire, rigidité de la matrice et mécanotransduction peuvent ainsi participer à la progression tumorale.</p>
+            <p>La mécanotransduction n’est cependant qu’un élément parmi de nombreux mécanismes moléculaires et génétiques intervenant dans la cancérogenèse.</p>
+            <h3 id="fibrose">Fibrose</h3>
+            <p>La fibrose s’accompagne généralement d’une accumulation excessive de matrice extracellulaire et d’une augmentation de la rigidité tissulaire.</p>
+            <p>Les cellules exposées à cette modification mécanique peuvent activer des programmes favorisant à leur tour la production et le remodelage de la matrice, créant un mécanisme de rétroaction positive.</p>
+            <p>La mécanotransduction est ainsi étudiée comme cible potentielle dans plusieurs maladies fibrotiques.</p>
+            <h3 id="maladies-cardiovasculaires">Maladies cardiovasculaires</h3>
+            <p>Les perturbations de la réponse des cellules endothéliales au flux sanguin peuvent contribuer à des altérations de la fonction vasculaire.</p>
+            <p>Le vieillissement, l’obésité et le diabète de type 2 sont notamment associés à des perturbations de certaines réponses endothéliales aux forces de cisaillement.</p>
+            <h3 id="maladies-musculosquelettiques">Maladies musculosquelettiques</h3>
+            <p>Une diminution prolongée de la charge mécanique favorise la perte de masse osseuse et musculaire.</p>
+            <p>Inversement, une stimulation mécanique adaptée peut contribuer au maintien de ces tissus.</p>
+            <p>Une altération des mécanismes de mécanotransduction est ainsi étudiée dans l’ostéoporose, la sarcopénie, certaines maladies musculaires et les conséquences de l’immobilisation prolongée.</p>
+            <h3 id="laminopathies">Laminopathies</h3>
+            <p>Les mutations affectant les lamines ou d’autres protéines de l’enveloppe nucléaire peuvent modifier les propriétés mécaniques du noyau et sa connexion au cytosquelette.</p>
+            <p>Certaines laminopathies fournissent ainsi des modèles permettant d’étudier les conséquences pathologiques d’une altération de la mécanotransduction nucléaire.</p>
+            <h2 id="methodes-experimentales">Méthodes expérimentales</h2>
+            <p>L’étude de la mécanotransduction utilise des méthodes issues de la biologie cellulaire, de la biophysique et de l’ingénierie.</p>
+            <h3 id="microscopie-a-force-atomique">Microscopie à force atomique</h3>
+            <p>La microscopie à force atomique permet d’exercer des forces extrêmement faibles sur des cellules ou des molécules et de mesurer leurs propriétés mécaniques.</p>
+            <p>Elle peut notamment être utilisée pour étudier l’élasticité des cellules et les changements de conformation de protéines mécanosensibles.</p>
+            <h3 id="pinces-optiques-et-magnetiques">Pinces optiques et magnétiques</h3>
+            <p>Les pinces optiques et les pinces magnétiques permettent d’appliquer des forces contrôlées à des molécules, membranes ou structures cellulaires.</p>
+            <p>Ces techniques ont notamment contribué à montrer que l’étirement de certaines protéines peut modifier leurs interactions moléculaires.</p>
+            <h3 id="microscopie-des-forces-de-traction">Microscopie des forces de traction</h3>
+            <p>La microscopie des forces de traction permet d’estimer les forces qu’une cellule exerce sur un substrat déformable.</p>
+            <p>Des marqueurs incorporés dans le substrat permettent de mesurer les déformations provoquées par la contraction cellulaire et d’en déduire les forces appliquées.</p>
+            <h3 id="substrats-a-rigidite-controlee">Substrats à rigidité contrôlée</h3>
+            <p>Des hydrogels dont les propriétés mécaniques peuvent être ajustées sont fréquemment utilisés pour étudier l’influence de la rigidité de l’environnement sur le comportement cellulaire.</p>
+            <p>Ces systèmes ont notamment permis de mettre en évidence les relations entre rigidité de la matrice, cytosquelette, différenciation cellulaire et YAP/TAZ.</p>
+            <h3 id="micropatterning">Micropatterning</h3>
+            <p>La microfabrication peut être utilisée pour contrôler la surface, la forme ou la géométrie d’adhésion d’une cellule.</p>
+            <p>Ces techniques permettent de distinguer certains effets de la géométrie cellulaire de ceux liés aux signaux chimiques.</p>
+            <p><strong>Capteurs de tension moléculaire</strong></p>
+            <p>Des capteurs utilisant notamment le FRET peuvent être intégrés à des protéines afin d’estimer les forces qu’elles subissent dans une cellule vivante.</p>
+            <p>Ils permettent d’étudier les tensions exercées sur des protéines des adhésions ou du cytosquelette.</p>
+            <h3 id="patch-clamp">Patch-clamp</h3>
+            <p>La technique du patch-clamp est largement utilisée pour mesurer l’activité des canaux ioniques mécanosensibles.</p>
+            <p>Une pression ou une déformation contrôlée peut être appliquée à la membrane pendant l’enregistrement du courant ionique.</p>
+            <p>L’identification des canaux PIEZO s’est notamment appuyée sur la mesure de courants produits par des stimulations mécaniques cellulaires.</p>
+            <p>Une revue des méthodes utilisées à l’échelle moléculaire pour étudier la mécanotransduction a notamment souligné l’importance croissante des techniques permettant de combiner mesure des forces et observation de la signalisation cellulaire.</p>
+            <h2 id="relations-avec-le-metabolisme">Relations avec le métabolisme</h2>
+            <p>La mécanotransduction interagit étroitement avec le métabolisme cellulaire.</p>
+            <p>La croissance, la migration et la production de matrice extracellulaire nécessitent de l’énergie et des précurseurs métaboliques.</p>
+            <p>Inversement, les propriétés mécaniques de l’environnement peuvent modifier l’utilisation de certains nutriments, la fonction des mitochondries et l’activité de voies métaboliques.</p>
+            <p>Les réponses aux forces mécaniques ne peuvent donc pas toujours être séparées des signaux liés à l’énergie, aux nutriments ou au stress cellulaire.</p>
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 22 novembre 2026</p>
+            <p id="viewCount" class="mt-1">Nombre de lectures : 0</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+  <!-- Compteur de vues  -->
+  <script src="../compteur.js"></script>
+
+</body>
+</html>

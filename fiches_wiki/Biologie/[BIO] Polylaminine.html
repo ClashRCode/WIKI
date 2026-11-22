@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Polylaminine - WIKI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Style pour la barre de navigation latérale */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+    
+    /* Style pour le sommaire */
+    .toc a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
+      color: #475569;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+    
+    .toc a:hover {
+      background-color: #f1f5f9;
+      color: #4f46e5;
+    }
+    
+    .toc a.active {
+      background-color: #e0e7ff;
+      color: #4f46e5;
+      font-weight: 500;
+    }
+    
+    /* Indentation du sommaire */
+    .toc-level-1 { margin-left: 0; }
+    .toc-level-2 { margin-left: 1rem; }
+    .toc-level-3 { margin-left: 2rem; }
+    .toc-level-4 { margin-left: 3rem; }
+    
+
+    /* Compléments pour les éléments absents du template */
+    .content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .content li { line-height: 1.75; margin-bottom: 0.25rem; }
+    .content table { border-collapse: collapse; margin: 1.5rem auto; max-width: 100%; display: block; overflow-x: auto; }
+    .content th, .content td { border: 1px solid #cbd5e1; padding: 0.5rem 0.75rem; text-align: left; }
+    .content th { background-color: #f1f5f9; font-weight: 600; }
+    .content blockquote { border-left: 4px solid #4f46e5; padding-left: 1rem; color: #475569; margin: 1rem 0; }
+    .content math[display="block"] { display: block; margin: 1rem 0; overflow-x: auto; }
+
+    /* Style pour le contenu */
+    .content h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      border-bottom: 2px solid #4f46e5;
+      padding-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .content h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #334155;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 0.25rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .content h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #475569;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .content p {
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 0.5rem;
+      margin: 1.5rem auto;
+      display: block;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Scrollbar personnalisée */
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .sidebar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-gray-800 font-sans">
+
+  <!-- Header (même style que votre wiki) -->
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-indigo-600">WIKI - Jules DUCASSE--FERNANDEZ</h1>
+      <nav class="space-x-4">
+        <a href="../../index.html" class="hover:underline">Accueil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal avec sidebar -->
+  <div class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar gauche avec sommaire -->
+      <aside class="w-full lg:w-80 flex-shrink-0">
+        <div class="sidebar bg-white p-6 rounded-lg shadow-sm">
+          <div class="flex items-center space-x-2 mb-4">
+            <h3 class="text-lg font-semibold text-indigo-700">Sommaire</h3>
+          </div>
+          <nav class="toc space-y-1">
+            <a href="#introduction" class="toc-level-1">Introduction</a>
+            <a href="#la-proteine-qui-n-existe-que-quelques-semaines" class="toc-level-1">La protéine qui n'existe que quelques semaines</a>
+            <a href="#polylaminine-l-etude-sur-les-chiens-resultats-et-limites" class="toc-level-1">Polylaminine, l'étude sur les chiens : résultats et limites</a>
+            <a href="#donnees-humaines-peu-de-patients-des-resultats-encourageants" class="toc-level-1">Données humaines : peu de patients, des résultats encourageants</a>
+            <a href="#polylaminine-la-voie-vers-l-approbation-clinique-2028-au-mieux" class="toc-level-1">Polylaminine, la voie vers l'approbation clinique : 2028 au mieux</a>
+            <a href="#un-espoir-raisonnable-pas-des-miracles" class="toc-level-1">Un espoir raisonnable, pas des miracles</a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenu principal -->
+      <main class="flex-1 min-w-0">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <!-- Contenu de la fiche -->
+          <article class="content">
+            <h1 id="polylaminine">Polylaminine</h1>
+            <h2 id="introduction">Introduction</h2>
+            <p>Le chien P3 (nom de code) n'avait pas marché depuis sept ans. Traumatisme médullaire, paralysie complète des membres postérieurs et perte de sensibilité à une douleur profonde. Le type de blessure que les vétérinaires reconnaissent comme permanente. Après quatre mois de kinésithérapie sans progrès, l'animal a été inclus dans un essai clinique brésilien et a reçu une injection intrarachidienne de polylaminine, une protéine extraite du placenta humain. Six mois plus tard, P3 marche avec assistance et a retrouvé une sensibilité profonde. Il n'est pas tout à fait revenu à son état d'avant, mais il bouge maintenant, et c'est incroyable.</p>
+            <p>Cinq autres chiens participant à l'étude ont montré des améliorations similaires. La recherche menée par Tatiana Coelho de Sampaio all 'Université fédérale de Rio de Janeiro Cela représente une avancée concrète dans le traitement des lésions de la moelle épinière, mais le chemin vers une thérapie approuvée pour l'homme est encore long. publié Frontières de la science vétérinaire En août 2025, son innocuité et son efficacité préliminaires ont été démontrées, mais des limites méthodologiques nous empêchent de tirer des conclusions définitives. En d'autres termes, et j'écris ceci avec clarté et connaissance : la polylaminine fonctionne, mais combien et pourquoi restent des questions ouvertes.</p>
+            <h2 id="la-proteine-qui-n-existe-que-quelques-semaines">La protéine qui n'existe que quelques semaines</h2>
+            <p>La laminine est une protéine produite naturellement par le corps humain au cours du développement embryonnaire. Pendant quelques semaines, elle forme un réseau tridimensionnel qui guide les neurones dans la construction du système nerveux, puis disparaît. Coelho de Sampaio a reproduit cette structure polymère en laboratoire et l'a réintroduite dans une moelle épinière adulte endommagée. L'idée est simple : si la laminine a aidé les neurones à s'organiser lors de leur formation, elle peut peut-être aussi le faire après une lésion. polylaminine Elle est extraite du placenta humain et stabilisée sous forme polymère, une configuration que la protéine perd lorsqu'elle est isolée à l'aide de méthodes traditionnelles. Cette forme polymère semble être cruciale pour l’efficacité thérapeutique.</p>
+            <h2 id="polylaminine-l-etude-sur-les-chiens-resultats-et-limites">Polylaminine, l'étude sur les chiens : résultats et limites</h2>
+            <p>L'essai clinique a porté sur six chiens paraplégiques présentant des lésions chroniques de la moelle épinière dues à un traumatisme ou à une dégénérescence discale. Tous les animaux étaient paralysés depuis au moins trois mois, certains depuis des années. Avant le traitement, chaque chien a suivi quatre mois de kinésithérapie intensive afin d'établir une base motrice stable. L'animal n'a été inclus dans l'essai que lorsque les scores de marche sont restés inchangés lors de trois évaluations consécutives. Cette approche méthodologique est importante car elle élimine la possibilité que les améliorations observées soient dues à une récupération spontanée retardée ou aux effets de la physiothérapie.</p>
+            <p>Les résultats sont prometteurs, mais l’étude (il faut aussi le dire) présente d’importantes limites méthodologiques. Premièrement, l’échantillon est encore petit. Six animaux suffisent pour une étude exploratoire, mais pas pour tirer des conclusions définitives sur l’efficacité. Deuxièmement, il n’y a pas de groupe placebo. Tous les chiens ont reçu un traitement actif, ce qui rend impossible d’exclure complètement les effets placebo ou les améliorations dues à d’autres facteurs. Troisièmement, la polylaminine a toujours été administrée en association avec d’autres agents thérapeutiques., il n’est donc pas clair dans quelle mesure la récupération observée est spécifiquement attribuable à la protéine.</p>
+            <h2 id="donnees-humaines-peu-de-patients-des-resultats-encourageants">Données humaines : peu de patients, des résultats encourageants</h2>
+            <p>Avant l'étude canine, l'équipe de Coelho de Sampaio avait mené un essai pilote sur des patients humains atteints de lésions aiguës de la moelle épinière. Une dizaine de personnes ont reçu de la polylaminine dans les jours suivant la lésion. Selon les données rapportées par CNN BrasilCertains de ces patients ont retrouvé une mobilité volontaire malgré un diagnostic initial de lésion complète. En conditions normales, le taux de récupération spontanée des lésions complètes ne dépasse pas 15 %. Dans le groupe traité à la polylaminine, 75 % ont montré une certaine forme de récupération motrice.</p>
+            <p>Ces chiffres doivent également être interprétés avec prudence. L'essai était en phase d'innocuité, et non d'efficacité. Il n'y avait ni randomisation, ni groupe témoin, et le nombre de patients était trop faible pour permettre des analyses statistiques robustes. Le fait que certains patients aient retrouvé leur mobilité est notable, mais cela pourrait être dû à des facteurs de confusion non contrôlés. Un essai clinique contrôlé randomisé à plus grande échelle est nécessaire pour confirmer l'efficacité.</p>
+            <h2 id="polylaminine-la-voie-vers-l-approbation-clinique-2028-au-mieux">Polylaminine, la voie vers l'approbation clinique : 2028 au mieux</h2>
+            <p>Le laboratoire pharmaceutique brésilien Cristalia, qui produit de la polylaminine, a investi 28 millions de reais dans le développement du médicament. Selon la FAPERJ (Fondation pour le soutien à la recherche de l'État de Rio de Janeiro), l'entreprise attend l'autorisation de laANVISA (l'agence de réglementation brésilienne) va lancer des essais cliniques de phase 1, qui porteront initialement sur cinq patients présentant des lésions aiguës. L'objectif est de démontrer l'innocuité du traitement dans un environnement contrôlé. Si cette phase est concluante, des études de phases 2 et 3 suivront pour évaluer l'efficacité sur des échantillons plus importants.</p>
+            <p>Le processus d'approbation prend des années. Même dans le scénario le plus optimiste, la polylaminine ne sera pas disponible dans les protocoles cliniques standard avant 2028. Parallèlement, l'équipe de recherche s'efforce de clarifier certains aspects fondamentaux du mécanisme d'action. La question principale est : la polylaminine seule est-elle suffisante, ou est-il toujours nécessaire de l'associer à d'autres agents ? Et, si nécessaire, lequel est le plus efficace ?</p>
+            <h2 id="un-espoir-raisonnable-pas-des-miracles">Un espoir raisonnable, pas des miracles</h2>
+            <p>Le lésions de la moelle épinière Elles touchent environ 768 000 personnes dans le monde chaque année. En Italie, plus d'un millier de nouveaux cas sont recensés chaque année, principalement dus à des accidents de la route, des chutes et des blessures sportives. Il y a encore quelques décennies, une lésion médullaire complète signifiait une paralysie permanente sans espoir de guérison. Aujourd'hui, la situation a évolué, mais pas autant qu'on pourrait le croire. La plupart des progrès concernent la gestion des complications et l'amélioration de la qualité de vie, et non la restauration des fonctions motrices.</p>
+            <p>La polylaminine représente une approche biologique du problème, visant à favoriser la régénération nerveuse plutôt qu'à simplement gérer les symptômes. C'est un progrès, mais ce n'est pas le remède définitif que les gros titres suggèrent parfois. Les chiens de l'étude brésilienne ont retrouvé une certaine fonctionnalité, mais aucun n'a retrouvé une marche identique à celle d'avant. Les améliorations observées sont statistiquement significatives, mais restent cliniquement modestes. Un chien dont le score de marche était passé de 2 à 3 a retrouvé une mobilité supplémentaire, mais pas une indépendance totale.</p>
+            <p>Tatiana Coelho de Sampaio, dans une interview avec État de MinasElle a déclaré : « Je n'ai plus le droit d'être conservatrice. Après 25 ans de recherche, nous devons aller de l'avant. » Une déclaration qui allie ambition et réalisme. La science a progressé, mais il faut faire preuve de prudence dans sa communication. Les personnes atteintes de lésions médullaires et leurs familles ont besoin d'espoir concret, et non d'attentes irréalistes qui mènent à la déception.</p>
+            <p>La polylaminine est efficace, du moins chez les animaux. Sera-t-elle aussi efficace chez l'humain ? Probablement, mais nous ne le savons pas encore. Cela prend du temps, nécessite des essais cliniques bien conçus et exige la transparence des résultats. En attendant, six chiens au Brésil marchent un peu mieux qu'avant. Ce n’est pas tout, mais c’est quelque chose.</p>
+          </article>
+
+          <!-- Date de mise à jour -->
+          <div class="text-center text-sm text-gray-500 py-4 mt-8 border-t border-gray-200">
+            <p>Dernière mise à jour : 22 novembre 2026</p>
+            <p id="viewCount" class="mt-1">Nombre de lectures : 0</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Bouton Retour en haut (même style que votre wiki) -->
+  <button
+    id="backToTopBtn"
+    onclick="scrollToTop()"
+    class="fixed bottom-6 right-6 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-opacity opacity-0 invisible z-50">
+    ↑ Top
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mise en surbrillance du sommaire lors du scroll
+      const tocLinks = document.querySelectorAll('.toc a');
+      const headings = document.querySelectorAll('.content h1, .content h2, .content h3, .content h4');
+      
+      window.addEventListener('scroll', function() {
+        let current = '';
+        headings.forEach(heading => {
+          const sectionTop = heading.offsetTop;
+          if (window.scrollY >= sectionTop - 100) {
+            current = heading.id;
+          }
+        });
+        
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+          }
+        });
+      });
+      
+      // Bouton retour en haut
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopBtn.classList.remove('opacity-0', 'invisible');
+          backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'invisible');
+          backToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+      });
+    });
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+  <!-- Compteur de vues  -->
+  <script src="../compteur.js"></script>
+
+</body>
+</html>
